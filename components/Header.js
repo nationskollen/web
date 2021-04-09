@@ -1,7 +1,9 @@
 import Navbar from '../components/Navbar.js'
 import styles from '../styles/Header.module.css'
+import * as Icons from 'react-icons/hi'
 
-const Header = () => {
+
+const Header = (active) => {
     return (
         <div className={styles.container}>
             <div className={styles.leftHeader}>
@@ -9,8 +11,9 @@ const Header = () => {
             </div>
 
             <div className={styles.leftHeader}>
-                {/* ICONS */}
+                <Icons.HiAcademicCap className={styles.icon}/>
                 <p>Admin</p>
+                <Icons.HiChevronDown className={styles.icon}/>
             </div>
         </div>
     )

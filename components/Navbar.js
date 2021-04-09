@@ -2,9 +2,12 @@ import React from 'react'
 import ActiveLink from './ActiveLink'
 import styles from '../styles/Navbar.module.css'
 import * as Icons from 'react-icons/hi'
+import { NavLink } from 'react-router-dom'
+import { Router } from 'next/router'
 
 const Navbar = () => {
     return (
+        <>
         <div className={styles.container}>
             <div className={styles.nav}>
                 <p className={styles.navTitle}>NationsKollen</p>
@@ -18,7 +21,7 @@ const Navbar = () => {
                     <div className="">
                         <div className={styles.menuItem}>
                             <Icons.HiTemplate className={styles.icon} />
-                            <ActiveLink className={styles.active} href="/">
+                            <ActiveLink activeClassName={styles.active}  href="/">
                                 <a className={styles.linkText}>Översikt</a>
                             </ActiveLink>
                             
@@ -27,7 +30,7 @@ const Navbar = () => {
                     <div className="">
                         <div className={styles.menuItem}>
                             <Icons.HiBell className={styles.icon} s/>
-                            <ActiveLink className={styles.active} href="/news">
+                            <ActiveLink activeClassName={styles.active} href="/news">
                                 <a className={styles.linkText}>Nyheter & meddelande</a>
                             </ActiveLink>
                         </div>
@@ -40,7 +43,7 @@ const Navbar = () => {
                     <div className="">
                         <div className={styles.menuItem}>
                             <Icons.HiUserGroup className={styles.icon} />
-                            <ActiveLink className={styles.active} href="/entrance">
+                            <ActiveLink activeClassName={styles.active} href="/entrance">
                                 <a className={styles.linkText}>Entré</a>
                             </ActiveLink>
                         </div>
@@ -52,7 +55,7 @@ const Navbar = () => {
                     <div className="">
                         <div className={styles.menuItem}>
                             <Icons.HiClock className={styles.icon} />
-                            <ActiveLink className={styles.active} href="/businessHours">
+                            <ActiveLink activeClassName={styles.active} href="/businessHours">
                                 <a className={styles.linkText}>Öppetider</a>
                             </ActiveLink>
                         </div>
@@ -60,7 +63,7 @@ const Navbar = () => {
                     <div className="">
                         <div className={styles.menuItem}>
                             <Icons.HiInformationCircle className={styles.icon} />
-                            <ActiveLink className={styles.active} href="/nation">
+                            <ActiveLink activeClassName={styles.active} href="/nation">
                                 <a className={styles.linkText}>Nationssida</a>
                             </ActiveLink>
                         </div>
@@ -68,7 +71,7 @@ const Navbar = () => {
                     <div className="">
                         <div className={styles.menuItem}>
                             <Icons.HiClipboardList className={styles.icon} />
-                            <ActiveLink className={styles.active} href="/foodMenu">
+                            <ActiveLink activeClassName={styles.active} href="/foodMenu">
                                 <a className={styles.linkText}>Meny</a>
                             </ActiveLink>
                         </div>
@@ -82,6 +85,7 @@ const Navbar = () => {
 
             </div>
         </div>
+        </>
     )
 }
 

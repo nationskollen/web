@@ -15,7 +15,6 @@ const Container = () => {
             </div>
             <div className={styles.main}>
                 <Main />
-                {/* <RightBar /> */}
             </div>
         </div>
     )

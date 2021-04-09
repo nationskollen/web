@@ -2,14 +2,11 @@
     display: flex;
     justify-content: space-between;
     height: 6rem;
+    border: solid rgb(207, 207, 207);
+    border-width: 1px;
 }
 
-.leftHeader {
-    display: flex;
-    --tw-space-x-reverse: 0;
-    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-}
+/* //TODO centrera text i header */
 
 .leftHeader {
     display: flex;
@@ -19,10 +16,16 @@
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, var(--tw-text-opacity)); 
     margin: 0.75rem;
-    padding-right: 2rem;
 }
 
 .ptext {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.icon {
+    margin: auto;
+    margin-bottom: 2.2rem;
+    margin-left: 1rem;
+    margin-right: 0.5rem;
 }

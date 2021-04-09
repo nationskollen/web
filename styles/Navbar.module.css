@@ -49,6 +49,7 @@
     color: rgba(55, 65, 81, var(--tw-text-opacity));
     --tw-bg-opacity: 1;
     cursor: pointer;
+    flex-grow: 100;
 }
 
     .menuItem:hover{
@@ -66,11 +67,19 @@
         color: #71002E;
     }
 
-.linkText:active {
-    background-color: #FFFFFF;
-}
+    .linkText:active {
+        background-color: #FFFFFF;
+    }
 
 .icon{
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
+
+.active {
+    background-color: #FFFFFF;
+    color: #71002E;
+    flex-grow: 100;
+    margin-right: -1.5rem;
+    border-radius: 0.5rem;
 }
