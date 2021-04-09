@@ -1,0 +1,76 @@
+.container {
+    width: 20%;
+    height: 100vh;
+    --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    background-color: #EFEFEF;
+}
+
+
+.nav {
+    border-bottom-width: 1px;
+    padding: 0.75rem;
+    display: flex;
+    justify-content: space-around;
+    background-color: #71002E;
+    color: #FFFFFF;
+}
+
+.navTitle {
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+}
+
+.menuContainer {
+    padding: 1rem;
+    --tw-space-y-reverse: 0;
+    margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.submenuContainer {
+    margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
+    margin-bottom: calc(1rem * var(--tw-space-y-reverse));
+}
+
+.h1Style {
+    /* "text-gray-400" */
+    --tw-text-opacity: 1;
+    color: rgba(156, 163, 175, var(--tw-text-opacity));
+    font-size: 1rem;
+    margin-top: 2rem;
+}
+
+.menuItem {
+    display: flex;
+    padding: 0.25rem;
+    --tw-text-opacity: 1;
+    color: rgba(55, 65, 81, var(--tw-text-opacity));
+    --tw-bg-opacity: 1;
+    cursor: pointer;
+}
+
+    .menuItem:hover{
+        color: #71002E;
+    }
+
+
+.linkText {
+    --tw-text-opacity: 1;
+    color: rgba(156, 163, 175, var(--tw-text-opacity));
+    padding: 0.25rem;
+}
+
+    .linkText:hover {
+        color: #71002E;
+    }
+
+.linkText:active {
+    background-color: #FFFFFF;
+}
+
+.icon{
+    --tw-text-opacity: 1;
+    color: rgba(156, 163, 175, var(--tw-text-opacity));
+}

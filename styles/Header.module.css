@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    height: 6rem;
+}
+
+.leftHeader {
+    display: flex;
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.leftHeader {
+    display: flex;
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
+    --tw-text-opacity: 1;
+    color: rgba(156, 163, 175, var(--tw-text-opacity)); 
+    margin: 0.75rem;
+    padding-right: 2rem;
+}
+
+.ptext {
+    --tw-text-opacity: 1;
+    color: rgba(156, 163, 175, var(--tw-text-opacity));
+}
