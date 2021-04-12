@@ -7,7 +7,9 @@ export default function Home() {
       <div className={styles.container}>
         <div className={styles.background}></div>
 
-        <div className={styles.header}>NATIONSKOLLEN</div>
+        <div className={styles.header}>
+          <p className={styles.headerText}>NATIONSKOLLEN</p>
+        </div>
       </div>
     </div>
   )

@@ -1,30 +1,36 @@
 .container {
     display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: green;
 }
 
 .background {
-    /* TODO: Fix the position of the background image */
-    position: absolute;
-
+    width: 100%;
+    height: 70%;
+    top: 30%;
+    
     background-image: url("../img/Uppsala vector.svg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center 280px;
 }
 
 .header {
-    /* TODO: Center the div horizontally */
     position: absolute;
+    width: 100%;
     text-align: center;
-    left: 460px;
+    margin-left: auto;
+    margin-right: auto;
     top: 92px;
+}
 
-    font-family: Noto Sans;
+.headerText {
+    font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
     font-weight: 100;
     font-size: 48px;
     line-height: 65px;
     letter-spacing: 0.9em;
-    
+    padding-left: 0.9em;
     color: #1b1b1b;
 }
