@@ -76,6 +76,14 @@ const Navbar = () => {
                             </ActiveLink>
                         </div>
                     </div>
+                    <div className="">
+                        <div className={styles.menuItem}>
+                            <Icons.HiUserGroup className={styles.icon} />
+                            <ActiveLink activeClassName={styles.active} href="/login">
+                                <a className={styles.linkText}>Login</a>
+                            </ActiveLink>
+                        </div>
+                    </div>
                 </div>
 
 
