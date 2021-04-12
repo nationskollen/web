@@ -1,30 +1,26 @@
 import React from 'react'
-import styles from '../styles/Card.module.css'
+import styles from '../styles/Container.module.css'
+import Card from './Card'
+import Main from './Main'
+import Chart from './Chart'
 
-const Color = ["from-indigo-500 to-blue-500", "from-blue-400 to-blue-300", "from-green-500 to-green-400", "from-yellow-600 to-yellow-500"]
-
-
-const Card = (props) => {
-
-    var color = props.color
-
+const Container = () => {
     return (
-        <div className={styles.container} data-color={styles.color}>
-            <div className={styles.main}>
-                <div></div>
-            </div>
-            <p className={styles.title}>
-                {props.title}
-            </p>
-            <p className={styles.info}>
-                {props.balance}
-            </p>
-            
-            Console.log{color}
+        <div className={styles.container} >
+            <div className={styles.cards}>
+            {/* <Card><Chart/></Card> */}
+                <Card title="Besökare" balance={409} color={"green"}/>
+                <Card title="Sålda Enheter" balance={3000} color={"yellow"}/>
+                <Card title="Antal medlemmar" balance={100} color={"red"}/>
+                <Card title="Övrigt hihi" balance={339}/>
+                
 
+            </div>
+            <div className={styles.main}>
+                <Main />
+            </div>
         </div>
     )
 }
 
-export default Card
-
+export default Container

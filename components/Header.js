@@ -3,10 +3,13 @@ import styles from '../styles/Header.module.css'
 import * as Icons from 'react-icons/hi'
 
 
-const Header = (active) => {
+const Header = () => {
     return (
         <div className={styles.container}>
             <div className={styles.leftHeader}>
+
+                {/* //TODO Active title from navbar */}
+
                 <p className={styles.ptext}>BÖR STÅ VILKEN FLIK man är på</p>
             </div>
 

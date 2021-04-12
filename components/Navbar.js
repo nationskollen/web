@@ -29,7 +29,7 @@ const Navbar = () => {
                     </div>
                     <div className="">
                         <div className={styles.menuItem}>
-                            <Icons.HiBell className={styles.icon} s/>
+                            <Icons.HiBell className={styles.icon}/>
                             <ActiveLink activeClassName={styles.active} href="/news">
                                 <a className={styles.linkText}>Nyheter & meddelande</a>
                             </ActiveLink>
