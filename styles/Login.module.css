@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+}
+
+.background {
+    /* TODO: Fix the position of the background image */
+    position: absolute;
+
+    background-image: url("../img/Uppsala vector.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 280px;
+}
+
+.header {
+    /* TODO: Center the div horizontally */
+    position: absolute;
+    text-align: center;
+    left: 460px;
+    top: 92px;
+
+    font-family: Noto Sans;
+    font-style: normal;
+    font-weight: 100;
+    font-size: 48px;
+    line-height: 65px;
+    letter-spacing: 0.9em;
+    
+    color: #1b1b1b;
+}
