@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 .container {
     display: flex;
     width: 100%;
@@ -8,8 +10,8 @@
 .background {
     position: absolute;
     width: 100%;
-    height: 70%;
-    top: 30%;
+    height: 67%;
+    top: 33%;
     
     background-image: url("../img/Uppsala vector.svg");
     background-repeat: no-repeat;
@@ -18,10 +20,6 @@
 
 .header {
     position: absolute;
-    width: 100%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
     top: 92px;
 }
 
@@ -47,34 +45,29 @@
 }
 
 .text {
-    font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
-    font-weight: 200;
     font-size: 14px;
 }
 
 .textPanel {
-    position: absolute;
     width: 100%;
-    height: 18%;
-    margin-left: auto;
-    margin-right: auto;
+    height: 3rem;
     border-radius: 5px;
     
     background: #E9E9E9;
     
     display: flex;
     justify-content: center;
+    flex-direction: row;
     align-items: center;
+    /* text-align: right; */
 }
 
 .loginPanel {
-    position: absolute;
+    cursor: pointer;
+
     width: 100%;
-    height: 18%;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    height: 3rem;
     border-radius: 5px;
 
     background: #4C4C4C;
@@ -85,12 +78,45 @@
 }
 
 .loginButtonText {
-    font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
     font-weight: 300;
     font-size: 20px;
     line-height: 19px;
-    letter-spacing: 0.5em;
+    letter-spacing: 0.4em;
+    padding-left: 0.4em;
 
     color: white;
+}
+
+#inputEmail {
+    font-style: normal;
+    font-size: 14px;
+    
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+}
+
+#inputPassword {
+    font-style: normal;
+    font-size: 14px;
+
+    flex: 1;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    overflow: hidden;
+}
+
+.showButton {
+    cursor: pointer;
+    
+    border: none;
+    background-color: transparent;
+
+    font-style: normal;
+    font-size: 14px;
 }
