@@ -5,15 +5,11 @@ import Router from 'next/router'
 import styles from '../styles/Login.module.css'
 
 export default function Home() {
-  const [type, setType] = useState("password");
+  const [passwordType, setPasswordType] = useState("password");
   const togglePasswordVisibility = () => {
     console.log("Toggled password visibility");
-    if (type == "password") {
-      setType("text");
-    }
-    else {
-      setType("password");
-    }
+    if (passwordType == "password") setPasswordType("text");
+    else  setPasswordType("password");
   };
 
   const [email, setEmail] = useState("");
@@ -27,8 +23,16 @@ export default function Home() {
     }
     else {
       console.log("Failed login");
+      //Show error message
+      displayError(true);
     }
   }
+  
+  const [showError, displayError] = useState(false);
+  const hideErrorMessage = () => {
+    console.log("Hide error message");
+    setErrorType(false);
+  };
 
   return (
     <div className={styles.container}>
@@ -43,13 +47,13 @@ export default function Home() {
         <tr>
           <div className={styles.text}>EMAIL</div>
           <div className={styles.textPanel}>
-            <input id={styles.inputEmail} onChange={event => setEmail(event.target.value)}></input>
+            <input className={styles.inputPanel} onChange={event => setEmail(event.target.value)}></input>
           </div>
         </tr>
         <tr>
           <div className={styles.text}>PASSWORD</div>
           <div className={styles.textPanel}>
-            <input id={styles.inputPassword} rows="1" type={type} onChange={event => setPassword(event.target.value)}></input>
+            <input className={styles.inputPanel} rows="1" type={passwordType} onChange={event => setPassword(event.target.value)}></input>
             <button className={styles.showButton} onClick={togglePasswordVisibility}>SHOW</button>
           </div>
         </tr>
@@ -59,6 +63,9 @@ export default function Home() {
           </button>
         </tr>
       </table>
+      { showError &&
+            <div className={styles.errorMessage}>Your email or password is wrong!</div>
+           }
     </div>
   )
 }

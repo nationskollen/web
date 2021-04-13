@@ -20,7 +20,7 @@
 
 .header {
     position: absolute;
-    top: 92px;
+    top: 60px;
 }
 
 .headerText {
@@ -88,22 +88,12 @@
     color: white;
 }
 
-#inputEmail {
+.inputPanel {
     height: 100%;
     font-style: normal;
     font-size: 14px;
-    
-    flex: 1;
-    border: none;
-    background-color: transparent;
-    resize: none;
-    outline: none;
-}
-
-#inputPassword {
-    height: 100%;
-    font-style: normal;
-    font-size: 14px;
+    padding-left: 1em;
+    padding-right: 1em;
 
     flex: 1;
     border: none;
@@ -120,4 +110,19 @@
 
     font-style: normal;
     font-size: 14px;
+}
+
+.errorMessage {
+    position: relative;
+    width: 20%;
+    height: 2em;
+    top: 200px;
+    
+    color: white;
+    background-color: #71002e;
+    border-radius: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
