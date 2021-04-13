@@ -20,7 +20,7 @@ const Card = (props) => {
             <p className={styles.info}>
                 {props.balance}
             </p>
-            <Chart/>
+            {props.children}
 
         </div>
     )

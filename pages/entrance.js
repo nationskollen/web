@@ -12,6 +12,7 @@ export default function Entrence() {
 
         <div className={styles.header}>
           <Header/>
+          <Container/>
         </div>
 
       </div>

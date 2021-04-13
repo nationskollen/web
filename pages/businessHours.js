@@ -12,6 +12,7 @@ export default function BusinessHours() {
 
         <div className={styles.header}>
           <Header/>
+          <Container/>
         </div>
 
       </div>

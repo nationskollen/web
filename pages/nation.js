@@ -12,6 +12,7 @@ export default function Nation() {
 
         <div className={styles.header}>
           <Header/>
+          <Container/>
         </div>
 
       </div>
