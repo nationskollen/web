@@ -1,5 +1,7 @@
-import Head from 'next/head'
-import React, { useState } from "react";
+import React from 'react';
+import { useState } from "react";
+import { Redirect } from "react-router-dom";
+import Router from 'next/router'
 import styles from '../styles/Login.module.css'
 
 export default function Home() {
@@ -14,6 +16,20 @@ export default function Home() {
     }
   };
 
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitLogin = () => {
+    if (validCredentials(email, password)) {
+      console.log("Successful login");
+      //Load main page
+      Router.push("/");
+    }
+    else {
+      console.log("Failed login");
+    }
+  }
+
   return (
     <div className={styles.container}>
       {/* <img src="../img/Uppsala vector.svg" class={styles.background}></img> */}
@@ -27,33 +43,27 @@ export default function Home() {
         <tr>
           <div className={styles.text}>EMAIL</div>
           <div className={styles.textPanel}>
-            <input id={styles.inputEmail}></input>
+            <input id={styles.inputEmail} onChange={event => setEmail(event.target.value)}></input>
           </div>
         </tr>
         <tr>
           <div className={styles.text}>PASSWORD</div>
           <div className={styles.textPanel}>
-            <input id={styles.inputPassword} rows="1" type={type}></input>
+            <input id={styles.inputPassword} rows="1" type={type} onChange={event => setPassword(event.target.value)}></input>
             <button className={styles.showButton} onClick={togglePasswordVisibility}>SHOW</button>
           </div>
         </tr>
         <tr>
-          <div className={styles.loginPanel}>
+          <button className={styles.loginPanel} onClick={submitLogin}>
             <div className={styles.loginButtonText}>LOGIN</div>
-          </div>
+          </button>
         </tr>
       </table>
     </div>
   )
 }
 
-function loginButton() {
-  var email     = document.getElementById(style.inputEmail);
-  var password  = document.getElementById(style.inputPassword);
-  if(validCredentials()) {
-    true;
-  }
-  else {
-    true;
-  }
+//TODO: Replace this dummy function and connect to sdk
+function validCredentials(email, password) {
+  return email == "aria.assadi@gmail.com" && password == "KattenFahad123";
 }
