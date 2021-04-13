@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Container from '../components/Container'
 import Header from '../components/Header'
-import styles from '../styles/Foodmenu.module.css'
+import styles from '../styles/FoodMenu.module.css'
 
 export default function FoodMenu() {
   return (
