@@ -1,6 +1,7 @@
 .container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 6rem;
     border: solid rgb(207, 207, 207);
     border-width: 1px;
@@ -14,18 +15,44 @@
     margin-right: calc(0.5rem * var(--tw-space-x-reverse));
     margin-left: calc(0.5rem * calc(1 - var(--tw-space-x-reverse)));
     --tw-text-opacity: 1;
-    color: rgba(156, 163, 175, var(--tw-text-opacity)); 
+    color: rgba(120, 120, 120, var(--tw-text-opacity)); 
     margin: 0.75rem;
 }
 
 .ptext {
     --tw-text-opacity: 1;
-    color: rgba(156, 163, 175, var(--tw-text-opacity));
+    color: rgba(120, 120, 120, var(--tw-text-opacity));
 }
 
 .icon {
     margin: auto;
-    margin-bottom: 2.2rem;
     margin-left: 1rem;
     margin-right: 0.5rem;
+}
+
+.line {
+    width: 0.1rem;
+    height: 3rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+    background-color:#BBBBBB;
+    border-radius: 0.2rem;
+}
+
+.logOutButton {
+    cursor: pointer;
+
+    height: 2rem;
+    width: 5.5rem;
+    margin-top: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+
+    background-color: #4C4C4C;
+    border-radius: 0.5rem;
 }
