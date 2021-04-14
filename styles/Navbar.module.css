@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 .container {
     width: 20%;
     height: 100vh;
@@ -12,13 +13,19 @@
     padding: 0.75rem;
     display: flex;
     justify-content: space-around;
-    background-color: #71002E;
+    background-color: #71002dec;
     color: #FFFFFF;
+
+    background-image: url("../img/Uppsala vector.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .navTitle {
+    font-family: 'Noto Sans CJK HK', Regular;
     font-size: 1.5rem;
     line-height: 1.5rem;
+    letter-spacing: 0.1em;
     font-weight: 600;
 }
 
@@ -37,7 +44,7 @@
 .h1Style {
     /* "text-gray-400" */
     --tw-text-opacity: 1;
-    color: rgba(156, 163, 175, var(--tw-text-opacity));
+    color: rgba(20, 20, 20, var(--tw-text-opacity));
     font-size: 1rem;
     margin-top: 2rem;
 }
@@ -50,6 +57,8 @@
     --tw-bg-opacity: 1;
     cursor: pointer;
     flex-grow: 100;
+
+    align-items: center;
 }
 
     .menuItem:hover{
@@ -59,7 +68,7 @@
 
 .linkText {
     --tw-text-opacity: 1;
-    color: rgba(156, 163, 175, var(--tw-text-opacity));
+    color: rgba(20, 20, 20, var(--tw-text-opacity));
     padding: 0.25rem;
 }
 
@@ -67,13 +76,11 @@
         color: #71002E;
     }
 
-    .linkText:active {
-        background-color: #FFFFFF;
-    }
 
 .icon{
     --tw-text-opacity: 1;
-    color: rgba(156, 163, 175, var(--tw-text-opacity));
+    color: rgba(20, 20, 20, var(--tw-text-opacity));
+    margin-right: 0.2rem;
 }
 
 .active {

@@ -10,7 +10,7 @@ const Navbar = () => {
         <>
         <div className={styles.container}>
             <div className={styles.nav}>
-                <p className={styles.navTitle}>NationsKollen</p>
+                <p className={styles.navTitle}>Nationskollen</p>
             </div>
 
                 {/* TODO: Align icons with text */}
