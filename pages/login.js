@@ -27,7 +27,7 @@ export default function Home() {
       displayError(true);
     }
   }
-  
+
   const [showError, displayError] = useState(false);
   const hideErrorMessage = () => {
     console.log("Hide error message");
