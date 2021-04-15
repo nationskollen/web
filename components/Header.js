@@ -17,7 +17,8 @@ const Header = () => {
 
                 {/* //TODO Active title from navbar */}
 
-                <p className={styles.ptext}>{getDescription(window.location.pathname)}</p>
+                {/* DOESNT WORK FOR CARL >:( */}
+                {/* <p className={styles.ptext}>{getDescription(window.location.pathname)}</p> */}
             </div>
 
             <div className={styles.leftHeader}>

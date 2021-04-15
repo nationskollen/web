@@ -1,9 +1,11 @@
 .container {
-    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+    /* background-image: linear-gradient(to right, var(--tw-gradient-stops));
     --tw-gradient-from: #e5e7eb;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(229, 231, 235, 0));
-    --tw-gradient-to: #f3f4f6;
+    --tw-gradient-to: #f3f4f6; */
     height: 100vw;
+    background-color: beige;
+    
 }
 
 .cards {
@@ -15,6 +17,16 @@
 }
 
 .main {
+    display: flex;
+    margin-left: 0.75rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+}
+
+.calender {
     display: flex;
     margin-left: 0.75rem;
     margin-top: 1.5rem;
