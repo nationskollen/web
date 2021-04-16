@@ -11,6 +11,11 @@ const Header = () => {
         Router.push("/login");
     }
 
+    var currentPath = () => {
+        if (window.location.pathname) return window.location.pathname;
+        return "/";
+    }
+
     return (
         <div className={styles.container}>
             <div className={styles.leftHeader}>
@@ -18,7 +23,7 @@ const Header = () => {
                 {/* //TODO Active title from navbar */}
 
                 {/* DOESNT WORK FOR CARL >:( */}
-                {/* <p className={styles.ptext}>{getDescription(window.location.pathname)}</p> */}
+                <p className={styles.ptext}>{getDescription(currentPath())}</p>
             </div>
 
             <div className={styles.leftHeader}>
@@ -36,8 +41,8 @@ const Header = () => {
 
 export default Header
 
-function getDescription(page) {
-    return descriptions[page];
+function getDescription(path) {
+    return descriptions[path];
 }
 
 var descriptions = {
