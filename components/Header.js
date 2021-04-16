@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../styles/Header.module.css'
 import Router from 'next/router'
+import { useRouter } from 'next/router'
 import * as Icons from 'react-icons/hi'
 
 
@@ -11,19 +12,14 @@ const Header = () => {
         Router.push("/login");
     }
 
-    var currentPath = () => {
-        if (window.location.pathname) return window.location.pathname;
-        return "/";
-    }
+    const router = useRouter();
 
     return (
         <div className={styles.container}>
             <div className={styles.leftHeader}>
 
                 {/* //TODO Active title from navbar */}
-
-                {/* DOESNT WORK FOR CARL >:( */}
-                <p className={styles.ptext}>{getDescription(currentPath())}</p>
+                <p className={styles.ptext}>{getDescription(router.asPath)}</p>
             </div>
 
             <div className={styles.leftHeader}>
