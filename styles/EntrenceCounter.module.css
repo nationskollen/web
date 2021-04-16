@@ -1,0 +1,10 @@
+.container {
+    position: absolute;
+    width: 23rem;
+    height: 17rem;
+    margin: 2rem;
+    
+    background: linear-gradient(180deg, #D9D9D9 0%, #E7E7E7 100%);
+    opacity: 0.5;
+    border-radius: 10px;
+}
