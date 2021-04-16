@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/ProgressBar.module.css'
 
-//Creates a progress bar depending on how a completed the progress is
+//Creates a progress bar depending on how completed the progress is
 //in a scale from 0 to 100
 const ProgressBar = (props) => {
     const { completed } = props;
@@ -13,8 +13,6 @@ const ProgressBar = (props) => {
         if (completed < 99) return "#ff3300";
         return "#ff0000";
     }
-
-    const color = "#00ffff";
 
     const barStyle = {
         width: completed + '%',
