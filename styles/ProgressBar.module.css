@@ -1,0 +1,14 @@
+.bar {
+    position: fixed;
+    height: 1rem;
+    width: 10rem;
+    border-radius: 8px;
+    margin: 4rem;
+    background-color: white;
+    border: solid 2px black;
+}
+
+.fillBar {
+    height: 100%;
+    border-radius: inherit;
+}
