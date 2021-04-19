@@ -80,22 +80,33 @@
     grid-column: 1 / 1;
     width: 8rem;
     text-align: center;
-    line-height: 20%;
+    line-height: 40%;
 }
 
-.button {
+.buttonContainer {
     grid-column: 2 / 1;
     width: 8rem;
     height: 6rem;
-    
-    border: none;
-    background: none;
+    display: flex;
+    justify-items: center;
+    align-items: center;
 }
 
 .icon {
     height: 6rem;
     width: 6rem;
     color: #71002E;
+    margin-left: 1rem;
+}
+
+.button {
+    cursor: pointer;
+    display: block;
+    width: 6rem;
+    height: 6rem;
+    border-radius:100%;
+
+    /* border: solid 1px black; */
 }
 
 .counter {
