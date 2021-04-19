@@ -1,9 +1,14 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
 .bar {
-    position: fixed;
-    height: 1rem;
-    width: 10rem;
+    position: absolute;
+    height: 0.7rem;
+    width: 8rem;
     border-radius: 8px;
-    margin: 4rem;
     background-color: white;
     border: solid 2px black;
 }

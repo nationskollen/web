@@ -20,8 +20,10 @@ const ProgressBar = (props) => {
     };
 
     return (
-        <div className={styles.bar}>
-            <div className={styles.fillBar} style={barStyle}></div>
+        <div className={styles.container}>
+            <div className={styles.bar}>
+                <div className={styles.fillBar} style={barStyle}></div>
+            </div>
         </div>
     );
   };
