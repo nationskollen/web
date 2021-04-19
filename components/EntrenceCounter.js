@@ -10,20 +10,24 @@ const EntrenceCounter = () => {
     const [exit, setExit]           = useState(0);
     const [current, setCurrent]     = useState(0);
     const max = 43;
+    const [completed, setCompleted] = useState(0);
 
     const addMember = () => {
         setMember(member + 1);
         setCurrent(current + 1);
+        setCompleted(Math.round(current / max));
     }
 
     const addNonMember = () => {
         setNonMember(nonMember + 1);
         setCurrent(current + 1);
+        setCompleted(Math.round(current / max));
     }
 
     const addExit = () => {
         setExit(exit + 1);
         setCurrent(current - 1);
+        setCompleted(Math.round(current / max));
     }
 
     return (
@@ -32,7 +36,7 @@ const EntrenceCounter = () => {
                 <div className={styles.header}>Pubkväll 15 maj</div>
                 <div className={styles.progressBar}>
                     {/* TODO Make progress bar dynamic */}
-                    <ProgressBar completed="45"></ProgressBar>
+                    <ProgressBar completed={completed}></ProgressBar>
                 </div>
             </div>
             <div className={styles.middle1}>

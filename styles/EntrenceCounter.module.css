@@ -3,8 +3,8 @@
 .container {
     /* TODO Fix better size on container */
     position: absolute;
-    width: 24rem;
-    height: 17rem;
+    width: 36rem;
+    height: 20rem;
     margin: 2rem;
     
     background: linear-gradient(180deg, #dfdfdfb4 0%, #e7e7e7a6 100%);
@@ -78,42 +78,32 @@
 
 .buttonHeader {
     grid-column: 1 / 1;
-    width: 8rem;
+    width: 12rem;
     text-align: center;
-    line-height: 40%;
+    line-height: 0;
 }
 
 .buttonContainer {
     grid-column: 2 / 1;
-    width: 8rem;
-    height: 6rem;
+    width: 12rem;
+    height: 10rem;
     display: flex;
     justify-items: center;
     align-items: center;
 }
 
 .icon {
-    height: 6rem;
-    width: 6rem;
+    height: 10rem;
+    width: 10rem;
     color: #71002E;
     margin-left: 1rem;
 }
 
-.button {
-    cursor: pointer;
-    display: block;
-    width: 6rem;
-    height: 6rem;
-    border-radius:100%;
-
-    /* border: solid 1px black; */
-}
-
 .counter {
     grid-column: 3 / 1;
-    width: 8rem;
+    width: 12rem;
     text-align: center;
-    line-height: 60%;
+    line-height: 0;
 }
 
 .bottomLeft {
