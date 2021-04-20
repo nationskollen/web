@@ -5,15 +5,18 @@ import Router from 'next/router'
 import styles from '../styles/Login.module.css'
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [showError, displayError] = useState(false);
+  const [shake, setShake] = useState('0');
+
   const [passwordType, setPasswordType] = useState("password");
   const togglePasswordVisibility = () => {
     console.log("Toggled password visibility");
     if (passwordType == "password") setPasswordType("text");
     else  setPasswordType("password");
   };
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
   const submitLogin = () => {
     if (validCredentials(email, password)) {
@@ -24,14 +27,16 @@ export default function Home() {
     else {
       console.log("Failed login");
       //Show error message
+      setShake('1');
       displayError(true);
     }
   }
 
-  const [showError, displayError] = useState(false);
-  const hideErrorMessage = () => {
-    console.log("Hide error message");
-    setErrorType(false);
+  const handleKeypress = e => {
+    //it triggers by pressing the enter key
+    if (e.key === 'Enter') {
+      submitLogin();
+    }
   };
 
   return (
@@ -53,7 +58,7 @@ export default function Home() {
         <tr>
           <div className={styles.text}>PASSWORD</div>
           <div className={styles.textPanel}>
-            <input className={styles.inputPanel} rows="1" type={passwordType} onChange={event => setPassword(event.target.value)}></input>
+            <input className={styles.inputPanel} rows="1" type={passwordType} onChange={event => setPassword(event.target.value)} onKeyPress={handleKeypress}></input>
             <button className={styles.showButton} onClick={togglePasswordVisibility}>SHOW</button>
           </div>
         </tr>
@@ -64,7 +69,7 @@ export default function Home() {
         </tr>
       </table>
       { showError &&
-            <div className={styles.errorMessage}>Your email or password is wrong!</div>
+            <div className={styles.errorMessage} onAnimationEnd={() => setShake('0')} shake={shake}>Your email or password is wrong!</div>
            }
     </div>
   )
