@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '../styles/Main.module.css'
-const Main = () => {
+const Main = (props) => {
     return (
         <div className={styles.container}>
 
@@ -8,7 +8,7 @@ const Main = () => {
                 <p className={styles.titleText}>Content</p>
             </div>
             <div className={styles.content}>
-                <p>random skit</p>
+                {props.children}
             </div>
         </div>
     )

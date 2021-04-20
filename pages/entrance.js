@@ -13,6 +13,8 @@ import Rightbar from "../components/Rightbar";
 import styles from "../styles/Entrence.module.css";
 import container from "../styles/Container.module.css";
 import "react-calendar/dist/Calendar.css";
+import EntrenceCounter from "../components/EntrenceCounter";
+import ProgressBar from "../components/ProgressBar";
 
 export default function Entrence() {
   return (
@@ -26,7 +28,9 @@ export default function Entrence() {
             <div className={container.cards}></div>
 
             <div className={container.main}>
-              <Main />
+              <Main>
+                <EntrenceCounter></EntrenceCounter>
+              </Main>
               <Rightbar>
                 <Calendar />
               </Rightbar>
