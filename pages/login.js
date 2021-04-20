@@ -34,6 +34,13 @@ export default function Home() {
     setErrorType(false);
   };
 
+  const handleKeypress = e => {
+    //it triggers by pressing the enter key
+    if (e.key === 'Enter') {
+      submitLogin();
+    }
+  };
+
   return (
     <div className={styles.container}>
       {/* <img src="../img/Uppsala vector.svg" class={styles.background}></img> */}
@@ -53,12 +60,15 @@ export default function Home() {
         <tr>
           <div className={styles.text}>PASSWORD</div>
           <div className={styles.textPanel}>
-            <input className={styles.inputPanel} rows="1" type={passwordType} onChange={event => setPassword(event.target.value)}></input>
+            <input className={styles.inputPanel} rows="1" type={passwordType}
+              onChange={event => setPassword(event.target.value)}
+              onKeyPress={handleKeypress}
+            />
             <button className={styles.showButton} onClick={togglePasswordVisibility}>SHOW</button>
           </div>
         </tr>
         <tr>
-          <button className={styles.loginPanel} onClick={submitLogin}>
+          <button className={styles.loginPanel} onClick={submitLogin} type="submit">
             <div className={styles.loginButtonText}>LOGIN</div>
           </button>
         </tr>
