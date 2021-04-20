@@ -1,12 +1,16 @@
 import React from 'react';
 import { useState } from "react";
-import { Redirect } from "react-router-dom";
 import Router from 'next/router'
 import styles from '../styles/Login.module.css'
+import { useLogin} from '@dsp-krabby/sdk'
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const login = useLogin({
+    development: process.env.NODE_ENV === 'development',
+    useWebSockets: false
+  })
+  console.log(login);
+  console.log(useLogin);
 
   const [showError, displayError] = useState(false);
   const [shake, setShake] = useState('0');
@@ -15,11 +19,11 @@ export default function Home() {
   const togglePasswordVisibility = () => {
     console.log("Toggled password visibility");
     if (passwordType == "password") setPasswordType("text");
-    else  setPasswordType("password");
+    else                            setPasswordType("password");
   };
 
   const submitLogin = () => {
-    if (validCredentials(email, password)) {
+    if (login.result) {
       console.log("Successful login");
       //Load main page
       Router.push("/");
@@ -33,7 +37,6 @@ export default function Home() {
   }
 
   const handleKeypress = e => {
-    //it triggers by pressing the enter key
     if (e.key === 'Enter') {
       submitLogin();
     }
@@ -41,7 +44,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {/* <img src="../img/Uppsala vector.svg" class={styles.background}></img> */}
       <div className={styles.background}></div>
 
       <div className={styles.header}>
@@ -52,14 +54,14 @@ export default function Home() {
         <tr>
           <div className={styles.text}>EMAIL</div>
           <div className={styles.textPanel}>
-            <input className={styles.inputPanel} onChange={event => setEmail(event.target.value)}></input>
+            <input className={styles.inputPanel} onChange={event => login.setEmail(event.target.value)}></input>
           </div>
         </tr>
         <tr>
           <div className={styles.text}>PASSWORD</div>
           <div className={styles.textPanel}>
             <input className={styles.inputPanel} rows="1" type={passwordType}
-              onChange={event => setPassword(event.target.value)}
+              onChange={event => login.setPassword(event.target.value)}
               onKeyPress={handleKeypress}
             />
             <button className={styles.showButton} onClick={togglePasswordVisibility}>SHOW</button>
@@ -76,9 +78,4 @@ export default function Home() {
       }
     </div>
   )
-}
-
-//TODO: Replace this dummy function and connect to sdk
-function validCredentials(email, password) {
-  return email == "aria.assadi@gmail.com" && password == "KattenFahad123";
 }
