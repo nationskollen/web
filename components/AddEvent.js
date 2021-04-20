@@ -58,7 +58,11 @@ const AddEvent = (props) => {
           <input type="file" id="myfile" name="myfile" />
         </div>
 
-        <input type="submit" value="Create Event"></input>
+        <input
+          type="submit"
+          value="Create Event"
+          className={styles.input}
+        ></input>
       </form>
     </div>
   );
