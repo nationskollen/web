@@ -35,7 +35,6 @@ const EntrenceCounter = () => {
             <div className={styles.top}>
                 <div className={styles.header}>Pubkväll 15 maj</div>
                 <div className={styles.progressBar}>
-                    {/* TODO Make progress bar dynamic */}
                     <ProgressBar completed={completed}></ProgressBar>
                 </div>
             </div>
