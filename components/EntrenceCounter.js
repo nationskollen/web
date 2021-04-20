@@ -15,19 +15,19 @@ const EntrenceCounter = () => {
     const addMember = () => {
         setMember(member + 1);
         setCurrent(current + 1);
-        setCompleted(Math.round(current / max));
+        setCompleted(Math.round(100 * current / max));
     }
 
     const addNonMember = () => {
         setNonMember(nonMember + 1);
         setCurrent(current + 1);
-        setCompleted(Math.round(current / max));
+        setCompleted(Math.round(100 * current / max));
     }
 
     const addExit = () => {
         setExit(exit + 1);
         setCurrent(current - 1);
-        setCompleted(Math.round(current / max));
+        setCompleted(Math.round(100 * current / max));
     }
 
     return (
