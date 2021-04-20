@@ -1,26 +1,27 @@
 .container {
-    background-color: #FFFFFF;
-    margin-left: 0.5rem;
-    --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    width: 66.666667%; 
-    border-width: 1px;
-    border-radius: 0.75rem;
-    --tw-border-opacity: 1;
-    border-color: rgba(243, 244, 246, var(--tw-border-opacity));
+  background-color: #ffffff;
+  margin-left: 0.5rem;
+  margin-right: 2rem;
+  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  width: 100%;
+  border-width: 1px;
+  border-radius: 0.75rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(243, 244, 246, var(--tw-border-opacity));
 }
 
 .title {
-    border-bottom-width: 1px;
-    padding: 0.75rem;
-    --tw-border-opacity: 1;
-    border-color: rgba(243, 244, 246, var(--tw-border-opacity));
+  border-bottom-width: 1px;
+  padding: 0.75rem;
+  --tw-border-opacity: 1;
+  border-color: rgba(243, 244, 246, var(--tw-border-opacity));
 }
 
 .titleText {
-    font-weight: 600;
+  font-weight: 600;
 }
 
 .content {
-
 }
