@@ -115,6 +115,7 @@
 .errorMessage {
     position: relative;
     width: 20%;
+    min-width: 16em;
     height: 2em;
     top: 200px;
     
@@ -126,3 +127,25 @@
     justify-content: center;
     align-items: center;
 }
+
+.errorMessage[shake='1'] {
+    animation: shake 0.8s;
+  }
+  
+  @keyframes shake {
+    10%, 90% {
+      transform: translate3d(1px, 0, 0);
+    }
+    
+    20%, 80% {
+      transform: translate3d(-2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(4px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(-4px, 0, 0);
+    }
+  }
