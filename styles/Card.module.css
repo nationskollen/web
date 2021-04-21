@@ -26,7 +26,8 @@
   padding: 0.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  /* background-image: linear-gradient(to right, var(--tw-gradient-stops)); */
+  background-color: white;
 }
 
 .green {

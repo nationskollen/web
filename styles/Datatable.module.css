@@ -1,3 +1,7 @@
+.table {
+  text-align: center;
+}
+
 .thead {
   background-color: red;
   width: 2rem;
@@ -18,7 +22,8 @@
 }
 
 .td {
-  border: 1px solid rgb(0, 0, 0);
+  /* border: 1px solid rgb(117, 117, 117); */
+  border-bottom: 1px solid rgb(177, 177, 177);
   padding: 8px;
 }
 
