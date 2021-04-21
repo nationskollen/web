@@ -26,9 +26,11 @@ export default function Datatable({ data }) {
               <td className={styles.td}>{row[columns]}</td>
             ))}
             <td className={styles.td}>
-              <Icons.HiEye />
-              <Icons.HiPencil />
-              <Icons.HiTrash />
+              <div className={styles.icons}>
+                <Icons.HiEye />
+                <Icons.HiPencil />
+                <Icons.HiTrash />
+              </div>
             </td>
           </tr>
         ))}
