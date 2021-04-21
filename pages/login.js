@@ -5,10 +5,7 @@ import styles from '../styles/Login.module.css'
 import { useLogin} from '@dsp-krabby/sdk'
 
 export default function Home() {
-  const login = useLogin({
-    development: process.env.NODE_ENV === 'development',
-    useWebSockets: false
-  })
+  const login = useLogin();
   console.log(login);
   console.log(useLogin);
 
@@ -23,6 +20,7 @@ export default function Home() {
   };
 
   const submitLogin = () => {
+    login.execute();
     if (login.result) {
       console.log("Successful login");
       //Load main page
