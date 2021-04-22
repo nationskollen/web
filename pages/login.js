@@ -2,14 +2,10 @@ import React from 'react';
 import { useState, useEffect } from "react";
 import Router from 'next/router'
 import styles from '../styles/Login.module.css'
-import { useLogin} from '@dsp-krabby/sdk'
+import { useLogin } from '@dsp-krabby/sdk'
 
 export default function Home() {
   const login = useLogin();
-  console.log(login);
-  console.log(useLogin);
-  
-  const [showError, displayError] = useState(false);
   const [shake, setShake] = useState('0');
   
   const [passwordType, setPasswordType] = useState("password");
@@ -26,21 +22,20 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log("entered useEffect");
     if (login.result) {
       console.log("Successful login");
+      localStorage.setItem('oid', login.result.oid);
+      console.log(localStorage.getItem('oid'));
       //Load main page
       Router.push("/");
     }
   }, [login.result])
 
   useEffect(() => {
-  console.log("entered useEffect");
   if (login.error) {
     console.log("Failed login");
     //Show error message
     setShake('1');
-    displayError(true);
   }
   }, [login.error])
 
@@ -75,7 +70,7 @@ export default function Home() {
           </button>
         </tr>
       </table>
-      { showError &&
+      {login.error &&
         <div className={styles.errorMessage} onAnimationEnd={() => setShake('0')} shake={shake}>Your email or password is wrong!</div>
       }
     </div>
