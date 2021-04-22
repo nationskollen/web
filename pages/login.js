@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Router from 'next/router'
 import styles from '../styles/Login.module.css'
 import { useLogin} from '@dsp-krabby/sdk'
@@ -8,7 +8,7 @@ export default function Home() {
   const login = useLogin();
   console.log(login);
   console.log(useLogin);
-
+  
   const [showError, displayError] = useState(false);
   const [shake, setShake] = useState('0');
   
@@ -19,26 +19,30 @@ export default function Home() {
     else                            setPasswordType("password");
   };
 
-  const submitLogin = () => {
-    login.execute();
+  const handleKeypress = e => {
+    if (e.key === 'Enter') {
+      login.execute();
+    }
+  };
+
+  useEffect(() => {
+    console.log("entered useEffect");
     if (login.result) {
       console.log("Successful login");
       //Load main page
       Router.push("/");
     }
-    else {
-      console.log("Failed login");
-      //Show error message
-      setShake('1');
-      displayError(true);
-    }
-  }
+  }, [login.result])
 
-  const handleKeypress = e => {
-    if (e.key === 'Enter') {
-      submitLogin();
-    }
-  };
+  useEffect(() => {
+  console.log("entered useEffect");
+  if (login.error) {
+    console.log("Failed login");
+    //Show error message
+    setShake('1');
+    displayError(true);
+  }
+  }, [login.error])
 
   return (
     <div className={styles.container}>
@@ -66,7 +70,7 @@ export default function Home() {
           </div>
         </tr>
         <tr>
-          <button className={styles.loginPanel} onClick={submitLogin} type="submit">
+          <button className={styles.loginPanel} onClick={login.execute} type="submit">
             <div className={styles.loginButtonText}>LOGIN</div>
           </button>
         </tr>
