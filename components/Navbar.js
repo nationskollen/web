@@ -4,16 +4,18 @@ import styles from '../styles/Navbar.module.css'
 import * as Icons from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
 import { Router } from 'next/router'
+import { useNation } from '@dsp-krabby/sdk'
 
 const Navbar = () => {
+    const oid = localStorage.getItem('oid');
+    const { data } = useNation(oid);
+
     return (
         <>
         <div className={styles.container}>
             <div className={styles.nav}>
                 <p className={styles.navTitle}>Nationskollen</p>
             </div>
-
-                {/* TODO: Align icons with text */}
 
             <div className={styles.menuContainer}>
                 <div className={styles.submenuContainer}>
@@ -108,6 +110,9 @@ const Navbar = () => {
                 </div>
 
             </div>
+            {data &&
+                <img src={data.icon_img_src} className={styles.logo}/>
+            }
         </div>
         </>
     )
