@@ -8,7 +8,10 @@ import { useLogout, useNation } from '@dsp-krabby/sdk'
 
 
 const Header = () => {
-    const oid = localStorage.getItem('oid');
+    // User automatically gets oid 400 (Vdala nation)
+    // TODO Replace this row to get oid from local storage
+    const oid = 400;
+    //const oid = localStorage.getItem('oid');
     const { data } = useNation(oid);
     const logout = useLogout();
     const router = useRouter();
