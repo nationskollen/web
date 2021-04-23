@@ -1,32 +1,47 @@
 import React from "react";
 import styles from "../styles/AddEvent.module.css";
 
+function handleFormSubmit(event) {
+  event.preventDefault();
+  const data = new FormData(event.target);
+  const formJSON = Object.fromEntries(data.entries());
+  // for multi-selects, we need special handling
+  formJSON.snacks = data.getAll("snacks");
+  const results = document.querySelector(".results pre");
+  results.innerText = JSON.stringify(formJSON, null, 2);
+}
+
+var stripe_load = () => {
+  if (process.browser) {
+    const form = document.querySelector(".contact-form");
+    form.addEventListener("submit", handleFormSubmit);
+  }
+};
+
 const AddEvent = (props) => {
   return (
-    //TODO Fixa hela jälva formen
     <div className={styles.container}>
       <form className={styles.form}>
         <div className={styles.header}></div>
         {/* Start: */}
-        <label className={styles.label}>
+        <label className={styles.label} for="occurs_at">
           Start Time
           <input className={styles.input} type="datetime-local" />
         </label>
         {/* End: */}
-        <label className={styles.label}>
+        <label className={styles.label} for="ends_at">
           End Time
           <input className={styles.input} type="datetime-local" />
         </label>
         {/* Title: */}
-        <label className={styles.label}>
+        <label className={styles.label} for="name">
           Title
           <input className={styles.input} type="text" />
         </label>
         {/* Description: */}
-        <label className={styles.label}>
+        <label className={styles.label} for="description">
           Description
           <textarea
-            name="w3review"
             rows="15"
             cols="60"
             className={styles.textarea}
@@ -39,7 +54,7 @@ const AddEvent = (props) => {
           <input className={styles.input} type="text" />
         </label>
         {/* Locations: */}
-        <label className={styles.label}>
+        <label className={styles.label} for="location_id">
           Locations
           <input className={styles.input} type="search" />
         </label>
@@ -72,7 +87,7 @@ const AddEvent = (props) => {
           <input className={styles.input} type="checkbox" />
         </label>
         {/* Image header: */}
-        <label className={styles.label}>
+        <label className={styles.label} for="cover_img_src">
           Image header
           <input
             className={styles.input}
@@ -81,6 +96,7 @@ const AddEvent = (props) => {
             name="myfile"
           />
         </label>
+        <input name="id" type="hidden" value="2 "></input>
 
         <label className={styles.label}>
           <input
@@ -91,6 +107,10 @@ const AddEvent = (props) => {
           ></input>
         </label>
       </form>
+      <div>
+        <h2>Result</h2>
+        <pre></pre>
+      </div>
     </div>
   );
 };

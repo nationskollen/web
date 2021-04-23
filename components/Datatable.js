@@ -28,8 +28,12 @@ export default function Datatable({ data }) {
             <td className={styles.td}>
               <div className={styles.icons}>
                 <Icons.HiEye />
-                <Icons.HiPencil />
-                <Icons.HiTrash />
+                <a href="/addevents">
+                  <Icons.HiPencil />
+                </a>
+                <a href="">
+                  <Icons.HiTrash />
+                </a>
               </div>
             </td>
           </tr>
