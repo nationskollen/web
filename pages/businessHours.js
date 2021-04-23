@@ -9,6 +9,7 @@ import Chart from "../components/Chart";
 import Main from "../components/Main";
 import Header from "../components/Header";
 import Rightbar from "../components/Rightbar";
+import DayHours from "../components/DayHours"; 
 
 import styles from "../styles/BusinessHours.module.css";
 import container from "../styles/Container.module.css";
@@ -26,7 +27,9 @@ export default function BusinessHours() {
             <div className={container.cards}></div>
 
             <div className={container.main}>
-              <Main />
+              <Main>
+                <DayHours day="Wednesday"></DayHours>
+              </Main>
               <Rightbar>
                 <Calendar />
               </Rightbar>
