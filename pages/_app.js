@@ -3,7 +3,14 @@ import { Provider } from '@dsp-krabby/sdk'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider config={{ development: process.env.NODE_ENV === 'development', useWebSockets: false }}>
+    <Provider
+      config={{
+          development: true,
+          useWebSockets: false,
+          customHostName: 'nationskollen-staging.engstrand.nu',
+          useHTTPS: true,
+      }}
+    >
       <Component {...pageProps} />
     </Provider>
   )

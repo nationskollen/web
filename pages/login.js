@@ -1,47 +1,46 @@
 import React from 'react';
-import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Router from 'next/router'
 import styles from '../styles/Login.module.css'
+import { useLogin } from '@dsp-krabby/sdk'
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const [showError, displayError] = useState(false);
+  const login = useLogin();
   const [shake, setShake] = useState('0');
-
+  
   const [passwordType, setPasswordType] = useState("password");
   const togglePasswordVisibility = () => {
     console.log("Toggled password visibility");
     if (passwordType == "password") setPasswordType("text");
-    else  setPasswordType("password");
+    else                            setPasswordType("password");
   };
 
-  const submitLogin = () => {
-    if (validCredentials(email, password)) {
+  const handleKeypress = e => {
+    if (e.key === 'Enter') {
+      login.execute();
+    }
+  };
+
+  useEffect(() => {
+    if (login.result) {
       console.log("Successful login");
+      localStorage.setItem('oid', login.result.oid);
+      console.log(localStorage.getItem('oid'));
       //Load main page
       Router.push("/");
     }
-    else {
-      console.log("Failed login");
-      //Show error message
-      setShake('1');
-      displayError(true);
-    }
-  }
+  }, [login.result])
 
-  const handleKeypress = e => {
-    //it triggers by pressing the enter key
-    if (e.key === 'Enter') {
-      submitLogin();
-    }
-  };
+  useEffect(() => {
+  if (login.error) {
+    console.log("Failed login");
+    //Show error message
+    setShake('1');
+  }
+  }, [login.error])
 
   return (
     <div className={styles.container}>
-      {/* <img src="../img/Uppsala vector.svg" class={styles.background}></img> */}
       <div className={styles.background}></div>
 
       <div className={styles.header}>
@@ -52,30 +51,28 @@ export default function Home() {
         <tr>
           <div className={styles.text}>EMAIL</div>
           <div className={styles.textPanel}>
-            <input className={styles.inputPanel} onChange={event => setEmail(event.target.value)}></input>
+            <input className={styles.inputPanel} onChange={event => login.setEmail(event.target.value)}></input>
           </div>
         </tr>
         <tr>
           <div className={styles.text}>PASSWORD</div>
           <div className={styles.textPanel}>
-            <input className={styles.inputPanel} rows="1" type={passwordType} onChange={event => setPassword(event.target.value)} onKeyPress={handleKeypress}></input>
+            <input className={styles.inputPanel} rows="1" type={passwordType}
+              onChange={event => login.setPassword(event.target.value)}
+              onKeyPress={handleKeypress}
+            />
             <button className={styles.showButton} onClick={togglePasswordVisibility}>SHOW</button>
           </div>
         </tr>
         <tr>
-          <button className={styles.loginPanel} onClick={submitLogin}>
+          <button className={styles.loginPanel} onClick={login.execute} type="submit">
             <div className={styles.loginButtonText}>LOGIN</div>
           </button>
         </tr>
       </table>
-      { showError &&
-            <div className={styles.errorMessage} onAnimationEnd={() => setShake('0')} shake={shake}>Your email or password is wrong!</div>
-           }
+      {login.error &&
+        <div className={styles.errorMessage} onAnimationEnd={() => setShake('0')} shake={shake}>Your email or password is wrong!</div>
+      }
     </div>
   )
-}
-
-//TODO: Replace this dummy function and connect to sdk
-function validCredentials(email, password) {
-  return email == "aria.assadi@gmail.com" && password == "KattenFahad123";
 }
