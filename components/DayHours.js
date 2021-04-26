@@ -15,11 +15,10 @@ const ProgressBar = (props) => {
     return (
         <div className={styles.container}>
             <div className={styles.day}>{day}</div>
-            <input
-                className={styles.switch}
-                type="checkbox"
-                onChange={changeState}
-            />
+            <label className={styles.switch}>
+                <input type="checkbox"/>
+                <span className={styles.slider}></span>
+            </label>
         {!isOpen &&
             <div className={styles.secondaryContainer}>
                 <div className={styles.smallText}>Closed</div>
