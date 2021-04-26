@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Datatable from "./Datatable";
 
-//www.youtube.com/watch?v=d1r0aK5awWk Bästa tutorialen <-
-
 require("es6-promise").polyfill();
 require("isomorphic-fetch");
 

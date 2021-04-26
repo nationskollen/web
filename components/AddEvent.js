@@ -1,47 +1,49 @@
 import React from "react";
 import styles from "../styles/AddEvent.module.css";
 
-function handleFormSubmit(event) {
+function handleSubmit(event) {
   event.preventDefault();
   const data = new FormData(event.target);
-  const formJSON = Object.fromEntries(data.entries());
-  // for multi-selects, we need special handling
-  formJSON.snacks = data.getAll("snacks");
-  const results = document.querySelector(".results pre");
-  results.innerText = JSON.stringify(formJSON, null, 2);
+  const value = data.get("email");
+  console.log({ value });
 }
 
-var stripe_load = () => {
-  if (process.browser) {
-    const form = document.querySelector(".contact-form");
-    form.addEventListener("submit", handleFormSubmit);
-  }
-};
+if (typeof window !== "undefined") {
+  console.log("Error!");
+  const form = document.querySelector("form");
+} else {
+  console.log("Error!");
+}
 
 const AddEvent = (props) => {
   return (
     <div className={styles.container}>
-      <form className={styles.form}>
+      <form className={styles.form} id="addEvent" action="">
         <div className={styles.header}></div>
         {/* Start: */}
-        <label className={styles.label} for="occurs_at">
+        <label className={styles.label} htmlFor="occurs_at">
           Start Time
-          <input className={styles.input} type="datetime-local" />
+          <input
+            id="occurs_at"
+            className={styles.input}
+            type="datetime-local"
+          />
         </label>
         {/* End: */}
-        <label className={styles.label} for="ends_at">
+        <label className={styles.label} htmlFor="ends_at">
           End Time
-          <input className={styles.input} type="datetime-local" />
+          <input id="ends_at" className={styles.input} type="datetime-local" />
         </label>
         {/* Title: */}
-        <label className={styles.label} for="name">
+        <label className={styles.label} htmlFor="name">
           Title
-          <input className={styles.input} type="text" />
+          <input id="name" className={styles.input} type="text" />
         </label>
         {/* Description: */}
         <label className={styles.label} for="description">
           Description
           <textarea
+            id="description"
             rows="15"
             cols="60"
             className={styles.textarea}
@@ -51,17 +53,17 @@ const AddEvent = (props) => {
         {/* Tags: */}
         <label className={styles.label}>
           Tags
-          <input className={styles.input} type="text" />
+          <input id="tags" className={styles.input} type="text" />
         </label>
         {/* Locations: */}
         <label className={styles.label} for="location_id">
           Locations
-          <input className={styles.input} type="search" />
+          <input id="location_id" className={styles.input} type="search" />
         </label>
         {/* Type of event: */}
         <label className={styles.label}>
           Type of event
-          <select className={styles.input} id="cars" name="cars">
+          <select className={styles.input} id="event">
             <option value="Frukost">Frukost</option>
             <option value="Brunch">Brunch</option>
             <option value="Fika">Fika</option>
@@ -79,24 +81,19 @@ const AddEvent = (props) => {
         {/* Students only */}
         <label className={styles.label}>
           Only Students
-          <input className={styles.input} type="checkbox" />
+          <input id="student" className={styles.input} type="checkbox" />
         </label>
         {/* Members only*/}
         <label className={styles.label}>
           Only members
-          <input className={styles.input} type="checkbox" />
+          <input id="member" className={styles.input} type="checkbox" />
         </label>
         {/* Image header: */}
-        <label className={styles.label} for="cover_img_src">
+        <label className={styles.label} htmlFor="cover_img_src">
           Image header
-          <input
-            className={styles.input}
-            type="file"
-            id="myfile"
-            name="myfile"
-          />
+          <input className={styles.input} type="file" id="cover_img_src" />
         </label>
-        <input name="id" type="hidden" value="2 "></input>
+        <input id="id" name="id" type="hidden" value="2 "></input>
 
         <label className={styles.label}>
           <input
@@ -107,6 +104,7 @@ const AddEvent = (props) => {
           ></input>
         </label>
       </form>
+
       <div>
         <h2>Result</h2>
         <pre></pre>
