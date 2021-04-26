@@ -5,18 +5,13 @@ import styles from '../styles/DayHours.module.css';
 //Creates a row with business hours for a choosen day
 const ProgressBar = (props) => {
     const { day } = props;
-    const [isOpen, setIsOpen] = useState(true);
-
-    const changeState = (checked) => {
-        if (isOpen) setIsOpen(false);
-        else        setIsOpen(true);
-    }
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className={styles.container}>
             <div className={styles.day}>{day}</div>
             <label className={styles.switch}>
-                <input type="checkbox"/>
+                <input type="checkbox" onChange={() => setIsOpen(!isOpen)}/>
                 <span className={styles.slider}></span>
             </label>
         {!isOpen &&
@@ -32,14 +27,14 @@ const ProgressBar = (props) => {
                     className={styles.inputStart}
                     type="text"
                     maxlength="5"
-                    placebolder="17:00"
+                    placeholder="17:00"
                 />
-                <div className={styles.secondaryContainer}>-</div>
+                <span className={styles.seperator}>-</span>
                 <input
                     className={styles.inputEnd}
                     type="text"
                     maxlength="5"
-                    value="17:00"
+                    placeholder="17:00"
                     />
             </div>      
         )}

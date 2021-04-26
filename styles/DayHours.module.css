@@ -2,47 +2,38 @@
 
 .container {
     position: absolute;
-    width: 20rem;
+    width: 17.5rem;
     height: 3rem;
-    margin: 2rem;
     
     background: linear-gradient(180deg, #dfdfdfb4 0%, #e7e7e7a6 100%);
     border-radius: 10px;
 
-    display: grid;
+    display: flex;
     align-items: center;
     justify-items: left;
-    grid-template-columns: repeat(3, 1fr);
 }
 
 
 .day {
-    grid-column: 1;
     margin-left: 0.5rem;
-    width: 5rem;
+    width: 5.3rem;
     font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
     font-weight: regular;
     font-size: 14px;
 }
 
-.switch {
-    grid-column: 2;
-    width: 1rem;
-}
-
 .secondaryContainer {
-    grid-column: 3;
-
-    display: grid;
+    margin-left: 0.5rem;
+    width: 9.2rem;
+    height: 2rem;
+    display: flex;
     align-items: center;
-    justify-items: center;
-    grid-template-columns: repeat(4, 1fr);
+    justify-content: left;
 }
 
 .smallText {
-    grid-column: 1;
-    width: 3rem;
+    width: 2rem;
     text-align: left;
 
     color: black;
@@ -53,14 +44,13 @@
 }
 
 .inputStart {
-    grid-column: 2;
-    width: 3rem;
+    width: 2.5rem;
+    margin-left: 0.5rem;
     text-align: center;
     margin: 0.8rem;
 
     border: none;
-    background-color: white;
-    border-radius: 6px;
+    background: none;
 
     color: black;
     font-family: 'Noto Sans CJK HK', Regular;
@@ -70,25 +60,16 @@
 }
 
 .seperator {
-    grid-column: 3;
-    width: 0.5rem;
-    height: 2rem;
-    margin: 0;
-    font-family: 'Noto Sans CJK HK', Regular;
-    font-style: normal;
-    font-weight: regular;
-    font-size: 14px;
+    margin: -0.4rem;
 }
 
 .inputEnd {
-    grid-column: 4;
-    width: 3rem;
+    width: 2.5rem;
     text-align: center;
     margin: 0.8rem;
 
     border: none;
-    background-color: white;
-    border-radius: 6px;
+    background: none;
 
     color: black;
     font-family: 'Noto Sans CJK HK', Regular;
@@ -98,10 +79,11 @@
 }
 
 .emptyContainer {
-    grid-column: 2;
-    width: 9.8rem;
+    width: 10rem;
 }
 
+/* Taken from */
+/* https://www.w3schools.com/howto/howto_css_switch.asp */
 /* The switch - the box around the slider */
 .switch {
     position: relative;
@@ -110,15 +92,15 @@
     height: 1rem;
 }
 
-  /* Hide default HTML checkbox */
-  .switch input {
-      opacity: 0;
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  /* The slider */
-  .slider {
+}
+
+/* The slider */
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -129,32 +111,30 @@
     -webkit-transition: .4s;
     transition: .4s;
     border-radius: 1rem;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     width: 1rem;
     height: 1rem;
     border-radius: 50%;
-    /* left: 4px; */
-    /* bottom: 4px; */
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked + .slider {
     background-color: #71002E;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus + .slider {
     box-shadow: 0 0 1px #71002E;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked + .slider:before {
     -webkit-transform: translateX(1rem);
     -ms-transform: translateX(1rem);
     transform: translateX(1rem);
-  }
+}
   
