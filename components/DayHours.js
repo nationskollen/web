@@ -27,7 +27,7 @@ const ProgressBar = (props) => {
                     className={styles.inputStart}
                     type="text"
                     maxlength="5"
-                    placeholder="17:00"
+                    placeholder="08:00"
                 />
                 <span className={styles.seperator}>-</span>
                 <input
