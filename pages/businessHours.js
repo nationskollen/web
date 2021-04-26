@@ -28,7 +28,15 @@ export default function BusinessHours() {
 
             <div className={container.main}>
               <Main>
-                <DayHours day="Wednesday"></DayHours>
+                <div className={styles.grid}>
+                  <DayHours day="Monday"></DayHours>
+                  <DayHours day="Tuesday"></DayHours>
+                  <DayHours day="Wednesday"></DayHours>
+                  <DayHours day="Thurday"></DayHours>
+                  <DayHours day="Friday"></DayHours>
+                  <DayHours day="Saturday"></DayHours>
+                  <DayHours day="Sunday"></DayHours>
+                </div>
               </Main>
               <Rightbar>
                 <Calendar />

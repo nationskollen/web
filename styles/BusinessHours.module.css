@@ -1,8 +1,13 @@
 .container {
-    display: flex;
-  }
+  display: flex;
+}
   
-  .header {
-    width: 100vw;
-  }
-  
+.header {
+  width: 100vw;
+}
+
+.grid {
+  width: 22rem;
+  height: 22rem;
+  display: flex-row;
+}
