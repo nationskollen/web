@@ -19,10 +19,9 @@ export default function Nation() {
     <div>
       <div className={styles.container}>
         <Navbar />
-
-        <div className={styles.header}>
-          <Header />
-          <div className={container.container}>
+        <Header />
+        <div className={container.container}>
+          <main>
             <div className={container.cards}></div>
 
             <div className={container.main}>
@@ -31,7 +30,7 @@ export default function Nation() {
                 <Calendar />
               </Rightbar>
             </div>
-          </div>
+          </main>
         </div>
       </div>
     </div>
