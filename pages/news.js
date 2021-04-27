@@ -22,11 +22,28 @@ export default function News() {
         <Header />
         <div className={container.container}>
           <main>
-            <div className={container.cards}></div>
+	    <div className={styles.realContainer}>
+	      <div className={styles.inputti}>
+		<h1>Beskrivning</h1>
+		<input
+		    className={styles.titleText}
+		    type="text"
+		    placeholder="Titel"
+		/>
+		  <input
+		      className={styles.contentText}
+		      type="text"
+		      placeholder="Beskrivning..."
+		  />
+		  <button
+		      className={styles.submit}
+		      onClick={() => console.log("tjo")}
+		  >Publicera</button>
+	      </div>
+	      <div className={styles.inputti2}>
 
-            <div className={container.main}>
-              <Main />
-            </div>
+	      </div>
+	    </div>
           </main>
         </div>
       </div>
