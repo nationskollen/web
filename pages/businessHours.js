@@ -16,6 +16,8 @@ import container from "../styles/Container.module.css";
 import "react-calendar/dist/Calendar.css";
 
 export default function BusinessHours() {
+  const [refresh, doRefresh] = useState(0);
+
   return (
     <div>
       <div className={styles.container}>
@@ -29,13 +31,17 @@ export default function BusinessHours() {
             <div className={container.main}>
               <Main>
                 <div className={styles.grid}>
-                  <DayHours day="Monday"></DayHours>
-                  <DayHours day="Tuesday"></DayHours>
-                  <DayHours day="Wednesday"></DayHours>
-                  <DayHours day="Thurday"></DayHours>
-                  <DayHours day="Friday"></DayHours>
-                  <DayHours day="Saturday"></DayHours>
-                  <DayHours day="Sunday"></DayHours>
+                  <div className={styles.headerText}>Öppettider standard</div>
+                  <DayHours day="Monday"    saveChanges={refresh}></DayHours>
+                  <DayHours day="Tuesday"   saveChanges={refresh}></DayHours>
+                  <DayHours day="Wednesday" saveChanges={refresh}></DayHours>
+                  <DayHours day="Thurday"   saveChanges={refresh}></DayHours>
+                  <DayHours day="Friday"    saveChanges={refresh}></DayHours>
+                  <DayHours day="Saturday"  saveChanges={refresh}></DayHours>
+                  <DayHours day="Sunday"    saveChanges={refresh}></DayHours>
+                  <button className={styles.saveButton} onChange={() => doRefresh(refresh + 1)}>
+                    <div>Spara ändringar</div>
+                  </button>
                 </div>
               </Main>
               <Rightbar>

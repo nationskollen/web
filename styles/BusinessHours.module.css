@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
 .container {
   display: flex;
 }
@@ -10,4 +12,23 @@
   width: 22rem;
   height: 22rem;
   display: flex-row;
+  margin-left: 1rem;
+}
+
+.headerText {
+  font-family: 'Noto Sans CJK HK', Regular;
+  font-style: normal;
+  font-weight: regular;
+  font-size: 24px;
+}
+
+.saveButton {
+  height: 1.5rem;
+  margin-left: 15rem;
+
+  border-radius: 0.5rem;
+  border: solid black 1px;
+  background-color: #71002E;
+
+  color: white;
 }
