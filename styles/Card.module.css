@@ -27,8 +27,7 @@
   padding-top: 1rem;
   padding-bottom: 1rem;
 
-  justify-content: space-between;
-  background-color: aliceblue;
+  background-color: rgb(236, 241, 245);
 }
 
 .container:hover {
