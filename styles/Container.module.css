@@ -13,11 +13,13 @@
 }
 
 .cards {
+  /* width: 100%; */
   display: flex;
-  padding: 1rem;
+  /* padding: 1rem; */
   --tw-space-x-reverse: 0;
   margin-right: calc(0.75rem * var(--tw-space-x-reverse));
   margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+  justify-content: space-around;
 }
 
 .main {
