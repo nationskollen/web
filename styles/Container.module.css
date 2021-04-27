@@ -1,15 +1,15 @@
 .container {
-  /* background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    --tw-gradient-from: #e5e7eb;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(229, 231, 235, 0));
-    --tw-gradient-to: #f3f4f6; */
-  /* height: 100vw; */
-
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #ffffff;
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--tw-gradient-to, rgba(255, 255, 255, 0));
+  --tw-gradient-to: #f3f4f6;
   /* ONLY TEMPORARY BG */
-  background-color: beige;
   margin-left: 20%;
   margin-top: 6rem;
   width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
 }
 
 .cards {

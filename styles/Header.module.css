@@ -8,6 +8,8 @@
   position: fixed;
   margin-left: 20%;
   width: 80%;
+  background-color: white;
+  z-index: 10000;
 }
 
 /* //TODO centrera text i header */
