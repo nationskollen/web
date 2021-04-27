@@ -8,8 +8,8 @@
   margin-left: 20%;
   margin-top: 6rem;
   width: 100%;
-  height: 100%;
-  flex: 1 1 auto;
+  flex-grow: 1;
+  height: calc(100vh - 6rem);
 }
 
 .cards {
@@ -30,6 +30,8 @@
   --tw-space-x-reverse: 0;
   margin-right: calc(1.5rem * var(--tw-space-x-reverse));
   margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .calender {
