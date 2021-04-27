@@ -1,16 +1,18 @@
 import React from 'react';
 import { useState, useEffect } from "react";
 import styles from '../styles/DayHours.module.css';
+import { useLogin } from '@dsp-krabby/sdk'
 
 //Creates a row with business hours for a choosen day
 const ProgressBar = (props) => {
     const { day, saveChanges } = props;
-    //Set deafult value from sdk
+    //TODO Set deafult value from sdk
     const [isOpen, setIsOpen] = useState(false);
     const [start, setStart] = useState("08:00");
     const [end, setEnd] = useState("20:00");
 
     useEffect(() => {
+        //TODO Change values in sdk
         console.log("performRefresh");
       }, [saveChanges])
 
