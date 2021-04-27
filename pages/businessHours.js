@@ -22,15 +22,14 @@ export default function BusinessHours() {
     <div>
       <div className={styles.container}>
         <Navbar />
-
-        <div className={styles.header}>
-          <Header />
-          <div className={container.container}>
+        <Header />
+        <div className={container.container}>
+          <main>
             <div className={container.cards}></div>
 
             <div className={container.main}>
               <Main>
-                <div className={styles.grid}>
+               <div className={styles.grid}>
                   <div className={styles.headerText}>Öppettider standard</div>
                   <DayHours day="Monday"    saveChanges={save}></DayHours>
                   <DayHours day="Tuesday"   saveChanges={save}></DayHours>
@@ -48,7 +47,7 @@ export default function BusinessHours() {
                 <Calendar />
               </Rightbar>
             </div>
-          </div>
+          </main>
         </div>
       </div>
     </div>
