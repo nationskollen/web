@@ -16,7 +16,7 @@ import container from "../styles/Container.module.css";
 import "react-calendar/dist/Calendar.css";
 
 export default function BusinessHours() {
-  const [refresh, doRefresh] = useState(0);
+  const [save, doSave] = useState('0');
 
   return (
     <div>
@@ -32,14 +32,14 @@ export default function BusinessHours() {
               <Main>
                 <div className={styles.grid}>
                   <div className={styles.headerText}>Öppettider standard</div>
-                  <DayHours day="Monday"    saveChanges={refresh}></DayHours>
-                  <DayHours day="Tuesday"   saveChanges={refresh}></DayHours>
-                  <DayHours day="Wednesday" saveChanges={refresh}></DayHours>
-                  <DayHours day="Thurday"   saveChanges={refresh}></DayHours>
-                  <DayHours day="Friday"    saveChanges={refresh}></DayHours>
-                  <DayHours day="Saturday"  saveChanges={refresh}></DayHours>
-                  <DayHours day="Sunday"    saveChanges={refresh}></DayHours>
-                  <button className={styles.saveButton} onChange={() => doRefresh(refresh + 1)}>
+                  <DayHours day="Monday"    saveChanges={save}></DayHours>
+                  <DayHours day="Tuesday"   saveChanges={save}></DayHours>
+                  <DayHours day="Wednesday" saveChanges={save}></DayHours>
+                  <DayHours day="Thurday"   saveChanges={save}></DayHours>
+                  <DayHours day="Friday"    saveChanges={save}></DayHours>
+                  <DayHours day="Saturday"  saveChanges={save}></DayHours>
+                  <DayHours day="Sunday"    saveChanges={save}></DayHours>
+                  <button className={styles.saveButton} onClick={() => doSave(save + 1)}>
                     <div>Spara ändringar</div>
                   </button>
                 </div>

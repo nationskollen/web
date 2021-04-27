@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
 .container {
-    width: 35rem;
+    width: 22rem;
     height: 2.5rem;
 
     display: flex;
@@ -11,7 +11,7 @@
 
 
 .day {
-    width: 5.3rem;
+    width: 5.2rem;
     font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
     font-weight: regular;
@@ -20,6 +20,7 @@
 
 .secondaryContainer {
     margin-left: 0.5rem;
+    width: 14rem;
     height: 2rem;
     display: flex;
     align-items: center;
