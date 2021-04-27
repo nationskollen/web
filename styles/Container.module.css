@@ -3,10 +3,13 @@
     --tw-gradient-from: #e5e7eb;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(229, 231, 235, 0));
     --tw-gradient-to: #f3f4f6; */
-  height: 100vw;
+  /* height: 100vw; */
 
   /* ONLY TEMPORARY BG */
   background-color: beige;
+  margin-left: 20%;
+  margin-top: 6rem;
+  width: 100%;
 }
 
 .cards {
