@@ -26,12 +26,8 @@
   padding: 0.5rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-image: linear-gradient(to right, var(--tw-gradient-stops));
-}
 
-.green {
-  background-color: green;
-  font-size: 13rem;
+  background-color: rgb(236, 241, 245);
 }
 
 .container:hover {
