@@ -16,8 +16,6 @@
     display: flex;
     align-items: center;
     justify-items: left;
-
-    border : solid black 1px;
 }
 
 
@@ -33,7 +31,6 @@
     width: 9.2rem;
     border: none;
     background: none;
-    border: solid black 1px;
     
     font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
@@ -48,13 +45,11 @@
     display: flex;
     align-items: center;
     justify-content: left;
-    border: solid black 1px;
 }
 
 .smallText {
     width: 3rem;
     text-align: left;
-    border: solid black 1px;
 
     color: black;
     font-family: 'Noto Sans CJK HK', Regular;
@@ -83,7 +78,6 @@
 
 .emptyContainer {
     width: 11rem;
-    border: solid black 1px;
 }
 
 /* Taken from */
