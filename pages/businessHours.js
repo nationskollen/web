@@ -9,7 +9,7 @@ import Chart from "../components/Chart";
 import Main from "../components/Main";
 import Header from "../components/Header";
 import Rightbar from "../components/Rightbar";
-import DayHours from "../components/DayHours"; 
+import OpeningHoursDay from "../components/OpeningHoursDay"; 
 
 import styles from "../styles/BusinessHours.module.css";
 import container from "../styles/Container.module.css";
@@ -31,28 +31,25 @@ export default function BusinessHours() {
               <Main>
                <div className={styles.standard}>
                   <div className={styles.headerText}>Öppettider standard</div>
-                  <DayHours day="Monday"    saveChanges={save}></DayHours>
-                  <DayHours day="Tuesday"   saveChanges={save}></DayHours>
-                  <DayHours day="Wednesday" saveChanges={save}></DayHours>
-                  <DayHours day="Thurday"   saveChanges={save}></DayHours>
-                  <DayHours day="Friday"    saveChanges={save}></DayHours>
-                  <DayHours day="Saturday"  saveChanges={save}></DayHours>
-                  <DayHours day="Sunday"    saveChanges={save}></DayHours>
+                  <OpeningHoursDay day="Monday"    saveChanges={save}></OpeningHoursDay>
+                  <OpeningHoursDay day="Tuesday"   saveChanges={save}></OpeningHoursDay>
+                  <OpeningHoursDay day="Wednesday" saveChanges={save}></OpeningHoursDay>
+                  <OpeningHoursDay day="Thurday"   saveChanges={save}></OpeningHoursDay>
+                  <OpeningHoursDay day="Friday"    saveChanges={save}></OpeningHoursDay>
+                  <OpeningHoursDay day="Saturday"  saveChanges={save}></OpeningHoursDay>
+                  <OpeningHoursDay day="Sunday"    saveChanges={save}></OpeningHoursDay>
                   <button className={styles.button} onClick={() => doSave(save + 1)}>
                     <div>Spara ändringar</div>
                   </button>
                 </div>
                 <div className={styles.addDeviating}>
                   <div className={styles.headerText}>Ny avvikande öppettid</div>
-                  <DayHours day="Date"      saveChanges={save}></DayHours>
+                  <OpeningHoursDay day="Date"      saveChanges={save}></OpeningHoursDay>
                   <button className={styles.button} onClick={() => doSave(save + 1)}>
                     <div>Lägg till</div>
                   </button>
                 </div>
               </Main>
-              <Rightbar>
-                <Calendar />
-              </Rightbar>
             </div>
           </main>
         </div>
