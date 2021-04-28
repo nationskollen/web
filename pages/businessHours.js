@@ -29,7 +29,7 @@ export default function BusinessHours() {
 
             <div className={container.main}>
               <Main>
-               <div className={styles.grid}>
+               <div className={styles.standard}>
                   <div className={styles.headerText}>Öppettider standard</div>
                   <DayHours day="Monday"    saveChanges={save}></DayHours>
                   <DayHours day="Tuesday"   saveChanges={save}></DayHours>
@@ -38,8 +38,15 @@ export default function BusinessHours() {
                   <DayHours day="Friday"    saveChanges={save}></DayHours>
                   <DayHours day="Saturday"  saveChanges={save}></DayHours>
                   <DayHours day="Sunday"    saveChanges={save}></DayHours>
-                  <button className={styles.saveButton} onClick={() => doSave(save + 1)}>
+                  <button className={styles.button} onClick={() => doSave(save + 1)}>
                     <div>Spara ändringar</div>
+                  </button>
+                </div>
+                <div className={styles.addDeviating}>
+                  <div className={styles.headerText}>Ny avvikande öppettid</div>
+                  <DayHours day="Date"      saveChanges={save}></DayHours>
+                  <button className={styles.button} onClick={() => doSave(save + 1)}>
+                    <div>Lägg till</div>
                   </button>
                 </div>
               </Main>

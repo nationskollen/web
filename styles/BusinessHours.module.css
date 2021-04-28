@@ -8,7 +8,7 @@
   width: 100vw;
 }
 
-.grid {
+.standard {
   width: 22rem;
   height: 22rem;
   display: flex-row;
@@ -22,7 +22,7 @@
   font-size: 24px;
 }
 
-.saveButton {
+.button {
   width: 7rem;
   height: 1.5rem;
   margin-left: 13rem;
@@ -33,4 +33,12 @@
 
   color: white;
   cursor: pointer;
+}
+
+.addDeviating {
+  width: 22rem;
+  height: 7rem;
+  display: flex-row;
+  margin-left: 1rem;
+  margin-top: 1rem;
 }
