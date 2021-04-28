@@ -44,68 +44,18 @@ export default function News() {
               </div>
               <div className={styles.inputti2}>
                 <h1>Tidigare meddelanden</h1>
-                <div className={styles.prevPostbox}>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Nunc consequat, tortor vel placerat viverra, risus ligula
-                    eleifend magna, vel placerat orci elit non libero.
-                    Pellentesque nulla velit, mattis non ex vel, mollis mollis
-                    odio. Nunc condimentum vel sapien in venenatis. Cras
-                    pharetra purus nec accumsan aliquet. Phasellus iaculis
-                    dictum lorem ut suscipit. Sed molestie libero et orci
-                    sodales, facilisis mollis tellus blandit. In hac habitasse
-                    platea dictumst. Mauris consequat lorem auctor porttitor
-                    auctor. Cras scelerisque laoreet mauris, euismod maximus est
-                    maximus nec. Donec nec dictum arcu, ac rhoncus mauris.
-                    Nullam vitae finibus sapien, in finibus metus. Cras ornare
-                    id ligula sit amet suscipit. Sed lacus ligula, commodo id
-                    nibh in, lacinia tristique urna. Mauris vehicula bibendum
-                    leo ac scelerisque. Curabitur at est nec justo congue
-                    mollis. Donec ac risus blandit orci varius venenatis non eu
-                    quam. Sed sit amet suscipit turpis. Donec dignissim elit id
-                    ultrices tincidunt. Nunc semper interdum lectus sed finibus.
-                    Nam rutrum facilisis orci quis faucibus. Cras at efficitur
-                    diam. Ut varius efficitur tortor sit amet varius. Nam
-                    euismod nisl eu vulputate vestibulum. Praesent at suscipit
-                    ante. Sed tellus metus, sollicitudin in ornare ut, semper
-                    vel erat. Quisque et nulla at leo sollicitudin elementum.
-                    Pellentesque semper ligula at diam ornare, at tincidunt
-                    ligula condimentum. Nam sagittis dolor egestas massa porta
-                    pellentesque sit amet ut lacus. Fusce non gravida lectus.
-                    Proin imperdiet neque vitae eros accumsan dignissim.
-                    Curabitur at libero massa. Curabitur nec fringilla sapien.
-                    Suspendisse non molestie augue. Donec vel vulputate odio.
-                    Suspendisse ullamcorper erat a tortor gravida, vel luctus
-                    eros viverra. Nam varius velit sed lacus faucibus faucibus.
-                    Maecenas vel urna lobortis, dictum felis at, ornare est.
-                    Aenean mattis elementum nunc in laoreet. Morbi tempor, ipsum
-                    non consequat posuere, mauris neque malesuada urna, quis
-                    tempus diam sem nec arcu. Quisque id nibh posuere, tempor
-                    dolor sit amet, pharetra risus. Sed lobortis nisl nec orci
-                    mattis pretium. Phasellus mauris mi, finibus vitae est non,
-                    congue volutpat leo. Pellentesque rutrum viverra fringilla.
-                    Maecenas ex tortor, efficitur sit amet porttitor ac,
-                    dignissim quis dui. Proin eu ultricies neque, nec feugiat
-                    felis. Phasellus auctor ligula at rutrum gravida. Nam
-                    consequat ante magna. Sed nunc justo, semper a efficitur
-                    sed, molestie ut tortor. Morbi dapibus, odio id scelerisque
-                    venenatis, urna odio pellentesque mauris, eu pulvinar risus
-                    tellus vel quam. Aenean sit amet rhoncus metus. Curabitur
-                    ante ligula, laoreet ut sapien laoreet, tempus tincidunt
-                    orci. Mauris ac purus lacus. Cras mollis sed neque eget
-                    hendrerit. Duis at magna nisi. Praesent sit amet tristique
-                    neque. Vestibulum ullamcorper est et gravida tincidunt.
-                    Aliquam sed ultrices lacus, id blandit mauris. Nulla
-                    consectetur fermentum sem, in aliquet arcu. Ut fermentum est
-                    a nulla lacinia condimentum. Suspendisse congue blandit enim
-                    vitae feugiat. Proin consectetur, nulla sit amet blandit
-                    elementum, sapien justo luctus odio, ac faucibus dui ligula
-                    pellentesque mi. In neque urna, viverra at feugiat at,
-                    mollis in sem. Praesent aliquet ut ante ut cursus. Integer
-                    tempus tincidunt mi in tincidunt. Cras ipsum dui, placerat
-                    in nulla vel, blandit bibendum nisl. Donec vel accumsan
-                    nisi, a malesuada elit.{" "}
-                  </p>
+                <div className={styles.prevPostsBox}>
+		    
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu congue eros. Sed feugiat, neque vel tincidunt finibus, lorem urna ultrices dolor, imperdiet porttitor mauris enim vitae sem. Fusce finibus quis mi nec varius. Nam et condimentum mauris. In varius fringilla tempor. Vestibulum rutrum a purus molestie pharetra. Praesent sed enim fringilla, congue justo at, tempus orci.
+
+Pellentesque interdum erat mi, nec cursus ex sollicitudin at. In ornare feugiat convallis. Fusce vel pharetra eros. Maecenas venenatis sem nec ipsum tristique, eu gravida orci posuere. In hac habitasse platea dictumst. Nulla vitae lacus a ipsum egestas bibendum. Aliquam aliquam in ex et feugiat. Quisque in eros id purus rutrum egestas. Duis tincidunt lacus diam, at maximus lorem mattis et. Donec nec venenatis metus. Curabitur nec orci risus.
+
+Maecenas commodo porttitor felis sit amet eleifend. Mauris ultrices ligula at nulla mattis ornare. Suspendisse volutpat, mi ac suscipit placerat, neque purus dignissim massa, eget lacinia ligula dui nec nisl. Praesent ac suscipit ipsum. Ut tempus massa est, eget sagittis ligula cursus non. Integer aliquet nunc eu imperdiet pharetra. Pellentesque porttitor elit vitae odio suscipit, in tincidunt risus luctus. Nullam et tortor mauris. In ac sodales metus. Curabitur vulputate mauris vel lorem gravida, sit amet sollicitudin magna porttitor. Morbi vitae fringilla felis. Nulla sit amet lacus lorem. Proin auctor justo quis mauris rutrum, et elementum purus posuere.
+
+Vestibulum porta pharetra nulla, et ultrices elit mollis sed. Pellentesque auctor nisl in erat cursus, eu rhoncus nisi semper. Phasellus quis tortor massa. Suspendisse est massa, tincidunt eget ipsum quis, volutpat venenatis felis. Vestibulum ac facilisis tellus. Sed id elit sit amet orci efficitur mollis porta a purus. Cras faucibus ac nibh et placerat. Nulla maximus ullamcorper posuere. Integer bibendum scelerisque neque vitae sagittis. Sed ex dui, laoreet sed velit quis, mattis accumsan velit. Nulla quis maximus ligula, nec fringilla diam. Praesent quis dignissim libero.
+
+Ut nec lacinia augue, et vulputate lorem. Nulla facilisi. Suspendisse vitae mauris non mauris elementum auctor a sit amet turpis. Aenean scelerisque placerat libero id tincidunt. Integer iaculis diam sed urna egestas consequat. Donec ac ligula ornare, egestas urna sed, lobortis ligula. Proin laoreet urna vitae dolor luctus tempus. Suspendisse porta pretium mauris sed ornare. Sed ac velit fringilla, facilisis tortor eu, tincidunt sapien. Mauris ut turpis facilisis, congue lectus vitae, sagittis ante. Aliquam semper lobortis metus, ac tempor elit vulputate et. Cras mi elit, accumsan a sapien ut, commodo laoreet odio. 
                 </div>
               </div>
             </div>

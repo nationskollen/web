@@ -25,13 +25,11 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  justify-content: space-between;
   margin: 2rem 2rem;
   padding: 1rem 2rem;
   border-radius: 10px;
   border-color: white;
   height: 45rem;
-  overflow-y: scroll;
 }
 
 .realContainer {
@@ -42,9 +40,9 @@
 
 /* Input text */
 .titleText {
-  margin: 0.5rem 0;
-  padding: 1rem;
-  border-radius: 10px;
+  margin: 0.5rem 0; 
+  padding: 1rem; 
+  border-radius: 10px; 
   border: #f4f4f4;
   background-color: #f4f4f4;
 }
@@ -67,10 +65,27 @@
 }
 
 /* Previous posts */
+
+.titlePrev {
+}
+
 .prevPostsBox {
   margin: 1rem;
   border-radius: 10px;
-  border-color: #f4f4f4;
-  background-color: #f4f4f4;
-  max-height: 50vw;
+  flex: 1;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.prevPostsBox::-webkit-scrollbar {
+  width: 7px;
+}
+
+.prevPostsBox::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #e4e4e4;
+}
+
+.prevPostsBox::-webkit-scrollbar-track {
+    border-radius: 10px;
 }
