@@ -21,27 +21,6 @@ const OpeningHoursDate = (props) => {
     const [start, setStart] = useState("08:00");
     const [end, setEnd] = useState("20:00");
 
-
-    const dayToNumber = day => {
-        switch (day) {
-            case "Monday":
-                return 0
-            case "Tuesday":
-                return 1
-            case "Wednesday":
-                return 2
-            case "Thursday":
-                return 3
-            case "Friday":
-                return 4
-            case "Saturday":
-                return 5
-            case "Sunday":
-                return 6
-            default:
-                return 7
-        }
-    }
     useEffect(() => {
         //TODO Set values in sdk
         // setOpeningHourData({
@@ -52,12 +31,17 @@ const OpeningHoursDate = (props) => {
         //     is_open:    isOpen
         // })
         // response.execute();
-        console.log("Saved opening hours for " + day);
+        console.log("Saved opening hours for " + date);
       }, [saveChanges])
 
     return (
-        <div className={styles.container}>
-            <div className={styles.day}>{day}</div>
+        <div className={styles.containerDate}>
+            <input
+                className={styles.inputDate}
+                type="date"
+                value={date}
+                onChange={event => setStart(event.target.value)}
+                />
             <label className={styles.switch}>
                 <input type="checkbox" onChange={() => setIsOpen(!isOpen)}/>
                 <span className={styles.slider}></span>

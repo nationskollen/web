@@ -56,7 +56,7 @@ const OpeningHoursDay = (props) => {
       }, [saveChanges])
 
     return (
-        <div className={styles.container}>
+        <div className={styles.containerDay}>
             <div className={styles.day}>{day}</div>
             <label className={styles.switch}>
                 <input type="checkbox" onChange={() => setIsOpen(!isOpen)}/>

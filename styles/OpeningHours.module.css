@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
 
-.container {
+.containerDay {
     width: 22rem;
     height: 2.5rem;
 
@@ -9,9 +9,32 @@
     justify-items: left;
 }
 
+.containerDate {
+    width: 26rem;
+    height: 2.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-items: left;
+
+    border : solid black 1px;
+}
+
 
 .day {
     width: 5.2rem;
+    font-family: 'Noto Sans CJK HK', Regular;
+    font-style: normal;
+    font-weight: regular;
+    font-size: 14px;
+}
+
+.inputDate {
+    width: 9.2rem;
+    border: none;
+    background: none;
+    border: solid black 1px;
+    
     font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
     font-weight: regular;
@@ -25,11 +48,13 @@
     display: flex;
     align-items: center;
     justify-content: left;
+    border: solid black 1px;
 }
 
 .smallText {
-    width: 2rem;
+    width: 3rem;
     text-align: left;
+    border: solid black 1px;
 
     color: black;
     font-family: 'Noto Sans CJK HK', Regular;
@@ -57,7 +82,8 @@
 }
 
 .emptyContainer {
-    width: 23rem;
+    width: 11rem;
+    border: solid black 1px;
 }
 
 /* Taken from */
@@ -68,6 +94,7 @@
     display: inline-block;
     width: 2rem;
     height: 1rem;
+    margin-left: 0.5rem;
 }
 
 /* Hide default HTML checkbox */
