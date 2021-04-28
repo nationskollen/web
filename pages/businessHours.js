@@ -10,6 +10,7 @@ import Main from "../components/Main";
 import Header from "../components/Header";
 import Rightbar from "../components/Rightbar";
 import OpeningHoursDay from "../components/OpeningHoursDay"; 
+import OpeningHoursDate from "../components/OpeningHoursDate"; 
 
 import styles from "../styles/BusinessHours.module.css";
 import container from "../styles/Container.module.css";
@@ -44,7 +45,7 @@ export default function BusinessHours() {
                 </div>
                 <div className={styles.addDeviating}>
                   <div className={styles.headerText}>Ny avvikande öppettid</div>
-                  <OpeningHoursDay day="Date"      saveChanges={save}></OpeningHoursDay>
+                  <OpeningHoursDate saveChanges={save}></OpeningHoursDate>
                   <button className={styles.button} onClick={() => doSave(save + 1)}>
                     <div>Lägg till</div>
                   </button>
