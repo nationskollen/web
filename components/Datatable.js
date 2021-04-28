@@ -5,7 +5,9 @@ import styles from "../styles/Datatable.module.css";
 
 export default function Datatable({ data }) {
   const columns = data[0] && Object.keys(data[0]);
-  const info = "hej";
+  // var result = columns.filter((item) => !item.includes("id"));
+  // console.log(result);
+
   return (
     <table cellPadding={0} cellSpacing={0} className={styles.table}>
       <thead className={styles.thead}>
