@@ -1,11 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import styles from '../styles/DayHours.module.css';
-import { useAsyncCallback } from 'react-async-hook'
+import styles from '../styles/OpeningHoursDay.module.css';
 import { useApi, useLocations } from '@dsp-krabby/sdk'
 
 //Creates a row with business hours for a choosen day
-const DayHours = (props) => {
+const OpeningHoursDay = (props) => {
     // User automatically gets oid 400 (Vdala nation)
     // TODO Replace this row to get oid from local storage
     const oid = 400;
@@ -91,4 +90,4 @@ const DayHours = (props) => {
     );
   };
   
-  export default DayHours;
+  export default OpeningHoursDay;
