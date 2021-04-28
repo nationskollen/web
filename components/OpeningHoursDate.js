@@ -66,7 +66,6 @@ const OpeningHoursDate = (props) => {
         ) : (
             <div className={styles.secondaryContainer}>
                 <div className={styles.smallText}>Closed</div>
-                <div className={styles.emptyContainer}></div>
             </div>
         )}
 

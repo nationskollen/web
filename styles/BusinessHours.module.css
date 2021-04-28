@@ -9,7 +9,7 @@
 }
 
 .standard {
-  width: 22rem;
+  width: 30rem;
   height: 22rem;
   display: flex-row;
   margin-left: 1rem;
@@ -23,8 +23,8 @@
 }
 
 .button {
-  width: 7rem;
-  height: 1.5rem;
+  min-width: 7rem;
+  min-height: 1.5rem;
   margin-left: 13rem;
 
   border-radius: 0.5rem;
@@ -36,7 +36,7 @@
 }
 
 .addDeviating {
-  width: 22rem;
+  width: 30rem;
   height: 7rem;
   display: flex-row;
   margin-left: 1rem;

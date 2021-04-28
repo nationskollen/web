@@ -47,7 +47,7 @@ export default function BusinessHours() {
                   <div className={styles.headerText}>Ny avvikande öppettid</div>
                   <OpeningHoursDate saveChanges={save}></OpeningHoursDate>
                   <button className={styles.button} onClick={() => doSave(save + 1)}>
-                    <div>Lägg till</div>
+                    Lägg till
                   </button>
                 </div>
               </Main>
