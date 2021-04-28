@@ -38,7 +38,7 @@
     font-size: 12px;
 }
 
-.inputStart {
+.inputTime {
     text-align: center;
     margin: 0.8rem;
 
@@ -54,20 +54,6 @@
 
 .seperator {
     margin: -0.4rem;
-}
-
-.inputEnd {
-    text-align: center;
-    margin: 0.8rem;
-
-    border: none;
-    background: none;
-
-    color: black;
-    font-family: 'Noto Sans CJK HK', Regular;
-    font-style: normal;
-    font-weight: regular;
-    font-size: 14px;
 }
 
 .emptyContainer {

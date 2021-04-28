@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from "react";
-import styles from '../styles/OpeningHoursDay.module.css';
+import styles from '../styles/OpeningHours.module.css';
 import { useApi, useLocations } from '@dsp-krabby/sdk'
 
 //Creates a row with business hours for a choosen day
@@ -66,14 +66,14 @@ const OpeningHoursDay = (props) => {
             <div className={styles.secondaryContainer}>
                 <div className={styles.smallText}>Open</div>
                 <input
-                    className={styles.inputStart}
+                    className={styles.inputTime}
                     type="time"
                     value={start}
                     onChange={event => setStart(event.target.value)}
                     />
                 <span className={styles.seperator}>-</span>
                 <input
-                    className={styles.inputEnd}
+                    className={styles.inputTime}
                     type="time"
                     value={end}
                     onChange={event => setEnd(event.target.value)}
