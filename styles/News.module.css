@@ -1,8 +1,91 @@
 .container {
-    display: flex;
-  }
-  
-  .header {
-    width: 100vw;
-  }
-  
+  display: flex;
+  background-color: pink;
+}
+
+.header {
+  width: 100vw;
+}
+
+.inputti {
+  background-color: white;
+  display: flex;
+  flex: 1;
+  height: 35rem;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 2rem 2rem;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border-color: white;
+}
+
+.inputti2 {
+  background-color: white;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin: 2rem 2rem;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  border-color: white;
+  height: 45rem;
+}
+
+.realContainer {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+/* Input text */
+.titleText {
+  margin: 0.5rem 0; 
+  padding: 1rem; 
+  border-radius: 10px; 
+  border: #f4f4f4;
+  background-color: #f4f4f4;
+}
+
+.contentText {
+  padding: 1rem;
+  padding-bottom: 15rem;
+  margin: 0.5rem 0;
+  border-radius: 10px;
+  border: #f4f4f4;
+  background-color: #f4f4f4;
+}
+
+.submit {
+  align-self: flex-end;
+  border-radius: 10px;
+  border: #f4f4f4;
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem 1rem;
+}
+
+/* Previous posts */
+
+.titlePrev {
+}
+
+.prevPostsBox {
+  margin: 1rem;
+  border-radius: 10px;
+  flex: 1;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+}
+
+.prevPostsBox::-webkit-scrollbar {
+  width: 7px;
+}
+
+.prevPostsBox::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #e4e4e4;
+}
+
+.prevPostsBox::-webkit-scrollbar-track {
+    border-radius: 10px;
+}
