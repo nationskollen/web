@@ -30,25 +30,42 @@ export default function BusinessHours() {
 
             <div className={container.main}>
               <Main>
-               <div className={styles.standard}>
-                  <div className={styles.headerText}>Öppettider standard</div>
-                  <OpeningHoursDay day="Monday"    saveChanges={save}></OpeningHoursDay>
-                  <OpeningHoursDay day="Tuesday"   saveChanges={save}></OpeningHoursDay>
-                  <OpeningHoursDay day="Wednesday" saveChanges={save}></OpeningHoursDay>
-                  <OpeningHoursDay day="Thurday"   saveChanges={save}></OpeningHoursDay>
-                  <OpeningHoursDay day="Friday"    saveChanges={save}></OpeningHoursDay>
-                  <OpeningHoursDay day="Saturday"  saveChanges={save}></OpeningHoursDay>
-                  <OpeningHoursDay day="Sunday"    saveChanges={save}></OpeningHoursDay>
-                  <button className={styles.button} onClick={() => doSave(save + 1)}>
-                    <div>Spara ändringar</div>
-                  </button>
-                </div>
-                <div className={styles.addDeviating}>
-                  <div className={styles.headerText}>Ny avvikande öppettid</div>
-                  <OpeningHoursDate saveChanges={save}></OpeningHoursDate>
-                  <button className={styles.button} onClick={() => doSave(save + 1)}>
-                    Lägg till
-                  </button>
+                <div className={styles.gridContainer}>
+                  <div className={styles.standard}>
+                      <div className={styles.headerText}>Öppettider standard</div>
+                      <OpeningHoursDay day="Monday"    saveChanges={save}></OpeningHoursDay>
+                      <OpeningHoursDay day="Tuesday"   saveChanges={save}></OpeningHoursDay>
+                      <OpeningHoursDay day="Wednesday" saveChanges={save}></OpeningHoursDay>
+                      <OpeningHoursDay day="Thurday"   saveChanges={save}></OpeningHoursDay>
+                      <OpeningHoursDay day="Friday"    saveChanges={save}></OpeningHoursDay>
+                      <OpeningHoursDay day="Saturday"  saveChanges={save}></OpeningHoursDay>
+                      <OpeningHoursDay day="Sunday"    saveChanges={save}></OpeningHoursDay>
+                      <button className={styles.button} onClick={() => doSave(save + 1)}>
+                        Spara ändringar
+                      </button>
+                    </div>
+                    <div className={styles.addDeviating}>
+                      <div className={styles.headerText}>Ny avvikande öppettid</div>
+                      <OpeningHoursDate saveChanges={save}></OpeningHoursDate>
+                      <button className={styles.button} onClick={() => doSave(save + 1)}>
+                        Lägg till
+                      </button>
+                    </div>
+                    <div className={styles.seeDeviating}>
+                      <div className={styles.headerText}>Avvikande öppettider</div>
+                      <OpeningHoursDate date="2021-04-30" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2021-06-25" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2021-06-26" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2021-12-24" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2021-12-25" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2021-12-26" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2021-12-31" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2022-01-01" saveChanges={save}></OpeningHoursDate>
+                      <OpeningHoursDate date="2021-04-30" saveChanges={save}></OpeningHoursDate>
+                      <button className={styles.button} onClick={() => doSave(save + 1)}>
+                        Spara ändringar
+                      </button>
+                    </div>
                 </div>
               </Main>
             </div>
