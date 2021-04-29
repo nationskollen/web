@@ -38,29 +38,3 @@
   margin: 0.5rem 1rem;
 }
 
-/* confirm */
-
-.confirmBox {
-  z-index: 1;
-  background-color: blue;
-}
-
-.confirmOptions {
-    display: flex;
-    flex-direction: row;
-}
-
-.confirmContainer {
-    display: flex;
-    /* z-index: 10000; */
-    text-align: center;
-    flex: 1;
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
-    align-items: center;
-    position: absolute;
-    flex-direction: column;
-    top: 0;
-    left: 0;
-    justify-content: center;
-}

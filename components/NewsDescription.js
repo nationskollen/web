@@ -2,6 +2,7 @@
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
+import {useConfirm} from "./Confirm";
 
 import styles from "../styles/NewsDescription.module.css";
 
@@ -10,18 +11,24 @@ export default function NewsDescription() {
     const [ description, setDescription ] = useState(null);
     const [ title, setTitle ] = useState("");
     const [ information, setInformation ] = useState("");
-    const [ confirmation, setConfirmation ] = useState(false);
+    const { confirmation, setConfirmation, showOptions, setShowOptions } = useConfirm();
 
     function addDescription( title, information ) {
-	setDescription({"title": title, "information": information});
-	console.log(description);
+	setShowOptions(!showOptions);
+	// TODO: This doesnt work
+	setDescription({title : title, info : information});
     }
 
+    // TODO: This might get called unintentionally
     useEffect( () => {
 	// TODO: Upload to server
-
-	console.log(description)
-    }, [description])
+	if (confirmation === true) {
+	    console.log(description);
+	    setConfirmation(false);
+	}
+	else 
+	    console.log("noooooo");
+    }, [description, confirmation])
 
     return (
         <div className={styles.inputBox}>
@@ -43,7 +50,7 @@ export default function NewsDescription() {
             />
             <button
 		className={styles.submit}
-                onClick={() => setConfirmation(!confirmation)}
+                onClick={() => addDescription()}
             >
 		Publicera
 	    </button>

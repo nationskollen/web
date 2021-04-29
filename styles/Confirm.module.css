@@ -1,0 +1,39 @@
+
+/* confirm */
+
+.options {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    z-index: 1000000;
+    text-align: center;
+    flex: 1;
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.confirmBox {
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: white;
+    padding: 2rem;
+
+}
+
+.button {
+    border-radius: 10px;
+    border-color: #f4f4f4;
+    background-color: #f4f4f4;
+    padding: 0.5rem;
+    margin: 0.5rem 1rem;
+}
+
+
+

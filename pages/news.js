@@ -9,6 +9,7 @@ import Chart from "../components/Chart";
 import Main from "../components/Main";
 import Header from "../components/Header";
 import Rightbar from "../components/Rightbar";
+import Confirm, {useConfirm, ConfirmProvider } from "../components/Confirm";
 
 import NewsDescription from "../components/NewsDescription";
 
@@ -18,8 +19,9 @@ import "react-calendar/dist/Calendar.css";
 
 export default function News() {
   return (
-    <div>
+    <ConfirmProvider>
       <div className={styles.container}>
+	  <Confirm />
         <Navbar />
         <Header />
         <div className={container.container}>
@@ -46,6 +48,6 @@ Ut nec lacinia augue, et vulputate lorem. Nulla facilisi. Suspendisse vitae maur
           </main>
         </div>
       </div>
-    </div>
+    </ConfirmProvider>
   );
 }
