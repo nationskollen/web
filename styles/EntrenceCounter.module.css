@@ -6,7 +6,7 @@
     width: 36rem;
     height: 20rem;
     margin: 2rem;
-    
+
     background: linear-gradient(180deg, #dfdfdfb4 0%, #e7e7e7a6 100%);
     border-radius: 10px;
 
@@ -25,7 +25,7 @@
     font-size: 18px;
 
     text-align: center;
-    color: #1C1C1C;
+    color: #1c1c1c;
 }
 
 .progressBar {
@@ -41,7 +41,7 @@
 
     text-align: center;
     line-height: 20%;
-    color: #1C1C1C;
+    color: #1c1c1c;
 }
 
 .top {
@@ -95,7 +95,7 @@
 .icon {
     height: 10rem;
     width: 10rem;
-    color: #71002E;
+    color: #71002e;
     margin-left: 1rem;
 }
 
