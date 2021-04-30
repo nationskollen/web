@@ -1,17 +1,22 @@
 import Head from 'next/head';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import FlatList from 'flatlist-react';
 
 import styles from '../styles/PreviousPosts.module.css';
 
 export function PreviousPosts() {
     console.log(posts);
+    // TODO: Fetch news/posts from server
     return(
 	<div className={styles.container}>
 	    <h1>Tidigare meddelanden</h1>
 	    <div className={styles.postBox}>
-		{/* TODO: Replace with flatlist */}
-		{posts.map((item) => (<Posts post={item} />))}
+		<FlatList
+		    list={posts}
+		    renderItem={(item) => (<Posts post={item} />)}
+		    renderWhenEpmty={() => (<p>TOM</p>)}
+		/>
 	    </div>
 	</div>
     )
