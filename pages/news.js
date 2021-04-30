@@ -9,6 +9,9 @@ import Chart from "../components/Chart";
 import Main from "../components/Main";
 import Header from "../components/Header";
 import Rightbar from "../components/Rightbar";
+import Confirm, {useConfirm, ConfirmProvider } from "../components/Confirm";
+
+import NewsDescription from "../components/NewsDescription";
 
 import styles from "../styles/News.module.css";
 import container from "../styles/Container.module.css";
@@ -16,32 +19,15 @@ import "react-calendar/dist/Calendar.css";
 
 export default function News() {
   return (
-    <div>
+    <ConfirmProvider>
       <div className={styles.container}>
+	  <Confirm />
         <Navbar />
         <Header />
         <div className={container.container}>
           <main>
             <div className={styles.realContainer}>
-              <div className={styles.inputti}>
-                <h1>Beskrivning</h1>
-                <input
-                  className={styles.titleText}
-                  type="text"
-                  placeholder="Titel"
-                />
-                <input
-                  className={styles.contentText}
-                  type="text"
-                  placeholder="Beskrivning..."
-                />
-                <button
-                  className={styles.submit}
-                  onClick={() => console.log("tjo")}
-                >
-                  Publicera
-                </button>
-              </div>
+		<NewsDescription />
               <div className={styles.inputti2}>
                 <h1>Tidigare meddelanden</h1>
                 <div className={styles.prevPostsBox}>
@@ -62,6 +48,6 @@ Ut nec lacinia augue, et vulputate lorem. Nulla facilisi. Suspendisse vitae maur
           </main>
         </div>
       </div>
-    </div>
+    </ConfirmProvider>
   );
 }
