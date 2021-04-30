@@ -1,31 +1,30 @@
-
 .container {
-  background-color: white;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  margin: 2rem 2rem;
-  padding: 1rem 2rem;
-  border-radius: 10px;
-  border-color: white;
-  height: 45rem;
+    background-color: white;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    margin: 2rem 2rem;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    border-color: white;
+    height: 45rem;
 }
 
 .postBox {
-  margin: 1rem;
-  border-radius: 10px;
-  flex: 1;
-  overflow-y: scroll;
-  scrollbar-width: thin;
+    margin: 1rem;
+    border-radius: 10px;
+    flex: 1;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
 .postBox::-webkit-scrollbar {
-  width: 7px;
+    width: 7px;
 }
 
 .postBox::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #e4e4e4;
+    border-radius: 10px;
+    background-color: #e4e4e4;
 }
 
 .postBox::-webkit-scrollbar-track {
