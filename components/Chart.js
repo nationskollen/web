@@ -1,5 +1,5 @@
-import React from 'react';
-import {Doughnut} from 'react-chartjs-2';
+import React from 'react'
+import { Doughnut } from 'react-chartjs-2'
 
 // const data = {
 //   labels: [
@@ -18,22 +18,22 @@ import {Doughnut} from 'react-chartjs-2';
 //   '#FF6384',
 //   '#36A2EB',
 //   '#FFCE56'
-//   ]  
+//   ]
 // }]
 // };
-
 
 const Chart = (info) => {
     return (
         <div>
-          <h2>{info.header}</h2>
-          <Doughnut
-              data={info.data}
-              // width={400}
-              width={info.width}
-              // height={400}t
-              height={info.height}t
-          />
+            <h2>{info.header}</h2>
+            <Doughnut
+                data={info.data}
+                // width={400}
+                width={info.width}
+                // height={400}t
+                height={info.height}
+                t
+            />
         </div>
     )
 }

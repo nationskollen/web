@@ -1,17 +1,14 @@
 import React from 'react'
 import Calendar from 'react-calendar'
-import {useState, useEffect, State} from 'react'
+import { useState, useEffect, State } from 'react'
 
 import styles from '../styles/Rightbar.module.css'
 import calendar from '../styles/Calendar.module.css'
 
-
-
 const Rightbar = (props) => {
-
     const [value, onChange] = useState(new Date())
     var state = {
-        date: new Date()
+        date: new Date(),
     }
 
     return (
@@ -19,9 +16,7 @@ const Rightbar = (props) => {
             <div className={styles.border}>
                 <p className={styles.title}>Calendar</p>
             </div>
-            <div>
-                {props.children}
-            </div>
+            <div>{props.children}</div>
             {/* <p>{this.state.selectedDate.format('YYYY-MM-DD')} </p> */}
         </div>
     )
