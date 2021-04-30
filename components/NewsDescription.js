@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
@@ -8,7 +7,6 @@ import styles from "../styles/NewsDescription.module.css";
 
 export default function NewsDescription() {
     
-    const [ description, setDescription ] = useState(null);
     const [ title, setTitle ] = useState("");
     const [ information, setInformation ] = useState("");
     const { confirmation, setConfirmation, showOptions, setShowOptions } = useConfirm();
@@ -16,19 +14,18 @@ export default function NewsDescription() {
     function addDescription( title, information ) {
 	setShowOptions(!showOptions);
 	// TODO: This doesnt work
-	setDescription({title : title, info : information});
     }
 
     // TODO: This might get called unintentionally
     useEffect( () => {
 	// TODO: Upload to server
 	if (confirmation === true) {
-	    console.log(description);
+	    console.log(title + ", " + information);
 	    setConfirmation(false);
 	}
 	else 
 	    console.log("noooooo");
-    }, [description, confirmation])
+    }, [confirmation])
 
     return (
         <div className={styles.inputBox}>
