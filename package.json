@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "@dsp-krabby/sdk": "^1.1.1",
+    "@dsp-krabby/sdk": "^2.2.2",
     "chart.js": "^2.9.4",
     "es6-promise": "^4.2.8",
     "heroicons-react": "^1.4.0",
