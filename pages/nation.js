@@ -9,6 +9,7 @@ import Chart from '../components/Chart'
 import Main from '../components/Main'
 import Header from '../components/Header'
 import Rightbar from '../components/Rightbar'
+import NationDesign from '../components/NationDesign'
 
 import styles from '../styles/Nation.module.css'
 import container from '../styles/Container.module.css'
@@ -22,14 +23,7 @@ export default function Nation() {
                 <Header />
                 <div className={container.container}>
                     <main>
-                        <div className={container.cards}></div>
-
-                        <div className={container.main}>
-                            <Main />
-                            <Rightbar>
-                                <Calendar />
-                            </Rightbar>
-                        </div>
+		    	<NationDesign/>
                     </main>
                 </div>
             </div>

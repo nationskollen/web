@@ -1,31 +1,23 @@
-.container {
-    display: flex;
-}
-
-.header {
-    width: 100vw;
-}
 
 .pageContainer {
     display: flex;
     flex: 1;
     flex-direction: row;
 }
-
 .nationOptions {
     flex:2;
     margin: 2rem;
-    margin-left: 4rem;
+    padding: 1rem 3rem;
     border-radius: 10px;
-    background-color: pink;
+    background-color: white;
     height: 30rem;
 }
 
 .nationPreview {
     flex: 1; 
     margin: 2rem;
-    margin-right: 4rem;
+    padding: 1rem 3rem;
     border-radius: 10px;
-    background-color: blue;
+    background-color: white;
     height: 40rem;
 }
