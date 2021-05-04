@@ -4,6 +4,8 @@
     flex: 1;
     flex-direction: row;
 }
+
+/* options */
 .nationOptions {
     flex:2;
     margin: 2rem;
@@ -11,6 +13,30 @@
     border-radius: 10px;
     background-color: white;
     height: 30rem;
+    flex-direction: column;
+}
+
+.choice {
+    border-bottom: 1px solid #e0e0e0;
+    height: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 5px;
+}
+
+.text {
+    align-self: center;
+}
+
+.button {
+    border-radius: 5px;
+    border-color: #71002e;
+    background-color: #71002e;
+    color: white;
+    width: 7rem;
 }
 
 .nationPreview {

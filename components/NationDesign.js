@@ -11,6 +11,32 @@ export function NationDesign() {
 	<div className={styles.pageContainer}>
 	    <div className={styles.nationOptions}>
 		<h2>Configure design</h2>
+		<div className={styles.choice}>
+		    <p className={styles.text}>Byt ikon</p>
+		    <button className={styles.button}>
+			Ladda upp
+		    </button>
+		</div>
+		<div className={styles.choice}>
+		    <p className={styles.text}>Byt bakgrundsbild</p>
+		    <button 
+			className={styles.button}	
+		    >
+			Ladda upp
+		    </button>
+		</div>
+		<div className={styles.choice}>
+		    <p className={styles.text}>Byt nationsfärg</p>
+		    <button className={styles.button}>
+			Välj färg
+		    </button>
+		</div>
+		<div className={styles.choice}>
+		    <p className={styles.text}>Byt nationsinformation</p>
+		    <button className={styles.button}>
+			Ändra
+		    </button>
+		</div>
 	    </div>
 	    <div className={styles.nationPreview}>
 		<h2>Preview</h2>
