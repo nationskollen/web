@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+.container {
+    /* TODO Fix better size on container */
+    position: absolute;
+    width: 36rem;
+    height: 20rem;
+    margin: 2rem;
+
+    background: linear-gradient(180deg, #dfdfdfb4 0%, #e7e7e7a6 100%);
+    border-radius: 10px;
+
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.header {
+    position: relative;
+    font-family: 'Noto Sans CJK HK', Regular;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+
+    text-align: center;
+    color: #1c1c1c;
+}
+
+.progressBar {
+    margin-top: 0.4rem;
+}
+
+.p {
+    position: relative;
+    font-family: 'Noto Sans CJK HK', Regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+
+    text-align: center;
+    line-height: 20%;
+    color: #1c1c1c;
+}
+
+.top {
+    grid-area: 1 / 1 / 2 / 4;
+    height: 4rem;
+}
+
+.middle1 {
+    grid-area: 2 / 1 / 3 / 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.middle2 {
+    grid-area: 2 / 2 / 3 / 3;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.middle3 {
+    grid-area: 2 / 3 / 3 / 4;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.bottom {
+    grid-area: 3 / 1 / 4 / 4;
+    display: grid;
+    height: 4rem;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+    line-height: 60%;
+}
+
+.buttonHeader {
+    grid-column: 1 / 1;
+    width: 12rem;
+    text-align: center;
+    line-height: 0;
+}
+
+.buttonContainer {
+    grid-column: 2 / 1;
+    width: 12rem;
+    height: 10rem;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.icon {
+    height: 10rem;
+    width: 10rem;
+    color: #71002e;
+    margin-left: 1rem;
+}
+
+.counter {
+    grid-column: 3 / 1;
+    width: 12rem;
+    text-align: center;
+    line-height: 0;
+}
+
+.bottomLeft {
+    grid-row: 1 / 1;
+}
+
+.bottomRight {
+    grid-row: 2 / 1;
+    width: 2rem;
+}

@@ -1,76 +1,92 @@
-import React from 'react';
-import { useState } from "react";
-import { Redirect } from "react-router-dom";
+import React from 'react'
+import { useState, useEffect } from 'react'
 import Router from 'next/router'
 import styles from '../styles/Login.module.css'
+import { useLogin } from '@dsp-krabby/sdk'
 
 export default function Home() {
-  const [passwordType, setPasswordType] = useState("password");
-  const togglePasswordVisibility = () => {
-    console.log("Toggled password visibility");
-    if (passwordType == "password") setPasswordType("text");
-    else  setPasswordType("password");
-  };
+    const login = useLogin()
+    const [shake, setShake] = useState('0')
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const submitLogin = () => {
-    if (validCredentials(email, password)) {
-      console.log("Successful login");
-      //Load main page
-      Router.push("/");
+    const [passwordType, setPasswordType] = useState('password')
+    const togglePasswordVisibility = () => {
+        console.log('Toggled password visibility')
+        if (passwordType == 'password') setPasswordType('text')
+        else setPasswordType('password')
     }
-    else {
-      console.log("Failed login");
-      //Show error message
-      displayError(true);
+
+    const handleKeypress = (e) => {
+        if (e.key === 'Enter') {
+            login.execute()
+        }
     }
-  }
 
-  const [showError, displayError] = useState(false);
-  const hideErrorMessage = () => {
-    console.log("Hide error message");
-    setErrorType(false);
-  };
+    useEffect(() => {
+        if (login.result) {
+            console.log('Successful login')
+            localStorage.setItem('oid', login.result.oid)
+            console.log(localStorage.getItem('oid'))
+            //Load main page
+            Router.push('/')
+        }
+    }, [login.result])
 
-  return (
-    <div className={styles.container}>
-      {/* <img src="../img/Uppsala vector.svg" class={styles.background}></img> */}
-      <div className={styles.background}></div>
+    useEffect(() => {
+        if (login.error) {
+            console.log('Failed login')
+            //Show error message
+            setShake('1')
+        }
+    }, [login.error])
 
-      <div className={styles.header}>
-        <p className={styles.headerText}>NATIONSKOLLEN</p>
-      </div>
+    return (
+        <div className={styles.container}>
+            <div className={styles.background}></div>
 
-      <table className={styles.loginContainer}>
-        <tr>
-          <div className={styles.text}>EMAIL</div>
-          <div className={styles.textPanel}>
-            <input className={styles.inputPanel} onChange={event => setEmail(event.target.value)}></input>
-          </div>
-        </tr>
-        <tr>
-          <div className={styles.text}>PASSWORD</div>
-          <div className={styles.textPanel}>
-            <input className={styles.inputPanel} rows="1" type={passwordType} onChange={event => setPassword(event.target.value)}></input>
-            <button className={styles.showButton} onClick={togglePasswordVisibility}>SHOW</button>
-          </div>
-        </tr>
-        <tr>
-          <button className={styles.loginPanel} onClick={submitLogin}>
-            <div className={styles.loginButtonText}>LOGIN</div>
-          </button>
-        </tr>
-      </table>
-      { showError &&
-            <div className={styles.errorMessage}>Your email or password is wrong!</div>
-           }
-    </div>
-  )
-}
+            <div className={styles.header}>
+                <p className={styles.headerText}>NATIONSKOLLEN</p>
+            </div>
 
-//TODO: Replace this dummy function and connect to sdk
-function validCredentials(email, password) {
-  return email == "aria.assadi@gmail.com" && password == "KattenFahad123";
+            <table className={styles.loginContainer}>
+                <tr>
+                    <div className={styles.text}>EMAIL</div>
+                    <div className={styles.textPanel}>
+                        <input
+                            className={styles.inputPanel}
+                            onChange={(event) => login.setEmail(event.target.value)}
+                        ></input>
+                    </div>
+                </tr>
+                <tr>
+                    <div className={styles.text}>PASSWORD</div>
+                    <div className={styles.textPanel}>
+                        <input
+                            className={styles.inputPanel}
+                            rows="1"
+                            type={passwordType}
+                            onChange={(event) => login.setPassword(event.target.value)}
+                            onKeyPress={handleKeypress}
+                        />
+                        <button className={styles.showButton} onClick={togglePasswordVisibility}>
+                            SHOW
+                        </button>
+                    </div>
+                </tr>
+                <tr>
+                    <button className={styles.loginPanel} onClick={login.execute} type="submit">
+                        <div className={styles.loginButtonText}>LOGIN</div>
+                    </button>
+                </tr>
+            </table>
+            {login.error && (
+                <div
+                    className={styles.errorMessage}
+                    onAnimationEnd={() => setShake('0')}
+                    shake={shake}
+                >
+                    Your email or password is wrong!
+                </div>
+            )}
+        </div>
+    )
 }

@@ -1,40 +1,44 @@
 .container {
-  /* background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    --tw-gradient-from: #e5e7eb;
-    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(229, 231, 235, 0));
-    --tw-gradient-to: #f3f4f6; */
-  height: 100vw;
-
-  /* ONLY TEMPORARY BG */
-  background-color: beige;
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+    --tw-gradient-from: #f7f7f7;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
+    --tw-gradient-to: #f3f4f6;
+    /* ONLY TEMPORARY BG */
+    margin-left: 20%;
+    margin-top: 6rem;
+    width: 100%;
+    flex-grow: 1;
+    height: calc(100vh - 6rem);
 }
 
 .cards {
-  /* width: 100%; */
-  display: flex;
-  /* padding: 1rem; */
-  --tw-space-x-reverse: 0;
-  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
-  margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
-  justify-content: space-around;
+    /* width: 100%; */
+    display: flex;
+    /* padding: 1rem; */
+    --tw-space-x-reverse: 0;
+    margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+    margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
+    justify-content: space-around;
 }
 
 .main {
-  display: flex;
-  margin-left: 0.75rem;
-  margin-top: 1.5rem;
-  margin-right: 1rem;
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+    display: flex;
+    margin-left: 0.75rem;
+    /* margin-top: 1.5rem; */
+    margin-right: 1rem;
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .calender {
-  display: flex;
-  margin-left: 0.75rem;
-  margin-top: 1.5rem;
-  margin-right: 1rem;
-  --tw-space-x-reverse: 0;
-  margin-right: calc(1.5rem * var(--tw-space-x-reverse));
-  margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
+    display: flex;
+    margin-left: 0.75rem;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    --tw-space-x-reverse: 0;
+    margin-right: calc(1.5rem * var(--tw-space-x-reverse));
+    margin-left: calc(1.5rem * calc(1 - var(--tw-space-x-reverse)));
 }

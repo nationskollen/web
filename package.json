@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "NODE_ENV=development & next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "npx prettier --write ."
   },
   "dependencies": {
-    "@dsp-krabby/sdk": "^2.2.2",
+    "@dsp-krabby/sdk": "^2.0.1",
     "chart.js": "^2.9.4",
-    "es6-promise": "^4.2.8",
+    "flatlist-react": "^1.5.0",
     "heroicons-react": "^1.4.0",
     "isomorphic-fetch": "^3.0.0",
     "jquery": "^3.6.0",
@@ -23,6 +24,7 @@
     "react-icons": "^4.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
+    "react-switch": "^6.0.0",
     "swr": "^0.5.5"
   }
 }

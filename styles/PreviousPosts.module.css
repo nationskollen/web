@@ -1,13 +1,4 @@
 .container {
-    display: flex;
-    background-color: pink;
-}
-
-.header {
-    width: 100vw;
-}
-
-.inputti2 {
     background-color: white;
     display: flex;
     flex: 1;
@@ -19,18 +10,7 @@
     height: 45rem;
 }
 
-.realContainer {
-    display: flex;
-    flex-direction: row;
-    flex: 1;
-}
-
-/* Previous posts */
-
-.titlePrev {
-}
-
-.prevPostsBox {
+.postBox {
     margin: 1rem;
     border-radius: 10px;
     flex: 1;
@@ -38,15 +18,21 @@
     scrollbar-width: thin;
 }
 
-.prevPostsBox::-webkit-scrollbar {
+.postBox::-webkit-scrollbar {
     width: 7px;
 }
 
-.prevPostsBox::-webkit-scrollbar-thumb {
+.postBox::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #e4e4e4;
 }
 
-.prevPostsBox::-webkit-scrollbar-track {
+.postBox::-webkit-scrollbar-track {
     border-radius: 10px;
+}
+
+/* post */
+
+.postContainer {
+    border-bottom: 2px solid #f4f4f4;
 }

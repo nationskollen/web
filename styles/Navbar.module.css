@@ -3,10 +3,11 @@
     width: 20%;
     height: 100vh;
     --tw-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    background-color: #EFEFEF;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
+        var(--tw-shadow);
+    background-color: #efefef;
+    position: fixed;
 }
-
 
 .nav {
     border-bottom-width: 1px;
@@ -14,8 +15,9 @@
     display: flex;
     justify-content: space-around;
 
+    background-color: #71002e;
     background-color: #71002dec;
-    background-image: url("../img/Uppsala vector.svg");
+    background-image: url('../img/Uppsala vector.svg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -26,7 +28,7 @@
     line-height: 1.5rem;
     letter-spacing: 0.1em;
     font-weight: 600;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .menuContainer {
@@ -67,18 +69,25 @@
     padding: 0.25rem;
 }
 
-    .linkText:hover{
-        color: #71002E;
-    }
+.linkText:hover {
+    color: #71002e;
+}
 
-.icon{
+.icon {
     margin-right: 0.3rem;
 }
 
 .active {
     background-color: white;
-    color: #71002E;
+    color: #71002e;
     flex-grow: 100;
-    margin-right: -2rem;
+    margin-right: -1.2rem;
     border-radius: 0.5rem;
+}
+
+.logo {
+    width: 10rem;
+    padding-top: 10rem;
+    margin: auto;
+    display: block;
 }
