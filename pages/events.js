@@ -9,31 +9,28 @@ import Chart from '../components/Chart'
 import Main from '../components/Main'
 import Header from '../components/Header'
 import Rightbar from '../components/Rightbar'
-import Confirm, { useConfirm, ConfirmProvider } from '../components/Confirm'
+import EventManager from '../components/EventManager'
 
-import NewsDescription from '../components/NewsDescription'
-import PreviousPosts from '../components/PreviousPosts'
-
-import styles from '../styles/News.module.css'
+import styles from '../styles/Entrence.module.css'
 import container from '../styles/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
-export default function News() {
+export default function Entrence() {
     return (
-        <ConfirmProvider>
+        <div>
             <div className={styles.container}>
-                <Confirm />
                 <Navbar />
                 <Header />
                 <div className={container.container}>
                     <main>
-                        <div className={styles.realContainer}>
-                            <NewsDescription />
-                            <PreviousPosts />
+                        <div className={container.main}>
+                            <Main>
+                                <EventManager />
+                            </Main>
                         </div>
                     </main>
                 </div>
             </div>
-        </ConfirmProvider>
+        </div>
     )
 }
