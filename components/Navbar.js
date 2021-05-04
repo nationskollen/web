@@ -100,6 +100,26 @@ const Navbar = () => {
                                 </ActiveLink>
                             </div>
                         </div>
+                        <div className="">
+                            <div className={styles.menuItem}>
+                                <ActiveLink activeClassName={styles.active} href="/events">
+                                    <a className={styles.linkText}>
+                                        <Icons.HiUserGroup className={styles.icon} />
+                                        Events
+                                    </a>
+                                </ActiveLink>
+                            </div>
+                        </div>
+                        <div className="">
+                            <div className={styles.menuItem}>
+                                <ActiveLink activeClassName={styles.active} href="/addevents">
+                                    <a className={styles.linkText}>
+                                        <Icons.HiUserGroup className={styles.icon} />
+                                        Add Event
+                                    </a>
+                                </ActiveLink>
+                            </div>
+                        </div>
                     </div>
 
                     <div></div>
