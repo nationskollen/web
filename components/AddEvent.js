@@ -36,7 +36,7 @@ const AddEvent = (props) => {
                     <input id="name" className={styles.input} type="text" />
                 </label>
                 {/* Description: */}
-                <label className={styles.label} htmlfor="description">
+                <label className={styles.label} htmlFor="description">
                     Description
                     <textarea
                         id="description"
