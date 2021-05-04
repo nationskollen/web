@@ -4,25 +4,18 @@ import * as Icons from "react-icons/hi";
 import styles from "../styles/Datatable.module.css";
 
 export default function Datatable({ data }) {
-  // console.log(data[0]);
-
   const filter = ["id", "nation_id", "cover_img_src"];
   let columns = data[0] && Object.keys(data[0]);
   console.log(typeof columns);
+  console.log(columns);
 
   if (typeof columns !== "undefined") {
     columns.forEach((word, index) => {
       if (filter.indexOf(word) !== -1) {
-        columns.pop()[index];
+        columns.splice(index, 2);
       }
     });
   }
-
-  // Object.values(columns).forEach((word, index) => {
-  //   if (filter.indexOf(word) !== -1) {
-  //     columns.pop()[index];
-  //   }
-  // });
 
   console.log(columns);
 
