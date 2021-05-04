@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react' 
 import styles from '../styles/AddEvent.module.css'
 
 function handleSubmit(event) {
@@ -9,7 +9,7 @@ function handleSubmit(event) {
 }
 
 if (typeof window !== 'undefined') {
-    console.log('Error!')
+    console.log('pls not Error!')
     const form = document.querySelector('form')
 } else {
     console.log('Error!')
@@ -52,7 +52,7 @@ const AddEvent = (props) => {
                     <input id="tags" className={styles.input} type="text" />
                 </label>
                 {/* Locations: */}
-                <label className={styles.label} for="location_id">
+                <label className={styles.label} htmlFor="location_id">
                     Locations
                     <input id="location_id" className={styles.input} type="search" />
                 </label>
