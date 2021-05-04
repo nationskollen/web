@@ -11,6 +11,7 @@
   "dependencies": {
     "@dsp-krabby/sdk": "^2.0.1",
     "chart.js": "^2.9.4",
+    "es6-promise": "^4.2.8",
     "flatlist-react": "^1.5.0",
     "heroicons-react": "^1.4.0",
     "isomorphic-fetch": "^3.0.0",
