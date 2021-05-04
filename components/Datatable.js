@@ -4,30 +4,24 @@ import * as Icons from "react-icons/hi";
 import styles from "../styles/Datatable.module.css";
 
 export default function Datatable({ data }) {
-  console.log(data[0]);
+  // console.log(data[0]);
 
-  let fruits = ["id", "nation_id", "cover_img_src"];
-  let words = [
-    "mango",
-    "desk",
-    "phone",
-    "banana",
-    "airpods",
-    6,
-    "mouse",
-    "strawberry",
-    9,
-    "raspberry",
-    10,
-  ];
-
-  const columns = data[0] && Object.keys(data[0]);
+  const filter = ["id", "nation_id", "cover_img_src"];
+  let columns = data[0] && Object.keys(data[0]);
+  console.log(typeof columns);
 
   columns.forEach((word, index) => {
-    if (fruits.indexOf(word) !== -1) {
+    if (filter.indexOf(word) !== -1) {
       columns.pop()[index];
     }
   });
+
+  // Object.values(columns).forEach((word, index) => {
+  //   if (filter.indexOf(word) !== -1) {
+  //     columns.pop()[index];
+  //   }
+  // });
+
   console.log(columns);
 
   return (
@@ -35,7 +29,6 @@ export default function Datatable({ data }) {
       <thead className={styles.thead}>
         <tr>
           <th className={styles.th}>select</th>
-
           {data[0] &&
             columns.map((heading) => <th className={styles.th}>{heading}</th>)}
           <th className={styles.th}>Actions</th>
