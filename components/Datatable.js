@@ -10,11 +10,13 @@ export default function Datatable({ data }) {
   let columns = data[0] && Object.keys(data[0]);
   console.log(typeof columns);
 
-  columns.forEach((word, index) => {
-    if (filter.indexOf(word) !== -1) {
-      columns.pop()[index];
-    }
-  });
+  if (typeof columns !== "undefined") {
+    columns.forEach((word, index) => {
+      if (filter.indexOf(word) !== -1) {
+        columns.pop()[index];
+      }
+    });
+  }
 
   // Object.values(columns).forEach((word, index) => {
   //   if (filter.indexOf(word) !== -1) {
