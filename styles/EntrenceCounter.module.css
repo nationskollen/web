@@ -7,7 +7,7 @@
     height: 20rem;
     margin: 2rem;
 
-    background: linear-gradient(180deg, #dfdfdfb4 0%, #e7e7e7a6 100%);
+    background-color: #eeeeee;
     border-radius: 10px;
 
     display: grid;
@@ -17,15 +17,11 @@
     grid-template-rows: repeat(3, 1fr);
 }
 
-.header {
-    position: relative;
+.headerText {
     font-family: 'Noto Sans CJK HK', Regular;
     font-style: normal;
     font-weight: bold;
-    font-size: 18px;
-
-    text-align: center;
-    color: #1c1c1c;
+    font-size: 20px;
 }
 
 .progressBar {

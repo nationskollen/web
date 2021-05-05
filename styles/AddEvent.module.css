@@ -35,6 +35,7 @@
 
 .create {
   background-color: #71002e; /* Green */
+  border-radius: 0.5rem;
   border: none;
   color: white;
   padding: 24px 32px;

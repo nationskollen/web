@@ -10,7 +10,7 @@ export function PreviousPosts() {
     // TODO: Fetch news/posts from server
     return (
         <div className={styles.container}>
-            <h1>Tidigare meddelanden</h1>
+            <div className={styles.headerText}>Tidigare meddelanden</div>
             <div className={styles.postBox}>
                 <FlatList
                     list={posts}
@@ -27,8 +27,8 @@ function Posts({ post }) {
 
     return (
         <div className={styles.postContainer}>
-            <h2>{title}</h2>
-            <p>{info}</p>
+            <div className={styles.smallHeaderText}>{title}</div>
+            <div className={styles.text}>{info}</div>
         </div>
     )
 }

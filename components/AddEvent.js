@@ -101,10 +101,10 @@ const AddEvent = (props) => {
                 </label>
             </form>
 
-            <div>
+            {/* <div>
                 <h2>Result</h2>
                 <pre></pre>
-            </div>
+            </div> */}
         </div>
     )
 }

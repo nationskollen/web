@@ -58,4 +58,6 @@ var descriptions = {
     '/businessHours': 'Redigera nationens öppettider',
     '/nation': 'Redigera nationens information och beskrivning',
     '/foodMenu': 'Redigera restaurangens meny',
+    '/events': 'Redigera nations befintliga evenemang',
+    '/addevents': 'Lägg till nya evenemang',
 }
