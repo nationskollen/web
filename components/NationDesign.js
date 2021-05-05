@@ -9,7 +9,7 @@ import CoverImage from './CoverImage'
 
 export function NationDesign() {
     
-    const { data, isValidating, mutate } = useNation(400)
+    const { data, isValidating, mutate } = useNation(405)
     
     data && console.log(data)
 
@@ -47,22 +47,19 @@ export function NationDesign() {
 	    </div>
 	    <div className={styles.nationPreview}>
 		<h2>Preview</h2>
-		<div className={styles.mockPhone}>
-		    <div className={styles.statusBar}>
+		{data && (
+		<div className={styles.mockPhone}> 
+		    <div style={{ backgroundColor: data.accent_color }} className={styles.statusBar}>
 		    </div>
-		    <div className={styles.backgroundImg}>
-			{data && (
-			    <CoverImage 
-				backgroundColor={data.accent_color}
-				image={data.cover_img_src}
-			    />
-			)}
-		    </div>
-		    <div className={styles.icon}>
+		    <div style={{ backgroundColor: data.accent_color }} className={styles.backgroundImg}>
+			<div style={{ backgroundImage: "url(" + data.cover_img_src + ")" }} className={styles.backColor}/>
+			<div style={{ backgroundImage: 'url(' + data.icon_img_src + ')' }} className={styles.icon}/>
 		    </div>
 		    <div className={styles.description}>
+			<div className={styles.nationName}>{data.name}</div>
+			<p>{data.description}</p>
 		    </div>
-		</div>
+		</div>)}
 	    </div>
 	</div>
     )

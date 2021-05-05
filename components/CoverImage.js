@@ -7,7 +7,7 @@ import styles from '../styles/CoverImage.module.css'
 export function CoverImage({ color, image }) {
     
     return (
-	<img className={styles.stuff} src={image} />
+	<img src={image} />
     )
 }
 
