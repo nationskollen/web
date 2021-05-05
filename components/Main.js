@@ -4,7 +4,7 @@ const Main = (props) => {
     return (
         <div className={styles.container}>
             <div className={styles.title}>
-                <p className={styles.titleText}>Content</p>
+                <p className={styles.titleText}></p>
             </div>
             <div className={styles.content}>{props.children}</div>
         </div>

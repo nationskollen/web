@@ -1,30 +1,32 @@
 import React from 'react'
 import styles from '../styles/AddFood.module.css'
 
-const AddFood = (props) => {
+const AddFood = () => {
     return (
         <div>
-            <form className={styles.form} id="addFood">
-                <div className={styles.header}></div>
-                {/* Title: */}
-                <label className={styles.label}>
-                    Title
-                    <input id="occurs_at" className={styles.input} type="text" />
-                </label>
-                {/* Description: */}
-                <label className={styles.label}>
-                    Description
-                    <input id="ends_at" className={styles.input} type="text" />
-                </label>
-                <label className={styles.label}>
-                    Price
-                    <input className={styles.input} type="number" />
-                </label>
-                <label className={styles.label}>
-                    Image header
-                    <input className={styles.input} type="file" id="cover_img_src" />
-                </label>
-            </form>
+            <div className={styles.container}>
+                <h2 class="title">New menu Item</h2>
+                <form>
+                    <div id="fname">
+                        <span>Food item</span>
+                        <input type="text" />
+                    </div>
+                    <div id="address">
+                        <span>Description</span>
+                        <textarea rows="5"></textarea>
+                    </div>
+                    <div id="lname">
+                        <span>Price</span>
+                        <input type="text" />
+                    </div>
+                    <div id="nname">
+                        <span>Image</span>
+                        <input type="text" />
+                    </div>
+
+                    <input type="button" className={styles.submit} value="submit" />
+                </form>
+            </div>
         </div>
     )
 }
