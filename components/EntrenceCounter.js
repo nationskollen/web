@@ -33,7 +33,7 @@ const EntrenceCounter = () => {
     return (
         <div className={styles.container}>
             <div className={styles.top}>
-                <div className={styles.header}>Pubkväll 15 maj</div>
+                <div className={styles.headerText}>Pubkväll 15 maj</div>
                 <div className={styles.progressBar}>
                     <ProgressBar completed={completed}></ProgressBar>
                 </div>
