@@ -3,6 +3,19 @@ import * as Icons from 'react-icons/hi'
 
 import styles from '../styles/Datatable.module.css'
 
+var translation = {
+    //TODO Add better descriptions
+    name: 'Name',
+    description: 'Description',
+    location_id: 'Location',
+    occurs_at: 'Start Time',
+    ends_at: 'End Time',
+}
+
+function translate(word) {
+    return translation[word]
+}
+
 export default function Datatable({ data }) {
     const filter = ['id', 'nation_id', 'cover_img_src']
     let columns = data[0] && Object.keys(data[0])
@@ -24,7 +37,10 @@ export default function Datatable({ data }) {
             <thead className={styles.thead}>
                 <tr className={styles.tr}>
                     <th className={styles.th}>select</th>
-                    {data[0] && columns.map((heading) => <th className={styles.th}>{heading}</th>)}
+                    {data[0] &&
+                        columns.map((heading) => (
+                            <th className={styles.th}>{translate(heading)}</th>
+                        ))}
                     <th className={styles.th}>Actions</th>
                 </tr>
             </thead>
