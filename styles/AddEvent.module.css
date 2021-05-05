@@ -1,4 +1,4 @@
-.container {
+/* .container {
   width: 100%;
 }
 
@@ -34,7 +34,6 @@
 }
 
 .create {
-  background-color: #71002e; /* Green */
   border: none;
   color: white;
   padding: 24px 32px;
@@ -43,4 +42,59 @@
   display: inline-block;
   font-size: 16px;
   cursor: pointer;
+} */
+
+.container {
+    background-color: rgba(255, 255, 255, 0.58);
+    /* margin: auto; */
+    margin-left: 4rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    line-height: 30px;
+    width: 60%;
+}
+
+.container span {
+    padding-left: 40px;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+}
+
+.container input {
+    min-height: 25px;
+    display: inline-block;
+    width: 50%;
+    outline: none !important;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(209, 209, 209, 0.58);
+}
+
+.container select {
+    min-height: 25px;
+    display: inline-block;
+    width: 50%;
+    outline: none !important;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(209, 209, 209, 0.58);
+}
+
+.container textarea {
+    display: inline-block;
+    margin-top: 10px;
+    width: 50%;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(209, 209, 209, 0.58);
+}
+
+.submit {
+    margin: auto;
+    width: 50%;
+    text-align: center;
 }
