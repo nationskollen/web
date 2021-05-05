@@ -1,3 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+.headerText {
+    font-family: 'Noto Sans CJK HK', Regular;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+}
+
 .container {
     background-color: white;
     display: flex;

@@ -10,7 +10,7 @@ export function PreviousPosts() {
     // TODO: Fetch news/posts from server
     return (
         <div className={styles.container}>
-            <h1>Tidigare meddelanden</h1>
+            <div className={styles.headerText}>Tidigare meddelanden</div>
             <div className={styles.postBox}>
                 <FlatList
                     list={posts}
