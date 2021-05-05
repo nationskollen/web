@@ -27,8 +27,8 @@ function Posts({ post }) {
 
     return (
         <div className={styles.postContainer}>
-            <h2>{title}</h2>
-            <p>{info}</p>
+            <div className={styles.smallHeaderText}>{title}</div>
+            <div className={styles.text}>{info}</div>
         </div>
     )
 }

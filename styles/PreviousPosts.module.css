@@ -7,6 +7,22 @@
     font-size: 24px;
 }
 
+.smallHeaderText {
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    font-family: 'Noto Sans CJK HK', Regular;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.text {
+    font-family: 'Noto Sans CJK HK', Regular;
+    font-style: normal;
+    font-weight: regular;
+    font-size: 14px;
+}
+
 .container {
     background-color: white;
     display: flex;
@@ -21,6 +37,7 @@
 
 .postBox {
     margin: 1rem;
+    margin-left: 0rem;
     border-radius: 10px;
     flex: 1;
     overflow-y: scroll;
