@@ -23,7 +23,7 @@ export default function Nation() {
                 <Header />
                 <div className={container.container}>
                     <main>
-		    	<NationDesign/>
+                        <NationDesign />
                     </main>
                 </div>
             </div>

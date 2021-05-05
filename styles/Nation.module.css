@@ -13,7 +13,7 @@
 }
 
 .nationOptions {
-    flex:2;
+    flex: 2;
     margin: 2rem;
     margin-left: 4rem;
     border-radius: 10px;
@@ -22,7 +22,7 @@
 }
 
 .nationPreview {
-    flex: 1; 
+    flex: 1;
     margin: 2rem;
     margin-right: 4rem;
     border-radius: 10px;

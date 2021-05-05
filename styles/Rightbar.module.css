@@ -6,7 +6,8 @@
     border-width: 1px;
     --tw-border-opacity: 1;
     border-color: rgba(243, 244, 246, var(--tw-border-opacity));
-    margin-left: 3rem;
+    /* margin-left: 3rem; */
+    margin-right: 2rem;
 }
 
 .border {
