@@ -43,6 +43,19 @@
     width:15rem;
 }
 
+.descBox {
+    flex: 1;
+}
+
+.descText {
+    padding: 5px;
+    background-color: #f4f4f4;
+    border: #f4f4f4;
+    border-radius: 10px;
+    resize: none;
+    width: 100%;
+}
+
 /* preview */
 .nationPreview {
     display: flex;

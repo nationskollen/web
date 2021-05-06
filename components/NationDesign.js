@@ -14,6 +14,8 @@ export function NationDesign({ data }) {
     const uploadCover = useUpload(api.nations.upload, [data.oid, 'cover'])
     const uploadIcon = useUpload(api.nations.upload, [data.oid, 'icon'])
     /// TODO: Change description and accent color
+    //const updateDesc = useAsyncCallback( () => api.nations.update([data.oid, { description: description }] ) )
+    //const updateAccent = useAsyncCallback( () => api.nations.update([data.oid, { accent_color: accent }] ) )
 
     const [ cover, setCover ] = useState(data.cover_img_src);
     const [ icon, setIcon ] = useState(data.icon_img_src);
@@ -82,11 +84,19 @@ export function NationDesign({ data }) {
 		<div className={styles.choice}>
 		    <p className={styles.text}>Byt nationsinformation</p>
 		    <div>
-			<button className={styles.button}>
+			<button 
+			    className={styles.button}
+			    //onClick={updateDesc.execute()}
+			>
 			    Ändra
 			</button>
 		    </div>
 		</div>
+		    <textarea
+			className={styles.descText}
+			rows="10"
+			placeholder="Beskriving..."
+		    />
 
 	    </div>
 
