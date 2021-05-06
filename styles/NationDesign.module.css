@@ -39,6 +39,10 @@
     width: 7rem;
 }
 
+.input {
+    width:15rem;
+}
+
 /* preview */
 .nationPreview {
     display: flex;
