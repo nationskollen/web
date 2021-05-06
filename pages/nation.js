@@ -18,7 +18,7 @@ import 'react-calendar/dist/Calendar.css'
 
 export default function Nation() {
     
-    const { data, isValidating, mutate } = useNation(400)
+    const { data, isValidating, mutate } = useNation(localStorage.getItem('oid'))
     return (
         <div>
             <div className={styles.container}>
@@ -26,7 +26,7 @@ export default function Nation() {
                 <Header />
                 <div className={container.container}>
                     <main>
-                        <NationDesign data={data}/>
+			{data && <NationDesign data={data}/>}
                     </main>
                 </div>
             </div>
