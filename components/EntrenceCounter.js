@@ -25,9 +25,11 @@ const EntrenceCounter = () => {
     }
 
     const addExit = () => {
-        setExit(exit + 1)
-        setCurrent(current - 1)
-        setCompleted(Math.round((100 * current) / max))
+	if (current !== 0) {
+	    setExit(exit + 1)
+	    setCurrent(current - 1)
+	    setCompleted(Math.round((100 * current) / max))
+	}
     }
 
     return (
