@@ -7,21 +7,21 @@ const AddFood = () => {
             <div className={styles.container}>
                 <h2 class="title">New menu Item</h2>
                 <form>
-                    <div id="fname">
+                    <div id="item">
                         <span>Food item</span>
                         <input type="text" />
                     </div>
-                    <div id="address">
+                    <div id="desc">
                         <span>Description</span>
                         <textarea rows="5"></textarea>
                     </div>
-                    <div id="lname">
+                    <div id="price">
                         <span>Price</span>
                         <input type="text" />
                     </div>
-                    <div id="nname">
+                    <div id="img_src">
                         <span>Image</span>
-                        <input type="text" />
+                        <input type="file" className={styles.custom_file_input} />
                     </div>
 
                     <input type="button" className={styles.submit} value="submit" />

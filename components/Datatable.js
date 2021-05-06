@@ -36,7 +36,7 @@ export default function Datatable({ data }) {
         <table cellPadding={0} cellSpacing={0} className={styles.table}>
             <thead className={styles.thead}>
                 <tr className={styles.tr}>
-                    <th className={styles.th}>select</th>
+                    <th className={styles.th}>Select</th>
                     {data[0] &&
                         columns.map((heading) => (
                             <th className={styles.th}>{translate(heading)}</th>
