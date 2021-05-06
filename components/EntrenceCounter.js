@@ -25,15 +25,17 @@ const EntrenceCounter = () => {
     }
 
     const addExit = () => {
-        setExit(exit + 1)
-        setCurrent(current - 1)
-        setCompleted(Math.round((100 * current) / max))
+	if (current !== 0) {
+	    setExit(exit + 1)
+	    setCurrent(current - 1)
+	    setCompleted(Math.round((100 * current) / max))
+	}
     }
 
     return (
         <div className={styles.container}>
             <div className={styles.top}>
-                <div className={styles.header}>Pubkväll 15 maj</div>
+                <div className={styles.headerText}>Pubkväll 15 maj</div>
                 <div className={styles.progressBar}>
                     <ProgressBar completed={completed}></ProgressBar>
                 </div>

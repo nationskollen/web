@@ -26,7 +26,7 @@ export default function NewsDescription() {
 
     return (
         <div className={styles.inputBox}>
-            <h1>Beskrivning</h1>
+            <div className={styles.headerText}>Beskrivning</div>
             <input
                 className={styles.titleText}
                 type="text"

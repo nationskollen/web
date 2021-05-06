@@ -92,16 +92,6 @@ const Navbar = () => {
                         </div>
                         <div className="">
                             <div className={styles.menuItem}>
-                                <ActiveLink activeClassName={styles.active} href="/login">
-                                    <a className={styles.linkText}>
-                                        <Icons.HiUserGroup className={styles.icon} />
-                                        Login
-                                    </a>
-                                </ActiveLink>
-                            </div>
-                        </div>
-                        <div className="">
-                            <div className={styles.menuItem}>
                                 <ActiveLink activeClassName={styles.active} href="/events">
                                     <a className={styles.linkText}>
                                         <Icons.HiOutlineCalendar className={styles.icon} />

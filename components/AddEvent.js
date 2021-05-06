@@ -9,7 +9,7 @@ function handleSubmit(event) {
 }
 
 if (typeof window !== 'undefined') {
-    console.log('Error!')
+    console.log('pls not Error!')
     const form = document.querySelector('form')
 } else {
     console.log('Error!')
