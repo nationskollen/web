@@ -1,4 +1,3 @@
-
 .pageContainer {
     display: flex;
     flex: 1;
@@ -7,7 +6,7 @@
 
 /* options */
 .nationOptions {
-    flex:2;
+    flex: 2;
     margin: 2rem;
     padding: 1rem 3rem;
     border-radius: 10px;
@@ -39,8 +38,34 @@
     width: 7rem;
 }
 
+.colorPickerDiv {
+    width: 15rem;
+    display: flex;
+}
+
+.colorChoice {
+    width: 22rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.colorPicker {
+    position: absolute;
+}
+
+.colorButton {
+    width: 7rem;
+}
+
+.accentColor {
+    margin-left: 0.5rem;
+    border-radius: 1.5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
 .input {
-    width:15rem;
+    width: 15rem;
 }
 
 .descBox {
@@ -64,7 +89,7 @@
     padding: 1rem 3rem;
     border-radius: 10px;
     background-color: white;
-    height: 40rem;	
+    height: 40rem;
     flex-direction: column;
 }
 
@@ -89,7 +114,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 .img {
@@ -118,14 +142,13 @@
     top: 20.3rem;
 }
 
-
 .description {
     flex: 1;
     background-color: white;
     margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
-    border-radius: 5px
+    border-radius: 5px;
 }
 
 .nationName {
@@ -137,7 +160,7 @@
 }
 
 .descriptionText {
-    padding: .5rem 1rem 0 1rem;
+    padding: 0.5rem 1rem 0 1rem;
     font-size: 11px;
     overflow: hidden;
     max-height: 12rem;
