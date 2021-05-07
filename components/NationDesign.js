@@ -7,7 +7,6 @@ import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
 import styles from '../styles/NationDesign.module.css'
-import CoverImage from './CoverImage'
 import DesignPreview from './DesignPreview'
 import DesignInputs from './DesignInputs'
 import DesignColor from './DesignColor'
