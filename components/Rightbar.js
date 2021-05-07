@@ -14,7 +14,7 @@ const Rightbar = (props) => {
     return (
         <div className={styles.container}>
             <div className={styles.border}>
-                <p className={styles.title}>Calendar</p>
+                <p className={styles.title}></p>
             </div>
             <div>{props.children}</div>
             {/* <p>{this.state.selectedDate.format('YYYY-MM-DD')} </p> */}
