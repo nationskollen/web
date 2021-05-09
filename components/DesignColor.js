@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Calendar from 'react-calendar'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useNation, useSDK, useUpload } from '@dsp-krabby/sdk'
+import { useNation, useSDK, useUpload } from '@nationskollen/sdk'
 import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 

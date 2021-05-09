@@ -4,7 +4,7 @@ import styles from '../styles/Navbar.module.css'
 import * as Icons from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
 import { Router } from 'next/router'
-import { useNation } from '@dsp-krabby/sdk'
+import { useNation } from '@nationskollen/sdk'
 
 const Navbar = () => {
     // User automatically gets oid 400 (Vdala nation)

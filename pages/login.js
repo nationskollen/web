@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import Router from 'next/router'
 import styles from '../styles/Login.module.css'
-import { useLogin } from '@dsp-krabby/sdk'
+import { useLogin } from '@nationskollen/sdk'
 
 export default function Home() {
     const login = useLogin()

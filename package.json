@@ -1,5 +1,5 @@
 {
-  "name": "next-web",
+  "name": "@nationskollen/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
-    "@dsp-krabby/sdk": "^2.0.1",
+    "@nationskollen/sdk": "^2.0.1",
     "chart.js": "^2.9.4",
     "es6-promise": "^4.2.8",
     "flatlist-react": "^1.5.0",
