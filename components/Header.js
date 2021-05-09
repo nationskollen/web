@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as Icons from 'react-icons/hi'
-import { useLogout, useNation } from '@dsp-krabby/sdk'
+import { useLogout, useNation } from '@nationskollen/sdk'
 
 const Header = () => {
     // User automatically gets oid 400 (Vdala nation)

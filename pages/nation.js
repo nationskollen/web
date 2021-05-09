@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Calendar from 'react-calendar'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useNation } from '@dsp-krabby/sdk'
+import { useNation } from '@nationskollen/sdk'
 
 import Navbar from '../components/Navbar'
 import Card from '../components/Card'
@@ -17,7 +17,7 @@ import container from '../styles/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Nation() {
-    
+
     const { data, isValidating, mutate } = useNation(localStorage.getItem('oid'))
     return (
         <div>
