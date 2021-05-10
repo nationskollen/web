@@ -6,17 +6,25 @@ import { useNation, useSDK, useUpload } from '@nationskollen/sdk'
 import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
+import { useConfirm } from './Confirm'
 import styles from '../styles/DesignDescription.module.css'
 
 function DesignDescription(props) {
     const { update, setDescription } = props
+
+    const { confirmation, setConfirmation, setShowOptions } = useConfirm()
+
+    useEffect(() => {
+        confirmation && update.execute()
+        setConfirmation(false)
+    }, [confirmation])
 
     return (
         <div>
             <div className={styles.choice}>
                 <p className={styles.text}>Byt nationsinformation</p>
                 <div>
-                    <button className={styles.button} onClick={update.execute}>
+                    <button className={styles.button} onClick={() => setShowOptions(true)}>
                         Ändra
                     </button>
                 </div>
