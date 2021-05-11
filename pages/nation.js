@@ -17,17 +17,15 @@ import container from '../styles/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Nation() {
+    const { data, isValidating, mutate } = useNation(parseInt(localStorage.getItem('oid')))
 
-    const { data, isValidating, mutate } = useNation(localStorage.getItem('oid'))
     return (
         <div>
             <div className={styles.container}>
                 <Navbar />
                 <Header />
                 <div className={container.container}>
-                    <main>
-			{data && <NationDesign data={data}/>}
-                    </main>
+                    <main>{data && <NationDesign data={data} />}</main>
                 </div>
             </div>
         </div>

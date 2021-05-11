@@ -19,6 +19,12 @@
     background-color: #71002e;
     color: white;
     width: 7rem;
+    height: 100%;
+}
+
+.button:hover {
+    background-color: #900238;
+    border-color: #900238;
 }
 
 .colorPickerDiv {

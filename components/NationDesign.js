@@ -6,6 +6,8 @@ import { useNation, useSDK, useUpload } from '@nationskollen/sdk'
 import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
+import Confirm, { ConfirmProvider } from './Confirm'
+
 import styles from '../styles/NationDesign.module.css'
 import DesignPreview from './DesignPreview'
 import DesignInputs from './DesignInputs'
@@ -43,22 +45,33 @@ export function NationDesign({ data }) {
         <div className={styles.pageContainer}>
             <div className={styles.nationOptions}>
                 <h2>Configure design</h2>
-                <DesignInputs
-                    upload={uploadIcon}
-                    setState={setIcon}
-                    titleText="Byt ikon"
-                    buttonText="Ladda upp"
-                />
-                <DesignInputs
-                    upload={uploadCover}
-                    setState={setCover}
-                    titleText="Byt bakgrundsbild"
-                    buttonText="Ladda upp"
-                />
+                <ConfirmProvider>
+                    <DesignInputs
+                        upload={uploadIcon}
+                        setState={setIcon}
+                        titleText="Byt ikon"
+                        buttonText="Ladda upp"
+                    />
+                    <Confirm />
+                </ConfirmProvider>
+                <ConfirmProvider>
+                    <DesignInputs
+                        upload={uploadCover}
+                        setState={setCover}
+                        titleText="Byt bakgrundsbild"
+                        buttonText="Ladda upp"
+                    />
+                    <Confirm />
+                </ConfirmProvider>
 
-                <DesignColor update={updateAccent} setAccent={setAccent} color={accent} />
-
-                <DesignDescription update={updateDesc} setDescription={setDescription} />
+                <ConfirmProvider>
+                    <DesignColor update={updateAccent} setAccent={setAccent} color={accent} />
+                    <Confirm />
+                </ConfirmProvider>
+                <ConfirmProvider>
+                    <DesignDescription update={updateDesc} setDescription={setDescription} />
+                    <Confirm />
+                </ConfirmProvider>
             </div>
 
             <DesignPreview

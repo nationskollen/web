@@ -6,12 +6,20 @@ import { useNation, useSDK, useUpload } from '@nationskollen/sdk'
 import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
+import { useConfirm } from './Confirm'
 import styles from '../styles/DesignColor.module.css'
 
 function DesignColor(props) {
     const [showPicker, setShowPicker] = useState(false)
 
     const { update, setAccent, color } = props
+
+    const { confirmation, setConfirmation, setShowOptions } = useConfirm()
+
+    useEffect(() => {
+        confirmation && update.execute()
+        setConfirmation(false)
+    }, [confirmation])
 
     return (
         <div className={styles.choice}>
@@ -37,7 +45,7 @@ function DesignColor(props) {
                         />
                     )}
                 </div>
-                <button className={styles.button} onClick={update.execute}>
+                <button className={styles.button} onClick={() => setShowOptions(true)}>
                     Ändra färg
                 </button>
             </div>
