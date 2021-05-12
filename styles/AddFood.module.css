@@ -36,11 +36,13 @@
 }
 
 .submit {
-    margin: auto;
+    /* margin: auto; */
     width: 50%;
     text-align: center;
+    margin-left: 8.6rem;
 }
 
 .custom_file_input::-webkit-file-upload-button {
     visibility: hidden;
+    text-align: center;
 }

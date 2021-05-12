@@ -4,7 +4,7 @@
 
 .thead {
     background-color: red;
-    width: 2rem;
+    width: auto;
 }
 
 .tbody {
@@ -22,7 +22,7 @@
     background-color: #ffffff;
     /* background-color: #71002e; */
     color: rgb(66, 66, 66);
-    width: 1%;
+    /* width: 10%; */
     height: 100px;
     text-align: left;
     padding-left: 0.5rem;
