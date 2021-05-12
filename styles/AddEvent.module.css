@@ -91,6 +91,7 @@
     border-right: none;
     border-left: none;
     border-bottom: 1px solid rgba(209, 209, 209, 0.58);
+    resize: none;
 }
 
 .submit {
