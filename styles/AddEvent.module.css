@@ -58,7 +58,7 @@
     padding-left: 40px;
     display: inline-block;
     vertical-align: top;
-    width: 30%;
+    width: 20%;
 }
 
 .container input {
@@ -109,8 +109,7 @@
 }
 
 .submit {
-    /* margin: auto; */
+    margin: auto;
     width: 50%;
     text-align: center;
-    margin-left: 23.4rem;
 }

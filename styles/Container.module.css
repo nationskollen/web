@@ -1,8 +1,8 @@
 .container {
     background-image: linear-gradient(to right, var(--tw-gradient-stops));
-    --tw-gradient-from: #f7f7f7;
+    --tw-gradient-from: #fdfdfd;
     --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(255, 255, 255, 0));
-    --tw-gradient-to: #f3f4f6;
+    --tw-gradient-to: #ececec;
     /* ONLY TEMPORARY BG */
     margin-left: 20%;
     margin-top: 6rem;
