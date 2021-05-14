@@ -17,28 +17,20 @@ import container from '../styles/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Nation() {
+    let nationInfo = false
     if (typeof window !== 'undefined') {
-        const oid = parseInt(localStorage.getItem('oid'))
-        const { data } = useNation(oid)
-        return (
-            <div>
-                <div className={styles.container}>
-                    <Navbar />
-                    <Header />
-                    <div className={container.container}>
-                        <main>{data && <NationDesign data={data} />}</main>
-                    </div>
-                </div>
-            </div>
-        )
+        const { data } = useNation(parseInt(localStorage.getItem('oid')))
+        data && (nationInfo = data)
     }
 
     return (
         <div>
             <div className={styles.container}>
-                <Navbar />
-                <Header />
-                <div className={container.container}></div>
+                <Navbar data={nationInfo} />
+                <Header data={nationInfo} />
+                <div className={container.container}>
+                    <main>{nationInfo && <NationDesign data={nationInfo} />}</main>
+                </div>
             </div>
         </div>
     )

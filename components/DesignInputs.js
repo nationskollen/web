@@ -16,8 +16,6 @@ function DesignInputs(props) {
 
     useEffect(() => {
         confirmation && upload.execute()
-        confirmation && console.log('brr')
-        console.log('blablabla')
         setConfirmation(false)
     }, [confirmation])
 

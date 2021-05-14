@@ -6,13 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { Router } from 'next/router'
 import { useNation } from '@nationskollen/sdk'
 
-const Navbar = () => {
-    // User automatically gets oid 400 (Vdala nation)
-    // TODO Replace this row to get oid from local storage
-    const oid = 400
-    // const oid = localStorage.getItem('oid');
-    const { data } = useNation(oid)
-
+const Navbar = ({ data }) => {
     return (
         <>
             <div className={styles.container}>
