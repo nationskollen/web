@@ -17,7 +17,27 @@ import container from '../styles/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Nation() {
-    const { data, isValidating, mutate } = useNation(parseInt(localStorage.getItem('oid')))
+    /*let oid;
+    useEffect( () => {
+        oid = parseInt(localStorage.getItem('oid'))
+    }, [])
+    const { data } = useNation(oid)
+    */
+    if (typeof window !== 'undefined') {
+        const oid = parseInt(localStorage.getItem('oid'))
+        const { data } = useNation(oid)
+        return (
+        <div>
+            <div className={styles.container}>
+                <Navbar />
+                <Header />
+                <div className={container.container}>
+                    <main>{data && <NationDesign data={data} />}</main>
+                </div>
+            </div>
+        </div>
+    )
+    }
 
     return (
         <div>
@@ -25,7 +45,6 @@ export default function Nation() {
                 <Navbar />
                 <Header />
                 <div className={container.container}>
-                    <main>{data && <NationDesign data={data} />}</main>
                 </div>
             </div>
         </div>
