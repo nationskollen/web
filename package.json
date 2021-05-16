@@ -9,7 +9,7 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
-    "@nationskollen/sdk": "^2.0.1",
+    "@nationskollen/sdk": "^2.3.8",
     "chart.js": "^2.9.4",
     "es6-promise": "^4.2.8",
     "flatlist-react": "^1.5.0",
