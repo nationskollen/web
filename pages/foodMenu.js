@@ -27,7 +27,7 @@ export default function FoodMenu() {
                 <div className={container.container}>
                     <main>
                         <div className={container.cards}>
-                            <Card>Frukost</Card>
+                            <Card color={'red'}>Frukost</Card>
                             <Card>Lunch</Card>
                             <Card>Fika</Card>
                             <Card>Middag</Card>

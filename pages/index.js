@@ -26,9 +26,6 @@ export default function Home() {
                 <main>
                     <div className={container.cards}>
                         <Card>
-                            <style jsx global>
-                                {'.container {background-color: rgb(255, 0, 0);}'}
-                            </style>
                             <Chart
                                 header={'Besökare'}
                                 width={400}

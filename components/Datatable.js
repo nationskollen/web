@@ -62,6 +62,7 @@ export default function Datatable({ data }) {
                                     <Icons.HiTrash />
                                 </a>
                             </div>
+                            {row.id}
                         </td>
                     </tr>
                 ))}
