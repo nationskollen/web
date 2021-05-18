@@ -23,7 +23,7 @@ export default function Entrence() {
         const { data } = useEvents(parseInt(localStorage.getItem('oid')))
         data && (nationInfo = data)
     }
-
+    console.log(nationInfo)
     return (
         <div>
             <div className={styles.container}>
@@ -32,9 +32,7 @@ export default function Entrence() {
                 <div className={container.container}>
                     <main>
                         <div className={container.main}>
-                            <Main>
-                                <EventManager data={nationInfo} />
-                            </Main>
+                            <Main>{nationInfo && <EventManager data={nationInfo} />}</Main>
                         </div>
                     </main>
                 </div>
