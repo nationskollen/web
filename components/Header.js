@@ -4,14 +4,9 @@ import Router from 'next/router'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import * as Icons from 'react-icons/hi'
-import { useLogout, useNation } from '@dsp-krabby/sdk'
+import { useLogout, useNation } from '@nationskollen/sdk'
 
-const Header = () => {
-    // User automatically gets oid 400 (Vdala nation)
-    // TODO Replace this row to get oid from local storage
-    const oid = 400
-    //const oid = localStorage.getItem('oid');
-    const { data } = useNation(oid)
+const Header = ({ data }) => {
     const logout = useLogout()
     const router = useRouter()
 

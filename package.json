@@ -1,5 +1,5 @@
 {
-  "name": "next-web",
+  "name": "@nationskollen/web",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,7 +9,7 @@
     "format": "npx prettier --write ."
   },
   "dependencies": {
-    "@dsp-krabby/sdk": "^2.0.1",
+    "@nationskollen/sdk": "^2.3.8",
     "chart.js": "^2.9.4",
     "es6-promise": "^4.2.8",
     "flatlist-react": "^1.5.0",
@@ -21,6 +21,7 @@
     "react-async-hook": "^3.6.2",
     "react-calendar": "^3.3.1",
     "react-chartjs-2": "^2.11.1",
+    "react-color": "^2.19.3",
     "react-dom": "17.0.2",
     "react-icons": "^4.2.0",
     "react-router": "^5.2.0",

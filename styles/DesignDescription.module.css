@@ -1,0 +1,41 @@
+.choice {
+    border-bottom: 1px solid #e0e0e0;
+    height: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 5px;
+}
+
+.text {
+    align-self: center;
+}
+
+.button {
+    border-radius: 5px;
+    border-color: #71002e;
+    background-color: #71002e;
+    color: white;
+    width: 7rem;
+    height: 100%;
+}
+
+.button:hover {
+    background-color: #900238;
+    border-color: #900238;
+}
+
+.descBox {
+    flex: 1;
+}
+
+.descText {
+    padding: 5px;
+    background-color: #f4f4f4;
+    border: #f4f4f4;
+    border-radius: 10px;
+    resize: none;
+    width: 100%;
+}

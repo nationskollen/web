@@ -40,7 +40,7 @@ function ConfirmBox() {
     }
 
     return (
-        <div className={styles.container}>
+        <div className={styles.relativeContainer}>
             <div className={styles.confirmBox}>
                 <p>Hello</p>
                 <div className={styles.options}>

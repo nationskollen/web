@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import styles from '../styles/OpeningHours.module.css'
-import { useApi, useLocations } from '@dsp-krabby/sdk'
+import { useApi, useLocations } from '@nationskollen/sdk'
 
 //Creates a row with business hours for a choosen day
 const OpeningHoursDate = (props) => {

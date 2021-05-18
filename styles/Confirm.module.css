@@ -5,17 +5,21 @@
     flex-direction: row;
 }
 
-.container {
+.relativeContainer {
     display: flex;
-    z-index: 1000000;
+    z-index: 100000;
     text-align: center;
     flex: 1;
     align-items: center;
     position: absolute;
     flex-direction: column;
     justify-content: center;
+    /*width: -moz-available;
+    width: -webkit-fill-available:*/
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
 }
 
 .confirmBox {
@@ -23,6 +27,8 @@
     border-radius: 10px;
     background-color: white;
     padding: 2rem;
+    top: 15rem;
+    position: absolute;
 }
 
 .button {

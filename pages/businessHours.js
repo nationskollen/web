@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Calendar from 'react-calendar'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+import { useNation } from '@nationskollen/sdk'
 
 import Navbar from '../components/Navbar'
 import Card from '../components/Card'
@@ -19,11 +20,16 @@ import 'react-calendar/dist/Calendar.css'
 export default function BusinessHours() {
     const [save, doSave] = useState('0')
 
+    let nationInfo = false
+    if (typeof window !== 'undefined') {
+        const { data } = useNation(parseInt(localStorage.getItem('oid')))
+        data && (nationInfo = data)
+    }
     return (
         <div>
             <div className={styles.container}>
-                <Navbar />
-                <Header />
+                <Navbar data={nationInfo} />
+                <Header data={nationInfo} />
                 <div className={container.container}>
                     <main>
                         <div className={container.cards}></div>

@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import { Provider } from '@dsp-krabby/sdk'
+import { Provider } from '@nationskollen/sdk'
 
 function MyApp({ Component, pageProps }) {
     return (
