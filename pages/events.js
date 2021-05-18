@@ -3,7 +3,7 @@ import Calendar from 'react-calendar'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 
-import { useEvents, useNation } from '@nationskollen/sdk'
+import { useEvents } from '@nationskollen/sdk'
 
 import Navbar from '../components/Navbar'
 import Card from '../components/Card'
@@ -20,7 +20,7 @@ import 'react-calendar/dist/Calendar.css'
 export default function Entrence() {
     let nationInfo = false
     if (typeof window !== 'undefined') {
-        const { data } = useNation(parseInt(localStorage.getItem('oid')))
+        const { data } = useEvents(parseInt(localStorage.getItem('oid')))
         data && (nationInfo = data)
     }
 
@@ -33,7 +33,7 @@ export default function Entrence() {
                     <main>
                         <div className={container.main}>
                             <Main>
-                                <EventManager />
+                                <EventManager data={nationInfo} />
                             </Main>
                         </div>
                     </main>
