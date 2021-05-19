@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Calendar from 'react-calendar'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
+
 import { useNation } from '@nationskollen/sdk'
 
 import Navbar from '../components/Navbar'
@@ -24,16 +25,15 @@ export default function FoodMenu() {
         const { data } = useNation(parseInt(localStorage.getItem('oid')))
         data && (nationInfo = data)
     }
-
     return (
         <div>
             <div className={styles.container}>
-                <Navbar data={nationInfo} />
-                <Header data={nationInfo} />
+                <Navbar data={nationInfo}/>
+                <Header data={nationInfo}/>
                 <div className={container.container}>
                     <main>
                         <div className={container.cards}>
-                            <Card>Frukost</Card>
+                            <Card color={'red'}>Frukost</Card>
                             <Card>Lunch</Card>
                             <Card>Fika</Card>
                             <Card>Middag</Card>

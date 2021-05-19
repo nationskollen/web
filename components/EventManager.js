@@ -5,31 +5,17 @@ import styles from '../styles/EventManager.module.css'
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
 
-const EventManager = () => {
-    const [data, setData] = useState([])
+const EventManager = (props) => {
     const [query, setQ] = useState('')
-    const [searchColumns, setSearchColumns] = useState(['description', 'name'])
-    const filter = ['id', 'nation_id', 'cover_img_src']
+    const [searchColumns, setSearchColumns] = useState(['short_description', 'name'])
+    const columns = ['name', 'short_description', 'occurs_at', 'ends_at']
 
-    useEffect(() => {
-        fetch('./data.json')
-            .then((response) => response.json())
-            .then((json) => setData(json))
-    }, [])
+    const { data } = props
 
     function search(rows) {
         return rows.filter((row) =>
             searchColumns.some((column) => row[column].toString().toLowerCase().indexOf(query) > -1)
         )
-    }
-    const columns = data[0] && Object.keys(data[0])
-
-    if (typeof columns !== 'undefined') {
-        columns.forEach((word, index) => {
-            if (filter.indexOf(word) !== -1) {
-                columns.splice(index, 2)
-            }
-        })
     }
 
     return (

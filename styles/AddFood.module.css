@@ -33,14 +33,17 @@
     border-right: none;
     border-left: none;
     border-bottom: 1px solid rgba(209, 209, 209, 0.58);
+    resize: none;
 }
 
 .submit {
-    margin: auto;
+    /* margin: auto; */
     width: 50%;
     text-align: center;
+    margin-left: 8.6rem;
 }
 
 .custom_file_input::-webkit-file-upload-button {
     visibility: hidden;
+    text-align: center;
 }

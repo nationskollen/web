@@ -19,11 +19,14 @@ import 'react-calendar/dist/Calendar.css'
 
 export default function Entrence() {
     let nationInfo = false
+    let nationEvents = false
     if (typeof window !== 'undefined') {
         const { data } = useNation(parseInt(localStorage.getItem('oid')))
+        const events = useEvents(parseInt(localStorage.getItem('oid'))).data
         data && (nationInfo = data)
+        events && (nationEvents = events)
     }
-
+    console.log(nationInfo)
     return (
         <div>
             <div className={styles.container}>
@@ -32,9 +35,7 @@ export default function Entrence() {
                 <div className={container.container}>
                     <main>
                         <div className={container.main}>
-                            <Main>
-                                <EventManager />
-                            </Main>
+                            <Main>{nationEvents && <EventManager data={nationEvents} />}</Main>
                         </div>
                     </main>
                 </div>

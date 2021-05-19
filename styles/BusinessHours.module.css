@@ -2,6 +2,8 @@
 
 .container {
     display: flex;
+    clear: both;
+    overflow: auto;
 }
 
 .header {

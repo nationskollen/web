@@ -2,7 +2,7 @@
 
 .container {
     /* TODO Fix better size on container */
-    position: absolute;
+    /* position: absolute; */
     width: 36rem;
     height: 20rem;
     margin: 2rem;
