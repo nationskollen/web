@@ -24,8 +24,13 @@ export default function Home() {
     useEffect(() => {
         if (login.result) {
             console.log('Successful login')
+            console.log(login.result)
+            //const user = { user : login.result};
+            //console.log(user)
             localStorage.setItem('oid', login.result.oid)
+            localStorage.setItem('user', JSON.stringify(login.result))
             console.log(localStorage.getItem('oid'))
+            console.log(localStorage.getItem('user'))
             //Load main page
             Router.push('/')
         }

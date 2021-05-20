@@ -34,7 +34,7 @@ export default function addevents() {
 
                         <div className={container.main}>
                             <Main title="Add Event">
-                                <AddEvent />
+                                {nationInfo && <AddEvent data={nationInfo}/>}
                             </Main>
                         </div>
                     </div>

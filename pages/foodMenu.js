@@ -28,8 +28,8 @@ export default function FoodMenu() {
     return (
         <div>
             <div className={styles.container}>
-                <Navbar data={nationInfo}/>
-                <Header data={nationInfo}/>
+                <Navbar data={nationInfo} />
+                <Header data={nationInfo} />
                 <div className={container.container}>
                     <main>
                         <div className={container.cards}>
