@@ -1,14 +1,7 @@
 import React, { useState } from 'react'
 import styles from '../styles/AddEvent.module.css'
-import { useApi } from '@nationskollen/sdk'
+import { useApi, useLocations, useCategories } from '@nationskollen/sdk'
 import { useAsyncCallback } from 'react-async-hook'
-
-function handleSubmit(event) {
-    event.preventDefault()
-    const data = new FormData(event.target)
-    const value = data.get('email')
-    console.log({ value })
-}
 
 if (typeof window !== 'undefined') {
     console.log('pls not Error!')
@@ -18,28 +11,36 @@ if (typeof window !== 'undefined') {
 }
 
 const AddEvent = (props) => {
-    const { data } = props;
+    const { data, categories } = props;
     const api = useApi();
     const user = JSON.parse(localStorage.getItem('user'));
+    console.log(user)
 
-
+    const locations = useLocations(data.oid).data;
+    
     const [addEvent, setAddEvent] = useState({
         name: '',
-        short_description: '',
-        long_description: 'hejsdajiahsdioah',
         only_members: false,
         only_students: false,
-        location_id: 1,
-        category_id: 1,
-        
         occurs_at: '',
         ends_at: '',
+
+        // TODO: short and long
+        short_description: '',
+        long_description: 'hejsdajiahsdioah',
+        
+        // TODO: location, dropdown
+        location_id: 1,
+
+        // TODO: category
+        category_id: 1,
         category: { id: '', name: '' },
+        
+        // TODO: upload image
         cover_img_src: ''
     });
+    console.log(addEvent)
 
-    console.log(api);
-    console.log(user);
     const createEvent = useAsyncCallback(() => api.events.create( data.oid, addEvent ));
 
 
@@ -56,9 +57,14 @@ const AddEvent = (props) => {
         setAddEvent((prevState) => ({ ...prevState, [name]: !(addEvent[name]) }) )
     } 
 
+    const handleCategory = () => (e) => {
+        const item = JSON.parse(e.target.value);
+        console.log(item)
+        setAddEvent((prevState) => ({ ...prevState, category_id: item.id, category: item }) )
+    }
+
     // Form Submit function
     const formSubmit = () => {
-        console.log(addEvent);
         createEvent.execute();
         
     };
@@ -107,7 +113,7 @@ const AddEvent = (props) => {
                         onChange={handleParam()}
                     ></textarea>
                 </div>
-                <div id="">
+                {/* <div id="">
                     <span>Tags</span>
                     <input
                         type="text"
@@ -116,7 +122,7 @@ const AddEvent = (props) => {
                         value={addEvent.tag}
                         onChange={handleParam()}
                     />
-                </div>
+                </div> */}
                 {/* <div id="">
                     <span>Location</span>
                     <input
@@ -130,8 +136,10 @@ const AddEvent = (props) => {
                 </div> */}
                 <div id="">
                     <span>Type of event</span>
-                    <select id="event">
-                        <option value="Frukost">Frukost</option>
+                    <select onChange={handleCategory()}>
+                        {/* TODO Fix setState on selection */}
+                        {categories.map( (item) => <option value={JSON.stringify(item)} >{item.name}</option>)}
+                        {/* <option value="Frukost">Frukost</option>
                         <option value="Brunch">Brunch</option>
                         <option value="Fika">Fika</option>
                         <option value="Sport">Sport</option>
@@ -142,11 +150,11 @@ const AddEvent = (props) => {
                         <option value="Släpp">Släpp</option>
                         <option value="Klubb">Klubb</option>
                         <option value="Konsert">Konsert</option>
-                        <option value="Övrigt">Övrigt</option>
+                        <option value="Övrigt">Övrigt</option> */}
                     </select>
                 </div>
                 <div id="">
-                    <span>Only Students</span>
+                    <span>Nationcard</span>
                     <input 
                         type="checkbox"
                         name="only_students"
@@ -178,5 +186,6 @@ const AddEvent = (props) => {
         </div>
     )
 }
+
 
 export default AddEvent

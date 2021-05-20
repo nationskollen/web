@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Calendar from 'react-calendar'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useNation } from '@nationskollen/sdk'
+import { useNation, useCategories } from '@nationskollen/sdk'
 
 import Navbar from '../components/Navbar'
 import Card from '../components/Card'
@@ -18,9 +18,15 @@ import 'react-calendar/dist/Calendar.css'
 
 export default function addevents() {
     let nationInfo = false
+    let categoryInfo = false
     if (typeof window !== 'undefined') {
-        const { data } = useNation(parseInt(localStorage.getItem('oid')))
-        data && (nationInfo = data)
+        const hihi = useNation(parseInt(localStorage.getItem('oid'))).data
+        const { data } = useCategories();
+        
+        data && (categoryInfo = data)
+        hihi && (nationInfo = hihi)
+        console.log(data)
+        console.log(hihi)
     }
     return (
         <div>
@@ -34,7 +40,7 @@ export default function addevents() {
 
                         <div className={container.main}>
                             <Main title="Add Event">
-                                {nationInfo && <AddEvent data={nationInfo}/>}
+                                {(nationInfo && categoryInfo) && <AddEvent data={nationInfo} categories={categoryInfo} />}
                             </Main>
                         </div>
                     </div>
