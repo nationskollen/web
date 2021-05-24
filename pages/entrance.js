@@ -4,18 +4,18 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
 import { useNation } from '@nationskollen/sdk'
 
-import Navbar from '../components/Navbar'
-import Card from '../components/Card'
-import Chart from '../components/Chart'
-import Main from '../components/Main'
-import Header from '../components/Header'
-import Rightbar from '../components/Rightbar'
+import Navbar from '../components/structure/Navbar'
+import Card from '../components/utils/Card'
+import Chart from '../components/utils/Chart'
+import Main from '../components/structure/Main'
+import Header from '../components/structure/Header'
+import Rightbar from '../components/structure/Rightbar'
 
 import styles from '../styles/Entrence.module.css'
 import container from '../styles/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
-import EntrenceCounter from '../components/EntrenceCounter'
-import ProgressBar from '../components/ProgressBar'
+import EntrenceCounter from '../components/entrence/EntrenceCounter'
+import ProgressBar from '../components/utils/ProgressBar'
 
 export default function Entrence() {
     let nationInfo = false

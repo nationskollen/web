@@ -6,9 +6,9 @@ import { useNation, useSDK, useUpload } from '@nationskollen/sdk'
 import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
-import Confirm, { ConfirmProvider } from './Confirm'
+import Confirm, { ConfirmProvider } from '../utils/Confirm'
 
-import styles from '../styles/NationDesign.module.css'
+import styles from '../../styles/NationDesign.module.css'
 import DesignPreview from './DesignPreview'
 import DesignInputs from './DesignInputs'
 import DesignColor from './DesignColor'

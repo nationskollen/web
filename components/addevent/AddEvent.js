@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/AddEvent.module.css'
+import styles from '../../styles/AddEvent.module.css'
 
 function handleSubmit(event) {
     event.preventDefault()
@@ -74,8 +74,10 @@ const AddEvent = (props) => {
                     <span>Image</span>
                     <input type="file" className={styles.custom_file_input} />
                 </div>
-
+                <div id="submit">
+                    <span></span>
                 <input type="button" className={styles.submit} value="submit" />
+                </div>
             </form>
         </div>
     )

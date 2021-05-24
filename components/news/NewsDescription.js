@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom'
-import { useConfirm } from './Confirm'
+import { useConfirm } from '../utils/Confirm'
 
-import styles from '../styles/NewsDescription.module.css'
+import styles from '../../styles/NewsDescription.module.css'
 
 export default function NewsDescription() {
     const [title, setTitle] = useState('')

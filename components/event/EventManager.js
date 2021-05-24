@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Datatable from './Datatable'
-import styles from '../styles/EventManager.module.css'
+import styles from '../../styles/EventManager.module.css'
 
 require('es6-promise').polyfill()
 require('isomorphic-fetch')

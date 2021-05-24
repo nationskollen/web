@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/AddFood.module.css'
+import styles from '../../styles/AddFood.module.css'
 
 const AddFood = () => {
     return (
@@ -24,7 +24,10 @@ const AddFood = () => {
                         <input type="file" className={styles.custom_file_input} />
                     </div>
 
+                    <div id="submit">
+                        <span></span>
                     <input type="button" className={styles.submit} value="submit" />
+                    </div>
                 </form>
             </div>
         </div>

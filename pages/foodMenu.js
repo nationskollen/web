@@ -5,18 +5,18 @@ import ReactDOM from 'react-dom'
 
 import { useNation } from '@nationskollen/sdk'
 
-import Navbar from '../components/Navbar'
-import Card from '../components/Card'
-import Chart from '../components/Chart'
-import Main from '../components/Main'
-import Header from '../components/Header'
-import Rightbar from '../components/Rightbar'
-import Addfood from '../components/AddFood'
+import Navbar from '../components/structure/Navbar'
+import Card from '../components/utils/Card'
+import Chart from '../components/utils/Chart'
+import Main from '../components/structure/Main'
+import Header from '../components/structure/Header'
+import Rightbar from '../components/structure/Rightbar'
+import Addfood from '../components/foodMenu/AddFood'
 
 import styles from '../styles/FoodMenu.module.css'
 import container from '../styles/Container.module.css'
 import calendar from '../styles/Calendar.module.css'
-import PreviousPosts from '../components/PreviousPosts'
+import PreviousPosts from '../components/news/PreviousPosts'
 
 export default function FoodMenu() {
     const [value, onChange] = useState(new Date())
@@ -42,8 +42,7 @@ export default function FoodMenu() {
                             <Main>
                                 <Addfood></Addfood>
                             </Main>
-                            <Rightbar>
-                                <PreviousPosts></PreviousPosts>
+                            <Rightbar >
                             </Rightbar>
                         </div>
                     </main>

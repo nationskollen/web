@@ -1,6 +1,6 @@
 import React from 'react'
-import ProgressBar from './ProgressBar.js'
-import styles from '../styles/EntrenceCounter.module.css'
+import ProgressBar from '../utils/ProgressBar.js'
+import styles from '../../styles/EntrenceCounter.module.css'
 import * as Icons from 'react-icons/hi'
 import { useState } from 'react'
 

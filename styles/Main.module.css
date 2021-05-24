@@ -11,6 +11,7 @@
     border-radius: 0.75rem;
     --tw-border-opacity: 1;
     border-color: rgba(243, 244, 246, var(--tw-border-opacity));
+    flex:1;
 }
 
 .title {

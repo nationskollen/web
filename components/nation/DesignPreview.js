@@ -6,7 +6,7 @@ import { useNation, useSDK, useUpload } from '@nationskollen/sdk'
 import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
-import styles from '../styles/DesignPreview.module.css'
+import styles from '../../styles/DesignPreview.module.css'
 
 function DesignPreview(props) {
     const { accent, cover, icon, description, name } = props

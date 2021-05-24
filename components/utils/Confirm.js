@@ -2,7 +2,7 @@ import Head from 'next/head'
 import React, { useState, useContext, useEffect, createContext } from 'react'
 import ReactDOM from 'react-dom'
 
-import styles from '../styles/Confirm.module.css'
+import styles from '../../styles/Confirm.module.css'
 
 export const ConfirmContext = createContext()
 export const useConfirm = () => useContext(ConfirmContext)

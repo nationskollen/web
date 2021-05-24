@@ -6,8 +6,8 @@ import { useNation, useSDK, useUpload } from '@nationskollen/sdk'
 import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
-import { useConfirm } from './Confirm'
-import styles from '../styles/DesignDescription.module.css'
+import { useConfirm } from '../utils/Confirm'
+import styles from '../../styles/DesignDescription.module.css'
 
 function DesignDescription(props) {
     const { update, setDescription } = props
