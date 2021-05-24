@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import * as Icons from 'react-icons/hi'
+import { useAsyncCallback } from 'react-async-hook'
+import { useApi, useEvents } from '@nationskollen/sdk'
 
+import Confirm, { useConfirm } from './Confirm'
 import styles from '../styles/Datatable.module.css'
 
 var translation = {
@@ -16,10 +19,39 @@ function translate(word) {
     return translation[word]
 }
 
-export default function Datatable({ data }) {
+export default function Datatable({ data, mutate, oid }) {
     const columns = ['name', 'short_description', 'occurs_at', 'ends_at']
 
+    const { confirmation, setConfirmation, setShowOptions } = useConfirm()
+
+
+    const [ eventId, setEventId ] = useState();
+    const api = useApi();
+    //console.log("oid " + oid)
+    // console.log(data)
+    // console.log(mutate)
+   
+
+    const deleteEvent = useAsyncCallback(() => api.events.delete( oid, eventId));
+
+    function removeEvent(eventToRemove) {
+        console.log(eventToRemove);
+        setEventId(eventToRemove);
+        setShowOptions(true);
+        //console.log(confirmation)
+    }
+    
+    useEffect(() => {
+        console.log(confirmation)
+        confirmation && deleteEvent.execute()
+        setConfirmation(false)
+    }, [confirmation])
+
+
+
     return (
+        
+            
         <table cellPadding={0} cellSpacing={0} className={styles.table}>
             <thead className={styles.thead}>
                 <tr className={styles.tr}>
@@ -45,7 +77,7 @@ export default function Datatable({ data }) {
                                 <a className={styles.icon} href="/addevents">
                                     <Icons.HiPencil />
                                 </a>
-                                <a className={styles.icon} href="">
+                                <a className={styles.icon} onClick={() => removeEvent(row.id)}/*href="javascript:removeEvent({row});"*/>
                                     <Icons.HiTrash />
                                 </a>
                             </div>
@@ -55,5 +87,7 @@ export default function Datatable({ data }) {
                 ))}
             </tbody>
         </table>
+        
+        // </ConfirmProvider>
     )
 }

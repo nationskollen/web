@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Datatable from './Datatable'
 import styles from '../styles/EventManager.module.css'
+import { useEvents } from '@nationskollen/sdk'
+
+import Confirm, { ConfirmProvider } from './Confirm'
 
 require('es6-promise').polyfill()
 require('isomorphic-fetch')
@@ -10,7 +13,12 @@ const EventManager = (props) => {
     const [searchColumns, setSearchColumns] = useState(['short_description', 'name'])
     const columns = ['name', 'short_description', 'occurs_at', 'ends_at']
 
-    const { data } = props
+    const { oid } = props
+
+    const allt = useEvents(oid)
+    const data = allt.data
+    const mutate = allt.mutate
+    console.log(allt)
 
     function search(rows) {
         return rows.filter((row) =>
@@ -19,6 +27,7 @@ const EventManager = (props) => {
     }
 
     return (
+        <ConfirmProvider>
         <div>
             <div className={styles.searchContainer}>
                 <input
@@ -56,9 +65,12 @@ const EventManager = (props) => {
                 </ul>
             </div>
             <div>
-                <Datatable data={search(data)} />
+                <Datatable data={search(data)} mutate={mutate} oid={oid} />
             </div>
+            <Confirm />
         </div>
+        
+        </ConfirmProvider>
     )
 }
 

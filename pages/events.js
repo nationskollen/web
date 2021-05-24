@@ -21,12 +21,11 @@ export default function Entrence() {
     let nationInfo = false
     let nationEvents = false
     if (typeof window !== 'undefined') {
-        const { data } = useNation(parseInt(localStorage.getItem('oid')))
-        const events = useEvents(parseInt(localStorage.getItem('oid'))).data
-        data && (nationInfo = data)
-        events && (nationEvents = events)
+        const nationData = useNation(parseInt(localStorage.getItem('oid'))).data
+        const { data } = useEvents(parseInt(localStorage.getItem('oid')))
+        nationData && (nationInfo = nationData)
+        data && (nationEvents = data)
     }
-    console.log(nationInfo)
     return (
         <div>
             <div className={styles.container}>
@@ -35,7 +34,7 @@ export default function Entrence() {
                 <div className={container.container}>
                     <main>
                         <div className={container.main}>
-                            <Main>{nationEvents && <EventManager data={nationEvents} />}</Main>
+                            <Main>{(nationEvents && nationInfo) && <EventManager data={nationEvents} oid={nationInfo.oid}/>}</Main>
                         </div>
                     </main>
                 </div>

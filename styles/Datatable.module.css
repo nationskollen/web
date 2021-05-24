@@ -53,6 +53,8 @@
 
 .icon {
     padding: 5px;
+    margin: 5px;
+    cursor: pointer;
     border-style: solid;
     border: 1px solid rgb(87, 13, 13);
     border-radius: 20%;
