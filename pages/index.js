@@ -14,7 +14,7 @@ import Header from '../components/structure/Header'
 import Rightbar from '../components/structure/Rightbar'
 
 import styles from '../styles/Home.module.css'
-import container from '../styles/Container.module.css'
+import container from '../styles/structure/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Home() {

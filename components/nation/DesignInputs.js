@@ -7,7 +7,7 @@ import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
 import { useConfirm } from '../utils/Confirm'
-import styles from '../../styles/DesignInputs.module.css'
+import styles from '../../styles/nation/DesignInputs.module.css'
 
 function DesignInputs(props) {
     const { upload, setState, titleText, buttonText } = props

@@ -13,8 +13,8 @@ import Header from '../components/structure/Header'
 import Rightbar from '../components/structure/Rightbar'
 import EventManager from '../components/event/EventManager'
 
-import styles from '../styles/Entrence.module.css'
-import container from '../styles/Container.module.css'
+import styles from '../styles/entrence/Entrence.module.css'
+import container from '../styles/structure/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Entrence() {

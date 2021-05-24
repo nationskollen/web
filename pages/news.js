@@ -13,8 +13,8 @@ import Confirm, { useConfirm, ConfirmProvider } from '../components/utils/Confir
 import NewsDescription from '../components/news/NewsDescription'
 import PreviousPosts from '../components/news/PreviousPosts'
 
-import styles from '../styles/News.module.css'
-import container from '../styles/Container.module.css'
+import styles from '../styles/news/News.module.css'
+import container from '../styles/structure/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function News() {

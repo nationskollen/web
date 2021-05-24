@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../styles/Main.module.css'
+import styles from '../../styles/structure/Main.module.css'
 const Main = (props) => {
     return (
         <div className={styles.container}>

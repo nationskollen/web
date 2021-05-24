@@ -2,8 +2,8 @@ import React from 'react'
 import Calendar from 'react-calendar'
 import { useState, useEffect, State } from 'react'
 
-import styles from '../../styles/Rightbar.module.css'
-import calendar from '../../styles/Calendar.module.css'
+import styles from '../../styles/structure/Rightbar.module.css'
+import calendar from '../../styles/utils/Calendar.module.css'
 
 const Rightbar = (props) => {
     const [value, onChange] = useState(new Date())

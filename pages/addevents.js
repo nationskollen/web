@@ -10,10 +10,10 @@ import Chart from '../components/utils/Chart'
 import Main from '../components/structure/Main'
 import Header from '../components/structure/Header'
 import Rightbar from '../components/structure/Rightbar'
-import AddEvent from '../components/addevent/AddEvent'
+import AddEvent from '../components/event/AddEvent'
 
-import styles from '../styles/Entrence.module.css'
-import container from '../styles/Container.module.css'
+import styles from '../styles/entrence/Entrence.module.css'
+import container from '../styles/structure/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function addevents() {

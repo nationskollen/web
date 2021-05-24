@@ -7,7 +7,7 @@ import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
 import { useConfirm } from '../utils/Confirm'
-import styles from '../../styles/DesignDescription.module.css'
+import styles from '../../styles/nation/DesignDescription.module.css'
 
 function DesignDescription(props) {
     const { update, setDescription } = props

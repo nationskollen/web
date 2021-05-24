@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../styles/AddFood.module.css'
+import styles from '../../styles/foodMenu/AddFood.module.css'
 
 const AddFood = () => {
     return (

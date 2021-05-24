@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../styles/Container.module.css'
+import styles from '../styles/structure/Container.module.css'
 import Card from './Card'
 import Main from './Main'
 import Chart from './Chart'

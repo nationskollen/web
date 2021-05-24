@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Icons from 'react-icons/hi'
 
-import styles from '../../styles/Datatable.module.css'
+import styles from '../../styles/event/Datatable.module.css'
 
 var translation = {
     //TODO Add better descriptions

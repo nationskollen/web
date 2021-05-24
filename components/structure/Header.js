@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../styles/Header.module.css'
+import styles from '../../styles/structure/Header.module.css'
 import Router from 'next/router'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'

@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../styles/AddEvent.module.css'
+import styles from '../../styles/event/AddEvent.module.css'
 
 function handleSubmit(event) {
     event.preventDefault()

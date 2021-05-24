@@ -8,7 +8,7 @@ import { SketchPicker } from 'react-color'
 
 import Confirm, { ConfirmProvider } from '../utils/Confirm'
 
-import styles from '../../styles/NationDesign.module.css'
+import styles from '../../styles/nation/NationDesign.module.css'
 import DesignPreview from './DesignPreview'
 import DesignInputs from './DesignInputs'
 import DesignColor from './DesignColor'

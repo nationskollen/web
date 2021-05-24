@@ -1,6 +1,6 @@
 import React from 'react'
 import ActiveLink from '../utils/ActiveLink'
-import styles from '../../styles/Navbar.module.css'
+import styles from '../../styles/structure/Navbar.module.css'
 import * as Icons from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
 import { Router } from 'next/router'

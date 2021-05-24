@@ -3,7 +3,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import FlatList from 'flatlist-react'
 
-import styles from '../../styles/PreviousPosts.module.css'
+import styles from '../../styles/news/PreviousPosts.module.css'
 
 export function PreviousPosts() {
     console.log(posts)

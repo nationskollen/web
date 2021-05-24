@@ -12,8 +12,8 @@ import Header from '../components/structure/Header'
 import Rightbar from '../components/structure/Rightbar'
 import NationDesign from '../components/nation/NationDesign'
 
-import styles from '../styles/Nation.module.css'
-import container from '../styles/Container.module.css'
+import styles from '../styles/nation/Nation.module.css'
+import container from '../styles/structure/Container.module.css'
 import 'react-calendar/dist/Calendar.css'
 
 export default function Nation() {

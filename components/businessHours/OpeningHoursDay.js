@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import styles from '../../styles/OpeningHours.module.css'
+import styles from '../../styles/businessHours/OpeningHours.module.css'
 import { useApi, useLocations } from '@nationskollen/sdk'
 
 //Creates a row with business hours for a choosen day

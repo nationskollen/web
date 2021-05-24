@@ -13,9 +13,9 @@ import Header from '../components/structure/Header'
 import Rightbar from '../components/structure/Rightbar'
 import Addfood from '../components/foodMenu/AddFood'
 
-import styles from '../styles/FoodMenu.module.css'
-import container from '../styles/Container.module.css'
-import calendar from '../styles/Calendar.module.css'
+import styles from '../styles/foodMenu/FoodMenu.module.css'
+import container from '../styles/structure/Container.module.css'
+import calendar from '../styles/utils/Calendar.module.css'
 import PreviousPosts from '../components/news/PreviousPosts'
 
 export default function FoodMenu() {

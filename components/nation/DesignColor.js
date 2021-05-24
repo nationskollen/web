@@ -7,7 +7,7 @@ import { useAsync, useAsyncCallback } from 'react-async-hook'
 import { SketchPicker } from 'react-color'
 
 import { useConfirm } from '../utils/Confirm'
-import styles from '../../styles/DesignColor.module.css'
+import styles from '../../styles/nation/DesignColor.module.css'
 
 function DesignColor(props) {
     const [showPicker, setShowPicker] = useState(false)
