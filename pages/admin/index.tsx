@@ -1,8 +1,6 @@
-import styles from '@styles/admin/Login.module.css'
-
 const Login = () => {
     return (
-        <div className={styles.container}>
+        <div>
             <p>Login</p>
         </div>
     )

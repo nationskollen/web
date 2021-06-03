@@ -7,7 +7,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Provider
             config={{
                 development: true,
-                useWebSockets: false,
+                useWebSockets: typeof window !== 'undefined',
                 customHostName: 'nationskollen-staging.engstrand.nu',
                 useHTTPS: true,
             }}
