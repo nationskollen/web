@@ -1,7 +1,8 @@
-import '../styles/globals.css'
+import '@styles/globals.css'
+import type { AppProps } from 'next/app'
 import { Provider } from '@nationskollen/sdk'
 
-function MyApp({ Component, pageProps }) {
+const App = ({ Component, pageProps }: AppProps) => {
     return (
         <Provider
             config={{
@@ -16,4 +17,4 @@ function MyApp({ Component, pageProps }) {
     )
 }
 
-export default MyApp
+export default App
