@@ -2,6 +2,7 @@ html {
     --color-primary: #71002e;
     --color-primary-highlight: #91053d;
     --color-primary-text: var(--color-primary);
+    --color-primary-text-light: #eecbd9;
     --color-background: white;
     --color-background-extra: #f1f1f1;
     --color-background-highlight: #e2e2e2;
@@ -42,6 +43,19 @@ h5,
 h6,
 button {
     color: var(--color-text-highlight);
+}
+
+header h1,
+header h2 {
+    color: white;
+}
+
+header p {
+    color: var(--color-primary-text-light);
+}
+
+p {
+    color: var(--color-text);
 }
 
 @tailwind base;

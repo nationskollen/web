@@ -3,10 +3,12 @@ module.exports = {
     darkMode: 'class', // false or 'media' or 'class'
     theme: {
         colors: {
+            'white': 'white',
             'current': 'currentColor',
             'transparent': 'transparent',
             'primary': 'var(--color-primary)',
             'primary-highlight': 'var(--color-primary-highlight)',
+            'primary-text-light': 'var(--color-primary-text-light)',
             'background': 'var(--color-background)',
             'background-extra': 'var(--color-background-extra)',
             'background-highlight': 'var(--color-background-highlight)',
@@ -32,10 +34,21 @@ module.exports = {
             lg: '15px',
             full: '25%',
         },
+        borderWidth: {
+            0: '0px',
+            1: '1px',
+            DEFAULT: '1px',
+            2: '2px',
+        },
         fontFamily: {
             sans: ['Roboto', 'sans-serif'],
         },
-        extend: {},
+        extend: {
+            height: {
+                'admin-header': '16rem',
+                'admin-header-content': '11rem',
+            },
+        },
     },
     variants: {
         extend: {},
