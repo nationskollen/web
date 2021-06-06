@@ -1,6 +1,7 @@
 html {
     --color-primary: #71002e;
-    --color-primary-highlight: #91053d;
+    --color-primary-extra: #91053d;
+    --color-primary-highlight: #ffe5f0;
     --color-primary-text: var(--color-primary);
     --color-primary-text-light: #eecbd9;
     --color-background: white;
@@ -56,6 +57,11 @@ header p {
 
 p {
     color: var(--color-text);
+}
+
+/* Tailwind does not support setting the border-width based on dark/light mode */
+html.dark .card {
+    border-width: 1px;
 }
 
 @tailwind base;

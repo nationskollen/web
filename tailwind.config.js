@@ -7,6 +7,7 @@ module.exports = {
             'current': 'currentColor',
             'transparent': 'transparent',
             'primary': 'var(--color-primary)',
+            'primary-extra': 'var(--color-primary-extra)',
             'primary-highlight': 'var(--color-primary-highlight)',
             'primary-text-light': 'var(--color-primary-text-light)',
             'background': 'var(--color-background)',
@@ -43,10 +44,21 @@ module.exports = {
         fontFamily: {
             sans: ['Roboto', 'sans-serif'],
         },
+        screens: {
+          'tablet': '640px',
+          'laptop': '1024px',
+          'desktop': '1280px',
+        },
         extend: {
             height: {
                 'admin-header': '16rem',
                 'admin-header-content': '11rem',
+            },
+            width: {
+                'sidebar-navigation': '18rem',
+            },
+            fontSize: {
+                'xsm': '0.8rem',
             },
         },
     },
