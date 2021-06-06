@@ -18,8 +18,10 @@
             "@components/*": ["components/*"],
             "@layouts/*": ["components/layouts/*"],
             "@common/*": ["components/common/*"],
-            "@context/*": ["components/context/*"],
-            "@styles/*": ["styles/*"]
+            "@contexts/*": ["contexts/*"],
+            "@styles/*": ["styles/*"],
+            "@utils": ["utils/index"],
+            "@constants": ["constants"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -1,4 +1,5 @@
 import '@styles/globals.css'
+import { isClient } from '@utils'
 import type { AppProps } from 'next/app'
 import { Provider } from '@nationskollen/sdk'
 
@@ -7,7 +8,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Provider
             config={{
                 development: true,
-                useWebSockets: typeof window !== 'undefined',
+                useWebSockets: isClient(),
                 customHostName: 'nationskollen-staging.engstrand.nu',
                 useHTTPS: true,
             }}

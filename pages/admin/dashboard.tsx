@@ -5,7 +5,7 @@ const Dashboard = () => {
     return (
         <MainLayout>
             <Card>
-                <p>Login</p>
+                <p>Dashboard</p>
             </Card>
         </MainLayout>
     )

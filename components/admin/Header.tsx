@@ -1,9 +1,7 @@
 import HeaderTop from '@components/admin/HeaderTop'
 import HeaderNavigation from '@components/admin/HeaderNavigation'
 
-export interface Props {}
-
-const Header = ({}: Props) => {
+const Header = () => {
     return (
         <header className="container relative mx-auto text-white h-admin-header-content">
             <HeaderTop />
