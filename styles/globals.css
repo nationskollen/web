@@ -1,5 +1,6 @@
 html {
     --color-primary: #71002e;
+    --color-primary-dark: #590326;
     --color-primary-extra: #91053d;
     --color-primary-highlight: #ffe5f0;
     --color-primary-text: var(--color-primary);

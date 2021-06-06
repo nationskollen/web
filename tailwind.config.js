@@ -7,6 +7,7 @@ module.exports = {
             'current': 'currentColor',
             'transparent': 'transparent',
             'primary': 'var(--color-primary)',
+            'primary-dark': 'var(--color-primary-dark)',
             'primary-extra': 'var(--color-primary-extra)',
             'primary-highlight': 'var(--color-primary-highlight)',
             'primary-text-light': 'var(--color-primary-text-light)',
@@ -22,11 +23,13 @@ module.exports = {
             'primary-text': 'var(--color-primary-text)',
         },
         spacing: {
-            xsm: '0.25rem',
-            sm: '0.5rem',
-            md: '1rem',
-            lg: '1.5rem',
-            xlg: '2.5rem',
+            '0': '0',
+            'xsm': '0.25rem',
+            'sm': '0.5rem',
+            'md': '1rem',
+            'lg': '1.5rem',
+            'xlg': '2.5rem',
+            '1/5': '20vh',
         },
         borderRadius: {
             none: '0',
@@ -57,6 +60,10 @@ module.exports = {
             },
             width: {
                 'sidebar-navigation': '18rem',
+                'login-modal': '20rem',
+            },
+            minWidth: {
+                'login-background': '1100px',
             },
             fontSize: {
                 xsm: '0.8rem',
