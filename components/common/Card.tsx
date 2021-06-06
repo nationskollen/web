@@ -8,7 +8,8 @@ export interface Props {
 }
 
 const Card = ({ title, noPadding, className, children }: Props) => {
-    const base = "card shadow-md rounded border-card bg-card dark:border-border-dark text-text w-full overflow-hidden"
+    const base =
+        'card shadow-md rounded border-card bg-card dark:border-border-dark text-text w-full overflow-hidden'
     const classes = className ? `${base} ${className}` : base
 
     return (
@@ -18,9 +19,7 @@ const Card = ({ title, noPadding, className, children }: Props) => {
                     {title}
                 </h3>
             )}
-            <div className={`flex flex-col ${noPadding ? '' : 'p-md'}`}>
-                {children}
-            </div>
+            <div className={`flex flex-col ${noPadding ? '' : 'p-md'}`}>{children}</div>
         </article>
     )
 }

@@ -17,17 +17,13 @@ const SidebarNavigation = ({ links }: Props) => {
     }
 
     const content = useMemo(() => {
-        return links.map((link, index) => (
-            <SidebarNavigationLink link={link} key={link.href} isFirst={index === 0} />
-        ))
+        return links.map((link) => <SidebarNavigationLink link={link} key={link.href} />)
     }, [links])
 
     return (
         <aside className="mr-lg w-sidebar-navigation">
             <Card className="sticky top-md" title="Innehåll" noPadding={true}>
-                <div className="flex flex-col p-sm">
-                    {content}
-                </div>
+                <div className="flex flex-col p-sm">{content}</div>
             </Card>
         </aside>
     )

@@ -1,5 +1,4 @@
-import Card from '@common/Card'
-import Anchor from '@common/Anchor'
+import Section from '@common/Section'
 import MainLayout from '@layouts/admin/Main'
 import SidebarLayout from '@layouts/admin/Sidebar'
 
@@ -8,19 +7,15 @@ const Events = () => {
         <SidebarLayout
             links={[
                 { href: '#test', title: 'Test' },
-                { href: '#test2', title: 'Test2' }
+                { href: '#test2', title: 'Test2' },
             ]}
         >
-            <Anchor id="test">
-                <Card>
-                    <p style={{ height: '100vh' }}>Events</p>
-                </Card>
-            </Anchor>
-            <Anchor id="test2">
-                <Card>
-                    <p style={{ height: '100vh' }}>hello</p>
-                </Card>
-            </Anchor>
+            <Section id="test">
+                <p style={{ height: '100vh' }}>Events</p>
+            </Section>
+            <Section id="test2">
+                <p style={{ height: '100vh' }}>Events 2</p>
+            </Section>
         </SidebarLayout>
     )
 }

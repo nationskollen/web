@@ -45,9 +45,9 @@ module.exports = {
             sans: ['Roboto', 'sans-serif'],
         },
         screens: {
-          'tablet': '640px',
-          'laptop': '1024px',
-          'desktop': '1280px',
+            tablet: '640px',
+            laptop: '1024px',
+            desktop: '1280px',
         },
         extend: {
             height: {
@@ -58,7 +58,7 @@ module.exports = {
                 'sidebar-navigation': '18rem',
             },
             fontSize: {
-                'xsm': '0.8rem',
+                xsm: '0.8rem',
             },
         },
     },

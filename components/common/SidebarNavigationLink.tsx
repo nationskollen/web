@@ -1,23 +1,27 @@
 import React from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
+import Router from 'next/router'
+import { Link as ScrollLink } from 'react-scroll'
 import { LinkItem } from '@common/SidebarNavigation'
 
 export interface Props {
     link: LinkItem
-    isFirst?: boolean
 }
 
-const SidebarNavigationLink = ({ link, isFirst }: Props) => {
-    const { asPath } = useRouter()
-    const currentAnchor = asPath.split('#')[1]
-    const isActive = currentAnchor === link.href.substring(1) || (!currentAnchor && isFirst)
-    const styles = isActive ? 'bg-primary-highlight text-primary' : ''
-
+const SidebarNavigationLink = ({ link }: Props) => {
     return (
-        <Link href={link.href} passHref={true}>
-            <a className={`px-md py-sm rounded-sm ${styles}`}>{link.title}</a>
-        </Link>
+        <ScrollLink
+            href={link.href}
+            className="rounded-sm px-md py-sm"
+            activeClass="bg-primary-highlight text-primary"
+            to={link.href.substring(1)}
+            smooth={true}
+            duration={200}
+            offset={-16}
+            hashSpy={true}
+            spy={true}
+        >
+            {link.title}
+        </ScrollLink>
     )
 }
 
