@@ -52,13 +52,17 @@ module.exports = {
         extend: {
             height: {
                 'admin-header': '16rem',
-                'admin-header-content': '11rem',
+                'admin-header-fixed': '3.5rem',
+                'admin-header-content': '10rem',
             },
             width: {
                 'sidebar-navigation': '18rem',
             },
             fontSize: {
                 xsm: '0.8rem',
+            },
+            inset: {
+                'admin-header': '4.5rem',
             },
         },
     },

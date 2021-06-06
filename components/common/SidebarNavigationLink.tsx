@@ -16,7 +16,7 @@ const SidebarNavigationLink = ({ link }: Props) => {
             to={link.href.substring(1)}
             smooth={true}
             duration={200}
-            offset={-16}
+            offset={-4.5 * 16}
             hashSpy={true}
             spy={true}
         >

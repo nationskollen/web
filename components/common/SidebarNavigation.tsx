@@ -21,8 +21,8 @@ const SidebarNavigation = ({ links }: Props) => {
     }, [links])
 
     return (
-        <aside className="mr-lg w-sidebar-navigation">
-            <Card className="sticky top-md" title="Innehåll" noPadding={true}>
+        <aside className="z-30 mr-lg w-sidebar-navigation">
+            <Card className="sticky top-admin-header" title="Innehåll" noPadding={true}>
                 <div className="flex flex-col p-sm">{content}</div>
             </Card>
         </aside>
