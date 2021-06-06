@@ -3,12 +3,12 @@ import MainLayout from '@layouts/admin/Main'
 
 const Nation = () => {
     return (
-        <MainLayout>
-            <Card>
-                <p>Nation</p>
-            </Card>
-        </MainLayout>
+        <Card>
+            <p>Nation</p>
+        </Card>
     )
 }
+
+Nation.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
 
 export default Nation

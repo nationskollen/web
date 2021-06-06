@@ -6,7 +6,7 @@ import { AuthProvider } from '@contexts/auth'
 
 export interface Props {
     redirectTo?: string
-    children: React.ReactNode | React.ReactNode[]
+    children: React.ReactElement | React.ReactElement[]
 }
 
 const ProtectedRoute = ({ redirectTo, children }: Props) => {

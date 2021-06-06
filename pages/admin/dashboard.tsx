@@ -3,12 +3,12 @@ import MainLayout from '@layouts/admin/Main'
 
 const Dashboard = () => {
     return (
-        <MainLayout>
-            <Card>
-                <p>Dashboard</p>
-            </Card>
-        </MainLayout>
+        <Card>
+            <p>Dashboard</p>
+        </Card>
     )
 }
+
+Dashboard.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
 
 export default Dashboard

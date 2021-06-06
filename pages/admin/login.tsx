@@ -14,12 +14,12 @@ const Login = () => {
     }, [])
 
     return (
-        <LoginLayout>
-            <Card>
-                <p>Login</p>
-            </Card>
-        </LoginLayout>
+        <Card>
+            <p>Login</p>
+        </Card>
     )
 }
+
+Login.getLayout = (page: React.ReactElement) => <LoginLayout>{page}</LoginLayout>
 
 export default Login

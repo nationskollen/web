@@ -3,12 +3,12 @@ import MainLayout from '@layouts/admin/Main'
 
 const Users = () => {
     return (
-        <MainLayout>
-            <Card>
-                <p>Users</p>
-            </Card>
-        </MainLayout>
+        <Card>
+            <p>Users</p>
+        </Card>
     )
 }
+
+Users.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
 
 export default Users

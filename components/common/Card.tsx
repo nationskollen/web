@@ -1,7 +1,7 @@
 import React from 'react'
 
 export interface Props {
-    children: React.ReactNode | React.ReactNode[]
+    children: React.ReactElement | React.ReactElement[]
 }
 
 const Card = ({ children }: Props) => {

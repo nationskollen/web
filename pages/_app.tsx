@@ -1,9 +1,12 @@
 import '@styles/globals.css'
 import { isClient } from '@utils'
+import { PageComponent } from '@types'
 import type { AppProps } from 'next/app'
 import { Provider } from '@nationskollen/sdk'
 
 const App = ({ Component, pageProps }: AppProps) => {
+    const getLayout = (Component as PageComponent).getLayout || ((page) => page)
+
     return (
         <Provider
             config={{
@@ -13,7 +16,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 useHTTPS: true,
             }}
         >
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps}></Component>)}
         </Provider>
     )
 }

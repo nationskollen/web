@@ -3,7 +3,7 @@ import Header from '@components/admin/Header'
 import ProtectedRoute from '@components/auth/ProtectedRoute'
 
 export interface Props {
-    children: React.ReactNode | React.ReactNode[]
+    children: React.ReactElement | React.ReactElement[]
 }
 
 const MainLayout = ({ children }: Props) => {

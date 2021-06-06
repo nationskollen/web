@@ -1,14 +1,14 @@
 import Card from '@common/Card'
 import MainLayout from '@layouts/admin/Main'
 
-const Dashboard = () => {
+const People = () => {
     return (
-        <MainLayout>
-            <Card>
-                <p>People</p>
-            </Card>
-        </MainLayout>
+        <Card>
+            <p>People</p>
+        </Card>
     )
 }
 
-export default Dashboard
+People.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
+
+export default People
