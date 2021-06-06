@@ -10,6 +10,7 @@ const HeaderNavigation = ({}: Props) => {
                 <NavLink title="Nyheter" href="/admin/news" />
                 <NavLink title="Evenemang" href="/admin/events" />
                 <NavLink title="Platser" href="/admin/locations" />
+                <NavLink title="Menyer" href="/admin/menus" />
                 <NavLink title="Personer" href="/admin/people" />
                 <NavLink title="Öppettider" href="/admin/hours" />
                 <NavLink title="Aktivitet" href="/admin/activity" />
