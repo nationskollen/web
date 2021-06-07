@@ -11,6 +11,7 @@
     "docs:watch": "npx typedoc --categorizeByGroup true components/** pages/** --watch"
   },
   "dependencies": {
+    "@heroicons/react": "^1.0.1",
     "@nationskollen/sdk": "^2.4.2",
     "next": "10.2.3",
     "react": "17.0.2",

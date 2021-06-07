@@ -10,7 +10,12 @@ export interface Props {
 const Section = ({ id, children }: Props) => {
     return (
         <Element name={id}>
-            <Card>{children}</Card>
+            <Card>
+                <>
+                    {children}
+                    <p style={{ height: '50vh' }}></p>
+                </>
+            </Card>
         </Element>
     )
 }

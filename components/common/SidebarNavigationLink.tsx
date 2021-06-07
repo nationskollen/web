@@ -1,5 +1,4 @@
 import React from 'react'
-import Router from 'next/router'
 import { Link as ScrollLink } from 'react-scroll'
 import { LinkItem } from '@common/SidebarNavigation'
 

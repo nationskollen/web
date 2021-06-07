@@ -21,10 +21,7 @@ class CustomDocument extends Document {
         return (
             <Html>
                 <Head>
-                    <link
-                        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-                        rel="stylesheet"
-                    />
+                    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
                 </Head>
                 <body>
                     <script dangerouslySetInnerHTML={{ __html: setInitialTheme }} />

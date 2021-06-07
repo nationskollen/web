@@ -45,7 +45,7 @@ module.exports = {
             2: '2px',
         },
         fontFamily: {
-            sans: ['Roboto', 'sans-serif'],
+            sans: ['Nunito', 'sans-serif'],
         },
         screens: {
             tablet: '640px',
