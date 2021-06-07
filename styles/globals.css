@@ -5,6 +5,8 @@ html {
     --color-primary-highlight: #ffe5f0;
     --color-primary-text: var(--color-primary);
     --color-primary-text-light: #eecbd9;
+    --color-secondary: #1e1f2f;
+    --color-secondary-extra: #2e2f48;
     --color-background: white;
     --color-background-extra: #f1f1f1;
     --color-background-highlight: #e2e2e2;
@@ -18,11 +20,13 @@ html {
 
 html.dark {
     --color-primary-text: #ef005f;
+    --color-secondary: #363853;
+    --color-secondary-extra: #404366;
     --color-background: #0a090c;
     --color-background-extra: #141319;
     --color-background-highlight: #262430;
     --color-card: var(--color-background-extra);
-    --color-border: #17161c;
+    --color-border: #25232d;
     --color-border-dark: #3d3b49;
     --color-text: #d4d4d4;
     --color-text-highlight: white;
@@ -33,8 +37,6 @@ html,
 body {
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans,
-        Droid Sans, 'Roboto', sans-serif;
 }
 
 h1,

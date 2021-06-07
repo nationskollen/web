@@ -9,6 +9,6 @@ const Menus = () => {
     )
 }
 
-Menus.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
+Menus.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
 
 export default Menus

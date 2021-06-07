@@ -9,6 +9,6 @@ const Nation = () => {
     )
 }
 
-Nation.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
+Nation.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
 
 export default Nation

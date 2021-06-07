@@ -9,6 +9,6 @@ const News = () => {
     )
 }
 
-News.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
+News.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
 
 export default News

@@ -11,6 +11,8 @@ module.exports = {
             'primary-extra': 'var(--color-primary-extra)',
             'primary-highlight': 'var(--color-primary-highlight)',
             'primary-text-light': 'var(--color-primary-text-light)',
+            'secondary': 'var(--color-secondary)',
+            'secondary-extra': 'var(--color-secondary-extra)',
             'background': 'var(--color-background)',
             'background-extra': 'var(--color-background-extra)',
             'background-highlight': 'var(--color-background-highlight)',
@@ -21,15 +23,6 @@ module.exports = {
             'text-highlight': 'var(--color-text-highlight)',
             'error-text': 'var(--color-error-text)',
             'primary-text': 'var(--color-primary-text)',
-        },
-        spacing: {
-            '0': '0',
-            'xsm': '0.25rem',
-            'sm': '0.5rem',
-            'md': '1rem',
-            'lg': '1.5rem',
-            'xlg': '2.5rem',
-            '1/5': '20vh',
         },
         borderRadius: {
             none: '0',
@@ -45,7 +38,7 @@ module.exports = {
             2: '2px',
         },
         fontFamily: {
-            sans: ['Roboto', 'sans-serif'],
+            sans: ['Nunito', 'sans-serif'],
         },
         screens: {
             tablet: '640px',
@@ -53,6 +46,15 @@ module.exports = {
             desktop: '1280px',
         },
         extend: {
+            spacing: {
+                '0': '0',
+                'xsm': '0.25rem',
+                'sm': '0.5rem',
+                'md': '1rem',
+                'lg': '1.5rem',
+                'xlg': '2.5rem',
+                '1/5': '20vh',
+            },
             height: {
                 'admin-header': '16rem',
                 'admin-header-fixed': '3.5rem',
@@ -70,6 +72,7 @@ module.exports = {
             },
             inset: {
                 'admin-header': '4.5rem',
+                '-admin-header': '-4.5rem',
             },
         },
     },

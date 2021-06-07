@@ -9,6 +9,8 @@ const Activity = () => {
     )
 }
 
-Activity.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
+Activity.getTemplate = (page: React.ReactElement) => (
+    <MainLayout.Template>{page}</MainLayout.Template>
+)
 
 export default Activity
