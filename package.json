@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "format": "npx prettier --write .",
-    "ci:format": "npx --yes prettier --write .",
     "docs": "npx typedoc --categorizeByGroup true components/** pages/**",
     "docs:watch": "npx typedoc --categorizeByGroup true components/** pages/** --watch"
   },
