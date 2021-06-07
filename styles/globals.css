@@ -1,26 +1,70 @@
+html {
+    --color-primary: #71002e;
+    --color-primary-dark: #590326;
+    --color-primary-extra: #91053d;
+    --color-primary-highlight: #ffe5f0;
+    --color-primary-text: var(--color-primary);
+    --color-primary-text-light: #eecbd9;
+    --color-background: white;
+    --color-background-extra: #f1f1f1;
+    --color-background-highlight: #e2e2e2;
+    --color-card: var(--color-background);
+    --color-border: #f1f1f1;
+    --color-border-dark: #ccc;
+    --color-text: #222;
+    --color-text-highlight: #000;
+    --color-error-text: #e03c3f;
+}
+
+html.dark {
+    --color-primary-text: #ef005f;
+    --color-background: #0a090c;
+    --color-background-extra: #141319;
+    --color-background-highlight: #262430;
+    --color-card: var(--color-background-extra);
+    --color-border: #17161c;
+    --color-border-dark: #3d3b49;
+    --color-text: #d4d4d4;
+    --color-text-highlight: white;
+    --color-error-text: #fc5372;
+}
+
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
-        Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans,
+        Droid Sans, 'Roboto', sans-serif;
 }
 
-main {
-    flex-grow: 1;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+    color: var(--color-text-highlight);
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+header h1,
+header h2 {
+    color: white;
 }
 
-* {
-    box-sizing: border-box;
+header p {
+    color: var(--color-primary-text-light);
 }
 
-tbody tr:nth-child(odd) {
-    /* background-color: #ffffff; */
-    background-color: rgb(245, 245, 245);
-    /* color: #fff; */
+p {
+    color: var(--color-text);
 }
+
+/* Tailwind does not support setting the border-width based on dark/light mode */
+html.dark .card {
+    border-width: 1px;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
