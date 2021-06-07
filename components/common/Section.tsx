@@ -10,7 +10,7 @@ export interface Props {
 const Section = ({ id, children }: Props) => {
     return (
         <Element name={id}>
-<Card>{children}</Card>
+            <Card>{children}</Card>
         </Element>
     )
 }
