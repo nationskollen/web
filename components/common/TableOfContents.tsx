@@ -23,7 +23,7 @@ const SidebarNavigation = ({ sections }: Props) => {
     }, [sections])
 
     return (
-        <Card className="sticky top-admin-header" label="Innehåll" noPadding={true}>
+        <Card className="sticky top-admin-header pb-sm" label="Innehåll" noPadding={true}>
             <ul className="p-sm">{content}</ul>
         </Card>
     )

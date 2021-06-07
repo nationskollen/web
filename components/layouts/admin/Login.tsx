@@ -11,7 +11,7 @@ const Template = ({ children }: Props) => {
             <div className="absolute bottom-0 left-0 z-behind">
                 <Uppsala containerClassNames="text-primary-dark w-screen min-w-login-background" />
             </div>
-            <main className="z-10 mt-1/5 w-login-modal">{children}</main>
+            <main className="relative z-10 h-full mt-1/5 w-login-modal">{children}</main>
         </div>
     )
 }
