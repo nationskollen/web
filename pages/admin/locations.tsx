@@ -9,6 +9,8 @@ const Locations = () => {
     )
 }
 
-Locations.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
+Locations.getTemplate = (page: React.ReactElement) => (
+    <MainLayout.Template>{page}</MainLayout.Template>
+)
 
 export default Locations

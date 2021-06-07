@@ -16,7 +16,7 @@ const NavLink = ({ title, href }: Props) => {
         <Link href={href}>
             <li className="h-full cursor-pointer py-xsm">
                 <a
-                    className={`font-bold rounded-sm p-sm hover:bg-primary-extra hover:text-white ${color}`}
+                    className={`font-bold rounded p-sm hover:bg-primary-extra hover:text-white ${color}`}
                 >
                     {title}
                 </a>

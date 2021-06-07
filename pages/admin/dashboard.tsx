@@ -9,6 +9,8 @@ const Dashboard = () => {
     )
 }
 
-Dashboard.getLayout = (page: React.ReactElement) => <MainLayout>{page}</MainLayout>
+Dashboard.getTemplate = (page: React.ReactElement) => (
+    <MainLayout.Template>{page}</MainLayout.Template>
+)
 
 export default Dashboard

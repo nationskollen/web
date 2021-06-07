@@ -8,7 +8,7 @@ export interface Props {
 const CardTitle = ({ title, subtitle }: Props) => {
     return (
         <>
-            <h2 className="text-lg font-bold font-display text-text-highlight">{title}</h2>
+            <h2 className="text-lg font-bold text-text-highlight">{title}</h2>
             <p className="text-text">{subtitle}</p>
         </>
     )

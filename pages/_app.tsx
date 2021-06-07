@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import { Provider } from '@nationskollen/sdk'
 
 const App = ({ Component, pageProps }: AppProps) => {
-    const getLayout = (Component as PageComponent).getLayout || ((page) => page)
+    const getTemplate = (Component as PageComponent).getTemplate || ((page) => page)
 
     return (
         <Provider
@@ -16,7 +16,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 useHTTPS: true,
             }}
         >
-            {getLayout(<Component {...pageProps}></Component>)}
+            {getTemplate(<Component {...pageProps}></Component>)}
         </Provider>
     )
 }

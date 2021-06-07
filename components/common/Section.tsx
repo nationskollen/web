@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '@common/Card'
-import { Element } from 'react-scroll'
+import Anchor from '@common/Anchor'
+import { useRouter } from 'next/router'
 
 export interface Props {
     id: string
@@ -8,15 +9,16 @@ export interface Props {
 }
 
 const Section = ({ id, children }: Props) => {
+    const router = useRouter()
+    const active =
+        router.asPath.split('#')[1] === id
+            ? 'ring-2 ring-primary-extra dark:ring-primary-highlight ring-opacity-60'
+            : ''
+
     return (
-        <Element name={id}>
-            <Card>
-                <>
-                    {children}
-                    <p style={{ height: '50vh' }}></p>
-                </>
-            </Card>
-        </Element>
+        <Anchor id={id}>
+            <Card className={active}>{children}</Card>
+        </Anchor>
     )
 }
 

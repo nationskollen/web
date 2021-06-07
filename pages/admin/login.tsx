@@ -20,6 +20,8 @@ const Login = () => {
     )
 }
 
-Login.getLayout = (page: React.ReactElement) => <LoginLayout>{page}</LoginLayout>
+Login.getTemplate = (page: React.ReactElement) => (
+    <LoginLayout.Template>{page}</LoginLayout.Template>
+)
 
 export default Login

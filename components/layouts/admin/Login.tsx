@@ -5,7 +5,7 @@ export interface Props {
     children: React.ReactElement | React.ReactElement[]
 }
 
-const LoginLayout = ({ children }: Props) => {
+const Template = ({ children }: Props) => {
     return (
         <div className="relative flex flex-col items-center w-screen h-screen text-white py-lg bg-primary">
             <div className="absolute bottom-0 left-0 z-behind">
@@ -16,4 +16,6 @@ const LoginLayout = ({ children }: Props) => {
     )
 }
 
-export default LoginLayout
+export default {
+    Template,
+}
