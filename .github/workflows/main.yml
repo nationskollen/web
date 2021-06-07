@@ -1,14 +1,11 @@
 name: Formatting Code
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-
 
 jobs:
   build:
@@ -22,13 +19,10 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install nodejs
-          
-      - name: Installing the formatter
-        run: npm install --save-dev --save-exact prettier
-          
+
       - name: Formatting code
-        run: npm run format
-        
+        run: npm run ci:format
+
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Formatted code using "npm run format" (prettier package)
