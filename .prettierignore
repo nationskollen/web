@@ -42,3 +42,5 @@ package.json
 package-lock.json
 
 .npmrc
+.github
+docs
