@@ -1,3 +1,8 @@
+/**
+ * Renders a basic card.
+ *
+ * @module Common
+ */
 import React from 'react'
 
 export interface Props {

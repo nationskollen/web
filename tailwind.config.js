@@ -20,6 +20,7 @@ module.exports = {
             'border': 'var(--color-border)',
             'border-dark': 'var(--color-border-dark)',
             'text': 'var(--color-text)',
+            'text-extra': 'var(--color-text-extra)',
             'text-highlight': 'var(--color-text-highlight)',
             'error-text': 'var(--color-error-text)',
             'primary-text': 'var(--color-primary-text)',

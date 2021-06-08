@@ -2,10 +2,11 @@ import Link from 'next/link'
 import Router from 'next/router'
 import { useEffect } from 'react'
 import { AUTH, VERSION, CONTACT_EMAIL } from '@constants'
-import { LoginIcon, MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
+import { LockClosedIcon, LoginIcon, MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 
 import Card from '@common/Card'
 import Title from '@common/Title'
+import Input from '@common/Input'
 import Button from '@common/Button'
 import LoginLayout from '@layouts/admin/Login'
 
@@ -31,21 +32,33 @@ const Login = () => {
         <>
             <Card containerClassName="space-y-md">
                 <Title text="Login" />
-                <Button type="secondary" onClick={handleSumbit}>
+                <Input.Wrapper label="Email">
+                    <Input.Icon>
+                        <MailIcon />
+                    </Input.Icon>
+                    <Input.Field type="email" placeholder="din@email.se" required />
+                </Input.Wrapper>
+                <Input.Wrapper label="Lösenord">
+                    <Input.Icon>
+                        <LockClosedIcon />
+                    </Input.Icon>
+                    <Input.Field type="password" placeholder="Lösenord" min="8" required />
+                </Input.Wrapper>
+                <Button style="secondary" onClick={handleSumbit}>
                     <span>Logga in</span>
                     <LoginIcon />
                 </Button>
             </Card>
             <section className="flex justify-center w-full mt-md">
                 <Link href="/" passHref={true}>
-                    <Button type="transparent" className="text-white">
+                    <Button style="transparent" className="text-white">
                         <ArrowLeftIcon />
                         <span>Tillbaka till startsidan</span>
                     </Button>
                 </Link>
             </section>
             <section className="absolute bottom-0 flex flex-col items-center w-full text-white">
-                <Button type="primary" className="mb-lg" href={`mailto://${CONTACT_EMAIL}`}>
+                <Button style="primary" className="mb-lg" href={`mailto://${CONTACT_EMAIL}`}>
                     <MailIcon className="h-6" />
                     <span className="font-bold">{CONTACT_EMAIL}</span>
                 </Button>

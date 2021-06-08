@@ -1,3 +1,21 @@
+/**
+ * Renders a table of contents for a page, based on
+ * the list of sections passed into the `sections` prop.
+ *
+ * For this to work, make sure you have a corresponding element
+ * with an id for each element in the `sections` array.
+ *
+ * Example usage:
+ * ```typescript
+ * <TableOfContents sections={[{ href: '#test', title: 'Test' }]} />
+ * // somewhere else
+ * <Section id="test">
+ *     // content
+ * </Section>
+ * ```
+ *
+ * @module Common
+ */
 import React, { useMemo } from 'react'
 import Card from '@common/Card'
 import TableOfContentsLink from '@common/TableOfContentsLink'

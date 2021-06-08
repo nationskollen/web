@@ -15,7 +15,7 @@ const Events = () => {
         <MainLayout.Wrapper>
             <MainLayout.Sidebar>
                 <TableOfContents sections={SECTIONS} />
-                <Button type="secondary" className="w-full rounded">
+                <Button style="secondary" className="w-full rounded">
                     <span>Skapa ny event</span>
                     <PlusIcon />
                 </Button>
