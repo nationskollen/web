@@ -4,14 +4,18 @@ import Title from '@common/Title'
 export interface Props {
     title: string
     subtitle?: string
+    children?: React.ReactElement | React.ReactElement[]
 }
 
-const CardTitle = ({ title, subtitle }: Props) => {
+const CardTitle = ({ title, subtitle, children }: Props) => {
     return (
-        <>
-            <Title text={title} />
-            <p className="leading-snug text-md">{subtitle}</p>
-        </>
+        <section className="flex flex-row items-start justify-between">
+            <div>
+                <Title text={title} />
+                <p className="leading-snug text-md">{subtitle}</p>
+            </div>
+            {children}
+        </section>
     )
 }
 

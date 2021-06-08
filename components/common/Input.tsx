@@ -1,7 +1,10 @@
 /**
- * Renders a generic input using a Formik field.
- * This means that it plays nicely with Formik and all of its
- * features, e.g. error handling, submitting, etc.
+ * Renders a generic input. If no `onChange` handler is specified,
+ * it is assumed that you will be using Formik and will therefore
+ * require you to have wrapped the input(s) in a Formik form.
+ *
+ * If you do not wish to use Formik, you **must** set `onChange`
+ * to a valid callback function.
  *
  * Example usage:
  * ```typescript
@@ -17,7 +20,7 @@
  */
 import React from 'react'
 import { extend, combine } from '@utils'
-import { Field, FieldProps } from 'formik'
+import { Field, FieldProps, FieldInputProps } from 'formik'
 
 export type InputSizes = 'small' | 'default' | 'large'
 export type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
@@ -44,6 +47,7 @@ const Input = ({
     className,
     inputClassName,
     children,
+    onChange,
     ...props
 }: Props) => {
     const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
@@ -59,23 +63,30 @@ const Input = ({
         inputClassName
     )
 
+    const content = (fieldProps: FieldInputProps<any> | {}) => {
+        return (
+            <div className={extend(baseStyle, className)}>
+                {label && (
+                    <label className="text-sm mb-xsm text-text" htmlFor={id}>
+                        {label}
+                    </label>
+                )}
+                <div className={extend(containerStyle, inputClassName)}>
+                    {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
+                    <input id={id} type={type} className={inputStyle} {...props} {...fieldProps} />
+                </div>
+            </div>
+        )
+    }
+
+    // If we specify a custom onChange, we assume that Formik should not be used
+    if (onChange) {
+        return content({ onChange })
+    }
+
     return (
         <Field name={id} id={id} type={type}>
-            {({ field }: FieldProps) => (
-                <div className={extend(baseStyle, className)}>
-                    {label && (
-                        <label className="text-sm mb-xsm text-text" htmlFor={id}>
-                            {label}
-                        </label>
-                    )}
-                    <div className={extend(containerStyle, inputClassName)}>
-                        {children && (
-                            <div className="h-2/5 pr-sm focus:outline-none">{children}</div>
-                        )}
-                        <input id={id} type={type} className={inputStyle} {...props} {...field} />
-                    </div>
-                </div>
-            )}
+            {({ field }: FieldProps) => content(field)}
         </Field>
     )
 }
