@@ -14,6 +14,7 @@ html {
     --color-border: #f1f1f1;
     --color-border-dark: #ccc;
     --color-text: #222;
+    --color-text-extra: #a1a1aa;
     --color-text-highlight: #000;
     --color-error-text: #e03c3f;
 }
@@ -29,6 +30,7 @@ html.dark {
     --color-border: #25232d;
     --color-border-dark: #3d3b49;
     --color-text: #d4d4d4;
+    --color-text-extra: #939393;
     --color-text-highlight: white;
     --color-error-text: #fc5372;
 }

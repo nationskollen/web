@@ -19,6 +19,7 @@
             "@layouts/*": ["components/layouts/*"],
             "@common/*": ["components/common/*"],
             "@svg/*": ["components/svg/*"],
+            "@forms/*": ["components/forms/*"],
             "@contexts/*": ["contexts/*"],
             "@styles/*": ["styles/*"],
             "@utils": ["utils/index"],

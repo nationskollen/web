@@ -1,3 +1,9 @@
+/**
+ * Renders the top of the admin header, i.e. the user and nation
+ * information, as well as some common actions and settings.
+ *
+ * @module Header
+ */
 import Router from 'next/router'
 
 import Button from '@common/Button'

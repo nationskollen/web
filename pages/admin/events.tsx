@@ -1,9 +1,10 @@
+import Input from '@common/Input'
 import Button from '@common/Button'
 import Section from '@common/Section'
 import CardTitle from '@common/CardTitle'
 import MainLayout from '@layouts/admin/Main'
 import TableOfContents from '@common/TableOfContents'
-import { PlusIcon } from '@heroicons/react/solid'
+import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
 
 const SECTIONS = [
     { href: '#upcoming', title: 'Kommande evenemang' },
@@ -15,7 +16,7 @@ const Events = () => {
         <MainLayout.Wrapper>
             <MainLayout.Sidebar>
                 <TableOfContents sections={SECTIONS} />
-                <Button type="secondary" className="w-full rounded">
+                <Button style="secondary" className="w-full rounded">
                     <span>Skapa ny event</span>
                     <PlusIcon />
                 </Button>
@@ -25,13 +26,31 @@ const Events = () => {
                     <CardTitle
                         title="Kommande evenemang"
                         subtitle="Översikt av nationens kommande evenemang"
-                    />
+                    >
+                        <Input
+                            id="upcoming_filter"
+                            type="text"
+                            placeholder="Filtrera"
+                            onChange={(value) => console.log(value)}
+                        >
+                            <SearchIcon />
+                        </Input>
+                    </CardTitle>
                 </Section>
                 <Section id="old">
                     <CardTitle
                         title="Gamla evenemang"
                         subtitle="Översikt av nationens gamla evenemang"
-                    />
+                    >
+                        <Input
+                            id="old_filter"
+                            type="text"
+                            placeholder="Filtrera"
+                            onChange={(value) => console.log(value)}
+                        >
+                            <SearchIcon />
+                        </Input>
+                    </CardTitle>
                 </Section>
             </MainLayout.Content>
         </MainLayout.Wrapper>
