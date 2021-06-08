@@ -18,8 +18,8 @@ const LoginForm = () => {
         // TODO: Set this to false when we get a response from the server
         setSubmitting(false)
 
-        // TODO: Set correct token
-        localStorage.setItem(AUTH.TOKEN_STORAGE_KEY, 'token')
+        // TODO: Set correct token and oid
+        localStorage.setItem(AUTH.USER_STORAGE_KEY, JSON.stringify({ token: 'token', oid: 400 }))
 
         // We use replace here since going back in the history will only redirect you
         // to the same page as you are currently on. Replacing the history means that

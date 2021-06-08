@@ -13,7 +13,7 @@ import LoginLayout from '@layouts/admin/Login'
 
 const Login = () => {
     useEffect(() => {
-        const token = localStorage.getItem(AUTH.TOKEN_STORAGE_KEY)
+        const token = localStorage.getItem(AUTH.USER_STORAGE_KEY)
 
         if (token) {
             Router.push('/admin/dashboard')
