@@ -22,7 +22,7 @@ class CustomDocument extends Document {
             <Html>
                 <Head>
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+                        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;900&display=swap"
                         rel="stylesheet"
                     />
                 </Head>

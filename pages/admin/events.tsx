@@ -1,3 +1,4 @@
+import Button from '@common/Button'
 import Section from '@common/Section'
 import CardTitle from '@common/CardTitle'
 import MainLayout from '@layouts/admin/Main'
@@ -14,10 +15,10 @@ const Events = () => {
         <MainLayout.Wrapper>
             <MainLayout.Sidebar>
                 <TableOfContents sections={SECTIONS} />
-                <button className="flex flex-row items-center justify-center w-full h-12 font-bold text-white rounded bg-secondary hover:bg-secondary-extra">
-                    Skapa ny event
-                    <PlusIcon className="w-lg h-lg ml-xsm" />
-                </button>
+                <Button type="secondary" className="w-full rounded">
+                    <span>Skapa ny event</span>
+                    <PlusIcon />
+                </Button>
             </MainLayout.Sidebar>
             <MainLayout.Content>
                 <Section id="upcoming">

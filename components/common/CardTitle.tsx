@@ -1,4 +1,5 @@
 import React from 'react'
+import Title from '@common/Title'
 
 export interface Props {
     title: string
@@ -8,8 +9,8 @@ export interface Props {
 const CardTitle = ({ title, subtitle }: Props) => {
     return (
         <>
-            <h2 className="text-lg font-bold text-text-highlight">{title}</h2>
-            <p className="text-text">{subtitle}</p>
+            <Title text={title} />
+            <p className="leading-snug text-md">{subtitle}</p>
         </>
     )
 }

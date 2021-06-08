@@ -38,7 +38,7 @@ module.exports = {
             2: '2px',
         },
         fontFamily: {
-            sans: ['Nunito', 'sans-serif'],
+            sans: ['Nunito Sans', 'sans-serif'],
         },
         screens: {
             tablet: '640px',
@@ -62,13 +62,14 @@ module.exports = {
             },
             width: {
                 'sidebar-navigation': '18rem',
-                'login-modal': '20rem',
+                'login-modal': '22rem',
             },
             minWidth: {
                 'login-background': '1100px',
             },
             fontSize: {
                 xsm: '0.8rem',
+                md: '0.925rem',
             },
             inset: {
                 'admin-header': '4.5rem',

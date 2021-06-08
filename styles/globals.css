@@ -39,32 +39,13 @@ body {
     color: var(--color-text);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button {
-    color: var(--color-text-highlight);
-}
-
-header h1,
-header h2 {
-    color: white;
-}
-
-header p {
-    color: var(--color-primary-text-light);
-}
-
-p {
-    color: var(--color-text);
-}
-
 /* Tailwind does not support setting the border-width based on dark/light mode */
 html.dark .card {
     border-width: 1px;
+}
+
+svg {
+    height: 100%;
 }
 
 @tailwind base;
