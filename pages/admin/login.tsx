@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { AUTH, VERSION, CONTACT_EMAIL } from '@constants'
 import { MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 
+import Logo from '@svg/Logo'
 import Card from '@common/Card'
 import Title from '@common/Title'
 import Button from '@common/Button'
@@ -22,6 +23,9 @@ const Login = () => {
     return (
         <>
             <Card containerClassName="space-y-md">
+                <div className="self-center text-primary-text">
+                    <Logo />
+                </div>
                 <Title text="Login" />
                 <LoginForm />
             </Card>

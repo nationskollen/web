@@ -1,5 +1,5 @@
 export interface Props {
-    containerClassNames: string
+    containerClassNames?: string
 }
 
 const Uppsala = ({ containerClassNames }: Props) => {
