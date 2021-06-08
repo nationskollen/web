@@ -13,6 +13,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.1",
     "@nationskollen/sdk": "^2.4.2",
+    "formik": "^2.2.9",
     "next": "10.2.3",
     "react": "17.0.2",
     "react-dom": "17.0.2"

@@ -30,6 +30,7 @@ export type ButtonTypes = 'primary' | 'secondary' | 'light' | 'transparent'
 
 export interface Props {
     href?: string
+    type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
     size?: ButtonSizes
     style?: ButtonTypes
     className?: string
@@ -54,7 +55,7 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
 // to Link components. The only requirement to make it work is to
 // set passHref={true} on the Link.
 const Button = React.forwardRef(
-    ({ size, href, style, className, onClick, children }: Props, ref: any) => {
+    ({ size, type, href, style, className, onClick, children }: Props, ref: any) => {
         const styles = style ? BUTTON_STYLES[style] : BUTTON_STYLES['primary']
         const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']
         const base = `focus:ring-2 focus:outline-none rounded-sm font-bold ${styles}`
@@ -72,7 +73,7 @@ const Button = React.forwardRef(
         }
 
         return (
-            <button className={classes} onClick={onClick}>
+            <button className={classes} onClick={onClick} type={type || 'button'}>
                 {content}
             </button>
         )
