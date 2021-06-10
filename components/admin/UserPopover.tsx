@@ -16,7 +16,6 @@ import Popover from '@common/Popover'
 import RadioGroup from '@common/RadioGroup'
 import RadioPillItem from '@common/RadioPillItem'
 import PopoverSection from '@common/PopoverSection'
-import PopoverSectionItem from '@common/PopoverSectionItem'
 
 export interface Props {}
 

@@ -25,7 +25,7 @@ const CustomPopover = ({
 }: Props) => {
     const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>()
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>()
-    const { styles, attributes } = usePopper(referenceElement, popperElement, {
+    const { attributes } = usePopper(referenceElement, popperElement, {
         placement: 'bottom-start',
     })
     const buttonClasses = extend('focus:outline-none', buttonClassName)
@@ -49,25 +49,28 @@ const CustomPopover = ({
                     >
                         {button(open)}
                     </Popover.Button>
-                    <Transition
+                    <div
                         ref={setPopperElement}
-                        show={open}
-                        enter="transition duration-100 ease-out"
-                        enterFrom="transform scale-90 opacity-0"
-                        enterTo="transform scale-100 opacity-100"
-                        leave="transition duration-75 ease-out"
-                        leaveFrom="transform scale-100 opacity-100"
-                        leaveTo="transform scale-90 opacity-0"
                         className="absolute right-0 top-12"
                         {...attributes.popper}
                     >
-                        <Popover.Panel static={true} className="pt-md">
-                            <Card className={cardClasses} containerClassName="relative">
-                                <div className={triangleClasses} />
-                                <>{children}</>
-                            </Card>
-                        </Popover.Panel>
-                    </Transition>
+                        <Transition
+                            show={open}
+                            enter="transition duration-100 ease-out"
+                            enterFrom="transform scale-90 opacity-0"
+                            enterTo="transform scale-100 opacity-100"
+                            leave="transition duration-75 ease-out"
+                            leaveFrom="transform scale-100 opacity-100"
+                            leaveTo="transform scale-90 opacity-0"
+                        >
+                            <Popover.Panel static={true} className="pt-md">
+                                <Card className={cardClasses} containerClassName="relative">
+                                    <div className={triangleClasses} />
+                                    <>{children}</>
+                                </Card>
+                            </Popover.Panel>
+                        </Transition>
+                    </div>
                 </>
             )}
         </Popover>
