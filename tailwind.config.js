@@ -82,6 +82,7 @@ module.exports = {
     variants: {
         extend: {
             borderWidth: ['last'],
+            borderColor: ['dark'],
             padding: ['last'],
             margin: ['last'],
         },
