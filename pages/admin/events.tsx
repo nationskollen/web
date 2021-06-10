@@ -1,6 +1,6 @@
 import Input from '@common/Input'
 import Button from '@common/Button'
-import Section from '@common/Section'
+import AdminSection from '@components/admin/AdminSection'
 import CardTitle from '@common/CardTitle'
 import MainLayout from '@layouts/admin/Main'
 import TableOfContents from '@common/TableOfContents'
@@ -22,7 +22,7 @@ const Events = () => {
                 </Button>
             </MainLayout.Sidebar>
             <MainLayout.Content>
-                <Section id="upcoming">
+                <AdminSection id="upcoming">
                     <CardTitle
                         title="Kommande evenemang"
                         subtitle="Översikt av nationens kommande evenemang"
@@ -36,8 +36,8 @@ const Events = () => {
                             <SearchIcon />
                         </Input>
                     </CardTitle>
-                </Section>
-                <Section id="old">
+                </AdminSection>
+                <AdminSection id="old">
                     <CardTitle
                         title="Gamla evenemang"
                         subtitle="Översikt av nationens gamla evenemang"
@@ -51,7 +51,7 @@ const Events = () => {
                             <SearchIcon />
                         </Input>
                     </CardTitle>
-                </Section>
+                </AdminSection>
             </MainLayout.Content>
         </MainLayout.Wrapper>
     )

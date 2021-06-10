@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '@components/admin/Header'
 import ProtectedRoute from '@components/auth/ProtectedRoute'
-import HeaderNavigation from '@components/admin/HeaderNavigation'
+import Navigation from '@components/admin/Navigation'
 
 export interface Props {
     children: React.ReactElement | React.ReactElement[]
@@ -13,7 +13,7 @@ export const Template = ({ children }: Props) => {
             <div className="relative flex flex-col h-full min-h-screen bg-background-extra dark:bg-background">
                 <div className="absolute w-screen h-screen z-behind bg-primary h-admin-header" />
                 <Header />
-                <HeaderNavigation />
+                <Navigation />
                 <main className="container relative flex flex-row items-start flex-1 h-full mx-auto mt-8 px-md mb-xlg">
                     {children}
                 </main>
