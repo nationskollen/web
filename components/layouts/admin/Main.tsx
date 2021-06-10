@@ -31,7 +31,7 @@ export const Content = ({ children }: Props) => {
 }
 
 export const Sidebar = ({ children }: Props) => {
-    return <aside className="z-30 mr-lg w-sidebar-navigation space-y-md">{children}</aside>
+    return <aside className="sticky z-30 top-admin-header mr-lg w-sidebar-navigation space-y-md">{children}</aside>
 }
 
 export default {

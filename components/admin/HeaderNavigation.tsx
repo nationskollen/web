@@ -4,7 +4,7 @@ export interface Props {}
 
 const HeaderNavigation = ({}: Props) => {
     return (
-        <nav className="h-auto py-sm">
+        <nav className="h-auto py-sm" role="navigation">
             <ul className="flex flex-row space-x-sm">
                 <NavLink title="Hem" href="/admin/dashboard" />
                 <NavLink title="Nyheter" href="/admin/news" />
