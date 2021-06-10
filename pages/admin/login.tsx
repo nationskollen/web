@@ -22,11 +22,8 @@ const Login = () => {
 
     return (
         <>
-            <Card containerClassName="space-y-md">
-                <div className="self-center text-primary-text">
-                    <Logo />
-                </div>
-                <Title text="Login" />
+            <Card containerClassName="space-y-lg">
+                <Logo containerClassNames="self-center text-primary-text" />
                 <LoginForm />
             </Card>
             <section className="flex justify-center w-full mt-md">

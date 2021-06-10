@@ -6,13 +6,14 @@
  */
 import Router from 'next/router'
 import { useCallback } from 'react'
-
-import Title from '@common/Title'
-import Button from '@common/Button'
 import { AUTH } from '@constants'
 import { useAuth } from '@contexts/Auth'
 import { useNation } from '@nationskollen/sdk'
 import { LogoutIcon } from '@heroicons/react/outline'
+
+import Title from '@common/Title'
+import Button from '@common/Button'
+import NationIcon from '@common/NationIcon'
 
 const HeaderTop = () => {
     const { token, oid } = useAuth()
@@ -29,7 +30,8 @@ const HeaderTop = () => {
         return null
     }
 
-    const { data, error } = useNation(oid)
+    // TODO: Handle error
+    const { data } = useNation(oid)
 
     return (
         <section className="container py-3 mx-auto border-b-1 border-primary-extra">
@@ -37,7 +39,7 @@ const HeaderTop = () => {
                 <div className="flex flex-row items-center space-x-md">
                     {data && (
                         <>
-                            <img src={data.icon_img_src} className="h-8" />
+                            <NationIcon src={data.icon_img_src} />
                             <Title text={data.name} className="text-white" />
                         </>
                     )}
