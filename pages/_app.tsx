@@ -3,6 +3,7 @@ import { isClient } from '@utils'
 import { PageComponent } from '@types'
 import type { AppProps } from 'next/app'
 import { Provider } from '@nationskollen/sdk'
+import { ThemeProvider } from '@contexts/Theme'
 
 const App = ({ Component, pageProps }: AppProps) => {
     const getTemplate = (Component as PageComponent).getTemplate || ((page) => page)
@@ -16,7 +17,7 @@ const App = ({ Component, pageProps }: AppProps) => {
                 useHTTPS: true,
             }}
         >
-            {getTemplate(<Component {...pageProps}></Component>)}
+            <ThemeProvider>{getTemplate(<Component {...pageProps}></Component>)}</ThemeProvider>
         </Provider>
     )
 }

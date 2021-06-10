@@ -23,15 +23,24 @@ const Radio = ({ className, as: Component, title, value, items, onChange, ...pro
     return (
         <RadioGroup value={value} onChange={onChange}>
             {title && (
-                <RadioGroup.Label as={Title} size="small">
-                    {title}
-                </RadioGroup.Label>
+                <RadioGroup.Label
+                    as={Title}
+                    size="small"
+                    text={title}
+                    className="mb-sm text-text-highlight"
+                />
             )}
             <div className={extend('cursor-pointer', className)}>
-                {items.map(({ value, ...field }) => (
-                    <RadioGroup.Option value={value}>
+                {items.map(({ value, ...field }, index) => (
+                    <RadioGroup.Option value={value} key={`${value}-${index}`}>
                         {({ checked }) => (
-                            <Component value={value} {...props} {...field} checked={checked}>
+                            <Component
+                                key={value}
+                                value={value}
+                                {...props}
+                                {...field}
+                                checked={checked}
+                            >
                                 <Checkmark checked={checked} />
                             </Component>
                         )}

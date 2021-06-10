@@ -80,7 +80,11 @@ module.exports = {
         },
     },
     variants: {
-        extend: {},
+        extend: {
+            borderWidth: ['last'],
+            padding: ['last'],
+            margin: ['last'],
+        },
     },
     plugins: [],
     corePlugins: {

@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 import { useAuth } from '@contexts/Auth'
+import { Theme, useTheme } from '@contexts/Theme'
 import {
     EyeIcon,
     LogoutIcon,
@@ -19,10 +20,10 @@ export interface Props {}
 
 const UserPopover = ({}: Props) => {
     const { logout } = useAuth()
-    const [selectedTheme, setSelectedTheme] = useState('light')
+    const { theme, setTheme } = useTheme()
 
     const changeTheme = useCallback((value: string) => {
-        setSelectedTheme(value)
+        setTheme(value as Theme)
     }, [])
 
     return (
@@ -46,19 +47,19 @@ const UserPopover = ({}: Props) => {
                     as={PopoverSectionItem}
                     onChange={changeTheme}
                     title="Tema"
-                    value={selectedTheme}
+                    value={theme}
                     className="space-y-sm"
                     items={[
-                        { value: 'light', label: 'Ljust', icon: SunIcon },
-                        { value: 'dark', label: 'Mörkt', icon: MoonIcon },
-                        { value: 'auto', label: 'Auto', icon: EyeIcon },
+                        { value: Theme.Light, label: 'Ljust', icon: SunIcon },
+                        { value: Theme.Dark, label: 'Mörkt', icon: MoonIcon },
+                        { value: Theme.Auto, label: 'Auto', icon: EyeIcon },
                     ]}
                 />
+                <Button style="primary" onClick={logout} className="w-full mt-md" size="small">
+                    <span>Logga ut</span>
+                    <LogoutIcon />
+                </Button>
             </PopoverSection>
-            <Button style="light" onClick={logout}>
-                <span>Logga ut</span>
-                <LogoutIcon />
-            </Button>
         </Popover>
     )
 }

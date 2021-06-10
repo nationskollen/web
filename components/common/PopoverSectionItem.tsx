@@ -14,7 +14,7 @@ const PopoverSectionItem = ({ checked, label, icon: IconComponent, children }: P
     const uncheckedStyle = 'bg-background-extra text-text'
 
     return (
-        <div className="flex flex-row items-center space-x-sm">
+        <div className="flex flex-row items-center group space-x-sm">
             <IconComponent className={extend(iconStyle, checked ? checkedStyle : uncheckedStyle)} />
             <p
                 className={extend(

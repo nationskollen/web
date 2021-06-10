@@ -20,7 +20,7 @@ html {
 }
 
 html.dark {
-    --color-primary-text: #ef005f;
+    --color-primary-text: #ff61a0;
     --color-secondary: #363853;
     --color-secondary-extra: #404366;
     --color-background: #0a090c;

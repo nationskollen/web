@@ -5,3 +5,5 @@ export const AUTH = {
     USER_STORAGE_KEY: 'user',
     DEFAULT_REDIRECT_ROUTE: '/admin/login',
 }
+
+export const THEME_STORAGE_KEY = 'theme'

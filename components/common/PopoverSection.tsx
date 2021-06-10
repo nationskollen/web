@@ -7,7 +7,8 @@ export interface Props {
 }
 
 const PopoverSection = ({ className, children }: Props) => {
-    const base = 'border-b-1 border-border pb-4 mb-4 border-border-dark last:border-0'
+    const base =
+        'border-b-1 border-border pb-sm mb-sm border-border-dark last:border-b-0 last:mb-0 last:pb-0'
     const classes = extend(base, className)
 
     return <section className={classes}>{children}</section>
