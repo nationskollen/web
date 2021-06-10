@@ -31,9 +31,9 @@ const CustomPopover = ({
     const buttonClasses = extend('focus:outline-none', buttonClassName)
     const cardClasses = extend('shadow-2xl dark:bg-background-highlight', cardClassName)
     const triangleClasses = combine(
-        'absolute w-4 h-4 transform rotate-45 right-md',
-        '-top-2 bg-background dark:bg-background-highlight z-behind',
-        'border-t-1 border-l-1 border-border-dark'
+        'absolute w-4 h-4 transform rotate-45 right-md -top-2 z-behind',
+        'border-t-1 border-l-1 border-card bg-background',
+        'dark:border-border-dark dark:bg-background-highlight'
     )
 
     return (

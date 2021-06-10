@@ -14,6 +14,7 @@ import {
 import Button from '@common/Button'
 import Popover from '@common/Popover'
 import RadioGroup from '@common/RadioGroup'
+import RadioPillItem from '@common/RadioPillItem'
 import PopoverSection from '@common/PopoverSection'
 import PopoverSectionItem from '@common/PopoverSectionItem'
 
@@ -53,22 +54,24 @@ const UserPopover = ({}: Props) => {
             </PopoverSection>
             <PopoverSection>
                 <RadioGroup
-                    as={PopoverSectionItem}
+                    as={RadioPillItem}
                     onChange={changeTheme}
                     title="Tema"
                     value={theme}
-                    className="space-y-md"
+                    className="flex flex-row items-center justify-between space-x-sm"
+                    itemClassName="flex-1"
+                    noCheckmark={true}
                     items={[
                         { value: Theme.Light, label: 'Ljust', icon: SunIcon },
                         { value: Theme.Dark, label: 'Mörkt', icon: MoonIcon },
                         { value: Theme.Auto, label: 'Auto', icon: EyeIcon },
                     ]}
                 />
-                <Button style="primary" onClick={logout} className="w-full mt-md" size="small">
-                    <span>Logga ut</span>
-                    <LogoutIcon />
-                </Button>
             </PopoverSection>
+            <Button style="primary" onClick={logout} className="w-full" size="small">
+                <span>Logga ut</span>
+                <LogoutIcon />
+            </Button>
         </Popover>
     )
 }

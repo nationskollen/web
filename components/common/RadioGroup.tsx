@@ -16,10 +16,22 @@ export interface Props {
     items: Array<RadioItem>
     onChange: (value: string) => void
     className?: string
+    itemClassName?: string
+    noCheckmark?: boolean
     [key: string]: unknown
 }
 
-const Radio = ({ className, as: Component, title, value, items, onChange, ...props }: Props) => {
+const Radio = ({
+    className,
+    itemClassName,
+    as: Component,
+    title,
+    value,
+    items,
+    onChange,
+    noCheckmark,
+    ...props
+}: Props) => {
     return (
         <RadioGroup value={value} onChange={onChange}>
             {title && (
@@ -32,7 +44,11 @@ const Radio = ({ className, as: Component, title, value, items, onChange, ...pro
             )}
             <div className={extend('cursor-pointer', className)}>
                 {items.map(({ value, ...field }, index) => (
-                    <RadioGroup.Option value={value} key={`${value}-${index}`}>
+                    <RadioGroup.Option
+                        value={value}
+                        key={`${value}-${index}`}
+                        className={itemClassName}
+                    >
                         {({ checked }) => (
                             <Component
                                 key={value}
@@ -41,7 +57,7 @@ const Radio = ({ className, as: Component, title, value, items, onChange, ...pro
                                 {...field}
                                 checked={checked}
                             >
-                                <Checkmark checked={checked} />
+                                {!noCheckmark && <Checkmark checked={checked} />}
                             </Component>
                         )}
                     </RadioGroup.Option>
