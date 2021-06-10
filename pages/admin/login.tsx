@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { AUTH, VERSION, CONTACT_EMAIL } from '@constants'
 import { MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 
+import Logo from '@svg/Logo'
 import Card from '@common/Card'
 import Title from '@common/Title'
 import Button from '@common/Button'
@@ -12,7 +13,7 @@ import LoginLayout from '@layouts/admin/Login'
 
 const Login = () => {
     useEffect(() => {
-        const token = localStorage.getItem(AUTH.TOKEN_STORAGE_KEY)
+        const token = localStorage.getItem(AUTH.USER_STORAGE_KEY)
 
         if (token) {
             Router.push('/admin/dashboard')
@@ -21,8 +22,8 @@ const Login = () => {
 
     return (
         <>
-            <Card containerClassName="space-y-md">
-                <Title text="Login" />
+            <Card containerClassName="space-y-lg">
+                <Logo containerClassNames="self-center text-primary-text" />
                 <LoginForm />
             </Card>
             <section className="flex justify-center w-full mt-md">
@@ -36,7 +37,7 @@ const Login = () => {
             <section className="absolute bottom-0 flex flex-col items-center w-full text-white">
                 <Button style="primary" className="mb-lg" href={`mailto://${CONTACT_EMAIL}`}>
                     <MailIcon className="h-6" />
-                    <span className="font-bold">{CONTACT_EMAIL}</span>
+                    <span>{CONTACT_EMAIL}</span>
                 </Button>
                 <p className="font-bold">{VERSION}</p>
                 <p className="text-sm text-primary-text-light">Team Krabby</p>

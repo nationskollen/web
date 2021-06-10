@@ -1,9 +1,10 @@
 import React from 'react'
+import { extend } from '@utils'
 
 export type TitleSizes = 'small' | 'default' | 'large'
 
 export interface Props {
-    text: string
+    text?: string
     size?: TitleSizes
     className?: string
 }
@@ -15,9 +16,13 @@ const TITLE_SIZES: Record<TitleSizes, string> = {
 }
 
 const Title = ({ text, size, className }: Props) => {
+    // Skip rendering if we have no text
+    if (!text) {
+        return null
+    }
+
     const sizing = size ? TITLE_SIZES[size] : TITLE_SIZES['default']
-    const base = `text-text-highlight ${sizing}`
-    const classes = className ? `${base} ${className}` : base
+    const classes = extend(sizing, className)
 
     if (!size || size === 'default') {
         return <h2 className={classes}>{text}</h2>

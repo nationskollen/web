@@ -23,12 +23,15 @@ import { extend, combine } from '@utils'
 import { Field, FieldProps, FieldInputProps } from 'formik'
 
 export type InputSizes = 'small' | 'default' | 'large'
-export type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>
+export type InputStyles = 'transparent' | 'no-border'
+export type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'style'>
 
 export interface Props extends NativeInputProps {
     size?: InputSizes
     label?: string
+    style?: InputStyles
     inputClassName?: string
+    containerClassName?: string
     children?: React.ReactElement | React.ReactElement[]
 }
 
@@ -36,6 +39,18 @@ const INPUT_SIZES: Record<InputSizes, string> = {
     small: 'h-8 text-sm',
     default: 'h-12',
     large: 'h-14',
+}
+
+const INPUT_STYLES: Record<InputStyles, string> = {
+    'transparent': [
+        'bg-transparent text-text-extra border-1 border-border-dark',
+        'focus-within:text-text-highlight focus-within:border-transparent',
+        'dark:bg-background-highlight dark:border-background-highlight',
+    ].join(' '),
+    'no-border': [
+        'bg-transparent text focus-within:border-text',
+        'focus-within:text-text-highlight',
+    ].join(' '),
 }
 
 const Input = ({
@@ -46,17 +61,18 @@ const Input = ({
     label,
     className,
     inputClassName,
+    containerClassName,
     children,
     onChange,
     ...props
 }: Props) => {
     const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
-    const baseStyle = 'focus:ring-2 flex flex-col justify-center'
+    const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
+    const baseStyle = 'rounded-sm flex flex-col justify-center'
     const containerStyle = combine(
-        'bg-transparent text-text-extra focus-within:border-text',
-        'focus-within:text-text-highlight flex lex-row items-center',
-        'rounded-sm focus:outline-none px-3 border-1 border-border-dark',
-        sizing
+        'flex flex-row items-center rounded-sm focus-within:outline-default px-3',
+        sizing,
+        styling
     )
     const inputStyle = extend(
         'flex-1 h-full focus:outline-none bg-transparent text-text-highlight',
@@ -71,9 +87,15 @@ const Input = ({
                         {label}
                     </label>
                 )}
-                <div className={extend(containerStyle, inputClassName)}>
+                <div className={extend(containerStyle, containerClassName)}>
                     {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
-                    <input id={id} type={type} className={inputStyle} {...props} {...fieldProps} />
+                    <input
+                        id={id}
+                        type={type}
+                        className={extend(inputStyle, inputClassName)}
+                        {...props}
+                        {...fieldProps}
+                    />
                 </div>
             </div>
         )

@@ -6,6 +6,8 @@ module.exports = {
             'white': 'white',
             'current': 'currentColor',
             'transparent': 'transparent',
+            'focus-primary': 'var(--color-focus-primary)',
+            'focus-default': 'var(--color-focus-default)',
             'primary': 'var(--color-primary)',
             'primary-dark': 'var(--color-primary-dark)',
             'primary-extra': 'var(--color-primary-extra)',
@@ -30,7 +32,7 @@ module.exports = {
             sm: '5px',
             DEFAULT: '10px',
             lg: '15px',
-            full: '25%',
+            full: '50%',
         },
         borderWidth: {
             0: '0px',
@@ -64,6 +66,7 @@ module.exports = {
             width: {
                 'sidebar-navigation': '18rem',
                 'login-modal': '22rem',
+                'user-popover': '22rem',
             },
             minWidth: {
                 'login-background': '1100px',
@@ -76,10 +79,21 @@ module.exports = {
                 'admin-header': '4.5rem',
                 '-admin-header': '-4.5rem',
             },
+            outline: {
+                primary: '2px solid var(--color-focus-primary)',
+                default: '2px solid var(--color-focus-default)',
+            },
         },
     },
     variants: {
-        extend: {},
+        extend: {
+            borderWidth: ['last', 'dark'],
+            borderColor: ['dark'],
+            padding: ['last'],
+            margin: ['last'],
+            filter: ['dark'],
+            brightness: ['dark'],
+        },
     },
     plugins: [],
     corePlugins: {

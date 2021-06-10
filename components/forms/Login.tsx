@@ -18,8 +18,8 @@ const LoginForm = () => {
         // TODO: Set this to false when we get a response from the server
         setSubmitting(false)
 
-        // TODO: Set correct token
-        localStorage.setItem(AUTH.TOKEN_STORAGE_KEY, 'token')
+        // TODO: Set correct token and oid
+        localStorage.setItem(AUTH.USER_STORAGE_KEY, JSON.stringify({ token: 'token', oid: 400 }))
 
         // We use replace here since going back in the history will only redirect you
         // to the same page as you are currently on. Replacing the history means that
@@ -35,20 +35,28 @@ const LoginForm = () => {
             }}
             onSubmit={handleSumbit}
         >
-            <Form className="space-y-md">
-                <Input id="email" label="Email" type="email" placeholder="din@email.se" required>
-                    <MailIcon />
-                </Input>
-                <Input
-                    id="password"
-                    label="Lösenord"
-                    type="password"
-                    placeholder="Lösenord"
-                    required
-                >
-                    <LockClosedIcon />
-                </Input>
-                <Button style="secondary" className="w-full" type="submit">
+            <Form>
+                <div className="space-y-md">
+                    <Input
+                        id="email"
+                        label="Email"
+                        type="email"
+                        placeholder="din@email.se"
+                        required
+                    >
+                        <MailIcon />
+                    </Input>
+                    <Input
+                        id="password"
+                        label="Lösenord"
+                        type="password"
+                        placeholder="Lösenord"
+                        required
+                    >
+                        <LockClosedIcon />
+                    </Input>
+                </div>
+                <Button style="secondary" className="w-full mt-6" type="submit">
                     <span>Logga in</span>
                     <LoginIcon />
                 </Button>

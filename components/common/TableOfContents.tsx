@@ -29,7 +29,7 @@ export interface Props {
     sections: Array<Section>
 }
 
-const SidebarNavigation = ({ sections }: Props) => {
+const TableOfContents = ({ sections }: Props) => {
     if (sections.length === 0) {
         return null
     }
@@ -41,10 +41,10 @@ const SidebarNavigation = ({ sections }: Props) => {
     }, [sections])
 
     return (
-        <Card className="sticky top-admin-header pb-sm" label="Innehåll" noPadding={true}>
+        <Card label="Innehåll" noPadding={true}>
             <ul className="p-sm">{content}</ul>
         </Card>
     )
 }
 
-export default SidebarNavigation
+export default TableOfContents
