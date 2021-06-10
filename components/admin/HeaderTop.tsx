@@ -4,12 +4,8 @@
  *
  * @module Header
  */
-import Router from 'next/router'
-import { useCallback } from 'react'
-import { AUTH } from '@constants'
 import { useAuth } from '@contexts/Auth'
 import { useNation } from '@nationskollen/sdk'
-import { LogoutIcon } from '@heroicons/react/outline'
 
 import Title from '@common/Title'
 import NationIcon from '@common/NationIcon'

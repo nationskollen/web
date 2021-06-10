@@ -10,14 +10,11 @@ export interface Props {
 
 const Section = ({ id, children }: Props) => {
     const router = useRouter()
-    const active =
-        router.asPath.split('#')[1] === id
-            ? 'ring-2 ring-primary-extra dark:ring-primary-text ring-opacity-60'
-            : ''
+    const active = router.asPath.split('#')[1] === id
 
     return (
         <Anchor id={id}>
-            <Card className={active}>{children}</Card>
+            <Card active={active}>{children}</Card>
         </Anchor>
     )
 }

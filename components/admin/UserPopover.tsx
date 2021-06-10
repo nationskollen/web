@@ -31,6 +31,7 @@ const UserPopover = ({}: Props) => {
             cardClassName="w-user-popover"
             buttonStyle="primary-extra"
             buttonClassName="px-xsm rounded"
+            buttonFocus="primary"
             button={(open) => (
                 <>
                     <span>Fredrik Engstrand</span>
@@ -48,7 +49,7 @@ const UserPopover = ({}: Props) => {
                     onChange={changeTheme}
                     title="Tema"
                     value={theme}
-                    className="space-y-sm"
+                    className="space-y-md"
                     items={[
                         { value: Theme.Light, label: 'Ljust', icon: SunIcon },
                         { value: Theme.Dark, label: 'Mörkt', icon: MoonIcon },

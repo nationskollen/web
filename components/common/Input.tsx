@@ -43,12 +43,12 @@ const INPUT_SIZES: Record<InputSizes, string> = {
 
 const INPUT_STYLES: Record<InputStyles, string> = {
     'transparent': [
-        'bg-transparent text-text-extra focus-within:border-text',
+        'bg-transparent text-text-extra focus-within:border-transparent',
         'focus-within:text-text-highlight border-1 border-border-dark',
     ].join(' '),
     'no-border': [
         'bg-transparent text focus-within:border-text',
-        'focus-within-text-text-highlight',
+        'focus-within:text-text-highlight',
     ].join(' '),
 }
 
@@ -67,9 +67,9 @@ const Input = ({
 }: Props) => {
     const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
     const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
-    const baseStyle = 'focus:ring-2 flex flex-col justify-center'
+    const baseStyle = 'rounded-sm flex flex-col justify-center'
     const containerStyle = combine(
-        'flex flex-row items-center rounded-sm focus:outline-none px-3',
+        'flex flex-row items-center rounded-sm focus-within:outline-default px-3',
         sizing,
         styling
     )

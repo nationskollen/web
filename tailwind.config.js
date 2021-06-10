@@ -6,6 +6,7 @@ module.exports = {
             'white': 'white',
             'current': 'currentColor',
             'transparent': 'transparent',
+            'focus': 'var(--color-focus)',
             'primary': 'var(--color-primary)',
             'primary-dark': 'var(--color-primary-dark)',
             'primary-extra': 'var(--color-primary-extra)',
@@ -77,11 +78,15 @@ module.exports = {
                 'admin-header': '4.5rem',
                 '-admin-header': '-4.5rem',
             },
+            outline: {
+                primary: '2px solid var(--color-focus-primary)',
+                default: '2px solid var(--color-focus-default)',
+            },
         },
     },
     variants: {
         extend: {
-            borderWidth: ['last'],
+            borderWidth: ['last', 'dark'],
             borderColor: ['dark'],
             padding: ['last'],
             margin: ['last'],

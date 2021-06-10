@@ -11,13 +11,14 @@ export interface Props {
 const SidebarNavigationLink = ({ section }: Props) => {
     const router = useRouter()
     const active = router.asPath.split('#')[1] === section.href.substring(1)
-    const classes = active
-        ? 'text-primary bg-primary-highlight dark:bg-background-highlight dark:text-primary-highlight'
-        : 'text-text'
+    const activeStyle =
+        'text-primary bg-primary-highlight dark:bg-background-highlight dark:text-primary-highlight'
+    const inactiveStyle = 'text-text'
+    const classes = `focus:outline-default ${active ? activeStyle : inactiveStyle}`
 
     return (
         <Link href={active ? router.pathname : section.href}>
-            <li className="">
+            <li className="mb-sm last:mb-0">
                 <a
                     className={`flex flex-row items-center w-full pl-md pr-xsm h-10 rounded-sm ${classes}`}
                     href={section.href}

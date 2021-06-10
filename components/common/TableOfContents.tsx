@@ -41,7 +41,7 @@ const TableOfContents = ({ sections }: Props) => {
     }, [sections])
 
     return (
-        <Card className="pb-sm" label="Innehåll" noPadding={true}>
+        <Card label="Innehåll" noPadding={true}>
             <ul className="p-sm">{content}</ul>
         </Card>
     )

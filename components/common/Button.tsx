@@ -26,11 +26,13 @@
 import React from 'react'
 
 export type ButtonSizes = 'small' | 'default' | 'large'
+export type ButtonFocusStyles = 'primary' | 'default'
 export type ButtonStyles = 'primary' | 'primary-extra' | 'secondary' | 'light' | 'transparent'
 
 export interface Props {
     href?: string
     type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
+    focus?: ButtonFocusStyles
     size?: ButtonSizes
     style?: ButtonStyles
     className?: string
@@ -47,6 +49,11 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'transparent': 'bg-transparent',
 }
 
+const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
+    primary: 'focus:outline-primary',
+    default: 'focus:outline-default',
+}
+
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
     small: 'h-10 text-sm p-3 space-x-xsm',
     default: 'h-12 p-3 space-x-sm',
@@ -57,10 +64,14 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
 // to Link components. The only requirement to make it work is to
 // set passHref={true} on the Link.
 const Button = React.forwardRef(
-    ({ size, type, href, style, className, onClick, children, ...props }: Props, ref: any) => {
-        const styles = style ? BUTTON_STYLES[style] : BUTTON_STYLES['primary']
+    (
+        { size, focus, type, href, style, className, onClick, children, ...props }: Props,
+        ref: any
+    ) => {
         const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']
-        const base = `focus:ring-2 focus:outline-none rounded-sm font-bold ${styles}`
+        const colorStyle = style ? BUTTON_STYLES[style] : BUTTON_STYLES['primary']
+        const focusStyle = focus ? BUTTON_FOCUS_STYLES[focus] : BUTTON_FOCUS_STYLES['default']
+        const base = `focus:outline-focus rounded-sm font-bold ${colorStyle} ${focusStyle}`
         const classes = className ? `${base} ${className}` : base
         const content = (
             <div className={`flex flex-row items-center justify-center ${sizing}`}>{children}</div>

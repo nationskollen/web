@@ -11,7 +11,7 @@ const CardTitle = ({ title, subtitle, children }: Props) => {
     return (
         <section className="flex flex-row items-start justify-between">
             <div>
-                <Title text={title} />
+                <Title text={title} className="text-text-highlight" />
                 <p className="leading-snug text-md">{subtitle}</p>
             </div>
             {children}

@@ -1,11 +1,9 @@
 import HeaderTop from '@components/admin/HeaderTop'
-import HeaderNavigation from '@components/admin/HeaderNavigation'
 
 const Header = () => {
     return (
-        <header className="container relative z-30 mx-auto text-white px-md bg-primary h-admin-header-content">
+        <header className="container relative z-30 mx-auto text-white px-md bg-primary">
             <HeaderTop />
-            <HeaderNavigation />
         </header>
     )
 }

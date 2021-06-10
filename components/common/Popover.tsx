@@ -10,6 +10,7 @@ export interface Props {
     button: (open: boolean) => React.ReactElement
     buttonStyle?: ButtonStyles
     buttonClassName?: string
+    buttonFocus?: string
     cardClassName?: string
     children?: React.ReactElement | React.ReactElement[]
 }
@@ -19,6 +20,7 @@ const CustomPopover = ({
     button,
     buttonStyle,
     buttonClassName,
+    buttonFocus,
     children,
 }: Props) => {
     const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>()
@@ -43,6 +45,7 @@ const CustomPopover = ({
                         as={Button}
                         style={buttonStyle}
                         className={buttonClasses}
+                        focus={buttonFocus}
                     >
                         {button(open)}
                     </Popover.Button>

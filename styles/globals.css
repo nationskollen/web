@@ -1,4 +1,6 @@
 html {
+    --color-focus-primary: #fd78ae;
+    --color-focus-default: #b9004b;
     --color-primary: #71002e;
     --color-primary-dark: #590326;
     --color-primary-extra: #91053d;
@@ -20,6 +22,7 @@ html {
 }
 
 html.dark {
+    --color-focus-default: #e84889;
     --color-primary-text: #ff61a0;
     --color-secondary: #363853;
     --color-secondary-extra: #404366;

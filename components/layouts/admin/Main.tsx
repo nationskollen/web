@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '@components/admin/Header'
-import FixedHeader from '@components/admin/FixedHeader'
 import ProtectedRoute from '@components/auth/ProtectedRoute'
+import HeaderNavigation from '@components/admin/HeaderNavigation'
 
 export interface Props {
     children: React.ReactElement | React.ReactElement[]
@@ -10,11 +10,11 @@ export interface Props {
 export const Template = ({ children }: Props) => {
     return (
         <ProtectedRoute>
-            <div className="flex flex-col h-full min-h-screen bg-background-extra dark:bg-background">
+            <div className="relative flex flex-col h-full min-h-screen bg-background-extra dark:bg-background">
                 <div className="absolute w-screen h-screen z-behind bg-primary h-admin-header" />
                 <Header />
-                <FixedHeader />
-                <main className="container relative flex flex-row items-start flex-1 h-full mx-auto px-md mt-md mb-xlg">
+                <HeaderNavigation />
+                <main className="container relative flex flex-row items-start flex-1 h-full mx-auto mt-8 px-md mb-xlg">
                     {children}
                 </main>
             </div>
@@ -31,7 +31,11 @@ export const Content = ({ children }: Props) => {
 }
 
 export const Sidebar = ({ children }: Props) => {
-    return <aside className="sticky z-30 top-admin-header mr-lg w-sidebar-navigation space-y-md">{children}</aside>
+    return (
+        <aside className="sticky z-30 top-admin-header mr-lg w-sidebar-navigation space-y-md">
+            {children}
+        </aside>
+    )
 }
 
 export default {
