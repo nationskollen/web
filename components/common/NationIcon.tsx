@@ -5,7 +5,7 @@ import { extend } from '@utils'
 export type IconSize = 'small' | 'default' | 'large'
 
 export interface Props {
-    src: string | null
+    src?: string | null
     size?: IconSize
     href?: string
     className?: string

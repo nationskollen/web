@@ -11,13 +11,16 @@
     "docs:watch": "npx typedoc --categorizeByGroup true components/** pages/** --watch"
   },
   "dependencies": {
+    "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
     "@nationskollen/sdk": "^2.4.2",
+    "@popperjs/core": "^2.9.2",
     "formik": "^2.2.9",
     "next": "10.2.3",
     "react": "17.0.2",
     "react-async-hook": "^3.6.2",
     "react-dom": "17.0.2",
+    "react-popper": "^2.2.5",
     "swr": "^0.5.6"
   },
   "devDependencies": {

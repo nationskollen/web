@@ -12,16 +12,11 @@ import { useNation } from '@nationskollen/sdk'
 import { LogoutIcon } from '@heroicons/react/outline'
 
 import Title from '@common/Title'
-import Button from '@common/Button'
 import NationIcon from '@common/NationIcon'
+import UserPopover from '@components/admin/UserPopover'
 
 const HeaderTop = () => {
-    const { token, oid } = useAuth()
-
-    const logout = useCallback(() => {
-        localStorage.removeItem(AUTH.USER_STORAGE_KEY)
-        Router.replace('/admin/login')
-    }, [])
+    const { token, oid, logout } = useAuth()
 
     // Make sure to "logout" if we are not authenticated
     // and prevent fetching data
@@ -37,21 +32,12 @@ const HeaderTop = () => {
         <section className="container py-3 mx-auto border-b-1 border-primary-extra">
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row items-center space-x-md">
-                    {data && (
-                        <>
-                            <NationIcon src={data.icon_img_src} />
-                            <Title text={data.name} className="text-white" />
-                        </>
-                    )}
+                    <NationIcon src={data?.icon_img_src} />
+                    <Title text={data?.name} className="text-white" />
                 </div>
-                <Button
-                    style="transparent"
-                    onClick={logout}
-                    className="rounded border-1 border-primary-extra hover:bg-primary-extra"
-                >
-                    <span>Logga ut</span>
-                    <LogoutIcon />
-                </Button>
+                <div className="flex flex-row space-x-md">
+                    <UserPopover />
+                </div>
             </div>
         </section>
     )

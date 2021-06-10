@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import Router from 'next/router'
 import { AUTH } from '@constants'
 import { isClient } from '@utils'
@@ -31,8 +31,13 @@ const ProtectedRoute = ({ redirectTo, children }: Props) => {
         }
     }, [])
 
+    const logout = useCallback(() => {
+        localStorage.removeItem(AUTH.USER_STORAGE_KEY)
+        Router.replace('/admin/login')
+    }, [])
+
     return (
-        <AuthProvider value={{ token, oid }}>
+        <AuthProvider value={{ token, oid, logout }}>
             {token ? (
                 children
             ) : (

@@ -64,6 +64,7 @@ module.exports = {
             width: {
                 'sidebar-navigation': '18rem',
                 'login-modal': '22rem',
+                'user-popover': '18rem',
             },
             minWidth: {
                 'login-background': '1100px',

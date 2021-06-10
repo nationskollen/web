@@ -26,23 +26,25 @@
 import React from 'react'
 
 export type ButtonSizes = 'small' | 'default' | 'large'
-export type ButtonTypes = 'primary' | 'secondary' | 'light' | 'transparent'
+export type ButtonStyles = 'primary' | 'primary-extra' | 'secondary' | 'light' | 'transparent'
 
 export interface Props {
     href?: string
     type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
     size?: ButtonSizes
-    style?: ButtonTypes
+    style?: ButtonStyles
     className?: string
     onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
     children?: Element | React.ReactElement | React.ReactElement[]
+    [key: string]: unknown
 }
 
-const BUTTON_STYLES: Record<ButtonTypes, string> = {
-    primary: 'bg-primary text-white hover:bg-primary-extra',
-    secondary: 'bg-secondary text-white hover:bg-secondary-extra',
-    light: 'bg-background-highlight text-text-highlight',
-    transparent: 'bg-transparent',
+const BUTTON_STYLES: Record<ButtonStyles, string> = {
+    'primary': 'bg-primary text-white hover:bg-primary-extra',
+    'primary-extra': 'bg-primary-extra text-white hover:bg-secondary focus:bg-secondary',
+    'secondary': 'bg-secondary text-white hover:bg-secondary-extra',
+    'light': 'bg-background-highlight text-text-highlight',
+    'transparent': 'bg-transparent',
 }
 
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
@@ -55,7 +57,7 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
 // to Link components. The only requirement to make it work is to
 // set passHref={true} on the Link.
 const Button = React.forwardRef(
-    ({ size, type, href, style, className, onClick, children }: Props, ref: any) => {
+    ({ size, type, href, style, className, onClick, children, ...props }: Props, ref: any) => {
         const styles = style ? BUTTON_STYLES[style] : BUTTON_STYLES['primary']
         const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']
         const base = `focus:ring-2 focus:outline-none rounded-sm font-bold ${styles}`
@@ -66,14 +68,20 @@ const Button = React.forwardRef(
 
         if (href) {
             return (
-                <a className={classes} href={href} onClick={onClick} ref={ref}>
+                <a className={classes} href={href} onClick={onClick} ref={ref} {...props}>
                     {content}
                 </a>
             )
         }
 
         return (
-            <button className={classes} onClick={onClick} type={type || 'button'}>
+            <button
+                className={classes}
+                onClick={onClick}
+                type={type || 'button'}
+                ref={ref}
+                {...props}
+            >
                 {content}
             </button>
         )
