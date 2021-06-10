@@ -35,20 +35,28 @@ const LoginForm = () => {
             }}
             onSubmit={handleSumbit}
         >
-            <Form className="space-y-md">
-                <Input id="email" label="Email" type="email" placeholder="din@email.se" required>
-                    <MailIcon />
-                </Input>
-                <Input
-                    id="password"
-                    label="Lösenord"
-                    type="password"
-                    placeholder="Lösenord"
-                    required
-                >
-                    <LockClosedIcon />
-                </Input>
-                <Button style="secondary" className="w-full" type="submit">
+            <Form>
+                <div className="space-y-md">
+                    <Input
+                        id="email"
+                        label="Email"
+                        type="email"
+                        placeholder="din@email.se"
+                        required
+                    >
+                        <MailIcon />
+                    </Input>
+                    <Input
+                        id="password"
+                        label="Lösenord"
+                        type="password"
+                        placeholder="Lösenord"
+                        required
+                    >
+                        <LockClosedIcon />
+                    </Input>
+                </div>
+                <Button style="secondary" className="w-full mt-6" type="submit">
                     <span>Logga in</span>
                     <LoginIcon />
                 </Button>

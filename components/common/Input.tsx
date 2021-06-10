@@ -43,8 +43,9 @@ const INPUT_SIZES: Record<InputSizes, string> = {
 
 const INPUT_STYLES: Record<InputStyles, string> = {
     'transparent': [
-        'bg-transparent text-text-extra focus-within:border-transparent',
-        'focus-within:text-text-highlight border-1 border-border-dark',
+        'bg-transparent text-text-extra border-1 border-border-dark',
+        'focus-within:text-text-highlight focus-within:border-transparent',
+        'dark:bg-background-highlight dark:border-background-highlight',
     ].join(' '),
     'no-border': [
         'bg-transparent text focus-within:border-text',

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { useAuth } from '@contexts/Auth'
 import { Theme, useTheme } from '@contexts/Theme'
 import {
@@ -8,6 +8,7 @@ import {
     MoonIcon,
     ChevronDownIcon,
     ChevronUpIcon,
+    UserIcon,
 } from '@heroicons/react/outline'
 
 import Button from '@common/Button'
@@ -39,9 +40,16 @@ const UserPopover = ({}: Props) => {
                 </>
             )}
         >
-            <PopoverSection>
-                <p className="font-bold leading-none text-text-highlight">fredrik@engstrand.nu</p>
-                <p className="text-sm font-bold text-primary-text">Admin</p>
+            <PopoverSection className="flex flex-row items-center">
+                <div className="rounded-full p-sm dark:bg-border-dark bg-border mr-sm">
+                    <UserIcon className="w-5 h-5" />
+                </div>
+                <div>
+                    <p className="font-bold leading-none text-text-highlight">
+                        fredrik@engstrand.nu
+                    </p>
+                    <p className="text-sm font-bold text-primary-text">Admin</p>
+                </div>
             </PopoverSection>
             <PopoverSection>
                 <RadioGroup

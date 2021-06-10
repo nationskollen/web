@@ -1,4 +1,5 @@
 import React from 'react'
+import { combine } from '@utils'
 import { CheckIcon } from '@heroicons/react/solid'
 
 export interface Props {
@@ -7,7 +8,12 @@ export interface Props {
 
 const Checkmark = ({ checked }: Props) => {
     return (
-        <div className="w-5 h-5 p-0 rounded-sm border-border-dark border-1">
+        <div
+            className={combine(
+                'w-5 h-5 p-0 rounded-sm border-2',
+                checked ? 'border-text-highlight' : 'border-border-dark'
+            )}
+        >
             <CheckIcon
                 className={
                     checked ? 'text-text-highlight' : 'group-hover:text-text-extra text-transparent'

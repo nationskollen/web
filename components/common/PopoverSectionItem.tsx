@@ -1,5 +1,5 @@
 import React from 'react'
-import { extend } from '@utils'
+import { combine } from '@utils'
 
 export interface Props {
     label: string
@@ -14,12 +14,14 @@ const PopoverSectionItem = ({ checked, label, icon: IconComponent, children }: P
     const uncheckedStyle = 'bg-background-extra text-text'
 
     return (
-        <div className="flex flex-row items-center group space-x-sm">
-            <IconComponent className={extend(iconStyle, checked ? checkedStyle : uncheckedStyle)} />
+        <div className="flex flex-row items-center group space-x-sm text-text focus:text-primary">
+            <IconComponent
+                className={combine(iconStyle, checked ? checkedStyle : uncheckedStyle)}
+            />
             <p
-                className={extend(
+                className={combine(
                     'flex-1',
-                    checked ? 'text-primary-text dark:text-text-highlight' : 'text-text'
+                    checked ? 'text-primary-text dark:text-text-highlight' : ''
                 )}
             >
                 {label}
