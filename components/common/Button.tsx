@@ -41,7 +41,7 @@ export interface Props {
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'primary': 'bg-primary text-white hover:bg-primary-extra',
-    'primary-extra': 'bg-primary-extra text-white hover:bg-secondary focus:bg-secondary',
+    'primary-extra': 'bg-primary-extra text-white',
     'secondary': 'bg-secondary text-white hover:bg-secondary-extra',
     'light': 'bg-background-highlight text-text-highlight',
     'transparent': 'bg-transparent',

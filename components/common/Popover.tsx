@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { extend } from '@utils'
+import { combine, extend } from '@utils'
 import { usePopper } from 'react-popper'
 import { Popover } from '@headlessui/react'
 
@@ -27,7 +27,12 @@ const CustomPopover = ({
         placement: 'bottom-end',
     })
     const buttonClasses = extend('focus:outline-none', buttonClassName)
-    const cardClasses = extend('shadow-2xl', cardClassName)
+    const cardClasses = extend('shadow-2xl dark:bg-background-highlight', cardClassName)
+    const triangleClasses = combine(
+        'absolute w-4 h-4 transform rotate-45 right-md',
+        '-top-2 bg-background dark:bg-background-highlight z-behind',
+        'border-t-1 border-l-1 border-border-dark'
+    )
 
     return (
         <Popover className="relative">
@@ -48,7 +53,7 @@ const CustomPopover = ({
                         {...attributes.popper}
                     >
                         <Card className={cardClasses} containerClassName="relative">
-                            <div className="absolute w-8 h-8 transform rotate-45 right-3 -top-1 bg-background" />
+                            <div className={triangleClasses} />
                             <>{children}</>
                         </Card>
                     </Popover.Panel>
