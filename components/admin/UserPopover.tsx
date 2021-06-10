@@ -1,10 +1,17 @@
 import React, { useState, useCallback } from 'react'
 import { useAuth } from '@contexts/Auth'
-import { LogoutIcon, MoonIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/outline'
+import {
+    EyeIcon,
+    LogoutIcon,
+    SunIcon,
+    MoonIcon,
+    ChevronDownIcon,
+    ChevronUpIcon,
+} from '@heroicons/react/outline'
 
 import Button from '@common/Button'
 import Popover from '@common/Popover'
-import Checkbox from '@common/Checkbox'
+import RadioGroup from '@common/RadioGroup'
 import PopoverSection from '@common/PopoverSection'
 import PopoverSectionItem from '@common/PopoverSectionItem'
 
@@ -12,10 +19,10 @@ export interface Props {}
 
 const UserPopover = ({}: Props) => {
     const { logout } = useAuth()
-    const [darkMode, setDarkMode] = useState(false)
+    const [selectedTheme, setSelectedTheme] = useState('light')
 
-    const changeTheme = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setDarkMode(e.target.checked)
+    const changeTheme = useCallback((value: string) => {
+        setSelectedTheme(value)
     }, [])
 
     return (
@@ -35,9 +42,18 @@ const UserPopover = ({}: Props) => {
                 <p className="text-sm font-bold text-primary-text">Admin</p>
             </PopoverSection>
             <PopoverSection>
-                <PopoverSectionItem icon={MoonIcon} label="Tema">
-                    <Checkbox onChange={changeTheme} checked={darkMode} />
-                </PopoverSectionItem>
+                <RadioGroup
+                    as={PopoverSectionItem}
+                    onChange={changeTheme}
+                    title="Tema"
+                    value={selectedTheme}
+                    className="space-y-sm"
+                    items={[
+                        { value: 'light', label: 'Ljust', icon: SunIcon },
+                        { value: 'dark', label: 'Mörkt', icon: MoonIcon },
+                        { value: 'auto', label: 'Auto', icon: EyeIcon },
+                    ]}
+                />
             </PopoverSection>
             <Button style="light" onClick={logout}>
                 <span>Logga ut</span>

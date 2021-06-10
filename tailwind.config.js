@@ -30,7 +30,7 @@ module.exports = {
             sm: '5px',
             DEFAULT: '10px',
             lg: '15px',
-            full: '25%',
+            full: '50%',
         },
         borderWidth: {
             0: '0px',
