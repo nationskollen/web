@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { combine, extend } from '@utils'
 import { usePopper } from 'react-popper'
-import { Popover } from '@headlessui/react'
+import { Popover, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
 import Button, { ButtonStyles } from '@common/Button'
@@ -26,7 +26,7 @@ const CustomPopover = ({
     const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>()
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>()
     const { styles, attributes } = usePopper(referenceElement, popperElement, {
-        placement: 'bottom-end',
+        placement: 'bottom-start',
     })
     const buttonClasses = extend('focus:outline-none', buttonClassName)
     const cardClasses = extend('shadow-2xl dark:bg-background-highlight', cardClassName)
@@ -49,17 +49,25 @@ const CustomPopover = ({
                     >
                         {button(open)}
                     </Popover.Button>
-                    <Popover.Panel
+                    <Transition
                         ref={setPopperElement}
-                        style={styles.popper}
-                        className="pt-md"
+                        show={open}
+                        enter="transition duration-100 ease-out"
+                        enterFrom="transform scale-90 opacity-0"
+                        enterTo="transform scale-100 opacity-100"
+                        leave="transition duration-75 ease-out"
+                        leaveFrom="transform scale-100 opacity-100"
+                        leaveTo="transform scale-90 opacity-0"
+                        className="absolute right-0 top-12"
                         {...attributes.popper}
                     >
-                        <Card className={cardClasses} containerClassName="relative">
-                            <div className={triangleClasses} />
-                            <>{children}</>
-                        </Card>
-                    </Popover.Panel>
+                        <Popover.Panel static={true} className="pt-md">
+                            <Card className={cardClasses} containerClassName="relative">
+                                <div className={triangleClasses} />
+                                <>{children}</>
+                            </Card>
+                        </Popover.Panel>
+                    </Transition>
                 </>
             )}
         </Popover>
