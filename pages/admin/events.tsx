@@ -26,54 +26,54 @@ const Events = () => {
                 noPadding={true}
                 cardTitleClassName="p-md"
                 steps={[
-                    ({ currentStep, totalSteps, next }) => ({
-                        title: 'Skapa ny event',
-                        description: `Steg ${currentStep + 1} / ${totalSteps}`,
-                        content: (
-                            <ModalContent.Wrapper>
-                                <ModalContent.Main>
-                                    <p>Hello</p>
-                                </ModalContent.Main>
-                                <ModalContent.Actions className="space-between">
-                                    <Button
-                                        style="light"
-                                        size="small"
-                                        onClick={() => setModalOpen(false)}
-                                    >
-                                        <span>Avbryt</span>
-                                    </Button>
-                                    <Button style="primary" size="small" onClick={next}>
-                                        <span>Välj bild</span>
-                                        <ArrowRightIcon />
-                                    </Button>
-                                </ModalContent.Actions>
-                            </ModalContent.Wrapper>
-                        ),
-                    }),
-                    ({ currentStep, totalSteps, previous }) => ({
-                        title: 'Lägg till en bild',
-                        description: `Steg ${currentStep + 1} / ${totalSteps}`,
-                        content: (
-                            <ModalContent.Wrapper>
-                                <ModalContent.Main>
-                                    <p>Bild</p>
-                                </ModalContent.Main>
-                                <ModalContent.Actions>
-                                    <Button style="light" size="small" onClick={previous}>
-                                        <span>Tillbaka</span>
-                                    </Button>
-                                    <Button
-                                        style="primary"
-                                        size="small"
-                                        onClick={() => console.log('submit')}
-                                    >
-                                        <span>Skapa</span>
-                                        <PlusIcon />
-                                    </Button>
-                                </ModalContent.Actions>
-                            </ModalContent.Wrapper>
-                        ),
-                    }),
+                    ({ currentStep, totalSteps, next }) => (
+                        <ModalContent.Wrapper>
+                            <ModalContent.Header
+                                title="Skapa ny event"
+                                description={`Steg ${currentStep + 1} / ${totalSteps}`}
+                            />
+                            <ModalContent.Main>
+                                <p>Hello</p>
+                            </ModalContent.Main>
+                            <ModalContent.Actions className="space-between">
+                                <Button
+                                    style="light"
+                                    size="small"
+                                    onClick={() => setModalOpen(false)}
+                                >
+                                    <span>Avbryt</span>
+                                </Button>
+                                <Button style="primary" size="small" onClick={next}>
+                                    <span>Välj bild</span>
+                                    <ArrowRightIcon />
+                                </Button>
+                            </ModalContent.Actions>
+                        </ModalContent.Wrapper>
+                    ),
+                    ({ currentStep, totalSteps, previous }) => (
+                        <ModalContent.Wrapper>
+                            <ModalContent.Header
+                                title="Lägg till en bild"
+                                description={`Steg ${currentStep + 1} / ${totalSteps}`}
+                            />
+                            <ModalContent.Main>
+                                <p>Bild</p>
+                            </ModalContent.Main>
+                            <ModalContent.Actions>
+                                <Button style="light" size="small" onClick={previous}>
+                                    <span>Tillbaka</span>
+                                </Button>
+                                <Button
+                                    style="primary"
+                                    size="small"
+                                    onClick={() => console.log('submit')}
+                                >
+                                    <span>Skapa</span>
+                                    <PlusIcon />
+                                </Button>
+                            </ModalContent.Actions>
+                        </ModalContent.Wrapper>
+                    ),
                 ]}
             />
             <MainLayout.Sidebar>

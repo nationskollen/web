@@ -8,8 +8,8 @@ import CardTitle from '@common/CardTitle'
 export interface Props {
     open: boolean
     setOpen: (open: boolean) => void
-    title: string
-    description: string | React.ElementType
+    title?: string
+    description?: string | React.ElementType
     containerComponent?: React.ElementType
     containerClassName?: string
     cardClassName?: string
@@ -63,12 +63,15 @@ const Modal = ({
                         noPadding={noPadding}
                     >
                         <WrapperComponent>
-                            <CardTitle
-                                modal={true}
-                                title={title}
-                                description={description}
-                                className={cardTitleClassName}
-                            />
+                            {title ||
+                                (description && (
+                                    <CardTitle
+                                        modal={true}
+                                        className={cardTitleClassName}
+                                        title={title}
+                                        description={description}
+                                    />
+                                ))}
                             {children}
                         </WrapperComponent>
                     </Card>

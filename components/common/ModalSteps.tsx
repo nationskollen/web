@@ -11,14 +11,8 @@ export interface StepProps {
     totalSteps: number
 }
 
-export interface StepItem {
-    title: string
-    description: string
-    content: React.ReactNode
-}
-
 export interface Props extends Omit<ModalProps, 'title' | 'description' | 'wrapperComponent'> {
-    steps: Array<(props: StepProps) => StepItem>
+    steps: Array<(props: StepProps) => React.ReactNode>
 }
 
 export interface WrapperProps {
@@ -48,7 +42,7 @@ const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
         setCurrentStep(currentStep - 1)
     }
 
-    const { title, description, content } = steps[currentStep]({
+    const content = steps[currentStep]({
         next,
         previous,
         currentStep,
@@ -56,14 +50,7 @@ const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
     })
 
     return (
-        <Modal
-            open={open}
-            setOpen={setOpen}
-            title={title}
-            description={description}
-            {...props}
-            {...props}
-        >
+        <Modal open={open} setOpen={setOpen} {...props}>
             {content}
         </Modal>
     )
