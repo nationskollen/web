@@ -1,10 +1,14 @@
+import { useState } from 'react'
+import { PlusIcon, ArrowRightIcon, SearchIcon } from '@heroicons/react/solid'
+
 import Input from '@common/Input'
+import ModalContent from '@common/ModalContent'
 import Button from '@common/Button'
-import AdminSection from '@components/admin/AdminSection'
 import CardTitle from '@common/CardTitle'
+import ModalSteps from '@common/ModalSteps'
 import MainLayout from '@layouts/admin/Main'
 import TableOfContents from '@common/TableOfContents'
-import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
+import AdminSection from '@components/admin/AdminSection'
 
 const SECTIONS = [
     { href: '#upcoming', title: 'Kommande evenemang' },
@@ -12,11 +16,73 @@ const SECTIONS = [
 ]
 
 const Events = () => {
+    const [modalOpen, setModalOpen] = useState(false)
+
     return (
         <MainLayout.Wrapper>
+            <ModalSteps
+                open={modalOpen}
+                setOpen={setModalOpen}
+                noPadding={true}
+                cardTitleClassName="p-md"
+                steps={[
+                    ({ currentStep, totalSteps, next }) => (
+                        <ModalContent.Wrapper>
+                            <ModalContent.Header
+                                title="Skapa ny event"
+                                description={`Steg ${currentStep + 1} / ${totalSteps}`}
+                            />
+                            <ModalContent.Main>
+                                <p>Hello</p>
+                            </ModalContent.Main>
+                            <ModalContent.Actions className="space-between">
+                                <Button
+                                    style="light"
+                                    size="medium"
+                                    onClick={() => setModalOpen(false)}
+                                >
+                                    <span>Avbryt</span>
+                                </Button>
+                                <Button style="primary" size="medium" onClick={next}>
+                                    <span>Välj bild</span>
+                                    <ArrowRightIcon />
+                                </Button>
+                            </ModalContent.Actions>
+                        </ModalContent.Wrapper>
+                    ),
+                    ({ currentStep, totalSteps, previous }) => (
+                        <ModalContent.Wrapper>
+                            <ModalContent.Header
+                                title="Lägg till en bild"
+                                description={`Steg ${currentStep + 1} / ${totalSteps}`}
+                            />
+                            <ModalContent.Main>
+                                <p>Bild</p>
+                            </ModalContent.Main>
+                            <ModalContent.Actions>
+                                <Button style="light" size="medium" onClick={previous}>
+                                    <span>Tillbaka</span>
+                                </Button>
+                                <Button
+                                    style="primary"
+                                    size="medium"
+                                    onClick={() => console.log('submit')}
+                                >
+                                    <span>Skapa</span>
+                                    <PlusIcon />
+                                </Button>
+                            </ModalContent.Actions>
+                        </ModalContent.Wrapper>
+                    ),
+                ]}
+            />
             <MainLayout.Sidebar>
                 <TableOfContents sections={SECTIONS} />
-                <Button style="secondary" className="w-full rounded">
+                <Button
+                    style="secondary"
+                    className="w-full rounded"
+                    onClick={() => setModalOpen((open) => !open)}
+                >
                     <span>Skapa ny event</span>
                     <PlusIcon />
                 </Button>
@@ -25,7 +91,7 @@ const Events = () => {
                 <AdminSection id="upcoming">
                     <CardTitle
                         title="Kommande evenemang"
-                        subtitle="Översikt av nationens kommande evenemang"
+                        description="Översikt av nationens kommande evenemang"
                     >
                         <Input
                             id="upcoming_filter"
@@ -40,7 +106,7 @@ const Events = () => {
                 <AdminSection id="old">
                     <CardTitle
                         title="Gamla evenemang"
-                        subtitle="Översikt av nationens gamla evenemang"
+                        description="Översikt av nationens gamla evenemang"
                     >
                         <Input
                             id="old_filter"

@@ -1,4 +1,5 @@
 html {
+    --color-overlay: rgba(0, 0, 0, 0.65);
     --color-focus-primary: #fd78ae;
     --color-focus-default: #b9004b;
     --color-primary: #71002e;
@@ -51,17 +52,6 @@ html.dark .card {
 
 svg {
     height: 100%;
-}
-
-* {
-    transition-property: background-color, color;
-    transition-duration: 75ms;
-}
-
-@media (prefers-reduced-motion) {
-    * {
-        transition-duration: 0;
-    }
 }
 
 @tailwind base;

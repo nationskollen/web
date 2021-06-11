@@ -14,7 +14,7 @@ export interface Props {
     label?: string
     noPadding?: boolean
     active?: boolean
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const Card = ({ id, label, active, noPadding, className, containerClassName, children }: Props) => {

@@ -5,7 +5,7 @@ export interface Props {
     label: string
     icon: React.ElementType
     checked?: boolean
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props) => {
@@ -13,7 +13,7 @@ const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props)
         <div
             className={combine(
                 'flex flex-row justify-center items-center group space-x-sm',
-                'rounded-sm px-sm py-sm box-border',
+                'rounded-sm py-3 box-border focus:outline-none',
                 checked ? 'bg-primary-highlight text-primary' : 'bg-background-extra text-text'
             )}
         >

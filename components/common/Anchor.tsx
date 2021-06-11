@@ -4,7 +4,7 @@ import { extend } from '@utils'
 export interface Props {
     id: string
     offsetClass?: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const Anchor = ({ id, offsetClass, children }: Props) => {

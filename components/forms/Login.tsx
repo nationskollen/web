@@ -1,6 +1,6 @@
 import Router from 'next/router'
 import { AUTH } from '@constants'
-import { Formik, Field, Form, FormikHelpers } from 'formik'
+import { Formik, Form, FormikHelpers } from 'formik'
 import { LockClosedIcon, LoginIcon, MailIcon } from '@heroicons/react/outline'
 
 import Input from '@common/Input'

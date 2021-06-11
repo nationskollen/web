@@ -67,7 +67,7 @@ const UserPopover = ({}: Props) => {
                     ]}
                 />
             </PopoverSection>
-            <Button style="primary" onClick={logout} className="w-full" size="small">
+            <Button style="primary" onClick={logout} className="w-full" size="medium">
                 <span>Logga ut</span>
                 <LogoutIcon />
             </Button>

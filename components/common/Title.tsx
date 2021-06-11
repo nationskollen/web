@@ -3,7 +3,7 @@ import { extend } from '@utils'
 
 export type TitleSizes = 'small' | 'default' | 'large'
 
-export interface Props {
+export interface Props extends React.BaseHTMLAttributes<HTMLHeadingElement> {
     text?: string
     size?: TitleSizes
     className?: string
@@ -15,7 +15,8 @@ const TITLE_SIZES: Record<TitleSizes, string> = {
     large: 'text-3xl font-black',
 }
 
-const Title = ({ text, size, className }: Props) => {
+// Accept other base props for accessibility
+const Title = ({ text, size, className, ...props }: Props) => {
     // Skip rendering if we have no text
     if (!text) {
         return null
@@ -25,15 +26,27 @@ const Title = ({ text, size, className }: Props) => {
     const classes = extend(sizing, className)
 
     if (!size || size === 'default') {
-        return <h2 className={classes}>{text}</h2>
+        return (
+            <h2 className={classes} {...props}>
+                {text}
+            </h2>
+        )
     }
 
     if (size === 'small') {
-        return <h3 className={classes}>{text}</h3>
+        return (
+            <h3 className={classes} {...props}>
+                {text}
+            </h3>
+        )
     }
 
     // Large
-    return <h1 className={classes}>{text}</h1>
+    return (
+        <h1 className={classes} {...props}>
+            {text}
+        </h1>
+    )
 }
 
 export default Title

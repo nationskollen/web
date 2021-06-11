@@ -4,7 +4,7 @@ import ProtectedRoute from '@components/auth/ProtectedRoute'
 import Navigation from '@components/admin/Navigation'
 
 export interface Props {
-    children: React.ReactElement | React.ReactElement[]
+    children: React.ReactNode
 }
 
 export const Template = ({ children }: Props) => {

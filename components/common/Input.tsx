@@ -32,7 +32,7 @@ export interface Props extends NativeInputProps {
     style?: InputStyles
     inputClassName?: string
     containerClassName?: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const INPUT_SIZES: Record<InputSizes, string> = {
@@ -70,7 +70,7 @@ const Input = ({
     const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
     const baseStyle = 'rounded-sm flex flex-col justify-center'
     const containerStyle = combine(
-        'flex flex-row items-center rounded-sm focus-within:outline-default px-3',
+        'flex flex-row items-center rounded-sm focus-within:ring focus-within:ring-focus-default px-3',
         sizing,
         styling
     )

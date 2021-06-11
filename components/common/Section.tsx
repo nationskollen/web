@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 export interface Props {
     id: string
     offsetClass?: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const Section = ({ id, offsetClass, children }: Props) => {
