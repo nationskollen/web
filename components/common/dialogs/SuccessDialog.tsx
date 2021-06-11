@@ -10,7 +10,7 @@ const SuccessDialog = ({ icon, actions, ...props }: Props) => {
     return (
         <BaseDialog
             icon={icon === undefined ? StarIcon : icon}
-            iconClassName="bg-success-highlight text-success-highlight-text"
+            iconStyle="success"
             actions={
                 actions ||
                 (({ onConfirm, onCancel, confirmLabel, cancelLabel }) => [

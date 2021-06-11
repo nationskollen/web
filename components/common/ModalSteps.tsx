@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import Modal, { Props as ModalProps } from '@common/Modal'
 
 export type NavigationCallback = () => void

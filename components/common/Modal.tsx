@@ -1,5 +1,6 @@
-import React from 'react'
-import { extend } from '@utils'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { extend, getUrlHash } from '@utils'
 import { Dialog, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
@@ -10,6 +11,7 @@ export interface Props {
     setOpen: (open: boolean) => void
     title?: string
     description?: string | React.ElementType
+    href?: string
     containerComponent?: React.ElementType
     containerClassName?: string
     cardClassName?: string
@@ -25,6 +27,7 @@ const Modal = ({
     setOpen,
     title,
     description,
+    href,
     containerComponent,
     cardClassName,
     cardTitleClassName,
@@ -33,12 +36,33 @@ const Modal = ({
     onClose,
     children,
 }: Props) => {
+    const router = useRouter()
     const WrapperComponent = containerComponent || React.Fragment
 
     const handleClose = () => {
         setOpen(false)
         onClose && onClose()
     }
+
+    useEffect(() => {
+        if (href && getUrlHash(router.asPath) === href) {
+            setOpen(true)
+        }
+    }, [href])
+
+    useEffect(() => {
+        if (!href) {
+            return
+        }
+
+        const currentHash = getUrlHash(router.asPath)
+
+        if (open === true && currentHash !== href) {
+            router.replace(href)
+        } else if (open === false && currentHash === href) {
+            router.replace(router.pathname)
+        }
+    }, [open, href])
 
     return (
         <Transition appear={appear} as={React.Fragment} show={open}>

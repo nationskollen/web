@@ -10,7 +10,7 @@ const ErrorDialog = ({ icon, actions, ...props }: Props) => {
     return (
         <BaseDialog
             icon={icon === undefined ? ExclamationIcon : icon}
-            iconClassName="bg-error-highlight text-error-highlight-text"
+            iconStyle="error"
             actions={
                 actions ||
                 (({ onConfirm, onCancel, confirmLabel, cancelLabel }) => [

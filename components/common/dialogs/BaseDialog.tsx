@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import ModalContent from '@common/ModalContent'
+import ModalContent, { HeaderIconStyles } from '@common/ModalContent'
 import Modal, { Props as ModalProps } from '@common/Modal'
 import Button, { Props as ButtonProps } from '@common/Button'
 
@@ -30,7 +30,7 @@ export interface Props extends ActionCallbacks, Omit<ModalProps, 'open' | 'setOp
     confirmLabel?: string
     cancelLabel?: string
     icon?: React.ElementType
-    iconClassName?: string
+    iconStyle?: HeaderIconStyles
     open?: boolean
     setOpen?: (open: boolean) => void
     children?: React.ReactNode
@@ -41,7 +41,7 @@ const BaseDialog = ({
     setOpen: customSetOpen,
     title,
     icon,
-    iconClassName,
+    iconStyle,
     description,
     confirmLabel,
     cancelLabel,
@@ -85,7 +85,7 @@ const BaseDialog = ({
             {...props}
         >
             <ModalContent.Wrapper>
-                <ModalContent.Header title={title} description={description} icon={icon} iconClassName={iconClassName} />
+                <ModalContent.Header title={title} description={description} icon={icon} iconStyle={iconStyle} />
                 <ModalContent.Main>{children}</ModalContent.Main>
                 <ModalContent.Actions>
                     {compiledActions.map(({ label, icon, style, ...props }) => (

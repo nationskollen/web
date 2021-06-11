@@ -13,12 +13,18 @@ export interface MainProps extends BaseProps {
     className?: string
 }
 
+export type HeaderIconStyles =
+    | 'error'
+    | 'success'
+    | 'primary'
+
 export interface HeaderProps extends BaseProps {
     title: string
     description: string
     icon?: React.ElementType
-    iconClassName?: string
+    iconStyle?: HeaderIconStyles
     className?: string
+    descriptionClassName?: string
 }
 
 export interface ActionsProps extends BaseProps {
@@ -26,15 +32,26 @@ export interface ActionsProps extends BaseProps {
     className?: string
 }
 
+const HEADER_ICON_STYLES: Record<HeaderIconStyles, string> = {
+    error: 'bg-error-highlight text-error-highlight-text',
+    success: 'bg-success-highlight text-success-highlight-text',
+    primary: 'bg-primary-highlight text-primary dark:bg-primary-dark dark:text-primary-highlight',
+}
+
 const Wrapper = ({ children }: WrapperProps) => {
     return <div className="flex flex-col flex-1 overflow-hidden rounded space-y-md">{children}</div>
 }
 
-const Header = ({ title, description, icon: Icon, iconClassName, className, children }: HeaderProps) => {
+const Header = ({ title, description, icon: Icon, iconStyle, className, descriptionClassName, children }: HeaderProps) => {
     return (
         <div className="flex flex-row pb-0 space-x-md p-md">
             {Icon && (
-                <div className={extend('rounded-full w-10 h-10 p-sm', iconClassName)}>
+                <div
+                    className={combine(
+                        'rounded-full w-10 h-10 p-sm',
+                        iconStyle ? HEADER_ICON_STYLES[iconStyle] : HEADER_ICON_STYLES['primary'],
+                    )}
+                >
                     <Icon />
                 </div>
             )}
@@ -43,6 +60,7 @@ const Header = ({ title, description, icon: Icon, iconClassName, className, chil
                 title={title}
                 description={description}
                 className={className}
+                descriptionClassName={descriptionClassName}
             >
                 {children}
             </CardTitle>
@@ -51,7 +69,9 @@ const Header = ({ title, description, icon: Icon, iconClassName, className, chil
 }
 
 const Main = ({ className, children }: MainProps) => {
-    return <div className={extend('px-md space-y-md flex-1', className)}>{children}</div>
+    return (
+        <div className={extend('px-md space-y-md flex-1', className)}>{children}</div>
+    )
 }
 
 const Actions = ({ noBorder, className, children }: ActionsProps) => {

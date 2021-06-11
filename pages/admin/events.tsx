@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { PlusIcon, ArrowRightIcon, SearchIcon } from '@heroicons/react/solid'
+import { PhotographIcon, CalendarIcon, PlusIcon, ArrowRightIcon, SearchIcon } from '@heroicons/react/solid'
 
 import Input from '@common/Input'
 import ModalContent from '@common/ModalContent'
@@ -21,6 +21,7 @@ const Events = () => {
     return (
         <MainLayout.Wrapper>
             <ModalSteps
+                href="#create"
                 open={modalOpen}
                 setOpen={setModalOpen}
                 noPadding={true}
@@ -29,8 +30,10 @@ const Events = () => {
                     ({ currentStep, totalSteps, next }) => (
                         <ModalContent.Wrapper>
                             <ModalContent.Header
+                                icon={CalendarIcon}
                                 title="Skapa ny event"
                                 description={`Steg ${currentStep + 1} / ${totalSteps}`}
+                                descriptionClassName="leading-none"
                             />
                             <ModalContent.Main>
                                 <p>Hello</p>
@@ -54,8 +57,10 @@ const Events = () => {
                     ({ currentStep, totalSteps, previous }) => (
                         <ModalContent.Wrapper>
                             <ModalContent.Header
+                                icon={PhotographIcon}
                                 title="Lägg till en bild"
                                 description={`Steg ${currentStep + 1} / ${totalSteps}`}
+                                descriptionClassName="leading-none"
                             />
                             <ModalContent.Main>
                                 <p>Bild</p>

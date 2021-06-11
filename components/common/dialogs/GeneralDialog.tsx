@@ -10,7 +10,7 @@ const GeneralDialog = ({ icon, actions, ...props }: Props) => {
     return (
         <BaseDialog
             icon={icon === undefined ? InformationCircleIcon : icon}
-            iconClassName="bg-primary-highlight text-primary dark:bg-primary-dark dark:text-primary-highlight"
+            iconStyle="primary"
             actions={
                 actions ||
                 (({ onConfirm, onCancel, confirmLabel, cancelLabel }) => [
