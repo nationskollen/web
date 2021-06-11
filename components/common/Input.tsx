@@ -32,7 +32,7 @@ export interface Props extends NativeInputProps {
     style?: InputStyles
     inputClassName?: string
     containerClassName?: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const INPUT_SIZES: Record<InputSizes, string> = {

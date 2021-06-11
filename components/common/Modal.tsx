@@ -1,18 +1,15 @@
-import React, { useState } from 'react'
-import { extend } from '@utils'
+import React from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/solid'
 
 import Card from '@common/Card'
 import Title from '@common/Title'
-import Button from '@common/Button'
 
 export interface Props {
     open: boolean
     setOpen: (open: boolean) => void
     title: string
     description: string | React.ElementType
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const Modal = ({ open, setOpen, title, description, children }: Props) => {

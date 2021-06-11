@@ -3,7 +3,7 @@ import Section from '@common/Section'
 
 export interface Props {
     id: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const AdminSection = ({ id, children }: Props) => {

@@ -1,13 +1,14 @@
 import { useState } from 'react'
+import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
 
 import Input from '@common/Input'
 import Modal from '@common/Modal'
 import Button from '@common/Button'
-import AdminSection from '@components/admin/AdminSection'
 import CardTitle from '@common/CardTitle'
+import ModalSteps from '@common/ModalSteps'
 import MainLayout from '@layouts/admin/Main'
 import TableOfContents from '@common/TableOfContents'
-import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
+import AdminSection from '@components/admin/AdminSection'
 
 const SECTIONS = [
     { href: '#upcoming', title: 'Kommande evenemang' },
@@ -19,17 +20,30 @@ const Events = () => {
 
     return (
         <MainLayout.Wrapper>
-            <Modal
+            <ModalSteps
                 open={modalOpen}
                 setOpen={setModalOpen}
-                title="Skapa ny event"
-                description="Beskrivning"
-            >
-                <Button style="primary">
-                    <span>hello</span>
-                </Button>
-            </Modal>
-
+                steps={({ next, previous, currentStep }) => [
+                    {
+                        title: 'Skapa ny event',
+                        description: `Steg ${currentStep + 1}`,
+                        content: (
+                            <Button style="primary" onClick={next}>
+                                <span>hello</span>
+                            </Button>
+                        ),
+                    },
+                    {
+                        title: 'Lägg till en bild',
+                        description: `Steg ${currentStep + 1}`,
+                        content: (
+                            <Button style="primary" onClick={previous}>
+                                <span>hello</span>
+                            </Button>
+                        ),
+                    },
+                ]}
+            />
             <MainLayout.Sidebar>
                 <TableOfContents sections={SECTIONS} />
                 <Button

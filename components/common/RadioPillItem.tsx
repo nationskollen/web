@@ -5,7 +5,7 @@ export interface Props {
     label: string
     icon: React.ElementType
     checked?: boolean
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props) => {

@@ -12,7 +12,7 @@ export interface Props {
     buttonClassName?: string
     buttonFocus?: string
     cardClassName?: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const CustomPopover = ({

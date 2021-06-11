@@ -4,7 +4,7 @@ import Title from '@common/Title'
 export interface Props {
     title: string
     subtitle?: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const CardTitle = ({ title, subtitle, children }: Props) => {

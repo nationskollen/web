@@ -3,7 +3,7 @@ import { extend } from '@utils'
 
 export interface Props {
     className?: string
-    children?: React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
 }
 
 const PopoverSection = ({ className, children }: Props) => {

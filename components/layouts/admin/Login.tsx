@@ -2,7 +2,7 @@ import React from 'react'
 import Uppsala from '@svg/Uppsala'
 
 export interface Props {
-    children: React.ReactElement | React.ReactElement[]
+    children: React.ReactNode
 }
 
 const Template = ({ children }: Props) => {

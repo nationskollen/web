@@ -37,7 +37,7 @@ export interface Props {
     style?: ButtonStyles
     className?: string
     onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
-    children?: Element | React.ReactElement | React.ReactElement[]
+    children?: React.ReactNode
     [key: string]: unknown
 }
 

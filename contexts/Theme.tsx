@@ -14,7 +14,7 @@ export interface ThemeContextContract {
 }
 
 export interface Props {
-    children: React.ReactElement | React.ReactElement[]
+    children: React.ReactNode
 }
 
 export const ThemeContext = React.createContext({} as ThemeContextContract)
