@@ -39,11 +39,12 @@ const Events = () => {
                                 <Button
                                     style="light"
                                     size="medium"
+                                    radius="large"
                                     onClick={() => setModalOpen(false)}
                                 >
                                     <span>Avbryt</span>
                                 </Button>
-                                <Button style="primary" size="medium" onClick={next}>
+                                <Button style="primary" size="medium" radius="large" onClick={next}>
                                     <span>Välj bild</span>
                                     <ArrowRightIcon />
                                 </Button>
@@ -60,12 +61,18 @@ const Events = () => {
                                 <p>Bild</p>
                             </ModalContent.Main>
                             <ModalContent.Actions>
-                                <Button style="light" size="medium" onClick={previous}>
+                                <Button
+                                    style="light"
+                                    size="medium"
+                                    radius="large"
+                                    onClick={previous}
+                                >
                                     <span>Tillbaka</span>
                                 </Button>
                                 <Button
                                     style="primary"
                                     size="medium"
+                                    radius="large"
                                     onClick={() => console.log('submit')}
                                 >
                                     <span>Skapa</span>

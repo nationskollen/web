@@ -15,6 +15,7 @@ export interface Props {
     cardClassName?: string
     cardTitleClassName?: string
     noPadding?: boolean
+    appear?: boolean
     children?: React.ReactNode
 }
 
@@ -27,12 +28,13 @@ const Modal = ({
     cardClassName,
     cardTitleClassName,
     noPadding,
+    appear,
     children,
 }: Props) => {
     const WrapperComponent = containerComponent || React.Fragment
 
     return (
-        <Transition as={React.Fragment} show={open}>
+        <Transition appear={appear} as={React.Fragment} show={open}>
             <Dialog
                 open={open}
                 onClose={() => setOpen(false)}
