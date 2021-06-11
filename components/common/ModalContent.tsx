@@ -46,7 +46,7 @@ const Main = ({ className, children }: MainProps) => {
 const Actions = ({ className, children }: ActionsProps) => {
     const classes = combine(
         'flex flex-row justify-end w-full space-x-3 p-md border-t-1 mt-md',
-        'bg-background-extra border-border dark:bg-background dark:border-t-0'
+        'bg-background border-border dark:border-t-0'
     )
 
     return <div className={extend(classes, className)}>{children}</div>

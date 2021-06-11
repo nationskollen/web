@@ -46,7 +46,7 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'primary-extra': 'bg-primary-extra text-white',
     'secondary': 'bg-secondary text-white hover:bg-secondary-extra',
     'light':
-        'bg-background-highlight text-text-highlight border-1 border-border-dark dark:border-background-highlight',
+        'bg-background-extra dark:bg-background-highlight text-text-highlight border-1 border-border-dark dark:border-background-highlight',
     'transparent': 'bg-transparent',
 }
 
