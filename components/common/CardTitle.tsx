@@ -19,14 +19,14 @@ const CardTitle = ({ title, description, modal, className, children }: Props) =>
                 {modal ? (
                     <>
                         <Dialog.Title as={Title} text={title} className="text-text-highlight" />
-                        <Dialog.Description className="leading-snug text-md">
+                        <Dialog.Description className="text-md">
                             {description}
                         </Dialog.Description>
                     </>
                 ) : (
                     <>
                         <Title text={title} className="text-text-highlight" />
-                        <p className="leading-snug text-md">{description}</p>
+                        <p className="text-md">{description}</p>
                     </>
                 )}
             </div>

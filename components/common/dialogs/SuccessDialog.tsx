@@ -1,13 +1,16 @@
 import React from 'react'
+import { StarIcon } from '@heroicons/react/solid'
 import BaseDialog, { ActionsRenderer, Props as BaseDialogProps } from '@common/dialogs/BaseDialog'
 
 export interface Props extends Omit<BaseDialogProps, 'actions'> {
     actions?: ActionsRenderer
 }
 
-const SuccessDialog = ({ actions, ...props }: Props) => {
+const SuccessDialog = ({ icon, actions, ...props }: Props) => {
     return (
         <BaseDialog
+            icon={icon === undefined ? StarIcon : icon}
+            iconClassName="bg-success-highlight text-success-highlight-text"
             actions={
                 actions ||
                 (({ onConfirm, onCancel, confirmLabel, cancelLabel }) => [

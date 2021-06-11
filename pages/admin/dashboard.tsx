@@ -1,11 +1,11 @@
 import Card from '@common/Card'
 import MainLayout from '@layouts/admin/Main'
-import SuccessDialog from '@common/dialogs/SuccessDialog'
+import GeneralDialog from '@common/dialogs/GeneralDialog'
 
 const Dashboard = () => {
     return (
         <Card>
-            <SuccessDialog
+            <GeneralDialog
                 title="N[got blev fel]"
                 description="Jag 'r en beskrvning'"
                 onCancel={() => console.log('asda')}

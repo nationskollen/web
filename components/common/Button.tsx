@@ -60,9 +60,9 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'light':
         'bg-background-extra dark:bg-background-highlight text-text-highlight border-1 border-border-dark dark:border-background-highlight focus:ring-focus-default',
     'transparent': 'bg-transparent focus:ring-focus-default',
-    'error': 'bg-error text-error-text hover:filter hover:brightness-125 focus:ring-focus-error',
+    'error': 'bg-error text-white hover:filter hover:brightness-125 focus:ring-focus-error',
     'success':
-        'bg-success text-success-text hover:filter hover:brightness-125 focus:ring-focus-success',
+        'bg-success text-white hover:filter hover:brightness-125 focus:ring-focus-success',
 }
 
 const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
@@ -78,7 +78,7 @@ const BUTTON_RADIUS: Record<ButtonRadius, string> = {
 
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
     small: 'h-10 text-sm p-3 space-x-xsm',
-    medium: 'h-11 p-3 px-4 text-md space-x-xsm',
+    medium: 'h-10 p-3 px-4 text-md space-x-xsm',
     default: 'h-12 p-3 space-x-sm',
     large: 'h-14 text-lg p-4 space-x-2',
     icon: 'h-8 w-8 p-1',

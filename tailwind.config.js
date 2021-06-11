@@ -18,6 +18,7 @@ module.exports = {
             'primary-dark': 'var(--color-primary-dark)',
             'primary-extra': 'var(--color-primary-extra)',
             'primary-highlight': 'var(--color-primary-highlight)',
+            'primary-text': 'var(--color-primary-text)',
             'primary-text-light': 'var(--color-primary-text-light)',
             'secondary': 'var(--color-secondary)',
             'secondary-extra': 'var(--color-secondary-extra)',
@@ -31,10 +32,11 @@ module.exports = {
             'text-extra': 'var(--color-text-extra)',
             'text-highlight': 'var(--color-text-highlight)',
             'error': 'var(--color-error)',
-            'error-text': 'var(--color-error-text)',
+            'error-highlight-text': 'var(--color-error-highlight-text)',
+            'error-highlight': 'var(--color-error-highlight)',
             'success': 'var(--color-success)',
-            'success-text': 'var(--color-success-text)',
-            'primary-text': 'var(--color-primary-text)',
+            'success-highlight-text': 'var(--color-success-highlight-text)',
+            'success-highlight': 'var(--color-success-highlight)',
         },
         borderRadius: {
             none: '0',
@@ -72,9 +74,16 @@ module.exports = {
                 'admin-header-fixed': '3.5rem',
                 'admin-header-content': '10rem',
             },
+            minHeight: {
+                'dialog': '12rem',
+            },
+            maxHeight: {
+                'dialog': '20rem',
+            },
             width: {
                 'sidebar-navigation': '18rem',
                 'login-modal': '22rem',
+                'dialog': '28rem',
                 'user-popover': '22rem',
             },
             minWidth: {

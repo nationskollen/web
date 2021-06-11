@@ -24,9 +24,11 @@ html {
     --color-text-extra: #a1a1aa;
     --color-text-highlight: #000;
     --color-error: #b3152b;
-    --color-error-text: white;
+    --color-error-highlight: #fbc8cf;
+    --color-error-highlight-text: #ae3333;
     --color-success: #167933;
-    --color-success-text: white;
+    --color-success-highlight: #b3ffcb;
+    --color-success-highlight-text: #148c47;
 }
 
 html.dark {
@@ -45,6 +47,10 @@ html.dark {
     --color-text: #d4d4d4;
     --color-text-extra: #939393;
     --color-text-highlight: white;
+    --color-error-highlight: #6f101c;
+    --color-error-highlight-text: #ffa8b4;
+    --color-success-highlight: #154023;
+    --color-success-highlight-text: #0aff75;
 }
 
 html,
