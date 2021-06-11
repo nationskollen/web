@@ -4,7 +4,7 @@
  * @module Common
  */
 import React from 'react'
-import { extend } from '@utils'
+import { extend, combine } from '@utils'
 import { HashtagIcon } from '@heroicons/react/solid'
 
 export interface Props {
@@ -18,9 +18,11 @@ export interface Props {
 }
 
 const Card = ({ id, label, active, noPadding, className, containerClassName, children }: Props) => {
-    const base =
-        'relative card shadow-md rounded border-card dark:border-border-dark border-1 bg-card text-text w-full'
-    const containerBase = `flex flex-col ${noPadding ? '' : 'p-6'}`
+    const base = combine(
+        'relative card shadow-md rounded border-card w-full flex flex-col',
+        'dark:border-border-dark border-1 bg-card text-text'
+    )
+    const containerBase = `flex flex-col flex-1 ${noPadding ? '' : 'p-6'}`
     const containerClasses = containerClassName
         ? `${containerBase} ${containerClassName}`
         : containerBase

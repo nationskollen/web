@@ -21,3 +21,22 @@ export function combine(...classNames: Array<string>) {
 export function extend(classNames: string, className?: string) {
     return className ? `${classNames} ${className}` : classNames
 }
+
+/**
+ * Extracts the hash/anchor of the current URL.
+ *
+ * For example:
+ * ```typescript
+ * getUrlHash('/admin/dashboard#anchor') // === '#anchor'
+ * ```
+ */
+export function getUrlHash(url: string) {
+    const anchor = url.split('#')[1]
+
+    if (!anchor) {
+        return null
+    }
+
+    // Prepend '#'
+    return `#${anchor}`
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
-import { combine } from '@utils'
 import { useRouter } from 'next/router'
+import { combine, getUrlHash } from '@utils'
 import { LinkIcon } from '@heroicons/react/solid'
 import { Section } from '@common/TableOfContents'
 
@@ -11,7 +11,7 @@ export interface Props {
 
 const SidebarNavigationLink = ({ section }: Props) => {
     const router = useRouter()
-    const active = router.asPath.split('#')[1] === section.href.substring(1)
+    const active = getUrlHash(router.asPath) === section.href
     const activeStyle =
         'text-primary bg-primary-highlight dark:bg-background-highlight dark:text-text-highlight'
     const inactiveStyle = 'text-text'

@@ -10,23 +10,31 @@ export interface Props {
     modal?: boolean
     className?: string
     children?: React.ReactNode
+    descriptionClassName?: string
 }
 
-const CardTitle = ({ title, description, modal, className, children }: Props) => {
+const CardTitle = ({
+    title,
+    description,
+    modal,
+    className,
+    descriptionClassName,
+    children,
+}: Props) => {
     return (
         <section className={extend('flex flex-row items-start justify-between', className)}>
             <div>
                 {modal ? (
                     <>
                         <Dialog.Title as={Title} text={title} className="text-text-highlight" />
-                        <Dialog.Description className="leading-snug text-md">
+                        <Dialog.Description className={extend('text-md', descriptionClassName)}>
                             {description}
                         </Dialog.Description>
                     </>
                 ) : (
                     <>
                         <Title text={title} className="text-text-highlight" />
-                        <p className="leading-snug text-md">{description}</p>
+                        <p className={extend('text-md', descriptionClassName)}>{description}</p>
                     </>
                 )}
             </div>

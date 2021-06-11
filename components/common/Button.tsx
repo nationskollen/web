@@ -25,15 +25,26 @@
  */
 import React from 'react'
 
+export type ButtonRadius = 'default' | 'large'
 export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon'
+
 export type ButtonFocusStyles = 'primary' | 'default' | 'subtle'
-export type ButtonStyles = 'primary' | 'primary-extra' | 'secondary' | 'light' | 'transparent'
+
+export type ButtonStyles =
+    | 'primary'
+    | 'primary-extra'
+    | 'secondary'
+    | 'light'
+    | 'transparent'
+    | 'error'
+    | 'success'
 
 export interface Props {
     href?: string
     type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
     focus?: ButtonFocusStyles
     size?: ButtonSizes
+    radius?: ButtonRadius
     style?: ButtonStyles
     className?: string
     onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
@@ -42,12 +53,15 @@ export interface Props {
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    'primary': 'bg-primary text-white hover:bg-primary-extra dark:filter dark:brightness-125',
-    'primary-extra': 'bg-primary-extra text-white',
-    'secondary': 'bg-secondary text-white hover:bg-secondary-extra',
+    'primary':
+        'bg-primary text-white hover:bg-primary-extra dark:filter dark:brightness-125 focus:ring-focus-primary',
+    'primary-extra': 'bg-primary-extra text-white focus:ring-focus-primary',
+    'secondary': 'bg-secondary text-white hover:bg-secondary-extra focus:ring-focus-secondary',
     'light':
-        'bg-background-extra dark:bg-background-highlight text-text-highlight border-1 border-border-dark dark:border-background-highlight',
-    'transparent': 'bg-transparent',
+        'bg-background-extra dark:bg-background-highlight text-text-highlight border-1 border-border-dark dark:border-background-highlight focus:ring-focus-default',
+    'transparent': 'bg-transparent focus:ring-focus-default',
+    'error': 'bg-error text-white hover:filter hover:brightness-125 focus:ring-focus-error',
+    'success': 'bg-success text-white hover:filter hover:brightness-125 focus:ring-focus-success',
 }
 
 const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
@@ -56,9 +70,14 @@ const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
     subtle: 'focus:bg-background-extra dark:focus:bg-background-highlight focus:text-primary-text',
 }
 
+const BUTTON_RADIUS: Record<ButtonRadius, string> = {
+    default: 'rounded-sm',
+    large: 'rounded',
+}
+
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
     small: 'h-10 text-sm p-3 space-x-xsm',
-    medium: 'h-11 p-3 px-4 text-md space-x-xsm',
+    medium: 'h-10 p-3 px-4 text-md space-x-xsm',
     default: 'h-12 p-3 space-x-sm',
     large: 'h-14 text-lg p-4 space-x-2',
     icon: 'h-8 w-8 p-1',
@@ -69,13 +88,14 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
 // set passHref={true} on the Link.
 const Button = React.forwardRef(
     (
-        { size, focus, type, href, style, className, onClick, children, ...props }: Props,
+        { size, focus, type, href, style, radius, className, onClick, children, ...props }: Props,
         ref: any
     ) => {
         const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']
+        const radiusStyle = radius ? BUTTON_RADIUS[radius] : BUTTON_RADIUS['default']
         const colorStyle = style ? BUTTON_STYLES[style] : BUTTON_STYLES['primary']
-        const focusStyle = focus ? BUTTON_FOCUS_STYLES[focus] : BUTTON_FOCUS_STYLES['default']
-        const base = `focus:outline-none rounded-sm font-bold ${colorStyle} ${focusStyle}`
+        const focusStyle = focus ? BUTTON_FOCUS_STYLES[focus] : ''
+        const base = `focus:ring focus:outline-none font-bold ${colorStyle} ${focusStyle} ${radiusStyle}`
         const classes = className ? `${base} ${className}` : base
         const content = (
             <div className={`flex flex-row items-center justify-center ${sizing}`}>{children}</div>

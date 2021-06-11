@@ -1,5 +1,6 @@
-import React from 'react'
-import { extend } from '@utils'
+import React, { useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { extend, getUrlHash } from '@utils'
 import { Dialog, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
@@ -10,11 +11,14 @@ export interface Props {
     setOpen: (open: boolean) => void
     title?: string
     description?: string | React.ElementType
+    href?: string
     containerComponent?: React.ElementType
     containerClassName?: string
     cardClassName?: string
     cardTitleClassName?: string
     noPadding?: boolean
+    appear?: boolean
+    onClose?: () => void
     children?: React.ReactNode
 }
 
@@ -23,19 +27,48 @@ const Modal = ({
     setOpen,
     title,
     description,
+    href,
     containerComponent,
     cardClassName,
     cardTitleClassName,
     noPadding,
+    appear,
+    onClose,
     children,
 }: Props) => {
+    const router = useRouter()
     const WrapperComponent = containerComponent || React.Fragment
 
+    const handleClose = () => {
+        setOpen(false)
+        onClose && onClose()
+    }
+
+    useEffect(() => {
+        if (href && getUrlHash(router.asPath) === href) {
+            setOpen(true)
+        }
+    }, [href])
+
+    useEffect(() => {
+        if (!href) {
+            return
+        }
+
+        const currentHash = getUrlHash(router.asPath)
+
+        if (open === true && currentHash !== href) {
+            router.replace(href)
+        } else if (open === false && currentHash === href) {
+            router.replace(router.pathname)
+        }
+    }, [open, href])
+
     return (
-        <Transition as={React.Fragment} show={open}>
+        <Transition appear={appear} as={React.Fragment} show={open}>
             <Dialog
                 open={open}
-                onClose={() => setOpen(false)}
+                onClose={handleClose}
                 as="div"
                 className="fixed inset-0 z-50 flex flex-col items-center overflow-y-auto"
             >
@@ -63,15 +96,14 @@ const Modal = ({
                         noPadding={noPadding}
                     >
                         <WrapperComponent>
-                            {title ||
-                                (description && (
-                                    <CardTitle
-                                        modal={true}
-                                        className={cardTitleClassName}
-                                        title={title}
-                                        description={description}
-                                    />
-                                ))}
+                            {title && description && (
+                                <CardTitle
+                                    modal={true}
+                                    className={cardTitleClassName}
+                                    title={title}
+                                    description={description}
+                                />
+                            )}
                             {children}
                         </WrapperComponent>
                     </Card>

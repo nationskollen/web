@@ -17,9 +17,7 @@ import RadioGroup from '@common/RadioGroup'
 import RadioPillItem from '@common/RadioPillItem'
 import PopoverSection from '@common/PopoverSection'
 
-export interface Props {}
-
-const UserPopover = ({}: Props) => {
+const UserPopover = () => {
     const { logout } = useAuth()
     const { theme, setTheme } = useTheme()
 
@@ -67,7 +65,13 @@ const UserPopover = ({}: Props) => {
                     ]}
                 />
             </PopoverSection>
-            <Button style="primary" onClick={logout} className="w-full" size="medium">
+            <Button
+                style="primary"
+                focus="primary"
+                onClick={logout}
+                className="w-full"
+                size="medium"
+            >
                 <span>Logga ut</span>
                 <LogoutIcon />
             </Button>

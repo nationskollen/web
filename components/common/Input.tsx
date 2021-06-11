@@ -70,7 +70,7 @@ const Input = ({
     const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
     const baseStyle = 'rounded-sm flex flex-col justify-center'
     const containerStyle = combine(
-        'flex flex-row items-center rounded-sm focus-within:ring focus-within:ring-focus-default px-3',
+        'flex flex-row items-center rounded-sm focus-within:ring focus-within:ring-focus-input px-3',
         sizing,
         styling
     )
