@@ -75,10 +75,10 @@ module.exports = {
                 'admin-header-content': '10rem',
             },
             minHeight: {
-                'dialog': '12rem',
+                dialog: '12rem',
             },
             maxHeight: {
-                'dialog': '20rem',
+                dialog: '20rem',
             },
             width: {
                 'sidebar-navigation': '18rem',

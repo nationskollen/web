@@ -13,7 +13,14 @@ export interface Props {
     descriptionClassName?: string
 }
 
-const CardTitle = ({ title, description, modal, className, descriptionClassName, children }: Props) => {
+const CardTitle = ({
+    title,
+    description,
+    modal,
+    className,
+    descriptionClassName,
+    children,
+}: Props) => {
     return (
         <section className={extend('flex flex-row items-start justify-between', className)}>
             <div>

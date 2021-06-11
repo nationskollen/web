@@ -13,10 +13,7 @@ export interface MainProps extends BaseProps {
     className?: string
 }
 
-export type HeaderIconStyles =
-    | 'error'
-    | 'success'
-    | 'primary'
+export type HeaderIconStyles = 'error' | 'success' | 'primary'
 
 export interface HeaderProps extends BaseProps {
     title: string
@@ -42,14 +39,22 @@ const Wrapper = ({ children }: WrapperProps) => {
     return <div className="flex flex-col flex-1 overflow-hidden rounded space-y-md">{children}</div>
 }
 
-const Header = ({ title, description, icon: Icon, iconStyle, className, descriptionClassName, children }: HeaderProps) => {
+const Header = ({
+    title,
+    description,
+    icon: Icon,
+    iconStyle,
+    className,
+    descriptionClassName,
+    children,
+}: HeaderProps) => {
     return (
         <div className="flex flex-row pb-0 space-x-md p-md">
             {Icon && (
                 <div
                     className={combine(
                         'rounded-full w-10 h-10 p-sm',
-                        iconStyle ? HEADER_ICON_STYLES[iconStyle] : HEADER_ICON_STYLES['primary'],
+                        iconStyle ? HEADER_ICON_STYLES[iconStyle] : HEADER_ICON_STYLES['primary']
                     )}
                 >
                     <Icon />
@@ -69,16 +74,14 @@ const Header = ({ title, description, icon: Icon, iconStyle, className, descript
 }
 
 const Main = ({ className, children }: MainProps) => {
-    return (
-        <div className={extend('px-md space-y-md flex-1', className)}>{children}</div>
-    )
+    return <div className={extend('px-md space-y-md flex-1', className)}>{children}</div>
 }
 
 const Actions = ({ noBorder, className, children }: ActionsProps) => {
     const classes = combine(
         'flex flex-row justify-end w-full space-x-3 px-md py-3 border-border self-end',
         'bg-background-extra dark:bg-background border-border',
-        noBorder ? 'pt-0 dark:bg-background-extra' : 'border-t-1 dark:border-t-0',
+        noBorder ? 'pt-0 dark:bg-background-extra' : 'border-t-1 dark:border-t-0'
     )
 
     return <div className={extend(classes, className)}>{children}</div>

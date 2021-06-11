@@ -47,7 +47,10 @@ const Radio = ({
                     <RadioGroup.Option
                         value={value}
                         key={`${value}-${index}`}
-                        className={extend('focus:ring-2 focus:ring-focus-primary rounded-sm', itemClassName)}
+                        className={extend(
+                            'focus:ring-2 focus:ring-focus-primary rounded-sm',
+                            itemClassName
+                        )}
                     >
                         {({ checked }) => (
                             <Component

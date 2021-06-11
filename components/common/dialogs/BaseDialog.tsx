@@ -85,7 +85,12 @@ const BaseDialog = ({
             {...props}
         >
             <ModalContent.Wrapper>
-                <ModalContent.Header title={title} description={description} icon={icon} iconStyle={iconStyle} />
+                <ModalContent.Header
+                    title={title}
+                    description={description}
+                    icon={icon}
+                    iconStyle={iconStyle}
+                />
                 <ModalContent.Main>{children}</ModalContent.Main>
                 <ModalContent.Actions>
                     {compiledActions.map(({ label, icon, style, ...props }) => (

@@ -61,8 +61,7 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
         'bg-background-extra dark:bg-background-highlight text-text-highlight border-1 border-border-dark dark:border-background-highlight focus:ring-focus-default',
     'transparent': 'bg-transparent focus:ring-focus-default',
     'error': 'bg-error text-white hover:filter hover:brightness-125 focus:ring-focus-error',
-    'success':
-        'bg-success text-white hover:filter hover:brightness-125 focus:ring-focus-success',
+    'success': 'bg-success text-white hover:filter hover:brightness-125 focus:ring-focus-success',
 }
 
 const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {

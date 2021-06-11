@@ -96,7 +96,7 @@ const Modal = ({
                         noPadding={noPadding}
                     >
                         <WrapperComponent>
-                            {(title && description) && (
+                            {title && description && (
                                 <CardTitle
                                     modal={true}
                                     className={cardTitleClassName}
