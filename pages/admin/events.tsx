@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
+import { PlusIcon, ArrowRightIcon, SearchIcon } from '@heroicons/react/solid'
 
 import Input from '@common/Input'
-import Modal from '@common/Modal'
+import ModalContent from '@common/ModalContent'
 import Button from '@common/Button'
 import CardTitle from '@common/CardTitle'
 import ModalSteps from '@common/ModalSteps'
@@ -23,25 +23,57 @@ const Events = () => {
             <ModalSteps
                 open={modalOpen}
                 setOpen={setModalOpen}
-                steps={({ next, previous, currentStep }) => [
-                    {
+                noPadding={true}
+                cardTitleClassName="p-md"
+                steps={[
+                    ({ currentStep, totalSteps, next }) => ({
                         title: 'Skapa ny event',
-                        description: `Steg ${currentStep + 1}`,
+                        description: `Steg ${currentStep + 1} / ${totalSteps}`,
                         content: (
-                            <Button style="primary" onClick={next}>
-                                <span>hello</span>
-                            </Button>
+                            <ModalContent.Wrapper>
+                                <ModalContent.Main>
+                                    <p>Hello</p>
+                                </ModalContent.Main>
+                                <ModalContent.Actions className="space-between">
+                                    <Button
+                                        style="light"
+                                        size="small"
+                                        onClick={() => setModalOpen(false)}
+                                    >
+                                        <span>Avbryt</span>
+                                    </Button>
+                                    <Button style="primary" size="small" onClick={next}>
+                                        <span>Välj bild</span>
+                                        <ArrowRightIcon />
+                                    </Button>
+                                </ModalContent.Actions>
+                            </ModalContent.Wrapper>
                         ),
-                    },
-                    {
+                    }),
+                    ({ currentStep, totalSteps, previous }) => ({
                         title: 'Lägg till en bild',
-                        description: `Steg ${currentStep + 1}`,
+                        description: `Steg ${currentStep + 1} / ${totalSteps}`,
                         content: (
-                            <Button style="primary" onClick={previous}>
-                                <span>hello</span>
-                            </Button>
+                            <ModalContent.Wrapper>
+                                <ModalContent.Main>
+                                    <p>Bild</p>
+                                </ModalContent.Main>
+                                <ModalContent.Actions>
+                                    <Button style="light" size="small" onClick={previous}>
+                                        <span>Tillbaka</span>
+                                    </Button>
+                                    <Button
+                                        style="primary"
+                                        size="small"
+                                        onClick={() => console.log('submit')}
+                                    >
+                                        <span>Skapa</span>
+                                        <PlusIcon />
+                                    </Button>
+                                </ModalContent.Actions>
+                            </ModalContent.Wrapper>
                         ),
-                    },
+                    }),
                 ]}
             />
             <MainLayout.Sidebar>
@@ -59,7 +91,7 @@ const Events = () => {
                 <AdminSection id="upcoming">
                     <CardTitle
                         title="Kommande evenemang"
-                        subtitle="Översikt av nationens kommande evenemang"
+                        description="Översikt av nationens kommande evenemang"
                     >
                         <Input
                             id="upcoming_filter"
@@ -74,7 +106,7 @@ const Events = () => {
                 <AdminSection id="old">
                     <CardTitle
                         title="Gamla evenemang"
-                        subtitle="Översikt av nationens gamla evenemang"
+                        description="Översikt av nationens gamla evenemang"
                     >
                         <Input
                             id="old_filter"

@@ -1,18 +1,36 @@
 import React from 'react'
+import { extend } from '@utils'
 import { Dialog, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
-import Title from '@common/Title'
+import CardTitle from '@common/CardTitle'
 
 export interface Props {
     open: boolean
     setOpen: (open: boolean) => void
     title: string
     description: string | React.ElementType
+    containerComponent?: React.ElementType
+    containerClassName?: string
+    cardClassName?: string
+    cardTitleClassName?: string
+    noPadding?: boolean
     children?: React.ReactNode
 }
 
-const Modal = ({ open, setOpen, title, description, children }: Props) => {
+const Modal = ({
+    open,
+    setOpen,
+    title,
+    description,
+    containerComponent,
+    cardClassName,
+    cardTitleClassName,
+    noPadding,
+    children,
+}: Props) => {
+    const WrapperComponent = containerComponent || React.Fragment
+
     return (
         <Transition as={React.Fragment} show={open}>
             <Dialog
@@ -40,10 +58,19 @@ const Modal = ({ open, setOpen, title, description, children }: Props) => {
                     leaveFrom="transform scale-100 opacity-100"
                     leaveTo="transform scale-90 opacity-0"
                 >
-                    <Card className="w-full min-w-modal mt-1/5">
-                        <Dialog.Title as={Title} text={title} className="text-text-highlight" />
-                        <Dialog.Description>{description}</Dialog.Description>
-                        <>{children}</>
+                    <Card
+                        className={extend('w-full min-w-modal mt-1/5', cardClassName)}
+                        noPadding={noPadding}
+                    >
+                        <WrapperComponent>
+                            <CardTitle
+                                modal={true}
+                                title={title}
+                                description={description}
+                                className={cardTitleClassName}
+                            />
+                            {children}
+                        </WrapperComponent>
                     </Card>
                 </Transition.Child>
             </Dialog>

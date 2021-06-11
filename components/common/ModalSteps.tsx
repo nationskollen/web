@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import Modal, { Props as ModalProps } from '@common/Modal'
 
 export type NavigationCallback = () => void
@@ -7,6 +8,7 @@ export interface StepProps {
     next: NavigationCallback
     previous: NavigationCallback
     currentStep: number
+    totalSteps: number
 }
 
 export interface StepItem {
@@ -15,8 +17,12 @@ export interface StepItem {
     content: React.ReactNode
 }
 
-export interface Props extends Omit<ModalProps, 'title' | 'description'> {
-    steps: (props: StepProps) => Array<StepItem>
+export interface Props extends Omit<ModalProps, 'title' | 'description' | 'wrapperComponent'> {
+    steps: Array<(props: StepProps) => StepItem>
+}
+
+export interface WrapperProps {
+    children: React.ReactNode
 }
 
 const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
@@ -42,10 +48,22 @@ const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
         setCurrentStep(currentStep - 1)
     }
 
-    const { title, description, content } = steps({ next, previous, currentStep })[currentStep]
+    const { title, description, content } = steps[currentStep]({
+        next,
+        previous,
+        currentStep,
+        totalSteps: steps.length,
+    })
 
     return (
-        <Modal open={open} setOpen={setOpen} title={title} description={description} {...props}>
+        <Modal
+            open={open}
+            setOpen={setOpen}
+            title={title}
+            description={description}
+            {...props}
+            {...props}
+        >
             {content}
         </Modal>
     )
