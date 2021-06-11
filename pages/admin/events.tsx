@@ -13,6 +13,7 @@ import Button from '@common/Button'
 import CardTitle from '@common/CardTitle'
 import ModalSteps from '@common/ModalSteps'
 import MainLayout from '@layouts/admin/Main'
+import CreateEventForm from '@forms/CreateEventForm'
 import TableOfContents from '@common/TableOfContents'
 import AdminSection from '@components/admin/AdminSection'
 
@@ -31,6 +32,7 @@ const Events = () => {
                 open={modalOpen}
                 setOpen={setModalOpen}
                 noPadding={true}
+                cardClassName="w-form-modal"
                 cardTitleClassName="p-md"
                 steps={[
                     ({ currentStep, totalSteps, next }) => (
@@ -42,7 +44,7 @@ const Events = () => {
                                 descriptionClassName="leading-none"
                             />
                             <ModalContent.Main>
-                                <p>Hello</p>
+                                <CreateEventForm />
                             </ModalContent.Main>
                             <ModalContent.Actions className="space-between">
                                 <Button
@@ -52,6 +54,33 @@ const Events = () => {
                                     onClick={() => setModalOpen(false)}
                                 >
                                     <span>Avbryt</span>
+                                </Button>
+                                <Button style="primary" size="medium" radius="large" onClick={next}>
+                                    <span>Välj tid och plats</span>
+                                    <ArrowRightIcon />
+                                </Button>
+                            </ModalContent.Actions>
+                        </ModalContent.Wrapper>
+                    ),
+                    ({ currentStep, totalSteps, next, previous }) => (
+                        <ModalContent.Wrapper>
+                            <ModalContent.Header
+                                icon={PhotographIcon}
+                                title="Välj tid och plats"
+                                description={`Steg ${currentStep + 1} / ${totalSteps}`}
+                                descriptionClassName="leading-none"
+                            />
+                            <ModalContent.Main>
+                                <p>Tid och plats</p>
+                            </ModalContent.Main>
+                            <ModalContent.Actions>
+                                <Button
+                                    style="light"
+                                    size="medium"
+                                    radius="large"
+                                    onClick={previous}
+                                >
+                                    <span>Tillbaka</span>
                                 </Button>
                                 <Button style="primary" size="medium" radius="large" onClick={next}>
                                     <span>Välj bild</span>

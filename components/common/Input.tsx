@@ -22,11 +22,15 @@ import React from 'react'
 import { extend, combine } from '@utils'
 import { Field, FieldProps, FieldInputProps } from 'formik'
 
-export type InputSizes = 'small' | 'default' | 'large'
+export type InputSizes = 'small' | 'default' | 'large' | 'textarea'
 export type InputStyles = 'transparent' | 'no-border'
-export type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size' | 'style'>
+export type NativeInputProps = Omit<
+    React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
+    'size' | 'style'
+>
 
 export interface Props extends NativeInputProps {
+    as?: React.ElementType
     size?: InputSizes
     label?: string
     style?: InputStyles
@@ -35,13 +39,14 @@ export interface Props extends NativeInputProps {
     children?: React.ReactNode
 }
 
-const INPUT_SIZES: Record<InputSizes, string> = {
+export const INPUT_SIZES: Record<InputSizes, string> = {
     small: 'h-8 text-sm',
     default: 'h-12',
     large: 'h-14',
+    textarea: 'h-auto',
 }
 
-const INPUT_STYLES: Record<InputStyles, string> = {
+export const INPUT_STYLES: Record<InputStyles, string> = {
     'transparent': [
         'bg-transparent text-text-extra border-1 border-border-dark',
         'focus-within:text-text-highlight focus-within:border-transparent',
@@ -55,6 +60,7 @@ const INPUT_STYLES: Record<InputStyles, string> = {
 
 const Input = ({
     id,
+    as,
     size,
     type,
     style,
@@ -79,6 +85,8 @@ const Input = ({
         inputClassName
     )
 
+    const InputComponent = (props: NativeInputProps) => React.createElement(as || 'input', props)
+
     const content = (fieldProps: FieldInputProps<any> | {}) => {
         return (
             <div className={extend(baseStyle, className)}>
@@ -89,7 +97,7 @@ const Input = ({
                 )}
                 <div className={extend(containerStyle, containerClassName)}>
                     {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
-                    <input
+                    <InputComponent
                         id={id}
                         type={type}
                         className={extend(inputStyle, inputClassName)}

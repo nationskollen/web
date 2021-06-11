@@ -76,13 +76,16 @@ module.exports = {
             },
             minHeight: {
                 dialog: '12rem',
+                textarea: '8rem',
             },
             maxHeight: {
                 dialog: '20rem',
+                textarea: '30rem',
             },
             width: {
                 'sidebar-navigation': '18rem',
                 'login-modal': '22rem',
+                'form-modal': '30rem',
                 'dialog': '28rem',
                 'user-popover': '22rem',
             },

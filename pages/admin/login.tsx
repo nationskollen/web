@@ -6,9 +6,8 @@ import { MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 
 import Logo from '@svg/Logo'
 import Card from '@common/Card'
-import Title from '@common/Title'
 import Button from '@common/Button'
-import LoginForm from '@forms/Login'
+import LoginForm from '@forms/LoginForm'
 import LoginLayout from '@layouts/admin/Login'
 
 const Login = () => {
