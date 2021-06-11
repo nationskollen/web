@@ -1,4 +1,7 @@
+import { useState } from 'react'
+
 import Input from '@common/Input'
+import Modal from '@common/Modal'
 import Button from '@common/Button'
 import AdminSection from '@components/admin/AdminSection'
 import CardTitle from '@common/CardTitle'
@@ -12,11 +15,28 @@ const SECTIONS = [
 ]
 
 const Events = () => {
+    const [modalOpen, setModalOpen] = useState(false)
+
     return (
         <MainLayout.Wrapper>
+            <Modal
+                open={modalOpen}
+                setOpen={setModalOpen}
+                title="Skapa ny event"
+                description="Beskrivning"
+            >
+                <Button style="primary">
+                    <span>hello</span>
+                </Button>
+            </Modal>
+
             <MainLayout.Sidebar>
                 <TableOfContents sections={SECTIONS} />
-                <Button style="secondary" className="w-full rounded">
+                <Button
+                    style="secondary"
+                    className="w-full rounded"
+                    onClick={() => setModalOpen((open) => !open)}
+                >
                     <span>Skapa ny event</span>
                     <PlusIcon />
                 </Button>

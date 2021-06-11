@@ -56,10 +56,10 @@ const CustomPopover = ({
                     >
                         <Transition
                             show={open}
-                            enter="transition duration-100 ease-out"
+                            enter="transition origin-top duration-in ease-out"
                             enterFrom="transform scale-90 opacity-0"
                             enterTo="transform scale-100 opacity-100"
-                            leave="transition duration-75 ease-out"
+                            leave="transition origin-top duration-out ease-out"
                             leaveFrom="transform scale-100 opacity-100"
                             leaveTo="transform scale-90 opacity-0"
                         >

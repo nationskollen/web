@@ -13,7 +13,7 @@ const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props)
         <div
             className={combine(
                 'flex flex-row justify-center items-center group space-x-sm',
-                'rounded-sm px-sm py-sm box-border',
+                'rounded-sm px-sm py-sm box-border focus:outline-none',
                 checked ? 'bg-primary-highlight text-primary' : 'bg-background-extra text-text'
             )}
         >

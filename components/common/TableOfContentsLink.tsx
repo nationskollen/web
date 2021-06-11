@@ -15,7 +15,9 @@ const SidebarNavigationLink = ({ section }: Props) => {
     const activeStyle =
         'text-primary bg-primary-highlight dark:bg-background-highlight dark:text-text-highlight'
     const inactiveStyle = 'text-text'
-    const classes = `focus:outline-default ${active ? activeStyle : inactiveStyle}`
+    const classes = `focus:outline-none focus:ring focus:ring-focus-default ${
+        active ? activeStyle : inactiveStyle
+    }`
 
     return (
         <Link href={active ? router.pathname : section.href}>

@@ -4,8 +4,10 @@ module.exports = {
     theme: {
         colors: {
             'white': 'white',
+            'black': 'black',
             'current': 'currentColor',
             'transparent': 'transparent',
+            'overlay': 'var(--color-overlay)',
             'focus-primary': 'var(--color-focus-primary)',
             'focus-default': 'var(--color-focus-default)',
             'primary': 'var(--color-primary)',
@@ -69,6 +71,7 @@ module.exports = {
                 'user-popover': '22rem',
             },
             minWidth: {
+                'modal': '25rem',
                 'login-background': '1100px',
             },
             fontSize: {
@@ -79,9 +82,9 @@ module.exports = {
                 'admin-header': '4.5rem',
                 '-admin-header': '-4.5rem',
             },
-            outline: {
-                primary: '2px solid var(--color-focus-primary)',
-                default: '2px solid var(--color-focus-default)',
+            transitionDuration: {
+                in: '75',
+                out: '50',
             },
         },
     },

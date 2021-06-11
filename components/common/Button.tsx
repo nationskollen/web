@@ -25,8 +25,8 @@
  */
 import React from 'react'
 
-export type ButtonSizes = 'small' | 'default' | 'large'
-export type ButtonFocusStyles = 'primary' | 'default'
+export type ButtonSizes = 'small' | 'default' | 'large' | 'icon'
+export type ButtonFocusStyles = 'primary' | 'default' | 'subtle'
 export type ButtonStyles = 'primary' | 'primary-extra' | 'secondary' | 'light' | 'transparent'
 
 export interface Props {
@@ -50,14 +50,16 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
 }
 
 const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
-    primary: 'focus:outline-primary',
-    default: 'focus:outline-default',
+    primary: 'focus:ring focus:ring-focus-primary',
+    default: 'focus:ring focus:ring-focus-default',
+    subtle: 'focus:bg-background-extra dark:focus:bg-background-highlight focus:text-primary-text',
 }
 
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
     small: 'h-10 text-sm p-3 space-x-xsm',
     default: 'h-12 p-3 space-x-sm',
     large: 'h-14 text-lg p-4 space-x-2',
+    icon: 'h-8 w-8 p-1',
 }
 
 // We use forwarRef here so that our buttons can be used as children
@@ -71,7 +73,7 @@ const Button = React.forwardRef(
         const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']
         const colorStyle = style ? BUTTON_STYLES[style] : BUTTON_STYLES['primary']
         const focusStyle = focus ? BUTTON_FOCUS_STYLES[focus] : BUTTON_FOCUS_STYLES['default']
-        const base = `focus:outline-focus rounded-sm font-bold ${colorStyle} ${focusStyle}`
+        const base = `focus:outline-none rounded-sm font-bold ${colorStyle} ${focusStyle}`
         const classes = className ? `${base} ${className}` : base
         const content = (
             <div className={`flex flex-row items-center justify-center ${sizing}`}>{children}</div>

@@ -17,7 +17,7 @@ const NavLink = ({ title, href }: Props) => {
                 <a
                     className={combine(
                         'font-bold rounded p-sm hover:bg-primary-extra hover:text-white',
-                        'focus:outline-primary focus:text-white',
+                        'focus:outline-none focus:ring focus:ring-focus-primary focus:text-white',
                         router.pathname === href
                             ? 'text-white bg-primary-extra'
                             : 'text-primary-text-light'
