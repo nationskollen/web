@@ -76,7 +76,7 @@ module.exports = {
             },
             fontSize: {
                 xsm: '0.8rem',
-                md: '0.925rem',
+                md: '0.95rem',
             },
             inset: {
                 'admin-header': '4.5rem',

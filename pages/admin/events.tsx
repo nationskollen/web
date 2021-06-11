@@ -38,12 +38,12 @@ const Events = () => {
                             <ModalContent.Actions className="space-between">
                                 <Button
                                     style="light"
-                                    size="small"
+                                    size="medium"
                                     onClick={() => setModalOpen(false)}
                                 >
                                     <span>Avbryt</span>
                                 </Button>
-                                <Button style="primary" size="small" onClick={next}>
+                                <Button style="primary" size="medium" onClick={next}>
                                     <span>Välj bild</span>
                                     <ArrowRightIcon />
                                 </Button>
@@ -60,12 +60,12 @@ const Events = () => {
                                 <p>Bild</p>
                             </ModalContent.Main>
                             <ModalContent.Actions>
-                                <Button style="light" size="small" onClick={previous}>
+                                <Button style="light" size="medium" onClick={previous}>
                                     <span>Tillbaka</span>
                                 </Button>
                                 <Button
                                     style="primary"
-                                    size="small"
+                                    size="medium"
                                     onClick={() => console.log('submit')}
                                 >
                                     <span>Skapa</span>

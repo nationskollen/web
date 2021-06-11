@@ -25,7 +25,7 @@
  */
 import React from 'react'
 
-export type ButtonSizes = 'small' | 'default' | 'large' | 'icon'
+export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon'
 export type ButtonFocusStyles = 'primary' | 'default' | 'subtle'
 export type ButtonStyles = 'primary' | 'primary-extra' | 'secondary' | 'light' | 'transparent'
 
@@ -58,6 +58,7 @@ const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
 
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
     small: 'h-10 text-sm p-3 space-x-xsm',
+    medium: 'h-11 p-3 px-4 text-md space-x-xsm',
     default: 'h-12 p-3 space-x-sm',
     large: 'h-14 text-lg p-4 space-x-2',
     icon: 'h-8 w-8 p-1',
