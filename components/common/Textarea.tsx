@@ -15,7 +15,7 @@ const Textarea = React.forwardRef(
         return (
             <Input
                 as="textarea"
-                size="textarea"
+                size="auto"
                 containerClassName="pr-0"
                 inputClassName={extend('min-h-textarea max-h-textarea pt-sm', inputClassName)}
                 ref={ref}

@@ -21,10 +21,10 @@
  * @module Common
  */
 import React from 'react'
-import { extend, combine } from '@utils'
+import { extend, combine, combineNoCache } from '@utils'
 
-export type FormRef = React.Ref<HTMLInputElement | HTMLTextAreaElement>
-export type InputSizes = 'small' | 'default' | 'large' | 'textarea'
+export type FormRef = React.Ref<unknown>
+export type InputSizes = 'small' | 'default' | 'large' | 'auto'
 export type InputStyles = 'transparent' | 'no-border'
 export type NativeInputProps = Omit<
     React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
@@ -38,6 +38,7 @@ export interface Props extends NativeInputProps {
     style?: InputStyles
     inputClassName?: string
     containerClassName?: string
+    innerComponent?: React.ElementType
     children?: React.ReactNode
 }
 
@@ -45,19 +46,19 @@ export const INPUT_SIZES: Record<InputSizes, string> = {
     small: 'h-8 text-sm',
     default: 'h-12',
     large: 'h-14',
-    textarea: 'h-auto',
+    auto: 'h-auto',
 }
 
 export const INPUT_STYLES: Record<InputStyles, string> = {
-    'transparent': [
+    transparent: combineNoCache(
         'bg-transparent text-text-extra border-1 border-border-dark',
         'focus-within:text-text-highlight focus-within:border-transparent',
         'dark:bg-background-highlight dark:border-background-highlight',
-    ].join(' '),
-    'no-border': [
+    ),
+    'no-border': combineNoCache(
         'bg-transparent text focus-within:border-text',
         'focus-within:text-text-highlight',
-    ].join(' '),
+    ),
 }
 
 const Input = React.forwardRef(
@@ -72,6 +73,7 @@ const Input = React.forwardRef(
             className,
             inputClassName,
             containerClassName,
+            innerComponent: InnerComponent,
             children,
             ...props
         }: Props,
@@ -85,11 +87,7 @@ const Input = React.forwardRef(
             sizing,
             styling
         )
-        const inputStyle = extend(
-            'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight',
-            inputClassName
-        )
-
+        const inputStyle = 'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight'
         const InputComponent = React.forwardRef((props: NativeInputProps, ref: FormRef) =>
             React.createElement(as || 'input', { ref, ...props })
         )
@@ -103,6 +101,7 @@ const Input = React.forwardRef(
                 )}
                 <div className={extend(containerStyle, containerClassName)}>
                     {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
+                    {InnerComponent && <InnerComponent />}
                     <InputComponent
                         id={id}
                         ref={ref}

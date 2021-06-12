@@ -1,8 +1,10 @@
 import React from 'react'
-import { PhotographIcon, CalendarIcon, PlusIcon, ArrowRightIcon } from '@heroicons/react/solid'
-import { useCategories } from '@nationskollen/sdk'
-import { CollectionIcon } from '@heroicons/react/outline'
+
+import { useAuth } from '@contexts/Auth'
+import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
+import { useLocations, useCategories } from '@nationskollen/sdk'
 import { useForm, UseFormRegister, UseFormSetValue } from 'react-hook-form'
+import { ClockIcon, PhotographIcon, CalendarIcon, PlusIcon, ArrowRightIcon } from '@heroicons/react/solid'
 
 import Input from '@common/Input'
 import Button from '@common/Button'
@@ -10,6 +12,7 @@ import Select from '@common/Select'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
 import ModalContent from '@common/ModalContent'
+import FileUploadInput from '@common/FileUploadInput'
 import ModalSteps, { StepProps } from '@common/ModalSteps'
 
 export interface FormValues {
@@ -74,6 +77,7 @@ const InitialDetails = ({
     setValue,
 }: FormStepProps) => {
     const { data } = useCategories()
+
     const options = data
         ? data.map((category) => ({
               id: `category-${category.id}`,
@@ -122,30 +126,46 @@ const InitialDetails = ({
     )
 }
 
-const TimeAndLocation = ({ currentStep, totalSteps, previous, next, register }: FormStepProps) => {
+const TimeAndLocation = ({ currentStep, totalSteps, previous, next, register, setValue }: FormStepProps) => {
+    const { oid } = useAuth()
+    const { data } = useLocations(oid!)
+
+    const locations = data
+        ? data.map((location) => ({
+            id: `location-${location.id}`,
+            value: location.name,
+        }))
+        : []
+
     return (
         <ModalContent.Wrapper>
             <ModalContent.Header
-                icon={PhotographIcon}
-                title="Välj tid och plats"
+                icon={ClockIcon}
+                title="Tid och plats"
                 description={`Steg ${currentStep + 1} / ${totalSteps}`}
                 descriptionClassName="leading-none"
             />
             <ModalContent.Main>
                 <InputGroup>
                     <Input
-                        type="text"
+                        type="date"
                         label="Starttid"
                         autoFocus={true}
                         {...register('occursAt', { required: true })}
                     />
                     <Input
-                        type="text"
+                        type="date"
                         label="Sluttid"
                         {...register('endsAt', { required: true })}
                     />
                 </InputGroup>
-                <Input type="text" label="Plats" {...register('location')} />
+                <Select
+                    label="Plats"
+                    buttonIcon={LocationMarkerIcon}
+                    options={locations}
+                    setValue={setValue}
+                    {...register('location')}
+                />
             </ModalContent.Main>
             <ModalContent.Actions>
                 <Button style="light" size="medium" radius="large" onClick={previous}>
@@ -170,7 +190,7 @@ const ImageSelect = ({ currentStep, totalSteps, previous, register }: FormStepPr
                 descriptionClassName="leading-none"
             />
             <ModalContent.Main>
-                <p>Bild</p>
+                <FileUploadInput label="Omslagsbild" autoFocus={true} {...register('image')} />
             </ModalContent.Main>
             <ModalContent.Actions>
                 <Button style="light" size="medium" radius="large" onClick={previous}>

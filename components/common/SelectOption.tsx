@@ -9,8 +9,8 @@ export interface Props {
 }
 
 const ACTIVE_STYLE = combineNoCache(
-    'bg-primary-highlight text-primary-text',
-    'dark:bg-primary-dark dark:text-white',
+    'bg-background-extra text-text-highlight',
+    'dark:bg-border-dark',
 )
 
 const SelectOption = ({ option }: Props) => {
@@ -20,7 +20,7 @@ const SelectOption = ({ option }: Props) => {
                 <div
                     className={combineNoCache(
                         'px-md py-sm flex flex-row items-center',
-                        active ? ACTIVE_STYLE : ''
+                        active ? ACTIVE_STYLE : '',
                     )}
                 >
                     <div className="w-5 h-5 mr-sm">

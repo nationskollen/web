@@ -115,7 +115,7 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
     medium: 'h-10 p-3 px-4 text-md space-x-xsm',
     default: 'h-12 p-3 space-x-sm',
     large: 'h-14 text-lg p-4 space-x-2',
-    icon: 'h-8 w-8 p-1',
+    icon: 'h-9 w-9 p-sm',
 }
 
 // We use forwarRef here so that our buttons can be used as children

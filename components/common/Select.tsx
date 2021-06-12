@@ -102,14 +102,21 @@ const Select = React.forwardRef(
                             {label}
                         </Listbox.Label>
                     )}
-                    <Listbox.Button id={id} as={Button} style="input" className="w-full">
-                        {ButtonIcon && (
-                            <ButtonIcon
-                                className={extend('text-text-extra', buttonIconClassName)}
-                            />
+                    <Listbox.Button id={id} as={Button} style="input" className="w-full group">
+                        {({ open }) => (
+                            <>
+                                {ButtonIcon && (
+                                    <ButtonIcon
+                                        className={extend(
+                                            open ? 'text-focus-input' : 'text-text-extra',
+                                            buttonIconClassName,
+                                        )}
+                                    />
+                                )}
+                                <span className="flex-1 font-normal text-left">{selected.value}</span>
+                                <SelectorIcon />
+                            </>
                         )}
-                        <span className="flex-1 font-normal text-left">{selected.value}</span>
-                        <SelectorIcon />
                     </Listbox.Button>
                     <Transition
                         as={React.Fragment}
@@ -121,7 +128,7 @@ const Select = React.forwardRef(
                             <Card
                                 noPadding={true}
                                 className={combine(
-                                    'z-10 overflow-y-scroll rounded-t-none rounded-b-sm',
+                                    'z-10 overflow-y-auto rounded-t-none rounded-b-sm py-xsm',
                                     'shadow-2xl max-h-dropdown border-1 border-border-dark',
                                     'dark:bg-background-highlight dark:border-0 dark:border-t-1',
                                 )}
