@@ -9,7 +9,6 @@ export interface StepProps {
     close: NavigationCallback
     currentStep: number
     totalSteps: number
-    ref: React.Ref<any>
 }
 
 export interface Props extends Omit<ModalProps, 'title' | 'description' | 'wrapperComponent'> {
@@ -20,7 +19,7 @@ export interface WrapperProps {
     children: React.ReactNode
 }
 
-const ModalSteps = React.forwardRef(({ steps, open, setOpen, ...props }: Props, ref: any) => {
+const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
     if (steps.length === 0) {
         return null
     }
@@ -49,7 +48,6 @@ const ModalSteps = React.forwardRef(({ steps, open, setOpen, ...props }: Props, 
         currentStep,
         totalSteps: steps.length,
         close: () => setOpen(false),
-        ref,
     })
 
     return (
@@ -57,6 +55,6 @@ const ModalSteps = React.forwardRef(({ steps, open, setOpen, ...props }: Props, 
             {content}
         </Modal>
     )
-})
+}
 
 export default ModalSteps
