@@ -37,9 +37,7 @@ const shouldRender = (_, next: OptimizerProps) => {
 // Without this, each step would render every time we navigate
 // between different steps.
 const ModalStepOptimizer = React.memo(({ children }: OptimizerProps) => {
-    return (
-        <>{children}</>
-    )
+    return <>{children}</>
 }, shouldRender)
 
 const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
@@ -70,20 +68,21 @@ const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
     // once when closing the modal.
     return (
         <Modal open={open} setOpen={setOpen} {...props}>
-            {open && steps.map((child, index) => (
-                <div key={index} className={index !== currentStep ? 'hidden invisible' : ''}>
-                    <ModalStepOptimizer index={index} currentStep={currentStep}>
-                        {child({
-                            index,
-                            next,
-                            previous,
-                            currentStep,
-                            totalSteps: steps.length,
-                            close: () => setOpen(false),
-                        })}
-                    </ModalStepOptimizer>
-                </div>
-            ))}
+            {open &&
+                steps.map((child, index) => (
+                    <div key={index} className={index !== currentStep ? 'hidden invisible' : ''}>
+                        <ModalStepOptimizer index={index} currentStep={currentStep}>
+                            {child({
+                                index,
+                                next,
+                                previous,
+                                currentStep,
+                                totalSteps: steps.length,
+                                close: () => setOpen(false),
+                            })}
+                        </ModalStepOptimizer>
+                    </div>
+                ))}
         </Modal>
     )
 }

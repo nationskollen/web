@@ -7,11 +7,7 @@ export interface Props {
 }
 
 const InputGroup = ({ className, children }: Props) => {
-    return (
-        <div className={extend('space-x-md flex flex-row', className)}>
-            {children}
-        </div>
-    )
+    return <div className={extend('space-x-md flex flex-row', className)}>{children}</div>
 }
 
 export default InputGroup

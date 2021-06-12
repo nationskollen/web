@@ -82,6 +82,7 @@ module.exports = {
             maxHeight: {
                 dialog: '20rem',
                 textarea: '30rem',
+                dropdown: '15rem',
             },
             width: {
                 'sidebar-navigation': '18rem',
@@ -103,8 +104,8 @@ module.exports = {
                 '-admin-header': '-4.5rem',
             },
             transitionDuration: {
-                in: '75',
-                out: '50',
+                in: '75ms',
+                out: '50ms',
             },
         },
     },

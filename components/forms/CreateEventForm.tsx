@@ -1,15 +1,12 @@
 import React from 'react'
-import { useNation, Category } from '@nationskollen/sdk'
-import { useForm, UseFormRegister } from 'react-hook-form'
-import {
-    PhotographIcon,
-    CalendarIcon,
-    PlusIcon,
-    ArrowRightIcon,
-} from '@heroicons/react/solid'
+import { PhotographIcon, CalendarIcon, PlusIcon, ArrowRightIcon } from '@heroicons/react/solid'
+import { useCategories } from '@nationskollen/sdk'
+import { CollectionIcon } from '@heroicons/react/outline'
+import { useForm, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 
 import Input from '@common/Input'
 import Button from '@common/Button'
+import Select from '@common/Select'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
 import ModalContent from '@common/ModalContent'
@@ -30,7 +27,8 @@ export interface FormValues {
 export type SubmitCallback = (data: FormValues) => void
 
 export interface FormStepProps extends StepProps {
-    register: UseFormRegister<any>
+    register: UseFormRegister<FormValues>
+    setValue: UseFormSetValue<FormValues>
 }
 
 export interface Props {
@@ -39,11 +37,13 @@ export interface Props {
 }
 
 const CreateEventForm = ({ open, setOpen }: Props) => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, setValue } = useForm<FormValues>()
 
     const submit: SubmitCallback = (data) => {
         console.log(data)
     }
+
+    const stepProps = (props: StepProps) => ({ register, setValue, ...props })
 
     return (
         <ModalSteps
@@ -54,20 +54,33 @@ const CreateEventForm = ({ open, setOpen }: Props) => {
             cardClassName="w-form-modal"
             cardTitleClassName="p-md"
             containerComponent={({ children }) => (
-                <form onSubmit={handleSubmit(submit)}>
-                    {children}
-                </form>
+                <form onSubmit={handleSubmit(submit)}>{children}</form>
             )}
             steps={[
-                (props) => <InitialDetails register={register} {...props} />,
-                (props) => <TimeAndLocation register={register} {...props} />,
-                (props) => <ImageSelect register={register} {...props} />,
+                (props) => <InitialDetails {...stepProps(props)} />,
+                (props) => <TimeAndLocation {...stepProps(props)} />,
+                (props) => <ImageSelect {...stepProps(props)} />,
             ]}
         />
     )
 }
 
-const InitialDetails = ({ currentStep, totalSteps, next, close, register }: FormStepProps) => {
+const InitialDetails = ({
+    currentStep,
+    totalSteps,
+    next,
+    close,
+    register,
+    setValue,
+}: FormStepProps) => {
+    const { data } = useCategories()
+    const options = data
+        ? data.map((category) => ({
+              id: `category-${category.id}`,
+              value: category.name,
+          }))
+        : []
+
     return (
         <ModalContent.Wrapper>
             <ModalContent.Header
@@ -83,6 +96,13 @@ const InitialDetails = ({ currentStep, totalSteps, next, close, register }: Form
                     autoFocus={true}
                     {...register('title', { required: true })}
                 />
+                <Select
+                    label="Kategori"
+                    buttonIcon={CollectionIcon}
+                    options={options}
+                    setValue={setValue}
+                    {...register('category')}
+                />
                 <Textarea
                     type="text"
                     label="Beskrivning"
@@ -90,12 +110,7 @@ const InitialDetails = ({ currentStep, totalSteps, next, close, register }: Form
                 />
             </ModalContent.Main>
             <ModalContent.Actions className="space-between">
-                <Button
-                    style="light"
-                    size="medium"
-                    radius="large"
-                    onClick={close}
-                >
+                <Button style="light" size="medium" radius="large" onClick={close}>
                     <span>Avbryt</span>
                 </Button>
                 <Button style="primary" size="medium" radius="large" onClick={next}>
@@ -130,27 +145,13 @@ const TimeAndLocation = ({ currentStep, totalSteps, previous, next, register }: 
                         {...register('endsAt', { required: true })}
                     />
                 </InputGroup>
-                <Input
-                    type="text"
-                    label="Plats"
-                    {...register('location')}
-                />
+                <Input type="text" label="Plats" {...register('location')} />
             </ModalContent.Main>
             <ModalContent.Actions>
-                <Button
-                    style="light"
-                    size="medium"
-                    radius="large"
-                    onClick={previous}
-                >
+                <Button style="light" size="medium" radius="large" onClick={previous}>
                     <span>Tillbaka</span>
                 </Button>
-                <Button
-                    style="primary"
-                    size="medium"
-                    radius="large"
-                    onClick={next}
-                >
+                <Button style="primary" size="medium" radius="large" onClick={next}>
                     <span>Välj bild</span>
                     <ArrowRightIcon />
                 </Button>
@@ -172,20 +173,10 @@ const ImageSelect = ({ currentStep, totalSteps, previous, register }: FormStepPr
                 <p>Bild</p>
             </ModalContent.Main>
             <ModalContent.Actions>
-                <Button
-                    style="light"
-                    size="medium"
-                    radius="large"
-                    onClick={previous}
-                >
+                <Button style="light" size="medium" radius="large" onClick={previous}>
                     <span>Tillbaka</span>
                 </Button>
-                <Button
-                    type="submit"
-                    style="primary"
-                    size="medium"
-                    radius="large"
-                >
+                <Button type="submit" style="primary" size="medium" radius="large">
                     <span>Skapa</span>
                     <PlusIcon />
                 </Button>

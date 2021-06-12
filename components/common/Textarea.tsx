@@ -10,17 +10,19 @@ import React from 'react'
 import { extend } from '@utils'
 import Input, { Props as InputProps } from '@common/Input'
 
-const Textarea = React.forwardRef(({ inputClassName, ...props }: InputProps, ref: React.Ref<any>) => {
-    return (
-        <Input
-            as="textarea"
-            size="textarea"
-            containerClassName="pr-0"
-            inputClassName={extend('min-h-textarea max-h-textarea pt-sm', inputClassName)}
-            ref={ref}
-            {...props}
-        />
-    )
-})
+const Textarea = React.forwardRef(
+    ({ inputClassName, ...props }: InputProps, ref: React.Ref<any>) => {
+        return (
+            <Input
+                as="textarea"
+                size="textarea"
+                containerClassName="pr-0"
+                inputClassName={extend('min-h-textarea max-h-textarea pt-sm', inputClassName)}
+                ref={ref}
+                {...props}
+            />
+        )
+    }
+)
 
 export default Textarea

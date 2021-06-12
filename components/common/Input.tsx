@@ -8,7 +8,7 @@
  * </Input>
  * ```
  *
- * Example usage with react-form-hook:
+ * Example usage with react-hook-form:
  * ```typescript
  * <Input label="Email" placeholder="email@email.com" type="email" {...register('email', { required: true }}>
  *     <MailIcon />
@@ -60,55 +60,60 @@ export const INPUT_STYLES: Record<InputStyles, string> = {
     ].join(' '),
 }
 
-const Input = React.forwardRef(({
-    id,
-    as,
-    size,
-    type,
-    style,
-    label,
-    className,
-    inputClassName,
-    containerClassName,
-    children,
-    ...props
-}: Props, ref: FormRef) => {
-    const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
-    const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
-    const baseStyle = 'rounded-sm flex flex-col justify-center'
-    const containerStyle = combine(
-        'flex flex-row items-center rounded-sm focus-within:ring focus-within:ring-focus-input px-3',
-        sizing,
-        styling
-    )
-    const inputStyle = extend(
-        'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight',
-        inputClassName
-    )
+const Input = React.forwardRef(
+    (
+        {
+            id,
+            as,
+            size,
+            type,
+            style,
+            label,
+            className,
+            inputClassName,
+            containerClassName,
+            children,
+            ...props
+        }: Props,
+        ref: FormRef
+    ) => {
+        const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
+        const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
+        const baseStyle = 'rounded-sm flex flex-col justify-center'
+        const containerStyle = combine(
+            'flex flex-row items-center rounded-sm focus-within:ring focus-within:ring-focus-input px-3',
+            sizing,
+            styling
+        )
+        const inputStyle = extend(
+            'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight',
+            inputClassName
+        )
 
-    const InputComponent = React.forwardRef((props: NativeInputProps, ref: FormRef) => (
-        React.createElement(as || 'input', { ref, ...props })
-    ))
+        const InputComponent = React.forwardRef((props: NativeInputProps, ref: FormRef) =>
+            React.createElement(as || 'input', { ref, ...props })
+        )
 
-    return (
-        <div className={extend(baseStyle, className)}>
-            {label && (
-                <label className="text-sm mb-xsm text-text" htmlFor={id}>
-                    {label}
-                </label>
-            )}
-            <div className={extend(containerStyle, containerClassName)}>
-                {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
-                <InputComponent
-                    id={id}
-                    ref={ref}
-                    type={type}
-                    className={extend(inputStyle, inputClassName)}
-                    {...props}
-                />
+        return (
+            <div className={extend(baseStyle, className)}>
+                {label && (
+                    <label className="text-sm mb-xsm text-text" htmlFor={id}>
+                        {label}
+                    </label>
+                )}
+                <div className={extend(containerStyle, containerClassName)}>
+                    {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
+                    <InputComponent
+                        id={id}
+                        ref={ref}
+                        type={type}
+                        className={extend(inputStyle, inputClassName)}
+                        {...props}
+                    />
+                </div>
             </div>
-        </div>
-    )
-})
+        )
+    }
+)
 
 export default Input

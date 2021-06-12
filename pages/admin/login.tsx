@@ -34,7 +34,7 @@ const Login = () => {
                 </Link>
             </section>
             <section className="absolute bottom-0 flex flex-col items-center w-full text-white">
-                <Button style="primary" className="mb-lg" href={`mailto://${CONTACT_EMAIL}`}>
+                <Button style="primary" className="mb-lg" radius="large" href={`mailto://${CONTACT_EMAIL}`}>
                     <MailIcon className="h-6" />
                     <span>{CONTACT_EMAIL}</span>
                 </Button>

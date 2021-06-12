@@ -11,7 +11,15 @@ export function isClient() {
  * Combines a list of classnames into a single, space-separated string
  */
 export function combine(...classNames: Array<string>) {
-    return useMemo(() => classNames.join(' '), [classNames])
+    return useMemo(() => combineNoCache(...classNames), [classNames])
+}
+
+/**
+ * Combines a list of classnames into a single, space-separated string
+ * without caching the result.
+ */
+export function combineNoCache(...classNames: Array<string>) {
+    return classNames.join(' ')
 }
 
 /**
