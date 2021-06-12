@@ -109,11 +109,13 @@ const Select = React.forwardRef(
                                     <ButtonIcon
                                         className={extend(
                                             open ? 'text-focus-input' : 'text-text-extra',
-                                            buttonIconClassName,
+                                            buttonIconClassName
                                         )}
                                     />
                                 )}
-                                <span className="flex-1 font-normal text-left">{selected.value}</span>
+                                <span className="flex-1 font-normal text-left">
+                                    {selected.value}
+                                </span>
                                 <SelectorIcon />
                             </>
                         )}
@@ -130,7 +132,7 @@ const Select = React.forwardRef(
                                 className={combine(
                                     'z-10 overflow-y-auto rounded-t-none rounded-b-sm py-xsm',
                                     'shadow-2xl max-h-dropdown border-1 border-border-dark',
-                                    'dark:bg-background-highlight dark:border-0 dark:border-t-1',
+                                    'dark:bg-background-highlight dark:border-0 dark:border-t-1'
                                 )}
                             >
                                 {options.map((option) => (

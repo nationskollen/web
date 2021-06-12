@@ -4,7 +4,13 @@ import { useAuth } from '@contexts/Auth'
 import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
 import { useLocations, useCategories } from '@nationskollen/sdk'
 import { useForm, UseFormRegister, UseFormSetValue } from 'react-hook-form'
-import { ClockIcon, PhotographIcon, CalendarIcon, PlusIcon, ArrowRightIcon } from '@heroicons/react/solid'
+import {
+    ClockIcon,
+    PhotographIcon,
+    CalendarIcon,
+    PlusIcon,
+    ArrowRightIcon,
+} from '@heroicons/react/solid'
 
 import Input from '@common/Input'
 import Button from '@common/Button'
@@ -126,15 +132,22 @@ const InitialDetails = ({
     )
 }
 
-const TimeAndLocation = ({ currentStep, totalSteps, previous, next, register, setValue }: FormStepProps) => {
+const TimeAndLocation = ({
+    currentStep,
+    totalSteps,
+    previous,
+    next,
+    register,
+    setValue,
+}: FormStepProps) => {
     const { oid } = useAuth()
     const { data } = useLocations(oid!)
 
     const locations = data
         ? data.map((location) => ({
-            id: `location-${location.id}`,
-            value: location.name,
-        }))
+              id: `location-${location.id}`,
+              value: location.name,
+          }))
         : []
 
     return (

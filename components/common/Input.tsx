@@ -50,14 +50,14 @@ export const INPUT_SIZES: Record<InputSizes, string> = {
 }
 
 export const INPUT_STYLES: Record<InputStyles, string> = {
-    transparent: combineNoCache(
+    'transparent': combineNoCache(
         'bg-transparent text-text-extra border-1 border-border-dark',
         'focus-within:text-text-highlight focus-within:border-transparent',
-        'dark:bg-background-highlight dark:border-background-highlight',
+        'dark:bg-background-highlight dark:border-background-highlight'
     ),
     'no-border': combineNoCache(
         'bg-transparent text focus-within:border-text',
-        'focus-within:text-text-highlight',
+        'focus-within:text-text-highlight'
     ),
 }
 
@@ -87,7 +87,8 @@ const Input = React.forwardRef(
             sizing,
             styling
         )
-        const inputStyle = 'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight'
+        const inputStyle =
+            'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight'
         const InputComponent = React.forwardRef((props: NativeInputProps, ref: FormRef) =>
             React.createElement(as || 'input', { ref, ...props })
         )

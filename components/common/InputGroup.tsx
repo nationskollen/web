@@ -9,10 +9,12 @@ export interface Props {
 
 const InputGroup = ({ columns, className, children }: Props) => {
     return (
-        <div className={extend(
-            `grid grid-cols-${columns || React.Children.count(children)} gap-md`,
-            className
-        )}>
+        <div
+            className={extend(
+                `grid grid-cols-${columns || React.Children.count(children)} gap-md`,
+                className
+            )}
+        >
             {children}
         </div>
     )

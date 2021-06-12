@@ -55,53 +55,43 @@ export interface Props {
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    primary: combineNoCache(
+    'primary': combineNoCache(
         'bg-primary text-white',
         'dark:filter dark:brightness-125',
-        'focus:ring-focus-primary hover:bg-primary-extra',
+        'focus:ring-focus-primary hover:bg-primary-extra'
     ),
-    'primary-extra': combineNoCache(
-        'bg-primary-extra text-white',
-        'focus:ring-focus-primary',
-    ),
-    secondary: combineNoCache(
+    'primary-extra': combineNoCache('bg-primary-extra text-white', 'focus:ring-focus-primary'),
+    'secondary': combineNoCache(
         'bg-secondary text-white',
-        'hover:bg-secondary-extra focus:ring-focus-secondary',
+        'hover:bg-secondary-extra focus:ring-focus-secondary'
     ),
-    light: combineNoCache(
+    'light': combineNoCache(
         'bg-background-extra text-text-highlight border-1 border-border-dark',
         'dark:bg-background-highlight dark:border-background-highlight',
-        'focus:ring-focus-default',
+        'focus:ring-focus-default'
     ),
-    transparent: combineNoCache(
-        'bg-transparent',
-        'focus:ring-focus-default',
-    ),
-    error: combineNoCache(
+    'transparent': combineNoCache('bg-transparent', 'focus:ring-focus-default'),
+    'error': combineNoCache(
         'bg-error text-white',
-        'hover:filter hover:brightness-125 focus:ring-focus-error',
+        'hover:filter hover:brightness-125 focus:ring-focus-error'
     ),
-    success: combineNoCache(
+    'success': combineNoCache(
         'bg-success text-white',
-        'hover:filter hover:brightness-125 focus:ring-focus-success',
+        'hover:filter hover:brightness-125 focus:ring-focus-success'
     ),
-    input: combineNoCache(
+    'input': combineNoCache(
         'bg-transparent text-text-highlight border-1 border-border-dark',
         'dark:bg-background-highlight dark:border-0',
-        'focus:ring focus:ring-focus-input',
+        'focus:ring focus:ring-focus-input'
     ),
 }
 
 const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
-    primary: combineNoCache(
-        'focus:ring focus:ring-focus-primary',
-    ),
-    default: combineNoCache(
-        'focus:ring focus:ring-focus-default',
-    ),
+    primary: combineNoCache('focus:ring focus:ring-focus-primary'),
+    default: combineNoCache('focus:ring focus:ring-focus-default'),
     subtle: combineNoCache(
         'dark:focus:bg-background-highlight',
-        'focus:bg-background-extra focus:text-primary-text',
+        'focus:bg-background-extra focus:text-primary-text'
     ),
 }
 
