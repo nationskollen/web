@@ -68,6 +68,7 @@ module.exports = {
                 'lg': '1.5rem',
                 'xlg': '2.5rem',
                 '1/5': '20vh',
+                'modal-offset': '15vh',
             },
             height: {
                 'admin-header': '16rem',

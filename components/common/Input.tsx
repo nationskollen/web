@@ -20,8 +20,8 @@
  */
 import React from 'react'
 import { extend, combine } from '@utils'
-import { Field, FieldProps, FieldInputProps } from 'formik'
 
+export type FormRef = React.Ref<HTMLInputElement | HTMLTextAreaElement>
 export type InputSizes = 'small' | 'default' | 'large' | 'textarea'
 export type InputStyles = 'transparent' | 'no-border'
 export type NativeInputProps = Omit<
@@ -58,7 +58,7 @@ export const INPUT_STYLES: Record<InputStyles, string> = {
     ].join(' '),
 }
 
-const Input = ({
+const Input = React.forwardRef(({
     id,
     as,
     size,
@@ -69,9 +69,8 @@ const Input = ({
     inputClassName,
     containerClassName,
     children,
-    onChange,
     ...props
-}: Props) => {
+}: Props, ref: FormRef) => {
     const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
     const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
     const baseStyle = 'rounded-sm flex flex-col justify-center'
@@ -81,44 +80,33 @@ const Input = ({
         styling
     )
     const inputStyle = extend(
-        'flex-1 h-full focus:outline-none bg-transparent text-text-highlight',
+        'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight',
         inputClassName
     )
 
-    const InputComponent = (props: NativeInputProps) => React.createElement(as || 'input', props)
-
-    const content = (fieldProps: FieldInputProps<any> | {}) => {
-        return (
-            <div className={extend(baseStyle, className)}>
-                {label && (
-                    <label className="text-sm mb-xsm text-text" htmlFor={id}>
-                        {label}
-                    </label>
-                )}
-                <div className={extend(containerStyle, containerClassName)}>
-                    {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
-                    <InputComponent
-                        id={id}
-                        type={type}
-                        className={extend(inputStyle, inputClassName)}
-                        {...props}
-                        {...fieldProps}
-                    />
-                </div>
-            </div>
-        )
-    }
-
-    // If we specify a custom onChange, we assume that Formik should not be used
-    if (onChange) {
-        return content({ onChange })
-    }
+    const InputComponent = React.forwardRef((props: NativeInputProps, ref: FormRef) => (
+        React.createElement(as || 'input', { ref, ...props })
+    ))
 
     return (
-        <Field name={id} id={id} type={type}>
-            {({ field }: FieldProps) => content(field)}
-        </Field>
+        <div className={extend(baseStyle, className)}>
+            {label && (
+                <label className="text-sm mb-xsm text-text" htmlFor={id}>
+                    {label}
+                </label>
+            )}
+            <div className={extend(containerStyle, containerClassName)}>
+                {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
+                <InputComponent
+                    id={id}
+                    ref={ref}
+                    type={type}
+                    className={extend(inputStyle, inputClassName)}
+                    {...props}
+                />
+            </div>
+        </div>
     )
-}
+})
 
 export default Input

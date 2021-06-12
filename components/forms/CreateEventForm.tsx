@@ -1,6 +1,6 @@
+import React from 'react'
 import { Category } from '@nationskollen/sdk'
-import { Field, FieldProps, Formik, Form as FormikForm, FormikHelpers } from 'formik'
-
+import { useForm, UseFormRegister } from 'react-hook-form'
 import {
     PhotographIcon,
     CalendarIcon,
@@ -11,18 +11,26 @@ import {
 import Input from '@common/Input'
 import Button from '@common/Button'
 import Textarea from '@common/Textarea'
-import ModalSteps, { StepProps } from '@common/ModalSteps'
+import InputGroup from '@common/InputGroup'
 import ModalContent from '@common/ModalContent'
-
-export type SubmitCallback = (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => void
+import ModalSteps, { StepProps } from '@common/ModalSteps'
 
 export interface FormValues {
     title: string
-    category: Category | null
     description: string
-    nationCard: string
-    membersOnly: string
-    email: string
+    occursAt: Date
+    endsAt: Date
+    membersOnly: boolean
+    requiresCard: boolean
+    category?: number
+    location?: number
+    image?: Blob
+}
+
+export type SubmitCallback = (data: FormValues) => void
+
+export interface FormStepProps extends StepProps {
+    register: UseFormRegister<any>
 }
 
 export interface Props {
@@ -30,50 +38,36 @@ export interface Props {
     setOpen: (open: boolean) => void
 }
 
-export interface ImageSelectProps extends StepProps {
-    submitForm: SubmitCallback
-}
-
 const CreateEventForm = ({ open, setOpen }: Props) => {
-    const submitForm: SubmitCallback = (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
-        console.log(values)
+    const { register, handleSubmit } = useForm()
 
-        // TODO: Set this to false when we get a response from the server
-        setSubmitting(false)
+    const submit: SubmitCallback = (data) => {
+        console.log(data)
     }
 
     return (
-        <Formik
-            initialValues={{
-                email: '',
-                title: '',
-                category: null,
-                description: '',
-                nationCard: '',
-                membersOnly: '',
-            }}
-            onSubmit={submitForm}
-        >
-            <FormikForm>
-                <ModalSteps
-                    href="#create"
-                    open={open}
-                    setOpen={setOpen}
-                    noPadding={true}
-                    cardClassName="w-form-modal"
-                    cardTitleClassName="p-md"
-                    steps={[
-                        (props) => <InitialDetails {...props} />,
-                        (props) => <TimeAndLocation {...props} />,
-                        (props) => <ImageSelect submitForm={submitForm} {...props} />,
-                    ]}
-                />
-            </FormikForm>
-        </Formik>
+        <ModalSteps
+            href="#create"
+            open={open}
+            setOpen={setOpen}
+            noPadding={true}
+            cardClassName="w-form-modal"
+            cardTitleClassName="p-md"
+            containerComponent={({ children }) => (
+                <form onSubmit={handleSubmit(submit)}>
+                    {children}
+                </form>
+            )}
+            steps={[
+                (props) => <InitialDetails register={register} {...props} />,
+                (props) => <TimeAndLocation register={register} {...props} />,
+                (props) => <ImageSelect register={register} {...props} />,
+            ]}
+        />
     )
 }
 
-const InitialDetails = ({ currentStep, totalSteps, next, close }: StepProps) => {
+const InitialDetails = ({ currentStep, totalSteps, next, close, register }: FormStepProps) => {
     return (
         <ModalContent.Wrapper>
             <ModalContent.Header
@@ -84,18 +78,15 @@ const InitialDetails = ({ currentStep, totalSteps, next, close }: StepProps) => 
             />
             <ModalContent.Main>
                 <Input
-                    id="title"
-                    label="Titel"
                     type="text"
-                    required
+                    label="Titel"
+                    {...register('title', { required: true })}
                 />
                 <Textarea
-                    id="description"
-                    label="Beskrivning"
                     type="text"
-                    required
+                    label="Beskrivning"
+                    {...register('description', { required: true })}
                 />
-                <Field type="email" name="email" placeholder="Email" />
             </ModalContent.Main>
             <ModalContent.Actions className="space-between">
                 <Button
@@ -115,7 +106,7 @@ const InitialDetails = ({ currentStep, totalSteps, next, close }: StepProps) => 
     )
 }
 
-const TimeAndLocation = ({ currentStep, totalSteps, previous, next }: StepProps) => {
+const TimeAndLocation = ({ currentStep, totalSteps, previous, next, register }: FormStepProps) => {
     return (
         <ModalContent.Wrapper>
             <ModalContent.Header
@@ -125,7 +116,23 @@ const TimeAndLocation = ({ currentStep, totalSteps, previous, next }: StepProps)
                 descriptionClassName="leading-none"
             />
             <ModalContent.Main>
-                <p>Tid och plats</p>
+                <InputGroup>
+                    <Input
+                        type="text"
+                        label="Starttid"
+                        {...register('occursAt', { required: true })}
+                    />
+                    <Input
+                        type="text"
+                        label="Sluttid"
+                        {...register('endsAt', { required: true })}
+                    />
+                </InputGroup>
+                <Input
+                    type="text"
+                    label="Plats"
+                    {...register('location')}
+                />
             </ModalContent.Main>
             <ModalContent.Actions>
                 <Button
@@ -150,7 +157,7 @@ const TimeAndLocation = ({ currentStep, totalSteps, previous, next }: StepProps)
     )
 }
 
-const ImageSelect = ({ currentStep, totalSteps, previous, submitForm }: ImageSelectProps) => {
+const ImageSelect = ({ currentStep, totalSteps, previous, register }: FormStepProps) => {
     return (
         <ModalContent.Wrapper>
             <ModalContent.Header
@@ -172,10 +179,10 @@ const ImageSelect = ({ currentStep, totalSteps, previous, submitForm }: ImageSel
                     <span>Tillbaka</span>
                 </Button>
                 <Button
+                    type="submit"
                     style="primary"
                     size="medium"
                     radius="large"
-                    onClick={submitForm}
                 >
                     <span>Skapa</span>
                     <PlusIcon />

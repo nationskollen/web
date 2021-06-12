@@ -1,6 +1,6 @@
 import Router from 'next/router'
 import { AUTH } from '@constants'
-import { Formik, Form, FormikHelpers } from 'formik'
+import { useForm } from 'react-hook-form'
 import { LockClosedIcon, LoginIcon, MailIcon } from '@heroicons/react/outline'
 
 import Input from '@common/Input'
@@ -12,11 +12,10 @@ export interface FormValues {
 }
 
 const LoginForm = () => {
-    const handleSumbit = (values: FormValues, { setSubmitting }: FormikHelpers<FormValues>) => {
-        console.log(values)
+    const { register, handleSubmit } = useForm<FormValues>()
 
-        // TODO: Set this to false when we get a response from the server
-        setSubmitting(false)
+    const submit = (data: FormValues) => {
+        console.log(data)
 
         // TODO: Set correct token and oid
         localStorage.setItem(AUTH.USER_STORAGE_KEY, JSON.stringify({ token: 'token', oid: 400 }))
@@ -28,40 +27,30 @@ const LoginForm = () => {
     }
 
     return (
-        <Formik
-            initialValues={{
-                email: '',
-                password: '',
-            }}
-            onSubmit={handleSumbit}
-        >
-            <Form>
-                <div className="space-y-md">
-                    <Input
-                        id="email"
-                        label="Email"
-                        type="email"
-                        placeholder="din@email.se"
-                        required
-                    >
-                        <MailIcon />
-                    </Input>
-                    <Input
-                        id="password"
-                        label="Lösenord"
-                        type="password"
-                        placeholder="Lösenord"
-                        required
-                    >
-                        <LockClosedIcon />
-                    </Input>
-                </div>
-                <Button style="secondary" className="w-full mt-6" type="submit">
-                    <span>Logga in</span>
-                    <LoginIcon />
-                </Button>
-            </Form>
-        </Formik>
+        <form onSubmit={handleSubmit(submit)}>
+            <div className="space-y-md">
+                <Input
+                    type="email"
+                    label="Email"
+                    placeholder="din@email.se"
+                    {...register('email', { required: true })}
+                >
+                    <MailIcon />
+                </Input>
+                <Input
+                    type="password"
+                    label="Lösenord"
+                    placeholder="Lösenord"
+                    {...register('password', { required: true })}
+                >
+                    <LockClosedIcon />
+                </Input>
+            </div>
+            <Button style="secondary" className="w-full mt-6" type="submit">
+                <span>Logga in</span>
+                <LoginIcon />
+            </Button>
+        </form>
     )
 }
 
