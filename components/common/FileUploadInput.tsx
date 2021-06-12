@@ -1,16 +1,15 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import { combine } from '@utils'
-import { TrashIcon, SwitchHorizontalIcon, CloudUploadIcon } from '@heroicons/react/outline'
+import { TrashIcon, CloudUploadIcon } from '@heroicons/react/outline'
 
 import Button from '@common/Button'
-import Input, { FormRef, Props as InputProps } from '@common/Input'
+import Input, { Props as InputProps } from '@common/Input'
 
 export interface Props extends InputProps {
 }
 
 const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, _) => {
     const [image, setImage] = useState<Blob | null>(null)
-    const inputRef = useRef<FormRef>()
 
     const removeUploadedImage = () => {
         if (!image) {
@@ -30,18 +29,8 @@ const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, _) => {
         onChange && onChange(e)
     }
 
-    const triggerFileSelect = () => {
-        if (!inputRef || !inputRef.current) {
-            return
-        }
-
-        // @ts-ignore
-        inputRef.current.click()
-    }
-
     return (
         <Input
-            ref={inputRef}
             type="file"
             containerClassName="relative h-64 group"
             inputClassName="z-behind"
