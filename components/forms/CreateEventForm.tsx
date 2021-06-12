@@ -80,6 +80,7 @@ const InitialDetails = ({ currentStep, totalSteps, next, close, register }: Form
                 <Input
                     type="text"
                     label="Titel"
+                    autoFocus={true}
                     {...register('title', { required: true })}
                 />
                 <Textarea
@@ -120,6 +121,7 @@ const TimeAndLocation = ({ currentStep, totalSteps, previous, next, register }: 
                     <Input
                         type="text"
                         label="Starttid"
+                        autoFocus={true}
                         {...register('occursAt', { required: true })}
                     />
                     <Input
