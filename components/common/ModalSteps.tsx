@@ -6,6 +6,7 @@ export type NavigationCallback = () => void
 export interface StepProps {
     next: NavigationCallback
     previous: NavigationCallback
+    close: NavigationCallback
     currentStep: number
     totalSteps: number
 }
@@ -46,6 +47,7 @@ const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
         previous,
         currentStep,
         totalSteps: steps.length,
+        close: () => setOpen(false),
     })
 
     return (
