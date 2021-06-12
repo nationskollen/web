@@ -1,14 +1,16 @@
 /**
- * Renders a generic input. If no `onChange` handler is specified,
- * it is assumed that you will be using Formik and will therefore
- * require you to have wrapped the input(s) in a Formik form.
- *
- * If you do not wish to use Formik, you **must** set `onChange`
- * to a valid callback function.
+ * Renders a generic input.
  *
  * Example usage:
  * ```typescript
  * <Input id="email" label="Email" placeholder="email@email.com" type="email" required>
+ *     <MailIcon />
+ * </Input>
+ * ```
+ *
+ * Example usage with react-form-hook:
+ * ```typescript
+ * <Input label="Email" placeholder="email@email.com" type="email" {...register('email', { required: true }}>
  *     <MailIcon />
  * </Input>
  * ```

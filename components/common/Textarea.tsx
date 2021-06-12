@@ -1,10 +1,8 @@
 /**
- * Renders a generic textarea input. If no `onChange` handler is specified,
- * it is assumed that you will be using Formik and will therefore
- * require you to have wrapped the input(s) in a Formik form.
- *
- * If you do not wish to use Formik, you **must** set `onChange`
- * to a valid callback function.
+ * Renders a generic textarea input.
+ * This uses the {@link Input} component under the hood and
+ * accepts all of the same props. This means that the usage is
+ * the same.
  *
  * @module Common
  */
