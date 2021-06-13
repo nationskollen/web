@@ -26,6 +26,8 @@
 import React from 'react'
 import { combineNoCache } from '@utils'
 
+import LoadingIndicator from '@common/LoadingIndicator'
+
 export type ButtonRadius = 'default' | 'large'
 export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon'
 
@@ -48,6 +50,7 @@ export interface Props {
     size?: ButtonSizes
     radius?: ButtonRadius
     style?: ButtonStyles
+    loading?: boolean
     className?: string
     onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
     children?: React.ReactNode
@@ -113,7 +116,19 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
 // set passHref={true} on the Link.
 const Button = React.forwardRef(
     (
-        { size, focus, type, href, style, radius, className, onClick, children, ...props }: Props,
+        {
+            size,
+            focus,
+            type,
+            href,
+            style,
+            radius,
+            loading,
+            className,
+            onClick,
+            children,
+            ...props
+        }: Props,
         ref: any
     ) => {
         const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']
@@ -123,7 +138,9 @@ const Button = React.forwardRef(
         const base = `focus:ring focus:outline-none font-bold ${colorStyle} ${focusStyle} ${radiusStyle}`
         const classes = className ? `${base} ${className}` : base
         const content = (
-            <div className={`flex flex-row items-center justify-center ${sizing}`}>{children}</div>
+            <div className={`flex flex-row items-center justify-center ${sizing}`}>
+                {loading ? <LoadingIndicator /> : children}
+            </div>
         )
 
         if (href) {

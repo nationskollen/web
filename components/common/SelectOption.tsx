@@ -5,6 +5,7 @@ import { CheckIcon } from '@heroicons/react/solid'
 import { OptionItem } from '@common/Select'
 
 export interface Props {
+    index: number
     option: OptionItem
 }
 
@@ -13,9 +14,9 @@ const ACTIVE_STYLE = combineNoCache(
     'dark:bg-border-dark'
 )
 
-const SelectOption = ({ option }: Props) => {
+const SelectOption = ({ option, index }: Props) => {
     return (
-        <Listbox.Option value={option} disabled={option.disabled}>
+        <Listbox.Option value={index} disabled={option.disabled}>
             {({ active, selected }) => (
                 <div
                     className={combineNoCache(

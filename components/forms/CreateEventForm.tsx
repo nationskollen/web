@@ -14,7 +14,7 @@ import {
 
 import Input from '@common/Input'
 import Button from '@common/Button'
-import Select from '@common/Select'
+import Select, { OptionItem } from '@common/Select'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
 import ModalContent from '@common/ModalContent'
@@ -28,7 +28,7 @@ export interface FormValues {
     endsAt: Date
     membersOnly: boolean
     requiresCard: boolean
-    category?: number
+    category?: OptionItem
     location?: number
     image?: Blob
 }
@@ -82,11 +82,11 @@ const InitialDetails = ({
     register,
     setValue,
 }: FormStepProps) => {
-    const { data } = useCategories()
+    const { data, isValidating } = useCategories()
 
     const options = data
         ? data.map((category) => ({
-              id: `category-${category.id}`,
+              id: category.id,
               value: category.name,
           }))
         : []
@@ -111,6 +111,7 @@ const InitialDetails = ({
                     buttonIcon={CollectionIcon}
                     options={options}
                     setValue={setValue}
+                    loading={isValidating}
                     {...register('category')}
                 />
                 <Textarea
@@ -141,11 +142,11 @@ const TimeAndLocation = ({
     setValue,
 }: FormStepProps) => {
     const { oid } = useAuth()
-    const { data } = useLocations(oid!)
+    const { data, isValidating } = useLocations(oid!)
 
     const locations = data
         ? data.map((location) => ({
-              id: `location-${location.id}`,
+              id: location.id,
               value: location.name,
           }))
         : []
@@ -177,6 +178,7 @@ const TimeAndLocation = ({
                     buttonIcon={LocationMarkerIcon}
                     options={locations}
                     setValue={setValue}
+                    loading={isValidating}
                     {...register('location')}
                 />
             </ModalContent.Main>

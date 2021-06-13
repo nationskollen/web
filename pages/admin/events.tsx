@@ -24,7 +24,8 @@ const Events = () => {
                 <TableOfContents sections={SECTIONS} />
                 <Button
                     style="secondary"
-                    className="w-full rounded"
+                    radius="large"
+                    className="w-full"
                     onClick={() => setModalOpen(true)}
                 >
                     <span>Skapa ny event</span>

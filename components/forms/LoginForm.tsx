@@ -46,7 +46,7 @@ const LoginForm = () => {
                     <LockClosedIcon />
                 </Input>
             </div>
-            <Button style="secondary" className="w-full mt-6" type="submit">
+            <Button style="primary" className="w-full mt-6" type="submit">
                 <span>Logga in</span>
                 <LoginIcon />
             </Button>
