@@ -58,7 +58,7 @@ const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
     // Pass through all form props to each step
     const stepProps: StepPropsTransformator<T> = (props: StepProps) => ({
         ...form,
-        ...props
+        ...props,
     })
 
     return (
@@ -69,9 +69,7 @@ const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
             containerComponent={({ children }) => (
                 <form onSubmit={form.handleSubmit(onSubmit)}>{children}</form>
             )}
-            steps={steps.map((step) => (
-                (props: StepProps) => step(stepProps(props))
-            ))}
+            steps={steps.map((step) => (props: StepProps) => step(stepProps(props)))}
             {...props}
         />
     )

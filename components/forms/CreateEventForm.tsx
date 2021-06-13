@@ -177,7 +177,7 @@ const ImageSelect = ({
     currentStep,
     totalSteps,
     previous,
-    register
+    register,
 }: FormStepProps<FormValues>) => {
     return (
         <ModalContent.Wrapper>

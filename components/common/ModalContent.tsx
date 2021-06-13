@@ -78,8 +78,8 @@ const Header = ({
                 description={parsedDescription}
                 className={className}
                 descriptionClassName={extend(
-                    (currentStep && totalSteps) ? 'leading-none' : '',
-                    descriptionClassName,
+                    currentStep && totalSteps ? 'leading-none' : '',
+                    descriptionClassName
                 )}
             >
                 {children}
