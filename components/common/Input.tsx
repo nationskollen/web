@@ -21,13 +21,18 @@
  * @module Common
  */
 import React from 'react'
-import { extend, combine, combineNoCache } from '@utils'
+import { DeepMap, FieldError } from 'react-hook-form'
+import { ExclamationIcon } from '@heroicons/react/outline'
+import { extend, combine, combineNoCache, getFieldErrorMessage } from '@utils'
 
+import InputError from '@common/InputError'
 import LoadingIndicator from '@common/LoadingIndicator'
 
 export type FormRef = React.Ref<unknown>
 export type InputSizes = 'small' | 'default' | 'large' | 'auto'
 export type InputStyles = 'transparent' | 'no-border'
+export type InputFocusStyles = InputStyles | 'error'
+
 export type NativeInputProps = Omit<
     React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
     'size' | 'style'
@@ -39,8 +44,10 @@ export interface Props extends NativeInputProps {
     label?: string
     style?: InputStyles
     loading?: boolean
+    error?: FieldError | boolean | DeepMap<Blob | undefined, FieldError>
     inputClassName?: string
     containerClassName?: string
+    hideErrorIcon?: boolean
     innerComponent?: React.ElementType
     children?: React.ReactNode
 }
@@ -55,12 +62,27 @@ export const INPUT_SIZES: Record<InputSizes, string> = {
 export const INPUT_STYLES: Record<InputStyles, string> = {
     'transparent': combineNoCache(
         'bg-transparent text-text-extra border-1 border-border-dark',
-        'focus-within:text-text-highlight focus-within:border-transparent',
         'dark:bg-background-highlight dark:border-background-highlight'
     ),
     'no-border': combineNoCache(
-        'bg-transparent text focus-within:border-text',
-        'focus-within:text-text-highlight'
+        'bg-transparent text',
+        'focus-within:border-text focus-within:text-text-highlight'
+    ),
+}
+
+export const INPUT_FOCUS_STYLES: Record<InputFocusStyles, string> = {
+    transparent: combineNoCache(
+        'focus-within:ring focus-within:ring-focus-input',
+        'focus-within:text-text-highlight focus-within:border-transparent',
+    ),
+    'no-border': combineNoCache(
+        'focus-within:ring focus-within:ring-focus-input',
+        'focus-within:border-text focus-within:text-text-highlight',
+    ),
+    error: combineNoCache(
+        'border-error',
+        'focus-within:ring focus-within:ring-focus-error',
+        'focus-within:border-error focus-within:text-error focus:within:ring-error',
     ),
 }
 
@@ -74,6 +96,8 @@ const Input = React.forwardRef(
             style,
             label,
             loading,
+            error,
+            hideErrorIcon,
             className,
             inputClassName,
             containerClassName,
@@ -85,11 +109,13 @@ const Input = React.forwardRef(
     ) => {
         const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
         const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
+        const focusStyle = error ? INPUT_FOCUS_STYLES['error'] : INPUT_FOCUS_STYLES[style || 'transparent']
         const baseStyle = 'relative rounded-sm flex flex-col justify-center'
         const containerStyle = combine(
-            'flex flex-row items-center rounded-sm focus-within:ring focus-within:ring-focus-input px-3',
+            'flex flex-row items-center rounded-sm px-3',
             sizing,
-            styling
+            styling,
+            focusStyle,
         )
         const inputStyle =
             'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight'
@@ -97,10 +123,18 @@ const Input = React.forwardRef(
             React.createElement(as || 'input', { ref, ...props })
         )
 
+        const title = getFieldErrorMessage(error)
+
         return (
             <div className={extend(baseStyle, className)}>
                 {label && (
-                    <label className="text-sm mb-xsm text-text" htmlFor={id}>
+                    <label
+                        className={combine(
+                            'text-sm mb-xsm',
+                            error ? 'text-error font-bold' : 'text-text'
+                        )}
+                        htmlFor={id}
+                    >
                         {label}
                     </label>
                 )}
@@ -116,9 +150,19 @@ const Input = React.forwardRef(
                         ref={ref}
                         type={type}
                         className={extend(inputStyle, inputClassName)}
+                        title={title}
+                        aria-invalid={!!error}
                         {...props}
                     />
+                    {(error && !hideErrorIcon) && (
+                        <div className="w-auto h-full p-3 pr-0">
+                            <div className="h-full rounded space-x-xsm bg-error-highlight p-xsm text-error-highlight-text">
+                                <ExclamationIcon />
+                            </div>
+                        </div>
+                    )}
                 </div>
+                <InputError title={title} />
             </div>
         )
     }

@@ -29,7 +29,7 @@ export interface FormValues {
     membersOnly: boolean
     requiresCard: boolean
     category?: OptionItem
-    location?: number
+    location?: OptionItem
     image?: Blob
 }
 
@@ -59,6 +59,8 @@ const InitialDetails = ({
     close,
     register,
     setValue,
+    clearErrors,
+    formState: { errors },
 }: FormStepProps<FormValues>) => {
     const { data, isValidating } = useCategories()
 
@@ -82,7 +84,8 @@ const InitialDetails = ({
                     type="text"
                     label="Titel"
                     autoFocus={true}
-                    {...register('title', { required: true })}
+                    error={errors.title}
+                    {...register('title', { required: 'Detta fält är obligatoriskt' })}
                 />
                 <Select
                     label="Kategori"
@@ -90,19 +93,32 @@ const InitialDetails = ({
                     options={options}
                     setValue={setValue}
                     loading={isValidating}
-                    {...register('category')}
+                    error={errors.category}
+                    clearErrors={clearErrors}
+                    {...register('category', { required: 'Detta fält är obligatoriskt' })}
                 />
                 <Textarea
                     type="text"
                     label="Beskrivning"
-                    {...register('description', { required: true })}
+                    error={errors.description}
+                    {...register('description', { required: 'Detta fält är obligatoriskt' })}
                 />
             </ModalContent.Main>
             <ModalContent.Actions className="space-between">
-                <Button style="light" size="medium" radius="large" onClick={close}>
+                <Button
+                    style="light"
+                    size="medium"
+                    radius="large"
+                    onClick={close}
+                >
                     <span>Avbryt</span>
                 </Button>
-                <Button style="primary" size="medium" radius="large" onClick={next}>
+                <Button
+                    style="primary"
+                    size="medium"
+                    radius="large"
+                    onClick={() => next({ fields: ['title', 'description', 'category'] })}
+                >
                     <span>Välj tid och plats</span>
                     <ArrowRightIcon />
                 </Button>
@@ -118,6 +134,8 @@ const TimeAndLocation = ({
     next,
     register,
     setValue,
+    clearErrors,
+    formState: { errors },
 }: FormStepProps<FormValues>) => {
     const { oid } = useAuth()
     const { data, isValidating } = useLocations(oid!)
@@ -143,11 +161,13 @@ const TimeAndLocation = ({
                         type="date"
                         label="Starttid"
                         autoFocus={true}
+                        error={errors.occursAt}
                         {...register('occursAt', { required: true })}
                     />
                     <Input
                         type="date"
                         label="Sluttid"
+                        error={errors.endsAt}
                         {...register('endsAt', { required: true })}
                     />
                 </InputGroup>
@@ -157,14 +177,26 @@ const TimeAndLocation = ({
                     options={locations}
                     setValue={setValue}
                     loading={isValidating}
+                    error={errors.location}
+                    clearErrors={clearErrors}
                     {...register('location')}
                 />
             </ModalContent.Main>
             <ModalContent.Actions>
-                <Button style="light" size="medium" radius="large" onClick={previous}>
+                <Button
+                    style="light"
+                    size="medium"
+                    radius="large"
+                    onClick={previous}
+                >
                     <span>Tillbaka</span>
                 </Button>
-                <Button style="primary" size="medium" radius="large" onClick={next}>
+                <Button
+                    style="primary"
+                    size="medium"
+                    radius="large"
+                    onClick={() => next({ fields: ['occursAt', 'endsAt', 'location'] })}
+                >
                     <span>Välj bild</span>
                     <ArrowRightIcon />
                 </Button>
@@ -178,6 +210,7 @@ const ImageSelect = ({
     totalSteps,
     previous,
     register,
+    formState: { errors },
 }: FormStepProps<FormValues>) => {
     return (
         <ModalContent.Wrapper>
@@ -188,7 +221,12 @@ const ImageSelect = ({
                 totalSteps={totalSteps}
             />
             <ModalContent.Main>
-                <FileUploadInput label="Omslagsbild" autoFocus={true} {...register('image')} />
+                <FileUploadInput
+                    label="Omslagsbild"
+                    autoFocus={true}
+                    error={errors.image}
+                    {...register('image', { required: 'Du måste ladda upp en bild' })}
+                />
             </ModalContent.Main>
             <ModalContent.Actions>
                 <Button style="light" size="medium" radius="large" onClick={previous}>

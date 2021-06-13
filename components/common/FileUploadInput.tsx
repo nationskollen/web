@@ -7,7 +7,7 @@ import Input, { Props as InputProps } from '@common/Input'
 
 export interface Props extends InputProps {}
 
-const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, _) => {
+const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, ref: React.Ref<any>) => {
     const [image, setImage] = useState<Blob | null>(null)
 
     const removeUploadedImage = () => {
@@ -30,8 +30,10 @@ const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, _) => {
 
     return (
         <Input
+            ref={ref}
             type="file"
             containerClassName="relative h-64 group"
+            hideErrorIcon={true}
             inputClassName="z-behind"
             innerComponent={() => (
                 <>
@@ -81,7 +83,7 @@ const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, _) => {
             accept="image/png, image/jpeg, image/jpg, image/svg"
             title=" "
             {...props}
-        ></Input>
+        />
     )
 })
 

@@ -46,13 +46,14 @@
  * @module Common
  */
 import React, { useState, useMemo, useEffect } from 'react'
-import { combine, extend } from '@utils'
-import { UseFormSetValue } from 'react-hook-form'
 import { SelectorIcon } from '@heroicons/react/solid'
 import { Listbox, Transition } from '@headlessui/react'
+import { combine, extend, getFieldErrorMessage } from '@utils'
+import { DeepMap, FieldError, UseFormClearErrors, UseFormSetValue } from 'react-hook-form'
 
 import Card from '@common/Card'
 import Button from '@common/Button'
+import InputError from '@common/InputError'
 import SelectOption from '@common/SelectOption'
 import LoadingIndicator from '@common/LoadingIndicator'
 
@@ -67,7 +68,9 @@ export interface OptionItem {
 export interface Props extends Omit<NativeSelectProps, 'onSelect'> {
     label: string
     loading?: boolean
+    error?: boolean | DeepMap<OptionItem | undefined, FieldError>
     setValue?: UseFormSetValue<any>
+    clearErrors?: UseFormClearErrors<any>
     onSelect?: (option: OptionItem) => void
     options: Array<OptionItem>
     buttonIcon?: React.ElementType
@@ -81,10 +84,12 @@ const Select = React.forwardRef(
             label,
             options,
             loading,
+            error,
             buttonIcon: ButtonIcon,
             buttonIconClassName,
             name,
             setValue,
+            clearErrors,
             onSelect,
             ...props
         }: Props,
@@ -105,6 +110,7 @@ const Select = React.forwardRef(
         useEffect(() => {
             // Do not update selected if we already have a selected one
             if (selected !== undefined) {
+                runCallbacks(selected)
                 return
             }
 
@@ -122,6 +128,7 @@ const Select = React.forwardRef(
         const updateSelected = (index: number) => {
             setSelected(index)
             runCallbacks(index)
+            clearErrors && clearErrors(name)
         }
 
         const renderedOptions = useMemo(() => {
@@ -137,15 +144,30 @@ const Select = React.forwardRef(
         const selectedValue =
             options && options.length > 0 && selected !== undefined && options[selected].value
 
+        const title = getFieldErrorMessage(error)
+
         return (
             <div className="relative">
                 <Listbox value={selected} onChange={updateSelected}>
                     {label && (
-                        <Listbox.Label className="text-sm mb-xsm text-text" htmlFor={id}>
+                        <Listbox.Label
+                            className={combine(
+                                'text-sm mb-xsm',
+                                error ? 'text-error font-bold' : 'text-text',
+                            )}
+                            htmlFor={id}
+                        >
                             {label}
                         </Listbox.Label>
                     )}
-                    <Listbox.Button id={id} as={Button} style="input" className="w-full group">
+                    <Listbox.Button
+                        id={id}
+                        as={Button}
+                        style="input"
+                        className="w-full group"
+                        error={error}
+                        aria-invalid={!!error}
+                    >
                         {({ open }) => (
                             <>
                                 {loading ? (
@@ -155,7 +177,11 @@ const Select = React.forwardRef(
                                         {ButtonIcon && (
                                             <ButtonIcon
                                                 className={extend(
-                                                    open ? 'text-focus-input' : 'text-text-extra',
+                                                    error ? (
+                                                        open ? 'text-error' : 'text-error-highlight-text'
+                                                    ) : (
+                                                        open ? 'text-focus-input' : 'text-text-extra'
+                                                    ),
                                                     buttonIconClassName
                                                 )}
                                             />
@@ -169,6 +195,7 @@ const Select = React.forwardRef(
                             </>
                         )}
                     </Listbox.Button>
+                    <InputError title={title} />
                     <Transition
                         as={React.Fragment}
                         leave="transition-opacity ease-in duration-out"

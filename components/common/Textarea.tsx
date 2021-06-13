@@ -18,6 +18,7 @@ const Textarea = React.forwardRef(
                 size="auto"
                 containerClassName="pr-0"
                 inputClassName={extend('min-h-textarea max-h-textarea pt-sm', inputClassName)}
+                hideErrorIcon={true}
                 ref={ref}
                 {...props}
             />

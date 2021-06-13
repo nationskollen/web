@@ -26,7 +26,7 @@ export interface OptimizerProps {
     children: React.ReactNode
 }
 
-const shouldRender = (_, next: OptimizerProps) => {
+const shouldRender = (_: OptimizerProps, next: OptimizerProps) => {
     return next.currentStep !== next.index
 }
 
