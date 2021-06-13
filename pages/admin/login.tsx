@@ -34,7 +34,12 @@ const Login = () => {
                 <LoginForm />
             </Card>
             <section className="absolute bottom-0 flex flex-col items-center w-full text-white dark:text-text">
-                <Button style="transparent" className="mb-lg" radius="large" href={`mailto://${CONTACT_EMAIL}`}>
+                <Button
+                    style="transparent"
+                    className="mb-lg"
+                    radius="large"
+                    href={`mailto://${CONTACT_EMAIL}`}
+                >
                     <MailIcon className="h-6" />
                     <span>{CONTACT_EMAIL}</span>
                 </Button>

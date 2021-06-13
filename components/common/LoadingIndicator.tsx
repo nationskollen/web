@@ -2,9 +2,14 @@ import React from 'react'
 
 export interface Props {}
 
-const LoadingIndicator = ({  }: Props) => {
+const LoadingIndicator = ({}: Props) => {
     return (
-        <svg className="h-full animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <svg
+            className="h-full animate-spin"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+        >
             <circle
                 className="opacity-30"
                 cx="12"

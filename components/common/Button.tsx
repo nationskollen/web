@@ -116,7 +116,19 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
 // set passHref={true} on the Link.
 const Button = React.forwardRef(
     (
-        { size, focus, type, href, style, radius, loading, className, onClick, children, ...props }: Props,
+        {
+            size,
+            focus,
+            type,
+            href,
+            style,
+            radius,
+            loading,
+            className,
+            onClick,
+            children,
+            ...props
+        }: Props,
         ref: any
     ) => {
         const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']

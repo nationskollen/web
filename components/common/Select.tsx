@@ -134,7 +134,8 @@ const Select = React.forwardRef(
             ))
         }, [options, selected])
 
-        const selectedValue = options && options.length > 0 && selected !== undefined && options[selected].value
+        const selectedValue =
+            options && options.length > 0 && selected !== undefined && options[selected].value
 
         return (
             <div className="relative">
@@ -155,7 +156,7 @@ const Select = React.forwardRef(
                                             <ButtonIcon
                                                 className={extend(
                                                     open ? 'text-focus-input' : 'text-text-extra',
-                                                    buttonIconClassName,
+                                                    buttonIconClassName
                                                 )}
                                             />
                                         )}

@@ -146,9 +146,9 @@ const TimeAndLocation = ({
 
     const locations = data
         ? data.map((location) => ({
-            id: location.id,
-            value: location.name,
-        }))
+              id: location.id,
+              value: location.name,
+          }))
         : []
 
     return (
