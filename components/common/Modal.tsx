@@ -15,7 +15,6 @@ export interface Props extends OpenProps {
     title?: string
     description?: string | React.ElementType
     href?: string
-    containerComponent?: React.ElementType
     containerClassName?: string
     cardClassName?: string
     cardTitleClassName?: string
@@ -31,7 +30,6 @@ const Modal = ({
     title,
     description,
     href,
-    containerComponent,
     cardClassName,
     cardTitleClassName,
     noPadding,
@@ -40,7 +38,6 @@ const Modal = ({
     children,
 }: Props) => {
     const router = useRouter()
-    const WrapperComponent = containerComponent || React.Fragment
 
     const handleClose = () => {
         setOpen(false)
@@ -98,17 +95,15 @@ const Modal = ({
                         className={extend('w-full min-w-modal mt-modal-offset', cardClassName)}
                         noPadding={noPadding}
                     >
-                        <WrapperComponent>
-                            {title && description && (
-                                <CardTitle
-                                    modal={true}
-                                    className={cardTitleClassName}
-                                    title={title}
-                                    description={description}
-                                />
-                            )}
-                            {children}
-                        </WrapperComponent>
+                        {title && description && (
+                            <CardTitle
+                                modal={true}
+                                className={cardTitleClassName}
+                                title={title}
+                                description={description}
+                            />
+                        )}
+                        {children}
                     </Card>
                 </Transition.Child>
             </Dialog>

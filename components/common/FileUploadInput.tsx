@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { combine } from '@utils'
+import { UseFormSetValue } from 'react-hook-form'
 import { TrashIcon, CloudUploadIcon } from '@heroicons/react/outline'
 
 import Button from '@common/Button'
 import Input, { Props as InputProps } from '@common/Input'
 
-export interface Props extends InputProps {}
+export interface Props extends InputProps {
+    setValue?: UseFormSetValue<any>
+}
 
-const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, ref: React.Ref<any>) => {
+const FileUploadInput = React.forwardRef(({ name, onChange, setValue, ...props }: Props, ref: React.Ref<any>) => {
     const [image, setImage] = useState<Blob | null>(null)
 
     const removeUploadedImage = () => {
@@ -15,6 +18,7 @@ const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, ref: Re
             return
         }
 
+        name && setValue && setValue(name, undefined)
         setImage(null)
     }
 
@@ -31,6 +35,7 @@ const FileUploadInput = React.forwardRef(({ onChange, ...props }: Props, ref: Re
     return (
         <Input
             ref={ref}
+            name={name}
             type="file"
             containerClassName="relative h-64 group"
             hideErrorIcon={true}

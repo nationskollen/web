@@ -86,9 +86,7 @@ const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
             noPadding={true}
             cardClassName="w-form-modal"
             cardTitleClassName="p-md"
-            containerComponent={({ children }) => (
-                <form onSubmit={form.handleSubmit(onSubmit)}>{children}</form>
-            )}
+            onSubmit={form.handleSubmit(onSubmit)}
             steps={steps.map((step) => (props: StepProps) => step(stepProps(props)))}
             {...props}
         />

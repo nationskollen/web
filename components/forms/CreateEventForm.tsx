@@ -53,6 +53,7 @@ const CreateEventForm = (props: ModalOpenProps) => {
 }
 
 const InitialDetails = ({
+    index,
     currentStep,
     totalSteps,
     next,
@@ -72,7 +73,7 @@ const InitialDetails = ({
         : []
 
     return (
-        <ModalContent.Wrapper>
+        <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={CalendarIcon}
                 title="Skapa ny event"
@@ -83,7 +84,6 @@ const InitialDetails = ({
                 <Input
                     type="text"
                     label="Titel"
-                    autoFocus={true}
                     error={errors.title}
                     {...register('title', { required: 'Detta fält är obligatoriskt' })}
                 />
@@ -128,6 +128,7 @@ const InitialDetails = ({
 }
 
 const TimeAndLocation = ({
+    index,
     currentStep,
     totalSteps,
     previous,
@@ -148,7 +149,7 @@ const TimeAndLocation = ({
         : []
 
     return (
-        <ModalContent.Wrapper>
+        <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={ClockIcon}
                 title="Tid och plats"
@@ -160,7 +161,6 @@ const TimeAndLocation = ({
                     <Input
                         type="date"
                         label="Starttid"
-                        autoFocus={true}
                         error={errors.occursAt}
                         {...register('occursAt', { required: true })}
                     />
@@ -206,14 +206,16 @@ const TimeAndLocation = ({
 }
 
 const ImageSelect = ({
+    index,
     currentStep,
     totalSteps,
     previous,
     register,
+    setValue,
     formState: { errors },
 }: FormStepProps<FormValues>) => {
     return (
-        <ModalContent.Wrapper>
+        <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={PhotographIcon}
                 title="Lägg till en bild"
@@ -223,7 +225,7 @@ const ImageSelect = ({
             <ModalContent.Main>
                 <FileUploadInput
                     label="Omslagsbild"
-                    autoFocus={true}
+                    setValue={setValue}
                     error={errors.image}
                     {...register('image', { required: 'Du måste ladda upp en bild' })}
                 />

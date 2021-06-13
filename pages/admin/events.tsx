@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
 
 import Input from '@common/Input'

@@ -33,9 +33,9 @@ const Login = () => {
                 <Logo containerClassNames="self-center text-primary filter dark:brightness-200" />
                 <LoginForm />
             </Card>
-            <section className="absolute bottom-0 flex flex-col items-center w-full text-white dark:text-text">
+            <section className="absolute bottom-0 flex flex-col items-center w-full text-text">
                 <Button
-                    style="transparent"
+                    style="light"
                     className="mb-lg"
                     radius="large"
                     href={`mailto://${CONTACT_EMAIL}`}
@@ -44,7 +44,7 @@ const Login = () => {
                     <span>{CONTACT_EMAIL}</span>
                 </Button>
                 <p className="font-bold">{VERSION}</p>
-                <p className="text-sm text-primary-highlight dark:text-primary-text">Team Krabby</p>
+                <p className="text-sm text-primary-text">Team Krabby</p>
             </section>
         </div>
     )
