@@ -72,7 +72,10 @@ const ModalSteps = ({ steps, open, setOpen, onSubmit, ...props }: Props) => {
             <form onSubmit={onSubmit}>
                 {open &&
                     steps.map((child, index) => (
-                        <div key={index} className={index !== currentStep ? 'hidden invisible' : ''}>
+                        <div
+                            key={index}
+                            className={index !== currentStep ? 'hidden invisible' : ''}
+                        >
                             <ModalStepOptimizer index={index} currentStep={currentStep}>
                                 {child({
                                     index,
@@ -84,8 +87,7 @@ const ModalSteps = ({ steps, open, setOpen, onSubmit, ...props }: Props) => {
                                 })}
                             </ModalStepOptimizer>
                         </div>
-                    )
-                )}
+                    ))}
             </form>
         </Modal>
     )

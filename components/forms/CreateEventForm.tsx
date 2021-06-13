@@ -105,12 +105,7 @@ const InitialDetails = ({
                 />
             </ModalContent.Main>
             <ModalContent.Actions className="space-between">
-                <Button
-                    style="light"
-                    size="medium"
-                    radius="large"
-                    onClick={close}
-                >
+                <Button style="light" size="medium" radius="large" onClick={close}>
                     <span>Avbryt</span>
                 </Button>
                 <Button
@@ -183,12 +178,7 @@ const TimeAndLocation = ({
                 />
             </ModalContent.Main>
             <ModalContent.Actions>
-                <Button
-                    style="light"
-                    size="medium"
-                    radius="large"
-                    onClick={previous}
-                >
+                <Button style="light" size="medium" radius="large" onClick={previous}>
                     <span>Tillbaka</span>
                 </Button>
                 <Button

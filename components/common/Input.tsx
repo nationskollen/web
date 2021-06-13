@@ -71,18 +71,18 @@ export const INPUT_STYLES: Record<InputStyles, string> = {
 }
 
 export const INPUT_FOCUS_STYLES: Record<InputFocusStyles, string> = {
-    transparent: combineNoCache(
+    'transparent': combineNoCache(
         'focus-within:ring focus-within:ring-focus-input',
-        'focus-within:text-text-highlight focus-within:border-transparent',
+        'focus-within:text-text-highlight focus-within:border-transparent'
     ),
     'no-border': combineNoCache(
         'focus-within:ring focus-within:ring-focus-input',
-        'focus-within:border-text focus-within:text-text-highlight',
+        'focus-within:border-text focus-within:text-text-highlight'
     ),
-    error: combineNoCache(
+    'error': combineNoCache(
         'border-error',
         'focus-within:ring focus-within:ring-focus-error',
-        'focus-within:border-error focus-within:text-error focus:within:ring-error',
+        'focus-within:border-error focus-within:text-error focus:within:ring-error'
     ),
 }
 
@@ -109,13 +109,15 @@ const Input = React.forwardRef(
     ) => {
         const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
         const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
-        const focusStyle = error ? INPUT_FOCUS_STYLES['error'] : INPUT_FOCUS_STYLES[style || 'transparent']
+        const focusStyle = error
+            ? INPUT_FOCUS_STYLES['error']
+            : INPUT_FOCUS_STYLES[style || 'transparent']
         const baseStyle = 'relative rounded-sm flex flex-col justify-center'
         const containerStyle = combine(
             'flex flex-row items-center rounded-sm px-3',
             sizing,
             styling,
-            focusStyle,
+            focusStyle
         )
         const inputStyle =
             'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight'
@@ -154,7 +156,7 @@ const Input = React.forwardRef(
                         aria-invalid={!!error}
                         {...props}
                     />
-                    {(error && !hideErrorIcon) && (
+                    {error && !hideErrorIcon && (
                         <div className="w-auto h-full p-3 pr-0">
                             <div className="h-full rounded space-x-xsm bg-error-highlight p-xsm text-error-highlight-text">
                                 <ExclamationIcon />

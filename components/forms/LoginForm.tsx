@@ -12,7 +12,11 @@ export interface FormValues {
 }
 
 const LoginForm = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>(DEFAULT_FORM_PROPS)
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormValues>(DEFAULT_FORM_PROPS)
 
     const submit = (data: FormValues) => {
         console.log(data)

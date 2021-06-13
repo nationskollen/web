@@ -6,7 +6,9 @@ const InputError = ({ title }: Props) => {
     return (
         <>
             {title !== '' && (
-                <span role="alert" className="text-sm text-error mt-sm">{title}</span>
+                <span role="alert" className="text-sm text-error mt-sm">
+                    {title}
+                </span>
             )}
         </>
     )
