@@ -6,9 +6,12 @@ import { Dialog, Transition } from '@headlessui/react'
 import Card from '@common/Card'
 import CardTitle from '@common/CardTitle'
 
-export interface Props {
+export interface OpenProps {
     open: boolean
     setOpen: (open: boolean) => void
+}
+
+export interface Props extends OpenProps {
     title?: string
     description?: string | React.ElementType
     href?: string

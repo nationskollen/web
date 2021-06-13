@@ -17,7 +17,9 @@ export type HeaderIconStyles = 'error' | 'success' | 'primary'
 
 export interface HeaderProps extends BaseProps {
     title: string
-    description: string
+    description?: string
+    currentStep?: number
+    totalSteps?: number
     icon?: React.ElementType
     iconStyle?: HeaderIconStyles
     className?: string
@@ -42,12 +44,22 @@ const Wrapper = ({ children }: WrapperProps) => {
 const Header = ({
     title,
     description,
+    currentStep,
+    totalSteps,
     icon: Icon,
     iconStyle,
     className,
     descriptionClassName,
     children,
 }: HeaderProps) => {
+    let parsedDescription = description
+
+    // If no description is provided, check if we have defined steps.
+    // This will automatically generate a step counter if needded.
+    if (!description && currentStep !== undefined && totalSteps !== undefined) {
+        parsedDescription = `Steg ${currentStep + 1} / ${totalSteps}`
+    }
+
     return (
         <div className="flex flex-row pb-0 space-x-md p-md">
             {Icon && (
@@ -63,9 +75,12 @@ const Header = ({
             <CardTitle
                 modal={true}
                 title={title}
-                description={description}
+                description={parsedDescription}
                 className={className}
-                descriptionClassName={descriptionClassName}
+                descriptionClassName={extend(
+                    (currentStep && totalSteps) ? 'leading-none' : '',
+                    descriptionClassName,
+                )}
             >
                 {children}
             </CardTitle>

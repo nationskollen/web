@@ -3,7 +3,6 @@ import React from 'react'
 import { useAuth } from '@contexts/Auth'
 import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
 import { useLocations, useCategories } from '@nationskollen/sdk'
-import { useForm, UseFormRegister, UseFormSetValue } from 'react-hook-form'
 import {
     ClockIcon,
     PhotographIcon,
@@ -14,12 +13,13 @@ import {
 
 import Input from '@common/Input'
 import Button from '@common/Button'
-import Select, { OptionItem } from '@common/Select'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
 import ModalContent from '@common/ModalContent'
+import Select, { OptionItem } from '@common/Select'
 import FileUploadInput from '@common/FileUploadInput'
-import ModalSteps, { StepProps } from '@common/ModalSteps'
+import { OpenProps as ModalOpenProps } from '@common/Modal'
+import ModalForm, { FormStepProps } from '@common/ModalForm'
 
 export interface FormValues {
     title: string
@@ -33,43 +33,21 @@ export interface FormValues {
     image?: Blob
 }
 
-export type SubmitCallback = (data: FormValues) => void
-
-export interface FormStepProps extends StepProps {
-    register: UseFormRegister<FormValues>
-    setValue: UseFormSetValue<FormValues>
-}
-
-export interface Props {
-    open: boolean
-    setOpen: (open: boolean) => void
-}
-
-const CreateEventForm = ({ open, setOpen }: Props) => {
-    const { register, handleSubmit, setValue } = useForm<FormValues>()
-
-    const submit: SubmitCallback = (data) => {
+const CreateEventForm = (props: ModalOpenProps) => {
+    const submit = (data: FormValues) => {
         console.log(data)
     }
 
-    const stepProps = (props: StepProps) => ({ register, setValue, ...props })
-
     return (
-        <ModalSteps
+        <ModalForm
             href="#create"
-            open={open}
-            setOpen={setOpen}
-            noPadding={true}
-            cardClassName="w-form-modal"
-            cardTitleClassName="p-md"
-            containerComponent={({ children }) => (
-                <form onSubmit={handleSubmit(submit)}>{children}</form>
-            )}
+            onSubmit={submit}
             steps={[
-                (props) => <InitialDetails {...stepProps(props)} />,
-                (props) => <TimeAndLocation {...stepProps(props)} />,
-                (props) => <ImageSelect {...stepProps(props)} />,
+                (props) => <InitialDetails {...props} />,
+                (props) => <TimeAndLocation {...props} />,
+                (props) => <ImageSelect {...props} />,
             ]}
+            {...props}
         />
     )
 }
@@ -81,7 +59,7 @@ const InitialDetails = ({
     close,
     register,
     setValue,
-}: FormStepProps) => {
+}: FormStepProps<FormValues>) => {
     const { data, isValidating } = useCategories()
 
     const options = data
@@ -96,8 +74,8 @@ const InitialDetails = ({
             <ModalContent.Header
                 icon={CalendarIcon}
                 title="Skapa ny event"
-                description={`Steg ${currentStep + 1} / ${totalSteps}`}
-                descriptionClassName="leading-none"
+                currentStep={currentStep}
+                totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <Input
@@ -140,7 +118,7 @@ const TimeAndLocation = ({
     next,
     register,
     setValue,
-}: FormStepProps) => {
+}: FormStepProps<FormValues>) => {
     const { oid } = useAuth()
     const { data, isValidating } = useLocations(oid!)
 
@@ -156,8 +134,8 @@ const TimeAndLocation = ({
             <ModalContent.Header
                 icon={ClockIcon}
                 title="Tid och plats"
-                description={`Steg ${currentStep + 1} / ${totalSteps}`}
-                descriptionClassName="leading-none"
+                currentStep={currentStep}
+                totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <InputGroup>
@@ -195,14 +173,19 @@ const TimeAndLocation = ({
     )
 }
 
-const ImageSelect = ({ currentStep, totalSteps, previous, register }: FormStepProps) => {
+const ImageSelect = ({
+    currentStep,
+    totalSteps,
+    previous,
+    register
+}: FormStepProps<FormValues>) => {
     return (
         <ModalContent.Wrapper>
             <ModalContent.Header
                 icon={PhotographIcon}
                 title="Lägg till en bild"
-                description={`Steg ${currentStep + 1} / ${totalSteps}`}
-                descriptionClassName="leading-none"
+                currentStep={currentStep}
+                totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <FileUploadInput label="Omslagsbild" autoFocus={true} {...register('image')} />
