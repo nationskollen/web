@@ -36,7 +36,7 @@ const HEADER_ICON_STYLES: Record<HeaderIconStyles, string> = {
 }
 
 const Wrapper = ({ children }: WrapperProps) => {
-    return <div className="flex flex-col flex-1 overflow-hidden rounded space-y-md">{children}</div>
+    return <div className="flex flex-col flex-1 rounded overflow space-y-md">{children}</div>
 }
 
 const Header = ({
@@ -80,7 +80,7 @@ const Main = ({ className, children }: MainProps) => {
 const Actions = ({ noBorder, className, children }: ActionsProps) => {
     const classes = combine(
         'flex flex-row justify-end w-full space-x-3 px-md py-3 border-border self-end',
-        'bg-background-extra dark:bg-background border-border',
+        'bg-background-extra dark:bg-background border-border rounded-b',
         noBorder ? 'pt-0 dark:bg-background-extra' : 'border-t-1 dark:border-t-0'
     )
 

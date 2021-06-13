@@ -6,9 +6,8 @@ import { MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 
 import Logo from '@svg/Logo'
 import Card from '@common/Card'
-import Title from '@common/Title'
 import Button from '@common/Button'
-import LoginForm from '@forms/Login'
+import LoginForm from '@forms/LoginForm'
 import LoginLayout from '@layouts/admin/Login'
 
 const Login = () => {
@@ -35,7 +34,12 @@ const Login = () => {
                 </Link>
             </section>
             <section className="absolute bottom-0 flex flex-col items-center w-full text-white">
-                <Button style="primary" className="mb-lg" href={`mailto://${CONTACT_EMAIL}`}>
+                <Button
+                    style="primary"
+                    className="mb-lg"
+                    radius="large"
+                    href={`mailto://${CONTACT_EMAIL}`}
+                >
                     <MailIcon className="h-6" />
                     <span>{CONTACT_EMAIL}</span>
                 </Button>

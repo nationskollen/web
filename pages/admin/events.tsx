@@ -1,18 +1,11 @@
 import { useState } from 'react'
-import {
-    PhotographIcon,
-    CalendarIcon,
-    PlusIcon,
-    ArrowRightIcon,
-    SearchIcon,
-} from '@heroicons/react/solid'
+import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
 
 import Input from '@common/Input'
-import ModalContent from '@common/ModalContent'
 import Button from '@common/Button'
 import CardTitle from '@common/CardTitle'
-import ModalSteps from '@common/ModalSteps'
 import MainLayout from '@layouts/admin/Main'
+import CreateEventForm from '@forms/CreateEventForm'
 import TableOfContents from '@common/TableOfContents'
 import AdminSection from '@components/admin/AdminSection'
 
@@ -26,80 +19,13 @@ const Events = () => {
 
     return (
         <MainLayout.Wrapper>
-            <ModalSteps
-                href="#create"
-                open={modalOpen}
-                setOpen={setModalOpen}
-                noPadding={true}
-                cardTitleClassName="p-md"
-                steps={[
-                    ({ currentStep, totalSteps, next }) => (
-                        <ModalContent.Wrapper>
-                            <ModalContent.Header
-                                icon={CalendarIcon}
-                                title="Skapa ny event"
-                                description={`Steg ${currentStep + 1} / ${totalSteps}`}
-                                descriptionClassName="leading-none"
-                            />
-                            <ModalContent.Main>
-                                <p>Hello</p>
-                            </ModalContent.Main>
-                            <ModalContent.Actions className="space-between">
-                                <Button
-                                    style="light"
-                                    size="medium"
-                                    radius="large"
-                                    onClick={() => setModalOpen(false)}
-                                >
-                                    <span>Avbryt</span>
-                                </Button>
-                                <Button style="primary" size="medium" radius="large" onClick={next}>
-                                    <span>Välj bild</span>
-                                    <ArrowRightIcon />
-                                </Button>
-                            </ModalContent.Actions>
-                        </ModalContent.Wrapper>
-                    ),
-                    ({ currentStep, totalSteps, previous }) => (
-                        <ModalContent.Wrapper>
-                            <ModalContent.Header
-                                icon={PhotographIcon}
-                                title="Lägg till en bild"
-                                description={`Steg ${currentStep + 1} / ${totalSteps}`}
-                                descriptionClassName="leading-none"
-                            />
-                            <ModalContent.Main>
-                                <p>Bild</p>
-                            </ModalContent.Main>
-                            <ModalContent.Actions>
-                                <Button
-                                    style="light"
-                                    size="medium"
-                                    radius="large"
-                                    onClick={previous}
-                                >
-                                    <span>Tillbaka</span>
-                                </Button>
-                                <Button
-                                    style="primary"
-                                    size="medium"
-                                    radius="large"
-                                    onClick={() => console.log('submit')}
-                                >
-                                    <span>Skapa</span>
-                                    <PlusIcon />
-                                </Button>
-                            </ModalContent.Actions>
-                        </ModalContent.Wrapper>
-                    ),
-                ]}
-            />
+            <CreateEventForm open={modalOpen} setOpen={setModalOpen} />
             <MainLayout.Sidebar>
                 <TableOfContents sections={SECTIONS} />
                 <Button
                     style="secondary"
                     className="w-full rounded"
-                    onClick={() => setModalOpen((open) => !open)}
+                    onClick={() => setModalOpen(true)}
                 >
                     <span>Skapa ny event</span>
                     <PlusIcon />

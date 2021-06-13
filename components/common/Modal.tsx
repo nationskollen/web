@@ -92,7 +92,7 @@ const Modal = ({
                     leaveTo="transform scale-90 opacity-0"
                 >
                     <Card
-                        className={extend('w-full min-w-modal mt-1/5', cardClassName)}
+                        className={extend('w-full min-w-modal mt-modal-offset', cardClassName)}
                         noPadding={noPadding}
                     >
                         <WrapperComponent>

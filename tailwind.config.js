@@ -68,6 +68,7 @@ module.exports = {
                 'lg': '1.5rem',
                 'xlg': '2.5rem',
                 '1/5': '20vh',
+                'modal-offset': '15vh',
             },
             height: {
                 'admin-header': '16rem',
@@ -76,13 +77,17 @@ module.exports = {
             },
             minHeight: {
                 dialog: '12rem',
+                textarea: '8rem',
             },
             maxHeight: {
                 dialog: '20rem',
+                textarea: '30rem',
+                dropdown: '15rem',
             },
             width: {
                 'sidebar-navigation': '18rem',
                 'login-modal': '22rem',
+                'form-modal': '30rem',
                 'dialog': '28rem',
                 'user-popover': '22rem',
             },
@@ -99,8 +104,8 @@ module.exports = {
                 '-admin-header': '-4.5rem',
             },
             transitionDuration: {
-                in: '75',
-                out: '50',
+                in: '75ms',
+                out: '50ms',
             },
         },
     },
