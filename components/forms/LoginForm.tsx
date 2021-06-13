@@ -1,5 +1,5 @@
 import Router from 'next/router'
-import { AUTH } from '@constants'
+import { DEFAULT_FORM_PROPS, AUTH } from '@constants'
 import { useForm } from 'react-hook-form'
 import { LockClosedIcon, LoginIcon, MailIcon } from '@heroicons/react/outline'
 
@@ -12,7 +12,7 @@ export interface FormValues {
 }
 
 const LoginForm = () => {
-    const { register, handleSubmit } = useForm<FormValues>()
+    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>(DEFAULT_FORM_PROPS)
 
     const submit = (data: FormValues) => {
         console.log(data)
@@ -33,7 +33,8 @@ const LoginForm = () => {
                     type="email"
                     label="Email"
                     placeholder="din@email.se"
-                    {...register('email', { required: true })}
+                    error={errors.email}
+                    {...register('email', { required: 'Detta fält är obligatoriskt' })}
                 >
                     <MailIcon />
                 </Input>
@@ -41,7 +42,8 @@ const LoginForm = () => {
                     type="password"
                     label="Lösenord"
                     placeholder="Lösenord"
-                    {...register('password', { required: true })}
+                    error={errors.password}
+                    {...register('password', { required: 'Detta fält är obligatoriskt' })}
                 >
                     <LockClosedIcon />
                 </Input>
