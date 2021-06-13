@@ -23,6 +23,8 @@
 import React from 'react'
 import { extend, combine, combineNoCache } from '@utils'
 
+import LoadingIndicator from '@common/LoadingIndicator'
+
 export type FormRef = React.Ref<unknown>
 export type InputSizes = 'small' | 'default' | 'large' | 'auto'
 export type InputStyles = 'transparent' | 'no-border'
@@ -36,6 +38,7 @@ export interface Props extends NativeInputProps {
     size?: InputSizes
     label?: string
     style?: InputStyles
+    loading?: boolean
     inputClassName?: string
     containerClassName?: string
     innerComponent?: React.ElementType
@@ -70,6 +73,7 @@ const Input = React.forwardRef(
             type,
             style,
             label,
+            loading,
             className,
             inputClassName,
             containerClassName,
@@ -81,7 +85,7 @@ const Input = React.forwardRef(
     ) => {
         const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
         const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
-        const baseStyle = 'rounded-sm flex flex-col justify-center'
+        const baseStyle = 'relative rounded-sm flex flex-col justify-center'
         const containerStyle = combine(
             'flex flex-row items-center rounded-sm focus-within:ring focus-within:ring-focus-input px-3',
             sizing,
@@ -101,7 +105,11 @@ const Input = React.forwardRef(
                     </label>
                 )}
                 <div className={extend(containerStyle, containerClassName)}>
-                    {children && <div className="h-2/5 pr-sm focus:outline-none">{children}</div>}
+                    {(children || loading) && (
+                        <div className="pr-sm h-2/5 focus:outline-none">
+                            {loading ? <LoadingIndicator /> : children}
+                        </div>
+                    )}
                     {InnerComponent && <InnerComponent />}
                     <InputComponent
                         id={id}

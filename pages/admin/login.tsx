@@ -20,33 +20,28 @@ const Login = () => {
     }, [])
 
     return (
-        <>
-            <Card containerClassName="space-y-lg">
-                <Logo containerClassNames="self-center text-primary-text" />
-                <LoginForm />
-            </Card>
-            <section className="flex justify-center w-full mt-md">
+        <div className="text-text-highlight">
+            <div className="fixed flex justify-center top-12 left-12">
                 <Link href="/" passHref={true}>
-                    <Button style="transparent" className="text-white">
+                    <Button style="transparent">
                         <ArrowLeftIcon />
                         <span>Tillbaka till startsidan</span>
                     </Button>
                 </Link>
-            </section>
-            <section className="absolute bottom-0 flex flex-col items-center w-full text-white">
-                <Button
-                    style="primary"
-                    className="mb-lg"
-                    radius="large"
-                    href={`mailto://${CONTACT_EMAIL}`}
-                >
+            </div>
+            <Card containerClassName="space-y-lg">
+                <Logo containerClassNames="self-center text-primary filter dark:brightness-200" />
+                <LoginForm />
+            </Card>
+            <section className="absolute bottom-0 flex flex-col items-center w-full text-white dark:text-text">
+                <Button style="transparent" className="mb-lg" radius="large" href={`mailto://${CONTACT_EMAIL}`}>
                     <MailIcon className="h-6" />
                     <span>{CONTACT_EMAIL}</span>
                 </Button>
                 <p className="font-bold">{VERSION}</p>
-                <p className="text-sm text-primary-text-light">Team Krabby</p>
+                <p className="text-sm text-primary-highlight dark:text-primary-text">Team Krabby</p>
             </section>
-        </>
+        </div>
     )
 }
 
