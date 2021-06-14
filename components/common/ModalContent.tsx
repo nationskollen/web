@@ -2,6 +2,7 @@ import React from 'react'
 import { combine, extend } from '@utils'
 
 import CardTitle from '@common/CardTitle'
+import IconCircle, { IconCircleStyles } from '@common/IconCircle'
 
 export interface BaseProps {
     children?: React.ReactNode
@@ -13,15 +14,13 @@ export interface MainProps extends BaseProps {
     className?: string
 }
 
-export type HeaderIconStyles = 'error' | 'success' | 'primary'
-
 export interface HeaderProps extends BaseProps {
     title: string
     description?: string
     currentStep?: number
     totalSteps?: number
     icon?: React.ElementType
-    iconStyle?: HeaderIconStyles
+    iconStyle?: IconCircleStyles
     className?: string
     descriptionClassName?: string
 }
@@ -29,12 +28,6 @@ export interface HeaderProps extends BaseProps {
 export interface ActionsProps extends BaseProps {
     noBorder?: boolean
     className?: string
-}
-
-const HEADER_ICON_STYLES: Record<HeaderIconStyles, string> = {
-    error: 'bg-error-highlight text-error-highlight-text',
-    success: 'bg-success-highlight text-success-highlight-text',
-    primary: 'bg-primary-highlight text-primary dark:bg-primary-dark dark:text-primary-highlight',
 }
 
 const Wrapper = ({ children }: WrapperProps) => {
@@ -46,7 +39,7 @@ const Header = ({
     description,
     currentStep,
     totalSteps,
-    icon: Icon,
+    icon,
     iconStyle,
     className,
     descriptionClassName,
@@ -62,16 +55,7 @@ const Header = ({
 
     return (
         <div className={extend('flex flex-row pb-0 space-x-md p-md', className)}>
-            {Icon && (
-                <div
-                    className={combine(
-                        'rounded-full w-10 h-10 p-sm',
-                        iconStyle ? HEADER_ICON_STYLES[iconStyle] : HEADER_ICON_STYLES['primary']
-                    )}
-                >
-                    <Icon />
-                </div>
-            )}
+            {icon && <IconCircle style={iconStyle} icon={icon} />}
             <CardTitle
                 modal={true}
                 title={title}

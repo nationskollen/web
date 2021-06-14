@@ -22,6 +22,8 @@ module.exports = {
             'primary-text-light': 'var(--color-primary-text-light)',
             'secondary': 'var(--color-secondary)',
             'secondary-extra': 'var(--color-secondary-extra)',
+            'secondary-highlight': 'var(--color-secondary-highlight)',
+            'secondary-highlight-text': 'var(--color-secondary-highlight-text)',
             'background': 'var(--color-background)',
             'background-extra': 'var(--color-background-extra)',
             'background-highlight': 'var(--color-background-highlight)',
@@ -80,6 +82,7 @@ module.exports = {
             minHeight: {
                 dialog: '12rem',
                 textarea: '8rem',
+                notifications: '8rem',
             },
             maxHeight: {
                 dialog: '20rem',
@@ -96,6 +99,9 @@ module.exports = {
             minWidth: {
                 'modal': '25rem',
                 'login-background': '1100px',
+            },
+            maxWidth: {
+                notifications: '25rem',
             },
             fontSize: {
                 xsm: '0.8rem',

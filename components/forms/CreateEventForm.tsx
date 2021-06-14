@@ -1,8 +1,5 @@
 import React from 'react'
 
-import { useAuth } from '@contexts/Auth'
-import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
-import { useLocations, useCategories } from '@nationskollen/sdk'
 import {
     ClockIcon,
     PhotographIcon,
@@ -10,6 +7,12 @@ import {
     PlusIcon,
     ArrowRightIcon,
 } from '@heroicons/react/solid'
+
+import { useAuth } from '@contexts/Auth'
+import Notifications from '@notifications'
+import { UseFormReturn } from 'react-hook-form'
+import { useLocations, useCategories } from '@nationskollen/sdk'
+import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
 
 import Input from '@common/Input'
 import Button from '@common/Button'
@@ -34,8 +37,12 @@ export interface FormValues {
 }
 
 const CreateEventForm = (props: ModalOpenProps) => {
-    const submit = (data: FormValues) => {
+    const submit = (data: FormValues, form: UseFormReturn<FormValues>) => {
         console.log(data)
+
+        form.reset()
+        props.setOpen(false)
+        Notifications.success('Event created')
     }
 
     return (

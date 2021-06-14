@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 import Router from 'next/router'
 import { useForm } from 'react-hook-form'
 import { DEFAULT_FORM_PROPS, AUTH } from '@constants'
-import { HttpErrorCodes, useLogin, ApiError } from '@nationskollen/sdk'
+import { HttpErrorCodes, useLogin } from '@nationskollen/sdk'
 import { LockClosedIcon, LoginIcon, MailIcon } from '@heroicons/react/outline'
 
 import Input from '@common/Input'
 import Button from '@common/Button'
-import ErrorDialog from '@common/dialogs/ErrorDialog'
+import ErrorDialog from '@dialogs/ErrorDialog'
 
 export interface FormValues {
     email: string

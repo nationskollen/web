@@ -14,6 +14,8 @@ html {
     --color-primary-text-light: #eecbd9;
     --color-secondary: #1e1f2f;
     --color-secondary-extra: #2e2f48;
+    --color-secondary-highlight: #303148;
+    --color-secondary-highlight-text: #aaafff;
     --color-background: white;
     --color-background-extra: #f1f1f1;
     --color-background-highlight: #e2e2e2;

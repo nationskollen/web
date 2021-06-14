@@ -20,6 +20,8 @@
             "@common/*": ["components/common/*"],
             "@svg/*": ["components/svg/*"],
             "@forms/*": ["components/forms/*"],
+            "@notifications": ["components/notifications/index"],
+            "@dialogs/*": ["components/dialogs/*"],
             "@contexts/*": ["contexts/*"],
             "@styles/*": ["styles/*"],
             "@utils": ["utils/index"],

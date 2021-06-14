@@ -4,7 +4,7 @@ import BaseDialog, {
     getActions,
     ActionsRenderer,
     Props as BaseDialogProps,
-} from '@common/dialogs/BaseDialog'
+} from '@dialogs/BaseDialog'
 
 export interface Props extends Omit<BaseDialogProps, 'actions'> {
     actions?: ActionsRenderer
