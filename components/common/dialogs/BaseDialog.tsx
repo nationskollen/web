@@ -91,6 +91,8 @@ const BaseDialog = ({
                     description={description}
                     icon={icon}
                     iconStyle={iconStyle}
+                    className="p-lg"
+                    descriptionClassName="mt-xsm"
                 />
                 <ModalContent.Main>{children}</ModalContent.Main>
                 <ModalContent.Actions>

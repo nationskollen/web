@@ -11,10 +11,8 @@ const App = ({ Component, pageProps }: AppProps) => {
     return (
         <Provider
             config={{
-                development: true,
+                environment: 'staging',
                 useWebSockets: isClient(),
-                customHostName: 'nationskollen-staging.engstrand.nu',
-                useHTTPS: true,
             }}
         >
             <ThemeProvider>{getTemplate(<Component {...pageProps}></Component>)}</ThemeProvider>

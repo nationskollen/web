@@ -90,7 +90,7 @@ module.exports = {
                 'sidebar-navigation': '18rem',
                 'login-modal': '22rem',
                 'form-modal': '30rem',
-                'dialog': '28rem',
+                'dialog': '30rem',
                 'user-popover': '22rem',
             },
             minWidth: {
