@@ -28,13 +28,13 @@ const LoginForm = () => {
         }
 
         switch (error.type) {
-            case HttpErrorCodes.Unauthorized:
+            // TODO: Change this when PR has been merged
+            // https://github.com/nationskollen/server/issues/163
+            case HttpErrorCodes.BadRequest:
                 return (
                     <ErrorDialog
-                        title="Kunde inte logga in"
-                        description="
-                            Det verkar som om du skriver in fel användarnamn eller lösenord
-                        "
+                        title="Inloggningen misslyckades"
+                        description="Fel användarnamn eller lösenord"
                     />
                 )
             case HttpErrorCodes.ValidationError:
