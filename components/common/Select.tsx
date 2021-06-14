@@ -153,7 +153,7 @@ const Select = React.forwardRef(
                         <Listbox.Label
                             className={combine(
                                 'text-sm mb-xsm',
-                                error ? 'text-error font-bold' : 'text-text'
+                                error ? 'text-error-text font-bold' : 'text-text'
                             )}
                             htmlFor={id}
                         >
@@ -179,7 +179,7 @@ const Select = React.forwardRef(
                                                 className={extend(
                                                     error
                                                         ? open
-                                                            ? 'text-error'
+                                                            ? 'text-error-text'
                                                             : 'text-error-highlight-text'
                                                         : open
                                                         ? 'text-focus-input'

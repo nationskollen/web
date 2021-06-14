@@ -61,7 +61,7 @@ const Header = ({
     }
 
     return (
-        <div className="flex flex-row pb-0 space-x-md p-md">
+        <div className={extend('flex flex-row pb-0 space-x-md p-md', className)}>
             {Icon && (
                 <div
                     className={combine(
@@ -76,9 +76,8 @@ const Header = ({
                 modal={true}
                 title={title}
                 description={parsedDescription}
-                className={className}
                 descriptionClassName={extend(
-                    currentStep && totalSteps ? 'leading-none' : '',
+                    currentStep !== undefined && totalSteps ? 'leading-none' : '',
                     descriptionClassName
                 )}
             >

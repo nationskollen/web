@@ -27,8 +27,9 @@ export function combineNoCache(...classNames: Array<string>) {
  * Appends a custom class to a list of classnames.
  * Useful when accepting `className` as a prop to a component.
  */
-export function extend(classNames: string, className?: string) {
-    return className ? `${classNames} ${className}` : classNames
+export function extend(classNames: string, ...optionalClassNames: Array<string | undefined>) {
+    const parsedClasses = optionalClassNames.filter((name) => name).join(' ')
+    return parsedClasses ? `${classNames} ${parsedClasses}` : classNames
 }
 
 /**

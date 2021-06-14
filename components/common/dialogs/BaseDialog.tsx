@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
-import ModalContent, { HeaderIconStyles } from '@common/ModalContent'
 import Modal, { Props as ModalProps } from '@common/Modal'
-import Button, { Props as ButtonProps } from '@common/Button'
+import ModalContent, { HeaderIconStyles } from '@common/ModalContent'
+import Button, { ButtonStyles, Props as ButtonProps } from '@common/Button'
 
 export type ActionCallback = () => void
 
@@ -12,13 +12,14 @@ export interface ActionProps extends Omit<ButtonProps, 'children'> {
 }
 
 export interface ActionCallbacks {
-    onConfirm: ActionCallback
-    onCancel: ActionCallback
+    onConfirm?: ActionCallback
+    onCancel?: ActionCallback
 }
 
 export interface ActionsRendererProps extends ActionCallbacks {
     confirmLabel: string
     cancelLabel: string
+    hasCancelCallback: boolean
 }
 
 export type ActionsRenderer = (props: ActionsRendererProps) => Array<ActionProps>
@@ -34,6 +35,22 @@ export interface Props extends ActionCallbacks, Omit<ModalProps, 'open' | 'setOp
     open?: boolean
     setOpen?: (open: boolean) => void
     children?: React.ReactNode
+}
+
+export const getActions = (confirmStyle: ButtonStyles): ActionsRenderer => ({
+    onConfirm,
+    onCancel,
+    confirmLabel,
+    cancelLabel,
+    hasCancelCallback,
+}) => {
+    const confirmAction = { label: confirmLabel, style: confirmStyle, onClick: onConfirm }
+
+    if (!hasCancelCallback) {
+        return [confirmAction]
+    }
+
+    return [{ label: cancelLabel, style: 'light', onClick: onCancel }, confirmAction]
 }
 
 const BaseDialog = ({
@@ -59,12 +76,12 @@ const BaseDialog = ({
 
     const handleConfirm = () => {
         updateState(false)
-        onConfirm()
+        onConfirm && onConfirm()
     }
 
     const handleCancel = () => {
         updateState(false)
-        onCancel()
+        onCancel && onCancel()
     }
 
     const compiledActions = actions({
@@ -72,6 +89,7 @@ const BaseDialog = ({
         onCancel: handleCancel,
         confirmLabel: confirmLabel || 'Okej',
         cancelLabel: cancelLabel || 'Avbryt',
+        hasCancelCallback: !!onCancel,
     })
 
     return (
@@ -81,6 +99,7 @@ const BaseDialog = ({
             noPadding={true}
             appear={true}
             cardClassName="w-dialog min-h-dialog max-h-dialog"
+            offsetClassName="mt-dialog-offset"
             onClose={handleCancel}
             {...props}
         >
@@ -90,6 +109,8 @@ const BaseDialog = ({
                     description={description}
                     icon={icon}
                     iconStyle={iconStyle}
+                    className="p-lg"
+                    descriptionClassName="mt-xsm"
                 />
                 <ModalContent.Main>{children}</ModalContent.Main>
                 <ModalContent.Actions>

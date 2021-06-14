@@ -24,6 +24,7 @@ html {
     --color-text-extra: #a1a1aa;
     --color-text-highlight: #000;
     --color-error: #b3152b;
+    --color-error-text: #b3152b;
     --color-error-highlight: #fbc8cf;
     --color-error-highlight-text: #ae3333;
     --color-success: #167933;
@@ -47,6 +48,7 @@ html.dark {
     --color-text: #d4d4d4;
     --color-text-extra: #939393;
     --color-text-highlight: white;
+    --color-error-text: #ff6076;
     --color-error-highlight: #6f101c;
     --color-error-highlight-text: #ffa8b4;
     --color-success-highlight: #154023;

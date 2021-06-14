@@ -1,10 +1,13 @@
+import { useEffect } from 'react'
 import Router from 'next/router'
-import { DEFAULT_FORM_PROPS, AUTH } from '@constants'
 import { useForm } from 'react-hook-form'
+import { DEFAULT_FORM_PROPS, AUTH } from '@constants'
+import { HttpErrorCodes, useLogin, ApiError } from '@nationskollen/sdk'
 import { LockClosedIcon, LoginIcon, MailIcon } from '@heroicons/react/outline'
 
 import Input from '@common/Input'
 import Button from '@common/Button'
+import ErrorDialog from '@common/dialogs/ErrorDialog'
 
 export interface FormValues {
     email: string
@@ -12,51 +15,97 @@ export interface FormValues {
 }
 
 const LoginForm = () => {
+    const { result, error, loading, execute } = useLogin()
     const {
         register,
         handleSubmit,
         formState: { errors },
     } = useForm<FormValues>(DEFAULT_FORM_PROPS)
 
-    const submit = (data: FormValues) => {
-        console.log(data)
+    const submit = async (data: FormValues) => {
+        execute(data.email, data.password)
+    }
 
-        // TODO: Set correct token and oid
-        localStorage.setItem(AUTH.USER_STORAGE_KEY, JSON.stringify({ token: 'token', oid: 400 }))
+    const getErrorDialog = () => {
+        if (!error) {
+            return null
+        }
+
+        switch (error.type) {
+            // TODO: Change this when PR has been merged
+            // https://github.com/nationskollen/server/issues/163
+            case HttpErrorCodes.BadRequest:
+                return (
+                    <ErrorDialog
+                        title="Inloggningen misslyckades"
+                        description="Fel användarnamn eller lösenord"
+                    />
+                )
+            case HttpErrorCodes.ValidationError:
+                return (
+                    <ErrorDialog
+                        title="Dina uppgifter har fel format!"
+                        description="
+                            Det verkar som om webbutvecklings-gorillorna har gjort ett misstag.
+                            Dina uppgifter överensstämmer tydligen inte med det efterfrågade formatet.
+                            Är du säker på att du skrivit in rätt uppgifter?
+                        "
+                    />
+                )
+            default:
+                return <ErrorDialog title="Något blev fel!" description="Försök igen senare" />
+        }
+    }
+
+    useEffect(() => {
+        if (!result) {
+            return
+        }
+
+        localStorage.setItem(
+            AUTH.USER_STORAGE_KEY,
+            JSON.stringify({
+                token: result.token,
+                oid: result.oid,
+            })
+        )
 
         // We use replace here since going back in the history will only redirect you
         // to the same page as you are currently on. Replacing the history means that
         // you will be redirected to the page previous to the login page.
         Router.replace('/admin/dashboard')
-    }
+    }, [result])
 
     return (
-        <form onSubmit={handleSubmit(submit)}>
-            <div className="space-y-md">
-                <Input
-                    type="email"
-                    label="Email"
-                    placeholder="din@email.se"
-                    error={errors.email}
-                    {...register('email', { required: 'Detta fält är obligatoriskt' })}
-                >
-                    <MailIcon />
-                </Input>
-                <Input
-                    type="password"
-                    label="Lösenord"
-                    placeholder="Lösenord"
-                    error={errors.password}
-                    {...register('password', { required: 'Detta fält är obligatoriskt' })}
-                >
-                    <LockClosedIcon />
-                </Input>
-            </div>
-            <Button style="primary" className="w-full mt-6" type="submit">
-                <span>Logga in</span>
-                <LoginIcon />
-            </Button>
-        </form>
+        <>
+            {getErrorDialog()}
+            <form onSubmit={handleSubmit(submit)}>
+                <div className="space-y-md">
+                    <Input
+                        type="email"
+                        label="Email"
+                        placeholder="din@email.se"
+                        error={errors.email}
+                        {...register('email', { required: 'Detta fält är obligatoriskt' })}
+                    >
+                        <MailIcon />
+                    </Input>
+                    <Input
+                        type="password"
+                        label="Lösenord"
+                        placeholder="Lösenord"
+                        error={errors.password}
+                        {...register('password', { required: 'Detta fält är obligatoriskt' })}
+                    >
+                        <LockClosedIcon />
+                    </Input>
+                </div>
+                <Button style="primary" className="w-full mt-6" type="submit" loading={loading}>
+                    <span>Logga in</span>
+                    <LoginIcon />
+                </Button>
+            </form>
+        </>
     )
 }
 
