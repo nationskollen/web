@@ -47,7 +47,7 @@ const LoginForm = () => {
                         title="Dina uppgifter har fel format!"
                         description="
                             Det verkar som om webbutvecklings-gorillorna har gjort ett misstag.
-                            Dina uppgiften överensstämmer tydligen inte med det efterfrågade formatet.
+                            Dina uppgifter överensstämmer tydligen inte med det efterfrågade formatet.
                             Är du säker på att du skrivit in rätt uppgifter?
                         "
                     />
