@@ -41,7 +41,7 @@
  * @module Common
  */
 import ModalSteps, { StepProps, Props as ModalStepsProps } from '@common/ModalSteps'
-import { Path, UnpackNestedValue, useForm, SubmitHandler, UseFormReturn } from 'react-hook-form'
+import { Path, SubmitHandler, UseFormReturn } from 'react-hook-form'
 
 export type StepPropsTransformator<T> = (props: StepProps) => FormStepProps<T>
 
@@ -55,13 +55,12 @@ export interface FormStepProps<T> extends Omit<StepProps, 'next'>, UseFormReturn
 }
 
 export interface Props<T> extends Omit<ModalStepsProps, 'steps'> {
-    onSubmit: (data: UnpackNestedValue<T>, form: UseFormReturn<T>) => void
+    form: UseFormReturn<T>
+    onSubmit: SubmitHandler<T>
     steps: Array<(props: FormStepProps<T>) => React.ReactNode>
 }
 
-const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
-    const form = useForm<T>()
-
+const ModalForm = <T,>({ form, onSubmit, steps, ...props }: Props<T>) => {
     // Pass through all form props to each step
     const stepProps: StepPropsTransformator<T> = ({ next: stepNext, ...props }: StepProps) => ({
         // Extend the next callback with the option of validating input
@@ -81,16 +80,12 @@ const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
         ...props,
     })
 
-    const forwardFormProps: SubmitHandler<T> = (data: UnpackNestedValue<T>) => {
-        onSubmit(data, form)
-    }
-
     return (
         <ModalSteps
             noPadding={true}
             cardClassName="w-form-modal"
             cardTitleClassName="p-md"
-            onSubmit={form.handleSubmit(forwardFormProps)}
+            onSubmit={form.handleSubmit(onSubmit)}
             steps={steps.map((step) => (props: StepProps) => step(stepProps(props)))}
             {...props}
         />

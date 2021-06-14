@@ -1,4 +1,5 @@
 import React from 'react'
+import { useForm } from 'react-hook-form'
 
 import {
     ClockIcon,
@@ -10,7 +11,6 @@ import {
 
 import { useAuth } from '@contexts/Auth'
 import Notifications from '@notifications'
-import { UseFormReturn } from 'react-hook-form'
 import { useLocations, useCategories } from '@nationskollen/sdk'
 import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
 
@@ -37,7 +37,9 @@ export interface FormValues {
 }
 
 const CreateEventForm = (props: ModalOpenProps) => {
-    const submit = (data: FormValues, form: UseFormReturn<FormValues>) => {
+    const form = useForm<FormValues>()
+
+    const submit = (data: FormValues) => {
         console.log(data)
 
         form.reset()
@@ -47,6 +49,7 @@ const CreateEventForm = (props: ModalOpenProps) => {
 
     return (
         <ModalForm
+            form={form}
             href="#create"
             onSubmit={submit}
             steps={[
