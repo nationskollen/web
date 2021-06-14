@@ -82,7 +82,7 @@ export const INPUT_FOCUS_STYLES: Record<InputFocusStyles, string> = {
     'error': combineNoCache(
         'border-error',
         'focus-within:ring focus-within:ring-focus-error',
-        'focus-within:border-error focus-within:text-error focus:within:ring-error'
+        'focus-within:border-error focus-within:text-error-text focus:within:ring-error',
     ),
 }
 
@@ -133,7 +133,7 @@ const Input = React.forwardRef(
                     <label
                         className={combine(
                             'text-sm mb-xsm',
-                            error ? 'text-error font-bold' : 'text-text'
+                            error ? 'text-error-text font-bold' : 'text-text'
                         )}
                         htmlFor={id}
                     >

@@ -10,7 +10,7 @@ export const THEME_STORAGE_KEY = 'theme'
 
 // Must specify `any` here to make `useForm` happy
 export const DEFAULT_FORM_PROPS: any = {
-    mode: 'onBlur',
-    reValidateMode: 'onBlur',
+    mode: 'onSubmit',
+    reValidateMode: 'onSubmit',
     shouldFocusError: true,
 }

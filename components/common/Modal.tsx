@@ -19,6 +19,7 @@ export interface Props extends OpenProps {
     cardClassName?: string
     cardTitleClassName?: string
     noPadding?: boolean
+    offsetClassName?: string
     appear?: boolean
     onClose?: () => void
     children?: React.ReactNode
@@ -34,6 +35,7 @@ const Modal = ({
     cardTitleClassName,
     noPadding,
     appear,
+    offsetClassName,
     onClose,
     children,
 }: Props) => {
@@ -92,7 +94,11 @@ const Modal = ({
                     leaveTo="transform scale-90 opacity-0"
                 >
                     <Card
-                        className={extend('w-full min-w-modal mt-modal-offset', cardClassName)}
+                        className={extend(
+                            'w-full min-w-modal',
+                            cardClassName,
+                            offsetClassName || 'mt-modal-offset',
+                        )}
                         noPadding={noPadding}
                     >
                         {title && description && (

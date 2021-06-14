@@ -97,8 +97,13 @@ const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
         'dark:focus:bg-background-highlight',
         'focus:bg-background-extra focus:text-primary-text'
     ),
-    input: combineNoCache('focus:ring-focus-input'),
-    error: combineNoCache('text-error', INPUT_FOCUS_STYLES['error']),
+    input: combineNoCache(
+        'focus:ring-focus-input',
+    ),
+    error: combineNoCache(
+        'text-error-text',
+        INPUT_FOCUS_STYLES['error'],
+    ),
 }
 
 const BUTTON_RADIUS: Record<ButtonRadius, string> = {

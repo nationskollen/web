@@ -32,6 +32,7 @@ module.exports = {
             'text-extra': 'var(--color-text-extra)',
             'text-highlight': 'var(--color-text-highlight)',
             'error': 'var(--color-error)',
+            'error-text': 'var(--color-error-text)',
             'error-highlight-text': 'var(--color-error-highlight-text)',
             'error-highlight': 'var(--color-error-highlight)',
             'success': 'var(--color-success)',
@@ -69,6 +70,7 @@ module.exports = {
                 'xlg': '2.5rem',
                 '1/5': '20vh',
                 'modal-offset': '15vh',
+                'dialog-offset': '30vh',
             },
             height: {
                 'admin-header': '16rem',

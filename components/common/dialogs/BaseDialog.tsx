@@ -12,8 +12,8 @@ export interface ActionProps extends Omit<ButtonProps, 'children'> {
 }
 
 export interface ActionCallbacks {
-    onConfirm: ActionCallback
-    onCancel: ActionCallback
+    onConfirm?: ActionCallback
+    onCancel?: ActionCallback
 }
 
 export interface ActionsRendererProps extends ActionCallbacks {
@@ -59,12 +59,12 @@ const BaseDialog = ({
 
     const handleConfirm = () => {
         updateState(false)
-        onConfirm()
+        onConfirm && onConfirm()
     }
 
     const handleCancel = () => {
         updateState(false)
-        onCancel()
+        onCancel && onCancel()
     }
 
     const compiledActions = actions({
@@ -81,6 +81,7 @@ const BaseDialog = ({
             noPadding={true}
             appear={true}
             cardClassName="w-dialog min-h-dialog max-h-dialog"
+            offsetClassName="mt-dialog-offset"
             onClose={handleCancel}
             {...props}
         >
