@@ -77,7 +77,7 @@ const Header = ({
                 title={title}
                 description={parsedDescription}
                 descriptionClassName={extend(
-                    (currentStep !== undefined && totalSteps) ? 'leading-none' : '',
+                    currentStep !== undefined && totalSteps ? 'leading-none' : '',
                     descriptionClassName
                 )}
             >
