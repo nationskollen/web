@@ -13,6 +13,7 @@ export interface StepProps {
 }
 
 export interface Props extends Omit<ModalProps, 'title' | 'description' | 'wrapperComponent'> {
+    onSubmit?: any
     steps: Array<(props: StepProps) => React.ReactNode>
 }
 
@@ -26,7 +27,7 @@ export interface OptimizerProps {
     children: React.ReactNode
 }
 
-const shouldRender = (_, next: OptimizerProps) => {
+const shouldRender = (_: OptimizerProps, next: OptimizerProps) => {
     return next.currentStep !== next.index
 }
 
@@ -40,7 +41,7 @@ const ModalStepOptimizer = React.memo(({ children }: OptimizerProps) => {
     return <>{children}</>
 }, shouldRender)
 
-const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
+const ModalSteps = ({ steps, open, setOpen, onSubmit, ...props }: Props) => {
     if (steps.length === 0) {
         return null
     }
@@ -68,21 +69,26 @@ const ModalSteps = ({ steps, open, setOpen, ...props }: Props) => {
     // once when closing the modal.
     return (
         <Modal open={open} setOpen={setOpen} {...props}>
-            {open &&
-                steps.map((child, index) => (
-                    <div key={index} className={index !== currentStep ? 'hidden invisible' : ''}>
-                        <ModalStepOptimizer index={index} currentStep={currentStep}>
-                            {child({
-                                index,
-                                next,
-                                previous,
-                                currentStep,
-                                totalSteps: steps.length,
-                                close: () => setOpen(false),
-                            })}
-                        </ModalStepOptimizer>
-                    </div>
-                ))}
+            <form onSubmit={onSubmit}>
+                {open &&
+                    steps.map((child, index) => (
+                        <div
+                            key={index}
+                            className={index !== currentStep ? 'hidden invisible' : ''}
+                        >
+                            <ModalStepOptimizer index={index} currentStep={currentStep}>
+                                {child({
+                                    index,
+                                    next,
+                                    previous,
+                                    currentStep,
+                                    totalSteps: steps.length,
+                                    close: () => setOpen(false),
+                                })}
+                            </ModalStepOptimizer>
+                        </div>
+                    ))}
+            </form>
         </Modal>
     )
 }

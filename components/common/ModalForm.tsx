@@ -40,12 +40,19 @@
  *
  * @module Common
  */
-import { useForm, SubmitHandler, UseFormReturn } from 'react-hook-form'
+import { Path, useForm, SubmitHandler, UseFormReturn } from 'react-hook-form'
 import ModalSteps, { StepProps, Props as ModalStepsProps } from '@common/ModalSteps'
 
 export type StepPropsTransformator<T> = (props: StepProps) => FormStepProps<T>
 
-export interface FormStepProps<T> extends StepProps, UseFormReturn<T> {}
+export interface NextCallbackOptions<V> {
+    skipValidate?: boolean
+    fields?: Array<V>
+}
+
+export interface FormStepProps<T> extends Omit<StepProps, 'next'>, UseFormReturn<T> {
+    next: (options?: NextCallbackOptions<Path<T>>) => void
+}
 
 export interface Props<T> extends Omit<ModalStepsProps, 'steps'> {
     onSubmit: SubmitHandler<T>
@@ -56,7 +63,20 @@ const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
     const form = useForm<T>()
 
     // Pass through all form props to each step
-    const stepProps: StepPropsTransformator<T> = (props: StepProps) => ({
+    const stepProps: StepPropsTransformator<T> = ({ next: stepNext, ...props }: StepProps) => ({
+        // Extend the next callback with the option of validating input
+        // fields
+        next: async (options) => {
+            if (!options?.skipValidate) {
+                const result = await form.trigger(options?.fields)
+
+                if (!result) {
+                    return
+                }
+            }
+
+            stepNext()
+        },
         ...form,
         ...props,
     })
@@ -66,9 +86,7 @@ const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
             noPadding={true}
             cardClassName="w-form-modal"
             cardTitleClassName="p-md"
-            containerComponent={({ children }) => (
-                <form onSubmit={form.handleSubmit(onSubmit)}>{children}</form>
-            )}
+            onSubmit={form.handleSubmit(onSubmit)}
             steps={steps.map((step) => (props: StepProps) => step(stepProps(props)))}
             {...props}
         />

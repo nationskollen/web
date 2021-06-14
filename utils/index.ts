@@ -1,4 +1,5 @@
 import { useMemo } from 'react'
+import { DeepMap, FieldError } from 'react-hook-form'
 
 /**
  * Returns true if the code is executing on the client
@@ -47,4 +48,25 @@ export function getUrlHash(url: string) {
 
     // Prepend '#'
     return `#${anchor}`
+}
+
+/**
+ * Extracts the error message from an input error.
+ * If no error message exists, an empty string will be returned.
+ */
+export function getFieldErrorMessage(error?: boolean | FieldError | DeepMap<unknown, FieldError>) {
+    // Input field tooltip title
+    let title = ''
+
+    if (error) {
+        if (error.hasOwnProperty('message')) {
+            const errorMessage = (error as FieldError).message
+
+            if (errorMessage) {
+                title = errorMessage
+            }
+        }
+    }
+
+    return title
 }
