@@ -82,7 +82,7 @@ export const INPUT_FOCUS_STYLES: Record<InputFocusStyles, string> = {
     'error': combineNoCache(
         'border-error',
         'focus-within:ring focus-within:ring-focus-error',
-        'focus-within:border-error focus-within:text-error-text focus:within:ring-error',
+        'focus-within:border-error focus-within:text-error-text focus:within:ring-error'
     ),
 }
 

@@ -61,10 +61,7 @@ const Header = ({
     }
 
     return (
-        <div className={extend(
-            'flex flex-row pb-0 space-x-md p-md',
-            className,
-        )}>
+        <div className={extend('flex flex-row pb-0 space-x-md p-md', className)}>
             {Icon && (
                 <div
                     className={combine(

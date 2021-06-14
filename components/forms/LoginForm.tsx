@@ -16,7 +16,11 @@ export interface FormValues {
 
 const LoginForm = () => {
     const { result, error, loading, execute } = useLogin()
-    const { register, handleSubmit, formState: { errors } } = useForm<FormValues>(DEFAULT_FORM_PROPS)
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FormValues>(DEFAULT_FORM_PROPS)
 
     const submit = async (data: FormValues) => {
         execute(data.email, data.password)
@@ -49,12 +53,7 @@ const LoginForm = () => {
                     />
                 )
             default:
-                return (
-                    <ErrorDialog
-                        title="Något blev fel!"
-                        description="Försök igen senare"
-                    />
-                )
+                return <ErrorDialog title="Något blev fel!" description="Försök igen senare" />
         }
     }
 
@@ -67,7 +66,7 @@ const LoginForm = () => {
             AUTH.USER_STORAGE_KEY,
             JSON.stringify({
                 token: result.token,
-                oid: result.oid
+                oid: result.oid,
             })
         )
 

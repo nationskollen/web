@@ -97,7 +97,7 @@ const Modal = ({
                         className={extend(
                             'w-full min-w-modal',
                             cardClassName,
-                            offsetClassName || 'mt-modal-offset',
+                            offsetClassName || 'mt-modal-offset'
                         )}
                         noPadding={noPadding}
                     >
