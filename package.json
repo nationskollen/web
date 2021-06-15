@@ -15,6 +15,8 @@
     "@heroicons/react": "^1.0.1",
     "@nationskollen/sdk": "^3.0.0",
     "@popperjs/core": "^2.9.2",
+    "awesome-debounce-promise": "^2.1.0",
+    "clsx": "^1.1.1",
     "next": "10.2.3",
     "react": "17.0.2",
     "react-async-hook": "^3.6.2",
@@ -23,7 +25,8 @@
     "react-hot-toast": "^2.0.0",
     "react-popper": "^2.2.5",
     "react-table": "^7.7.0",
-    "swr": "^0.5.6"
+    "swr": "^0.5.6",
+    "use-constant": "^1.1.0"
   },
   "devDependencies": {
     "@types/react": "17.0.9",

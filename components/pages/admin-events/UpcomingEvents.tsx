@@ -13,7 +13,8 @@ const UpcomingEvents = () => {
     const { oid } = useAuth()
     const [page, setPage] = useState(1)
     const after = useRef(new Date()).current
-    const { data, error, isValidating, pagination } = useEvents(oid, { page, after })
+    const [filterString, setFilterString] = useState('')
+    const { data, error, isValidating, pagination } = useEvents(oid, { page })
 
     return (
         <AdminSection id="upcoming">
@@ -25,7 +26,8 @@ const UpcomingEvents = () => {
                     id="upcoming_filter"
                     type="text"
                     placeholder="Filtrera"
-                    onChange={(value) => console.log(value)}
+                    onChange={(e) => setFilterString(e.target.value)}
+                    debounce={true}
                 >
                     <SearchIcon />
                 </Input>
@@ -55,6 +57,7 @@ const UpcomingEvents = () => {
                 loading={isValidating}
                 pagination={pagination}
                 showPagination={true}
+                filterString={filterString}
                 setPage={setPage}
             />
         </AdminSection>

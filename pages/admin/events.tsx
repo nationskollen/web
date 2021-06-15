@@ -1,14 +1,12 @@
 import React, { useState } from 'react'
-import { PlusIcon, SearchIcon } from '@heroicons/react/solid'
+import { PlusIcon } from '@heroicons/react/solid'
 
-import Input from '@common/Input'
 import Button from '@common/Button'
-import CardTitle from '@common/CardTitle'
 import MainLayout from '@layouts/admin/Main'
 import CreateEventForm from '@forms/CreateEventForm'
 import TableOfContents from '@common/TableOfContents'
-import AdminSection from '@components/admin/AdminSection'
 
+import OldEvents from '@pages/admin-events/OldEvents'
 import UpcomingEvents from '@pages/admin-events/UpcomingEvents'
 
 const SECTIONS = [
@@ -36,21 +34,7 @@ const Events = () => {
             </MainLayout.Sidebar>
             <MainLayout.Content>
                 <UpcomingEvents />
-                <AdminSection id="old">
-                    <CardTitle
-                        title="Gamla evenemang"
-                        description="Översikt av nationens gamla evenemang"
-                    >
-                        <Input
-                            id="old_filter"
-                            type="text"
-                            placeholder="Filtrera"
-                            onChange={(value) => console.log(value)}
-                        >
-                            <SearchIcon />
-                        </Input>
-                    </CardTitle>
-                </AdminSection>
+                <OldEvents />
             </MainLayout.Content>
         </MainLayout.Wrapper>
     )

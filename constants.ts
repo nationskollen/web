@@ -16,3 +16,4 @@ export const DEFAULT_FORM_PROPS: any = {
 }
 
 export const NOTIFICATION_DURATION = 3500
+export const DEFAULT_DEBOUNCE_DELAY = 150
