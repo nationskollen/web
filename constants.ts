@@ -14,3 +14,5 @@ export const DEFAULT_FORM_PROPS: any = {
     reValidateMode: 'onSubmit',
     shouldFocusError: true,
 }
+
+export const NOTIFICATION_DURATION = 3500

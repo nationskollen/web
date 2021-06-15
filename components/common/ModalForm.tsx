@@ -40,30 +40,31 @@
  *
  * @module Common
  */
-import { Path, useForm, SubmitHandler, UseFormReturn } from 'react-hook-form'
 import ModalSteps, { StepProps, Props as ModalStepsProps } from '@common/ModalSteps'
+import { Path, SubmitHandler, UseFormReturn } from 'react-hook-form'
 
-export type StepPropsTransformator<T> = (props: StepProps) => FormStepProps<T>
+export type StepPropsTransformator<T, K> = (props: StepProps) => FormStepProps<T, K>
 
 export interface NextCallbackOptions<V> {
     skipValidate?: boolean
     fields?: Array<V>
 }
 
-export interface FormStepProps<T> extends Omit<StepProps, 'next'>, UseFormReturn<T> {
+export interface FormStepProps<T, K> extends Omit<StepProps, 'next'>, UseFormReturn<T> {
     next: (options?: NextCallbackOptions<Path<T>>) => void
+    extra?: K
 }
 
-export interface Props<T> extends Omit<ModalStepsProps, 'steps'> {
+export interface Props<T, K> extends Omit<ModalStepsProps, 'steps'> {
+    form: UseFormReturn<T>
     onSubmit: SubmitHandler<T>
-    steps: Array<(props: FormStepProps<T>) => React.ReactNode>
+    extraProps?: K
+    steps: Array<(props: FormStepProps<T, K>) => React.ReactNode>
 }
 
-const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
-    const form = useForm<T>()
-
+const ModalForm = <T, K>({ form, extraProps, onSubmit, steps, ...props }: Props<T, K>) => {
     // Pass through all form props to each step
-    const stepProps: StepPropsTransformator<T> = ({ next: stepNext, ...props }: StepProps) => ({
+    const stepProps: StepPropsTransformator<T, K> = ({ next: stepNext, ...props }: StepProps) => ({
         // Extend the next callback with the option of validating input
         // fields
         next: async (options) => {
@@ -77,6 +78,7 @@ const ModalForm = <T,>({ onSubmit, steps, ...props }: Props<T>) => {
 
             stepNext()
         },
+        extra: extraProps,
         ...form,
         ...props,
     })

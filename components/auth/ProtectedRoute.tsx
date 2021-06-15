@@ -37,7 +37,7 @@ const ProtectedRoute = ({ redirectTo, children }: Props) => {
     }, [])
 
     return (
-        <AuthProvider value={{ token, oid, logout }}>
+        <AuthProvider value={{ token: token as string, oid: oid as number, logout }}>
             {token ? (
                 children
             ) : (

@@ -4,6 +4,7 @@ import { UseFormSetValue } from 'react-hook-form'
 import { TrashIcon, CloudUploadIcon } from '@heroicons/react/outline'
 
 import Button from '@common/Button'
+import LoadingIndicator from '@common/LoadingIndicator'
 import Input, { Props as InputProps } from '@common/Input'
 
 export interface Props extends InputProps {
@@ -11,7 +12,7 @@ export interface Props extends InputProps {
 }
 
 const FileUploadInput = React.forwardRef(
-    ({ name, onChange, setValue, ...props }: Props, ref: React.Ref<any>) => {
+    ({ name, onChange, loading, setValue, ...props }: Props, ref: React.Ref<any>) => {
         const [image, setImage] = useState<Blob | null>(null)
 
         const removeUploadedImage = () => {
@@ -38,13 +39,44 @@ const FileUploadInput = React.forwardRef(
                 ref={ref}
                 name={name}
                 type="file"
-                containerClassName="relative h-64 group"
+                title=" "
+                onChange={handleUpload}
                 hideErrorIcon={true}
+                containerClassName="relative h-64 group"
+                accept="image/png, image/jpeg, image/jpg, image/svg"
                 inputClassName="z-behind"
                 innerComponent={() => (
                     <>
                         {image ? (
                             <>
+                                {loading ? (
+                                    <div
+                                        className={combine(
+                                            'absolute inset-0 w-full h-full rounded-sm',
+                                            'bg-overlay z-10 flex justify-center items-center'
+                                        )}
+                                    >
+                                        <LoadingIndicator size="medium" />
+                                    </div>
+                                ) : (
+                                    <div
+                                        className={combine(
+                                            'flex flex-row absolute top-sm right-sm space-x-sm z-10',
+                                            'transition-opacity opacity-0 group-hover:opacity-100 duration-200'
+                                        )}
+                                    >
+                                        <Button
+                                            size="small"
+                                            radius="large"
+                                            style="transparent"
+                                            className="text-white bg-overlay hover:bg-black transition-colors duration-100"
+                                            onClick={removeUploadedImage}
+                                        >
+                                            <span>Ta bort</span>
+                                            <TrashIcon />
+                                        </Button>
+                                    </div>
+                                )}
                                 <img
                                     src={URL.createObjectURL(image)}
                                     className={combine(
@@ -52,23 +84,6 @@ const FileUploadInput = React.forwardRef(
                                         'rounded-sm pointer-events-none bg-background-extra'
                                     )}
                                 />
-                                <div
-                                    className={combine(
-                                        'flex flex-row absolute top-sm right-sm space-x-sm',
-                                        'transition-opacity opacity-0 group-hover:opacity-100 duration-200'
-                                    )}
-                                >
-                                    <Button
-                                        size="small"
-                                        radius="large"
-                                        style="transparent"
-                                        className="text-white bg-overlay hover:bg-black transition-colors duration-100"
-                                        onClick={removeUploadedImage}
-                                    >
-                                        <span>Ta bort</span>
-                                        <TrashIcon />
-                                    </Button>
-                                </div>
                             </>
                         ) : (
                             <div
@@ -85,9 +100,6 @@ const FileUploadInput = React.forwardRef(
                         )}
                     </>
                 )}
-                onChange={handleUpload}
-                accept="image/png, image/jpeg, image/jpg, image/svg"
-                title=" "
                 {...props}
             />
         )

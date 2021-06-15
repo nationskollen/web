@@ -60,7 +60,7 @@ import LoadingIndicator from '@common/LoadingIndicator'
 export type NativeSelectProps = Omit<React.SelectHTMLAttributes<HTMLUListElement>, 'size' | 'style'>
 
 export interface OptionItem {
-    id: string | number
+    id: number
     value: string
     disabled?: boolean
 }

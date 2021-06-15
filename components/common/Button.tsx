@@ -25,7 +25,7 @@
  */
 import React from 'react'
 import { FieldError } from 'react-hook-form'
-import { extend, combineNoCache, getFieldErrorMessage } from '@utils'
+import { combine, extend, combineNoCache, getFieldErrorMessage } from '@utils'
 
 import { INPUT_FOCUS_STYLES } from '@common/Input'
 import LoadingIndicator from '@common/LoadingIndicator'
@@ -150,9 +150,29 @@ const Button = React.forwardRef(
         }
 
         const base = `focus:ring focus:outline-none font-bold ${colorStyle} ${focusStyle} ${radiusStyle}`
+
         const content = (
-            <div className={`flex flex-row items-center justify-center ${sizing}`}>
-                {loading ? <LoadingIndicator /> : children}
+            <div
+                className={combine(
+                    'overflow-hidden relative flex flex-row',
+                    'items-center justify-center',
+                    sizing
+                )}
+            >
+                {children}
+                {loading && (
+                    <div
+                        className={combineNoCache(
+                            'absolute w-full right-0 top-0 ml-0 box-border',
+                            'flex justify-center items-center',
+                            colorStyle,
+                            sizing,
+                            radiusStyle
+                        )}
+                    >
+                        <LoadingIndicator />
+                    </div>
+                )}
             </div>
         )
 
