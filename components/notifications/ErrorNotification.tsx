@@ -7,7 +7,7 @@ import BaseNotification from './BaseNotification'
 const ErrorNotification = (title: string) =>
     toast.custom((t) => {
         return (
-            <BaseNotification visible={t.visible} id={t.id} className="bg-error">
+            <BaseNotification visible={t.visible} id={t.id} className="text-white bg-error">
                 <IconCircle size="small" style="error" icon={ExclamationIcon} />
                 <p>{title}</p>
             </BaseNotification>
