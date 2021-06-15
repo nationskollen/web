@@ -1,11 +1,25 @@
 import React from 'react'
+import { combine } from '@utils'
 
-export interface Props {}
+export type LoadingIndicatorSizes = 'small' | 'medium' | 'fill' | 'large'
 
-const LoadingIndicator = ({}: Props) => {
+const LOADING_INDICATOR_SIZES: Record<LoadingIndicatorSizes, string> = {
+    small: 'w-6 h-6',
+    medium: 'w-8 h-8',
+    fill: 'h-full',
+    large: 'w-16 w-16',
+}
+
+export interface Props {
+    size?: LoadingIndicatorSizes
+}
+
+const LoadingIndicator = ({ size }: Props) => {
+    const sizing = LOADING_INDICATOR_SIZES[size || 'fill']
+
     return (
         <svg
-            className="h-full animate-spin"
+            className={combine('animate-spin', sizing)}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

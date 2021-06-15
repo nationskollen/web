@@ -1,8 +1,8 @@
 import React from 'react'
 
 export interface AuthContextContract {
-    token: string | null
-    oid: number | null
+    token: string
+    oid: number
     logout: () => void
 }
 
