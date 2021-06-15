@@ -1,4 +1,7 @@
 html {
+    --table-row-height: 2.4rem;
+
+    --color-lighter: rgba(0, 0, 0, 0.04);
     --color-overlay: rgba(0, 0, 0, 0.65);
     --color-focus-primary: #db5189;
     --color-focus-default: #ccc;
@@ -35,6 +38,7 @@ html {
 }
 
 html.dark {
+    --color-lighter: rgba(255, 255, 255, 0.02);
     --color-focus-default: #393648;
     --color-focus-input: #55516a;
     --color-focus-secondary: #7e80a4;

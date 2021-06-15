@@ -9,6 +9,8 @@ import CreateEventForm from '@forms/CreateEventForm'
 import TableOfContents from '@common/TableOfContents'
 import AdminSection from '@components/admin/AdminSection'
 
+import UpcomingEvents from '@pages/admin-events/UpcomingEvents'
+
 const SECTIONS = [
     { href: '#upcoming', title: 'Kommande evenemang' },
     { href: '#old', title: 'Gamla evenemang' },
@@ -33,21 +35,7 @@ const Events = () => {
                 </Button>
             </MainLayout.Sidebar>
             <MainLayout.Content>
-                <AdminSection id="upcoming">
-                    <CardTitle
-                        title="Kommande evenemang"
-                        description="Översikt av nationens kommande evenemang"
-                    >
-                        <Input
-                            id="upcoming_filter"
-                            type="text"
-                            placeholder="Filtrera"
-                            onChange={(value) => console.log(value)}
-                        >
-                            <SearchIcon />
-                        </Input>
-                    </CardTitle>
-                </AdminSection>
+                <UpcomingEvents />
                 <AdminSection id="old">
                     <CardTitle
                         title="Gamla evenemang"

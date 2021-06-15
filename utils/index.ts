@@ -71,3 +71,17 @@ export function getFieldErrorMessage(error?: boolean | FieldError | DeepMap<unkn
 
     return title
 }
+
+/**
+ * Extracts the time (hour) from an ISO date string.
+ * It removes the unnecessary information like milliseconds and timezone.
+ * We can safely do this on server data since it should **always** return
+ * dates in UTC+2.
+ *
+ * This should hopefully be faster than creating a full Date instance
+ * using `new Date()`.
+ */
+export function getShorterDate(date: string) {
+    const arr = date.split('T')
+    return `${arr[0]} - ${arr[1].substr(0, 5)}`
+}

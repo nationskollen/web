@@ -27,6 +27,7 @@ module.exports = {
             'background': 'var(--color-background)',
             'background-extra': 'var(--color-background-extra)',
             'background-highlight': 'var(--color-background-highlight)',
+            'lighter': 'var(--color-lighter)',
             'card': 'var(--color-card)',
             'border': 'var(--color-border)',
             'border-dark': 'var(--color-border-dark)',
@@ -73,8 +74,10 @@ module.exports = {
                 '1/5': '20vh',
                 'modal-offset': '15vh',
                 'dialog-offset': '30vh',
+                'table-row': '2.4rem',
             },
             height: {
+                'table-row': 'var(--table-row-height)',
                 'admin-header': '16rem',
                 'admin-header-fixed': '3.5rem',
                 'admin-header-content': '10rem',
@@ -83,6 +86,7 @@ module.exports = {
                 dialog: '12rem',
                 textarea: '8rem',
                 notifications: '8rem',
+                table: 'calc(var(--table-row-height) * 3)'
             },
             maxHeight: {
                 dialog: '20rem',
@@ -95,6 +99,7 @@ module.exports = {
                 'form-modal': '30rem',
                 'dialog': '30rem',
                 'user-popover': '22rem',
+                'pagination-counter': '3rem',
             },
             minWidth: {
                 'modal': '25rem',
@@ -119,12 +124,13 @@ module.exports = {
     },
     variants: {
         extend: {
-            borderWidth: ['last', 'dark'],
+            borderWidth: ['last', 'dark', 'first'],
             borderColor: ['dark'],
             padding: ['last'],
             margin: ['last'],
             filter: ['dark'],
             brightness: ['dark'],
+            backgroundColor: ['even'],
         },
     },
     plugins: [],
