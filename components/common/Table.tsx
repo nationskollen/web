@@ -193,8 +193,14 @@ const Table = <T,>({
         usePagination
     )
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state } =
-        tableInstance
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+        state,
+    } = tableInstance
 
     return (
         <>
@@ -220,7 +226,7 @@ const Table = <T,>({
                 {rows.length === 0 && !loading && (
                     <Overlay>
                         <p className="text-md">
-                            {error ? (errorMessage || 'Kunde inte ladda innehåll') : 'Inget innehåll'}
+                            {error ? errorMessage || 'Kunde inte ladda innehåll' : 'Inget innehåll'}
                         </p>
                     </Overlay>
                 )}
