@@ -44,6 +44,7 @@ const MenuDropdown = ({ cardClassName, button, children, ...props }: Props) => {
                             <Menu.Items>
                                 <Card
                                     noPadding={true}
+                                    radiusSmall={true}
                                     className={clsx(
                                         'w-menu-popover border-1 p-xsm',
                                         'dark:bg-background-highlight border-border-dark',

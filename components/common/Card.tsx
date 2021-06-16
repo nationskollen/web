@@ -13,18 +13,20 @@ export interface Props {
     containerClassName?: string
     label?: string
     noPadding?: boolean
+    radiusSmall?: boolean
     active?: boolean
     children?: React.ReactNode
 }
 
-const Card = ({ id, label, active, noPadding, className, containerClassName, children }: Props) => {
+const Card = ({ id, label, active, noPadding, radiusSmall, className, containerClassName, children }: Props) => {
     return (
         <article
             id={id}
             className={clsx(
-                'relative card shadow-md rounded border-card w-full flex flex-col',
+                'relative card shadow-md border-card w-full flex flex-col',
                 'dark:border-border-dark border-1 bg-card text-text',
-                className
+                radiusSmall ? 'rounded-sm' : 'rounded',
+                className,
             )}
         >
             {active && (
