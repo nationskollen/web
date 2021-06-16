@@ -57,13 +57,13 @@ const Overlay = ({ children }: OverlayProps) => {
     return (
         <div
             className={clsx(
-                'absolute bottom-0 flex rounded-sm',
-                'w-full h-full border-background-highlight border-b-1 even:bg-lighter'
+                'absolute bottom-0 flex rounded-sm z-10',
+                'w-full h-full border-background-highlight border-b-1'
             )}
         >
             <div
                 className={clsx(
-                    'flex-1 rounded-b-sm',
+                    'flex-1 rounded-b-sm opacity-70',
                     'bg-background dark:bg-background-extra mt-table-row',
                     'flex justify-center items-center box-content'
                 )}
