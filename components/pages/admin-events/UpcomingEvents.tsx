@@ -31,7 +31,7 @@ const UpcomingEvents = () => {
     const [page, setPage] = useState(1)
     const after = useRef(new Date()).current
     const [filterString, setFilterString] = useState('')
-    const { data, error, isValidating, pagination } = useEvents(oid, { page })
+    const { data, error, isValidating, pagination } = useEvents(oid, { page, after })
 
     return (
         <AdminSection id="upcoming">
