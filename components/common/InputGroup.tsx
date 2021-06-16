@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { extend } from '@utils'
 
 export interface Props {
     columns?: number
@@ -10,7 +10,7 @@ export interface Props {
 const InputGroup = ({ columns, className, children }: Props) => {
     return (
         <div
-            className={extend(
+            className={clsx(
                 `grid grid-cols-${columns || React.Children.count(children)} gap-md`,
                 className
             )}

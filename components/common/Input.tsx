@@ -94,9 +94,7 @@ export const INPUT_FOCUS_STYLES: Record<InputFocusStyles, string> = {
 }
 
 const NativeInput = React.forwardRef((props: NativeInputProps, ref: React.Ref<any>) => {
-    return (
-        <input ref={ref} {...props} />
-    )
+    return <input ref={ref} {...props} />
 })
 
 const Input = React.forwardRef(
@@ -125,10 +123,12 @@ const Input = React.forwardRef(
     ) => {
         const sizing = INPUT_SIZES[size || 'default']
         const styling = INPUT_STYLES[style || 'transparent']
-        const focusStyle = INPUT_FOCUS_STYLES[error ? 'error' : (style || 'transparent')]
+        const focusStyle = INPUT_FOCUS_STYLES[error ? 'error' : style || 'transparent']
         const title = getFieldErrorMessage(error)
-        const onChangeCallback = debounce ?
-            useConstant(() => AwesomeDebouncePromise(onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY))
+        const onChangeCallback = debounce
+            ? useConstant(() =>
+                  AwesomeDebouncePromise(onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY)
+              )
             : onChange
 
         // It is important that we define `NativeInput` as a separate component.
@@ -138,12 +138,7 @@ const Input = React.forwardRef(
         const InputComponent = as || NativeInput
 
         return (
-            <div
-                className={clsx(
-                    'relative rounded-sm flex flex-col justify-center',
-                    className,
-                )}
-            >
+            <div className={clsx('relative rounded-sm flex flex-col justify-center', className)}>
                 {label && (
                     <label
                         htmlFor={id}
@@ -177,7 +172,7 @@ const Input = React.forwardRef(
                         className={clsx(
                             'flex-1 h-full w-full focus:outline-none',
                             'bg-transparent text-text-highlight',
-                            inputClassName,
+                            inputClassName
                         )}
                         title={title}
                         aria-invalid={!!error}
@@ -189,7 +184,7 @@ const Input = React.forwardRef(
                             <div
                                 className={clsx(
                                     'h-full rounded space-x-xsm bg-error-highlight',
-                                    'p-xsm text-error-highlight-text',
+                                    'p-xsm text-error-highlight-text'
                                 )}
                             >
                                 <ExclamationIcon />

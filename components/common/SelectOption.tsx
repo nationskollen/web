@@ -1,4 +1,4 @@
-import { combineNoCache } from '@utils'
+import clsx from 'clsx'
 import { Listbox } from '@headlessui/react'
 import { CheckIcon } from '@heroicons/react/solid'
 
@@ -9,17 +9,14 @@ export interface Props {
     option: OptionItem
 }
 
-const ACTIVE_STYLE = combineNoCache(
-    'bg-background-extra text-text-highlight',
-    'dark:bg-border-dark'
-)
+const ACTIVE_STYLE = clsx('bg-background-extra text-text-highlight', 'dark:bg-border-dark')
 
 const SelectOption = ({ option, index }: Props) => {
     return (
         <Listbox.Option value={index} disabled={option.disabled}>
             {({ active, selected }) => (
                 <div
-                    className={combineNoCache(
+                    className={clsx(
                         'px-md py-sm flex flex-row items-center',
                         active ? ACTIVE_STYLE : ''
                     )}

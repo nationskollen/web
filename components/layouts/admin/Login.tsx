@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { combineNoCache } from '@utils'
 
 import Uppsala from '@svg/Uppsala'
 
@@ -10,7 +10,7 @@ export interface Props {
 const Template = ({ children }: Props) => {
     return (
         <div
-            className={combineNoCache(
+            className={clsx(
                 'relative flex flex-col items-center w-screen h-screen text-white py-lg',
                 'bg-background-extra dark:bg-background'
             )}

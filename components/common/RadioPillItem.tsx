@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { combine } from '@utils'
 
 export interface Props {
     label: string
@@ -11,7 +11,7 @@ export interface Props {
 const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props) => {
     return (
         <div
-            className={combine(
+            className={clsx(
                 'flex flex-row justify-center items-center group space-x-sm',
                 'rounded-sm py-3 box-border focus:outline-none',
                 checked ? 'bg-primary-highlight text-primary' : 'bg-background-extra text-text'

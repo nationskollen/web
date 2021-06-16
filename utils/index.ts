@@ -9,30 +9,6 @@ export function isClient() {
 }
 
 /**
- * Combines a list of classnames into a single, space-separated string
- */
-export function combine(...classNames: Array<string>) {
-    return useMemo(() => combineNoCache(...classNames), [classNames])
-}
-
-/**
- * Combines a list of classnames into a single, space-separated string
- * without caching the result.
- */
-export function combineNoCache(...classNames: Array<string>) {
-    return classNames.join(' ')
-}
-
-/**
- * Appends a custom class to a list of classnames.
- * Useful when accepting `className` as a prop to a component.
- */
-export function extend(classNames: string, ...optionalClassNames: Array<string | undefined>) {
-    const parsedClasses = optionalClassNames.filter((name) => name).join(' ')
-    return parsedClasses ? `${classNames} ${parsedClasses}` : classNames
-}
-
-/**
  * Extracts the hash/anchor of the current URL.
  *
  * For example:

@@ -2,10 +2,11 @@ import { useState, useRef } from 'react'
 import { getShorterDate } from '@utils'
 import { useAuth } from '@contexts/Auth'
 import { useEvents } from '@nationskollen/sdk'
-import { SearchIcon } from '@heroicons/react/outline'
+import { SearchIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
 
 import Table from '@common/Table'
 import Input from '@common/Input'
+import Button from '@common/Button'
 import CardTitle from '@common/CardTitle'
 import AdminSection from '@components/admin/AdminSection'
 
@@ -45,14 +46,30 @@ const UpcomingEvents = () => {
                     {
                         Header: 'Slut',
                         accessor: 'ends_at',
-                    }
+                    },
+                    {
+                        Header: 'Ändra',
+                        accessor: 'actions',
+                        disableSortBy: true,
+                    },
                 ]}
-                data={data ?
+                data={
+                    data &&
                     data.map(({ name, occurs_at, ends_at }) => ({
                         name,
                         occurs_at: getShorterDate(occurs_at),
                         ends_at: getShorterDate(ends_at),
-                    })) : []
+                        actions: (
+                            <div className="flex flex-row items-center justify-center space-x-xsm">
+                                <Button style="icon" size="small">
+                                    <PencilAltIcon />
+                                </Button>
+                                <Button style="icon" size="small">
+                                    <TrashIcon />
+                                </Button>
+                            </div>
+                        ),
+                    }))
                 }
                 loading={isValidating}
                 pagination={pagination}

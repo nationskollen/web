@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React, { useState } from 'react'
-import { combine } from '@utils'
 import { UseFormSetValue } from 'react-hook-form'
 import { TrashIcon, CloudUploadIcon } from '@heroicons/react/outline'
 
@@ -51,7 +51,7 @@ const FileUploadInput = React.forwardRef(
                             <>
                                 {loading ? (
                                     <div
-                                        className={combine(
+                                        className={clsx(
                                             'absolute inset-0 w-full h-full rounded-sm',
                                             'bg-overlay z-10 flex justify-center items-center'
                                         )}
@@ -60,7 +60,7 @@ const FileUploadInput = React.forwardRef(
                                     </div>
                                 ) : (
                                     <div
-                                        className={combine(
+                                        className={clsx(
                                             'flex flex-row absolute top-sm right-sm space-x-sm z-10',
                                             'transition-opacity opacity-0 group-hover:opacity-100 duration-200'
                                         )}
@@ -79,7 +79,7 @@ const FileUploadInput = React.forwardRef(
                                 )}
                                 <img
                                     src={URL.createObjectURL(image)}
-                                    className={combine(
+                                    className={clsx(
                                         'absolute inset-0 object-cover w-full h-full',
                                         'rounded-sm pointer-events-none bg-background-extra'
                                     )}
@@ -87,7 +87,7 @@ const FileUploadInput = React.forwardRef(
                             </>
                         ) : (
                             <div
-                                className={combine(
+                                className={clsx(
                                     'absolute inset-0 h-full rounded-sm pointer-events-none',
                                     'bg-background-extra flex flex-col justify-center items-center'
                                 )}

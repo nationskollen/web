@@ -6,8 +6,8 @@
  *
  * @module Common
  */
+import clsx from 'clsx'
 import React from 'react'
-import { extend } from '@utils'
 import Input, { Props as InputProps } from '@common/Input'
 
 const Textarea = React.forwardRef(
@@ -17,7 +17,7 @@ const Textarea = React.forwardRef(
                 as="textarea"
                 size="auto"
                 containerClassName="pr-0"
-                inputClassName={extend('min-h-textarea max-h-textarea pt-sm', inputClassName)}
+                inputClassName={clsx('min-h-textarea max-h-textarea pt-sm', inputClassName)}
                 hideErrorIcon={true}
                 ref={ref}
                 {...props}

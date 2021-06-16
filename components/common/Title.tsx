@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { extend } from '@utils'
 
 export type TitleSizes = 'small' | 'default' | 'large'
 
@@ -23,7 +23,7 @@ const Title = ({ text, size, className, ...props }: Props) => {
     }
 
     const sizing = size ? TITLE_SIZES[size] : TITLE_SIZES['default']
-    const classes = extend(sizing, className)
+    const classes = clsx(sizing, className)
 
     if (!size || size === 'default') {
         return (

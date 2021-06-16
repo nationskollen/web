@@ -1,15 +1,19 @@
 import clsx from 'clsx'
-import { useMemo } from 'react'
-import { PaginationMeta } from '@nationskollen/sdk'
-import { Column, useGlobalFilter, usePagination, useTable } from 'react-table'
+import { useEffect, useState, useMemo } from 'react'
 import { Transition } from '@headlessui/react'
+import { PaginationMeta } from '@nationskollen/sdk'
+import { SortDescendingIcon, SortAscendingIcon } from '@heroicons/react/outline'
+import { Column, useSortBy, useGlobalFilter, usePagination, useTable } from 'react-table'
 
 import LoadingIndicator from '@common/LoadingIndicator'
 import PaginationActions from '@common/PaginationActions'
 
+export type TableData<T> = Array<Record<keyof T, unknown>>
+export type TableColumns<T> = Array<Column<Record<keyof T, unknown>>>
+
 export interface Props<T> {
-    columns: Array<Column<Record<keyof T, unknown>>>
-    data: Array<Record<keyof T, unknown>>
+    columns: TableColumns<T>
+    data?: TableData<T>
     loading?: boolean
     showIndex?: boolean
     showPagination?: boolean
@@ -22,23 +26,68 @@ export interface OverlayProps {
     children: React.ReactNode
 }
 
+export interface SortIndicatorProps {
+    descending?: boolean
+}
+
+export interface FooterProps<T> {
+    totalRows?: number
+    data?: TableData<T>
+    pagination?: PaginationMeta
+    page: number
+    setPage?: (page: number) => void
+    showPagination?: boolean
+}
+
 const Overlay = ({ children }: OverlayProps) => {
     return (
         <div
             className={clsx(
                 'absolute bottom-0 flex rounded-sm',
-                'w-full h-full border-border border-b-1 even:bg-lighter',
+                'w-full h-full border-background-highlight border-b-1 even:bg-lighter'
             )}
         >
             <div
                 className={clsx(
                     'flex-1 rounded-b-sm',
                     'bg-background dark:bg-background-extra mt-table-row',
-                    'flex justify-center items-center box-content',
+                    'flex justify-center items-center box-content'
                 )}
             >
                 {children}
             </div>
+        </div>
+    )
+}
+
+const SortIndicator = ({ descending }: SortIndicatorProps) => {
+    return (
+        <div className={clsx('absolute right-sm top-0 h-full flex flex-row items-center p-3')}>
+            {descending ? <SortDescendingIcon /> : <SortAscendingIcon />}
+        </div>
+    )
+}
+
+const Footer = <T,>({
+    totalRows,
+    pagination,
+    data,
+    page,
+    setPage,
+    showPagination,
+}: FooterProps<T>) => {
+    const rowStart = pagination ? pagination.per_page * (page - 1) : 0
+    const rowEnd = rowStart + (totalRows || 0)
+    const rowTotal = pagination?.total || data?.length || 0
+
+    return (
+        <div className="flex flex-row items-center justify-between mt-sm">
+            <p className="flex flex-row w-full text-sm text-text ml-xsm">
+                {`Visar ${rowEnd === 0 ? 0 : `${rowStart + 1}-${rowEnd}`} av ${rowTotal}`}
+            </p>
+            {showPagination && setPage && (
+                <PaginationActions page={page} pagination={pagination} setPage={setPage} />
+            )}
         </div>
     )
 }
@@ -53,49 +102,88 @@ const Table = <T,>({
     setPage,
     filterString,
 }: Props<T>) => {
+    const [cachedData, setCachedData] = useState<TableData<T>>([])
+    const [cachedMeta, setCachedMeta] = useState<PaginationMeta | undefined>(undefined)
+
+    // To prevent re-render flickering when fetching new data,
+    // we make sure to cache the previous data and only update it
+    // if it has indeed changed.
+    useEffect(() => {
+        if (loading || !data) {
+            return
+        }
+
+        setCachedData(data)
+    }, [loading, data, pagination])
+
+    // The pagination data will also update each time we update the
+    // selected page. This also causes re-render flickering and therefore
+    // we cache this data as well.
+    //
+    // To support dynamically changing the pagination parameters,
+    // we must listen for changes in total pages and items per page.
+    // If any of these parameters change, we must recalculate the active page.
+    useEffect(() => {
+        if (loading || !showPagination || !pagination) {
+            return
+        }
+
+        if (cachedMeta && setPage) {
+            if (
+                (pagination.last_page !== cachedMeta.last_page ||
+                    pagination.per_page !== cachedMeta.per_page) &&
+                cachedMeta.current_page !== 1
+            ) {
+                setPage(Math.floor(pagination.total / pagination.per_page))
+            }
+        }
+
+        setCachedMeta(pagination)
+    }, [pagination])
+
     const memoizedColumns = useMemo(() => columns, [])
-    const memoizedData = useMemo(() => data, [data])
-    const memoizedPagination = useMemo(() => pagination, [pagination])
+    const memoizedData = useMemo(() => cachedData, [cachedData])
+    const memoizedPagination = useMemo(() => cachedMeta, [cachedMeta])
 
-    const tableInstance = useTable({
-        columns: memoizedColumns,
-        data: memoizedData,
-        initialState: {
-            pageSize: memoizedPagination?.per_page || 15,
-            pageIndex: memoizedPagination?.current_page || 1,
-            globalFilter: filterString,
+    const tableInstance = useTable(
+        {
+            columns: memoizedColumns,
+            data: memoizedData,
+            initialState: {
+                pageSize: memoizedPagination?.per_page || 15,
+                pageIndex: memoizedPagination?.current_page || 1,
+                globalFilter: filterString,
+            },
+            pageCount: memoizedPagination?.last_page || 1,
+            manualPagination: true,
         },
-        pageCount: memoizedPagination?.last_page || 1,
-        manualPagination: true,
-    }, useGlobalFilter, usePagination)
+        useGlobalFilter,
+        useSortBy,
+        usePagination
+    )
 
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-    } = tableInstance
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state } =
+        tableInstance
 
     return (
         <>
             <div
                 className={clsx(
                     'relative w-full overflow-hidden border-b-0',
-                    'rounded-sm mt-md min-h-table border-1 border-border',
+                    'rounded-sm mt-md border-1 border-background-highlight',
+                    rows.length === 0 || loading ? 'min-h-table-empty' : 'min-h-table'
                 )}
             >
                 <Transition
                     as="div"
                     className="pointer-events-none"
-                    appear={true}
                     show={!!loading}
-                    enter="transition-opacity duration-in delay-300"
+                    enter="transition-opacity duration-in delay-500"
                     enterFrom="opacity-0"
                     enterTo="opacity-100"
                 >
                     <Overlay>
-                        <LoadingIndicator size="medium" />
+                        <LoadingIndicator size="small" />
                     </Overlay>
                 </Transition>
                 {rows.length === 0 && !loading && (
@@ -104,19 +192,26 @@ const Table = <T,>({
                     </Overlay>
                 )}
                 <table {...getTableProps()} className="w-full border-collapse table-auto">
-                    <thead className="text-white dark:bg-background bg-primary-extra dark:text-text-highlight">
+                    <thead className="text-text-highlight bg-background dark:bg-background-extra">
                         {headerGroups.map((headerGroup) => (
-                            <tr {...headerGroup.getHeaderGroupProps()} className="border-b-1 border-border">
+                            <tr
+                                className="border-b-1 border-background-highlight"
+                                {...headerGroup.getHeaderGroupProps()}
+                            >
                                 {headerGroup.headers.map((column, index) => (
                                     <th
                                         className={clsx(
-                                            'text-left h-table-row px-md text-sm',
-                                            'border-r-1 border-primary dark:border-background-extra last:border-r-0',
-                                            showIndex && index === 0 ? 'w-sm' : '',
+                                            'text-left h-table-row px-md text-md relative',
+                                            'border-background-highlight',
+                                            showIndex && index === 0 ? 'w-sm' : ''
                                         )}
                                         {...column.getHeaderProps()}
+                                        {...column.getSortByToggleProps()}
                                     >
                                         {column.render('Header')}
+                                        {column.isSorted && (
+                                            <SortIndicator descending={column.isSortedDesc} />
+                                        )}
                                     </th>
                                 ))}
                             </tr>
@@ -124,34 +219,41 @@ const Table = <T,>({
                     </thead>
                     <tbody {...getTableBodyProps()}>
                         {rows.map((row) => {
-                                prepareRow(row)
+                            prepareRow(row)
 
-                                return (
-                                    <tr {...row.getRowProps()} className="even:bg-lighter border-b-1 border-border">
-                                        {row.cells.map((cell) => (
-                                            <td
-                                                className={clsx(
-                                                    'h-table-row px-md border-r-1 last:border-r-0',
-                                                    'border-border text-md',
-                                                )}
-                                                {...cell.getCellProps()}
-                                            >
-                                                {cell.render('Cell')}
-                                            </td>
-                                        ))}
-                                    </tr>
-                                )
-                            })
-                        }
+                            return (
+                                <tr
+                                    className={clsx(
+                                        'last:border-b-1 border-background-highlight',
+                                        'hover:bg-lighter'
+                                    )}
+                                    {...row.getRowProps()}
+                                >
+                                    {row.cells.map((cell) => (
+                                        <td
+                                            className={clsx(
+                                                'h-table-row px-md',
+                                                'border-border text-md'
+                                            )}
+                                            {...cell.getCellProps()}
+                                        >
+                                            {cell.render('Cell')}
+                                        </td>
+                                    ))}
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>
-            {showPagination && setPage && (
-                <PaginationActions
-                    pagination={pagination}
-                    setPage={setPage}
-                />
-            )}
+            <Footer
+                data={data}
+                page={state.pageIndex}
+                setPage={setPage}
+                totalRows={rows.length}
+                pagination={memoizedPagination}
+                showPagination={showPagination}
+            />
         </>
     )
 }

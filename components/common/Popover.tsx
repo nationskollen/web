@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React, { useState } from 'react'
-import { combine, extend } from '@utils'
 import { usePopper } from 'react-popper'
 import { Popover, Transition } from '@headlessui/react'
 
@@ -28,13 +28,6 @@ const CustomPopover = ({
     const { attributes } = usePopper(referenceElement, popperElement, {
         placement: 'bottom-start',
     })
-    const buttonClasses = extend('focus:outline-none', buttonClassName)
-    const cardClasses = extend('shadow-2xl dark:bg-background-highlight', cardClassName)
-    const triangleClasses = combine(
-        'absolute w-4 h-4 transform rotate-45 right-md -top-2 z-behind',
-        'border-t-1 border-l-1 border-card bg-background',
-        'dark:border-border-dark dark:bg-background-highlight'
-    )
 
     return (
         <Popover className="relative">
@@ -44,8 +37,8 @@ const CustomPopover = ({
                         ref={setReferenceElement}
                         as={Button}
                         style={buttonStyle}
-                        className={buttonClasses}
                         focus={buttonFocus}
+                        className={clsx('focus:outline-none', buttonClassName)}
                     >
                         {button(open)}
                     </Popover.Button>
@@ -64,8 +57,20 @@ const CustomPopover = ({
                             leaveTo="transform scale-90 opacity-0"
                         >
                             <Popover.Panel static={true} className="pt-md">
-                                <Card className={cardClasses} containerClassName="relative">
-                                    <div className={triangleClasses} />
+                                <Card
+                                    containerClassName="relative"
+                                    className={clsx(
+                                        'shadow-2xl dark:bg-background-highlight',
+                                        cardClassName
+                                    )}
+                                >
+                                    <div
+                                        className={clsx(
+                                            'absolute w-4 h-4 transform rotate-45 right-md',
+                                            '-top-2 z-behind border-t-1 border-l-1 border-card bg-background',
+                                            'dark:bg-background-highlight dark:border-border-dark'
+                                        )}
+                                    />
                                     <>{children}</>
                                 </Card>
                             </Popover.Panel>

@@ -6,16 +6,9 @@ import AdminSection from '@components/admin/AdminSection'
 
 const OldEvents = () => {
     return (
-        <AdminSection id="upcoming">
-            <CardTitle
-                title="Kommande evenemang"
-                description="Översikt av nationens kommande evenemang"
-            >
-                <Input
-                    id="upcoming_filter"
-                    type="text"
-                    placeholder="Filtrera"
-                >
+        <AdminSection id="old">
+            <CardTitle title="Gamla evenemang" description="Översikt av nationens gamla evenemang">
+                <Input id="old_filter" type="text" placeholder="Filtrera">
                     <SearchIcon />
                 </Input>
             </CardTitle>

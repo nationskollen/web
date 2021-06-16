@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { combine, extend } from '@utils'
 
 import CardTitle from '@common/CardTitle'
 import IconCircle, { IconCircleStyles } from '@common/IconCircle'
@@ -54,13 +54,13 @@ const Header = ({
     }
 
     return (
-        <div className={extend('flex flex-row pb-0 space-x-md p-md', className)}>
+        <div className={clsx('flex flex-row pb-0 space-x-md p-md', className)}>
             {icon && <IconCircle style={iconStyle} icon={icon} />}
             <CardTitle
                 modal={true}
                 title={title}
                 description={parsedDescription}
-                descriptionClassName={extend(
+                descriptionClassName={clsx(
                     currentStep !== undefined && totalSteps ? 'leading-none' : '',
                     descriptionClassName
                 )}
@@ -72,17 +72,22 @@ const Header = ({
 }
 
 const Main = ({ className, children }: MainProps) => {
-    return <div className={extend('px-md space-y-md flex-1', className)}>{children}</div>
+    return <div className={clsx('px-md space-y-md flex-1', className)}>{children}</div>
 }
 
 const Actions = ({ noBorder, className, children }: ActionsProps) => {
-    const classes = combine(
-        'flex flex-row justify-end w-full space-x-3 px-md py-3 border-border self-end',
-        'bg-background-extra dark:bg-background border-border rounded-b',
-        noBorder ? 'pt-0 dark:bg-background-extra' : 'border-t-1 dark:border-t-0'
+    return (
+        <div
+            className={clsx(
+                'flex flex-row justify-end w-full space-x-3 px-md py-3 rounded-b',
+                'border-border self-end bg-background-extra dark:bg-background border-border',
+                noBorder ? 'pt-0 dark:bg-background-extra' : 'border-t-1 dark:border-t-0',
+                className
+            )}
+        >
+            {children}
+        </div>
     )
-
-    return <div className={extend(classes, className)}>{children}</div>
 }
 
 export default {

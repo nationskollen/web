@@ -1,6 +1,7 @@
+import clsx from 'clsx'
+import { getUrlHash } from '@utils'
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { extend, getUrlHash } from '@utils'
 import { Dialog, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
@@ -94,7 +95,7 @@ const Modal = ({
                     leaveTo="transform scale-90 opacity-0"
                 >
                     <Card
-                        className={extend(
+                        className={clsx(
                             'w-full min-w-modal',
                             cardClassName,
                             offsetClassName || 'mt-modal-offset'

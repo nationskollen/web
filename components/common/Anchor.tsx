@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { extend } from '@utils'
 
 export interface Props {
     id: string
@@ -10,7 +10,7 @@ export interface Props {
 const Anchor = ({ id, offsetClass, children }: Props) => {
     return (
         <div>
-            <div className={extend('relative invisible block', offsetClass)} id={id} />
+            <div className={clsx('relative invisible block', offsetClass)} id={id} />
             {children}
         </div>
     )

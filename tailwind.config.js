@@ -61,7 +61,7 @@ module.exports = {
         screens: {
             tablet: '640px',
             laptop: '1024px',
-            desktop: '1280px',
+            desktop: '1368px',
         },
         extend: {
             spacing: {
@@ -74,7 +74,7 @@ module.exports = {
                 '1/5': '20vh',
                 'modal-offset': '15vh',
                 'dialog-offset': '30vh',
-                'table-row': '2.4rem',
+                'table-row': 'var(--table-row-height)',
             },
             height: {
                 'table-row': 'var(--table-row-height)',
@@ -83,10 +83,11 @@ module.exports = {
                 'admin-header-content': '10rem',
             },
             minHeight: {
-                dialog: '12rem',
-                textarea: '8rem',
-                notifications: '8rem',
-                table: 'calc(var(--table-row-height) * 3)'
+                'dialog': '12rem',
+                'textarea': '8rem',
+                'notifications': '8rem',
+                'table': 'calc(var(--table-row-height) * 2)',
+                'table-empty': 'calc(var(--table-row-height) * 3)',
             },
             maxHeight: {
                 dialog: '20rem',
@@ -94,7 +95,7 @@ module.exports = {
                 dropdown: '15rem',
             },
             width: {
-                'sidebar-navigation': '18rem',
+                'sidebar-navigation': '17rem',
                 'login-modal': '22rem',
                 'form-modal': '30rem',
                 'dialog': '30rem',
@@ -125,7 +126,7 @@ module.exports = {
     variants: {
         extend: {
             borderWidth: ['last', 'dark', 'first'],
-            borderColor: ['dark'],
+            borderColor: ['dark', 'last'],
             padding: ['last'],
             margin: ['last'],
             filter: ['dark'],

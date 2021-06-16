@@ -4,13 +4,12 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 import Button from '@common/Button'
 
 export interface Props {
+    page?: number
     pagination?: PaginationMeta
     setPage: (page: number) => void
- }
+}
 
-const PaginationActions = ({ pagination, setPage }: Props) => {
-    const page = pagination?.current_page
-
+const PaginationActions = ({ page, pagination, setPage }: Props) => {
     const handlePrevious = () => {
         if (!page || page === 1) {
             return
@@ -28,9 +27,9 @@ const PaginationActions = ({ pagination, setPage }: Props) => {
     }
 
     return (
-        <div className="flex flex-row items-center justify-end w-full mt-sm">
+        <div className="flex flex-row items-center justify-end w-full">
             <p className="text-sm font-bold text-center px-md">
-                Sida {page} / {pagination?.last_page}
+                Sida {page || 1} / {pagination?.last_page || 1}
             </p>
             <div className="space-x-sm">
                 <Button

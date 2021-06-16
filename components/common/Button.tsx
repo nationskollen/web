@@ -23,9 +23,10 @@
  *
  * @module Common
  */
+import clsx from 'clsx'
 import React from 'react'
 import { FieldError } from 'react-hook-form'
-import { combine, extend, combineNoCache, getFieldErrorMessage } from '@utils'
+import { getFieldErrorMessage } from '@utils'
 
 import { INPUT_FOCUS_STYLES } from '@common/Input'
 import LoadingIndicator from '@common/LoadingIndicator'
@@ -60,45 +61,45 @@ export interface Props {
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    'primary': combineNoCache(
+    'primary': clsx(
         'bg-primary text-white',
         'dark:filter dark:brightness-125',
         'focus:ring-focus-primary hover:bg-primary-extra'
     ),
-    'primary-extra': combineNoCache('bg-primary-extra text-white', 'focus:ring-focus-primary'),
-    'secondary': combineNoCache(
+    'primary-extra': clsx('bg-primary-extra text-white', 'focus:ring-focus-primary'),
+    'secondary': clsx(
         'bg-secondary text-white',
         'hover:bg-secondary-extra focus:ring-focus-secondary'
     ),
-    'light': combineNoCache(
+    'light': clsx(
         'bg-background-extra text-text-highlight border-1 border-border-dark',
         'dark:bg-background-highlight dark:border-background-highlight',
         'focus:ring-focus-default'
     ),
-    'transparent': combineNoCache('bg-transparent', 'focus:ring-focus-default'),
-    'error': combineNoCache(
+    'transparent': clsx('bg-transparent', 'focus:ring-focus-default'),
+    'error': clsx(
         'bg-error text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-error'
     ),
-    'success': combineNoCache(
+    'success': clsx(
         'bg-success text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-success'
     ),
-    'input': combineNoCache(
+    'input': clsx(
         'bg-transparent text-text-highlight border-1 border-border-dark',
         'dark:bg-background-highlight dark:border-0'
     ),
 }
 
 const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
-    primary: combineNoCache('focus:ring-focus-primary'),
-    default: combineNoCache('focus:ring-focus-default'),
-    subtle: combineNoCache(
+    primary: clsx('focus:ring-focus-primary'),
+    default: clsx('focus:ring-focus-default'),
+    subtle: clsx(
         'dark:focus:bg-background-highlight',
         'focus:bg-background-extra focus:text-primary-text'
     ),
-    input: combineNoCache('focus:ring-focus-input'),
-    error: combineNoCache('text-error-text', INPUT_FOCUS_STYLES['error']),
+    input: clsx('focus:ring-focus-input'),
+    error: clsx('text-error-text', INPUT_FOCUS_STYLES['error']),
 }
 
 const BUTTON_RADIUS: Record<ButtonRadius, string> = {
@@ -135,9 +136,9 @@ const Button = React.forwardRef(
         }: Props,
         ref: any
     ) => {
-        const sizing = size ? BUTTON_SIZES[size] : BUTTON_SIZES['default']
-        const radiusStyle = radius ? BUTTON_RADIUS[radius] : BUTTON_RADIUS['default']
-        const colorStyle = style ? BUTTON_STYLES[style] : BUTTON_STYLES['primary']
+        const sizing = BUTTON_SIZES[size || 'default']
+        const radiusStyle = BUTTON_RADIUS[radius || 'default']
+        const colorStyle = BUTTON_STYLES[style || 'primary']
         let focusStyle = ''
 
         // Update focus style based on props
@@ -149,11 +150,18 @@ const Button = React.forwardRef(
             focusStyle = BUTTON_FOCUS_STYLES['input']
         }
 
-        const base = `focus:ring focus:outline-none font-bold ${colorStyle} ${focusStyle} ${radiusStyle}`
+        const classes = clsx(
+            'focus:ring focus:outline-none font-bold',
+            colorStyle,
+            focusStyle,
+            radiusStyle,
+            className
+        )
 
+        const title = getFieldErrorMessage(error)
         const content = (
             <div
-                className={combine(
+                className={clsx(
                     'overflow-hidden relative flex flex-row',
                     'items-center justify-center',
                     sizing
@@ -162,7 +170,7 @@ const Button = React.forwardRef(
                 {children}
                 {loading && (
                     <div
-                        className={combineNoCache(
+                        className={clsx(
                             'absolute w-full right-0 top-0 ml-0 box-border',
                             'flex justify-center items-center',
                             colorStyle,
@@ -176,17 +184,9 @@ const Button = React.forwardRef(
             </div>
         )
 
-        const title = getFieldErrorMessage(error)
-
         if (href) {
             return (
-                <a
-                    className={extend(base, className)}
-                    href={href}
-                    onClick={onClick}
-                    ref={ref}
-                    {...props}
-                >
+                <a className={classes} href={href} onClick={onClick} ref={ref} {...props}>
                     {content}
                 </a>
             )
@@ -194,7 +194,7 @@ const Button = React.forwardRef(
 
         return (
             <button
-                className={extend(base, className)}
+                className={classes}
                 onClick={onClick}
                 type={type || 'button'}
                 title={title}
