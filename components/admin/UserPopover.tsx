@@ -28,9 +28,9 @@ const UserPopover = () => {
     return (
         <Popover
             cardClassName="w-user-popover"
-            buttonStyle="primary-extra"
-            buttonClassName="px-xsm rounded"
-            buttonFocus="primary"
+            style="primary-extra"
+            radius="large"
+            className="px-xsm"
             button={(open) => (
                 <>
                     <span>Fredrik Engstrand</span>

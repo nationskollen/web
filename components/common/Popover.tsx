@@ -4,13 +4,10 @@ import { usePopper } from 'react-popper'
 import { Popover, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
-import Button, { ButtonStyles } from '@common/Button'
+import Button, { Props as ButtonProps } from '@common/Button'
 
-export interface Props {
+export interface Props extends ButtonProps {
     button: (open: boolean) => React.ReactElement
-    buttonStyle?: ButtonStyles
-    buttonClassName?: string
-    buttonFocus?: string
     cardClassName?: string
     children?: React.ReactNode
 }
@@ -18,10 +15,8 @@ export interface Props {
 const CustomPopover = ({
     cardClassName,
     button,
-    buttonStyle,
-    buttonClassName,
-    buttonFocus,
     children,
+    ...props
 }: Props) => {
     const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>()
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>()
@@ -36,15 +31,13 @@ const CustomPopover = ({
                     <Popover.Button
                         ref={setReferenceElement}
                         as={Button}
-                        style={buttonStyle}
-                        focus={buttonFocus}
-                        className={clsx('focus:outline-none', buttonClassName)}
+                        {...props}
                     >
                         {button(open)}
                     </Popover.Button>
                     <div
                         ref={setPopperElement}
-                        className="absolute right-0 top-12"
+                        className="absolute right-0 z-20 top-12"
                         {...attributes.popper}
                     >
                         <Transition

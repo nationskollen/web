@@ -1,20 +1,28 @@
 import clsx from 'clsx'
-import { useEffect, useState, useMemo } from 'react'
 import { Transition } from '@headlessui/react'
-import { PaginationMeta } from '@nationskollen/sdk'
-import { SortDescendingIcon, SortAscendingIcon } from '@heroicons/react/outline'
-import { Column, useSortBy, useGlobalFilter, usePagination, useTable } from 'react-table'
+import { useEffect, useState, useMemo } from 'react'
+import { Row, Column, useSortBy, useGlobalFilter, usePagination, useTable } from 'react-table'
+import { SortDescendingIcon, SortAscendingIcon, DotsVerticalIcon } from '@heroicons/react/outline'
 
+import { PaginationMeta } from '@nationskollen/sdk'
+
+import Popover from '@common/Popover'
 import LoadingIndicator from '@common/LoadingIndicator'
 import PaginationActions from '@common/PaginationActions'
 
 export type TableData<T> = Array<Record<keyof T, unknown>>
 export type TableColumns<T> = Array<Column<Record<keyof T, unknown>>>
 
+export interface ActionsRendererProps<T> {
+    row: Row<TableData<T>>
+}
+
 export interface Props<T> {
     columns: TableColumns<T>
     data?: TableData<T>
     loading?: boolean
+    hasActions?: boolean
+    useActionsDropdown?: boolean
     showIndex?: boolean
     showPagination?: boolean
     pagination?: PaginationMeta
@@ -28,6 +36,10 @@ export interface OverlayProps {
 
 export interface SortIndicatorProps {
     descending?: boolean
+}
+
+export interface ActionsPopoverProps {
+    children: React.ReactNode
 }
 
 export interface FooterProps<T> {
@@ -68,6 +80,19 @@ const SortIndicator = ({ descending }: SortIndicatorProps) => {
     )
 }
 
+const ActionsMenu = ({ children }: ActionsPopoverProps) => {
+    return (
+        <Popover
+            cardClassName="w-user-popover"
+            size="icon"
+            style="transparent"
+            button={() => <DotsVerticalIcon />}
+        >
+            {children}
+        </Popover>
+    )
+}
+
 const Footer = <T,>({
     totalRows,
     pagination,
@@ -96,6 +121,8 @@ const Table = <T,>({
     columns,
     data,
     loading,
+    hasActions,
+    useActionsDropdown,
     showIndex,
     showPagination,
     pagination,
@@ -141,7 +168,7 @@ const Table = <T,>({
         setCachedMeta(pagination)
     }, [pagination])
 
-    const memoizedColumns = useMemo(() => columns, [])
+    const memoizedColumns = useMemo(() => columns, [columns])
     const memoizedData = useMemo(() => cachedData, [cachedData])
     const memoizedPagination = useMemo(() => cachedMeta, [cachedMeta])
 
@@ -205,6 +232,7 @@ const Table = <T,>({
                                             'border-background-highlight',
                                             showIndex && index === 0 && 'w-sm',
                                             column.isNumber && 'text-right',
+                                            hasActions && index + 1 === columns.length && 'w-12',
                                         )}
                                         {...column.getHeaderProps()}
                                         {...column.getSortByToggleProps()}
@@ -239,7 +267,19 @@ const Table = <T,>({
                                             )}
                                             {...cell.getCellProps()}
                                         >
-                                            {cell.render('Cell')}
+                                            {hasActions && cellIndex + 1 === columns.length ? (
+                                                <>
+                                                    {useActionsDropdown ? (
+                                                        <ActionsMenu>
+                                                            {row.values.actions({ row })}
+                                                        </ActionsMenu>
+                                                    ) : (
+                                                        <>{row.values.actions({ row })}</>
+                                                    )}
+                                                </>
+                                            ) : (
+                                                cell.render('Cell')
+                                            )}
                                         </td>
                                     ))}
                                 </tr>

@@ -1,14 +1,28 @@
 import { useState, useRef } from 'react'
+import { Row } from 'react-table'
+
 import { getShorterDate } from '@utils'
 import { useAuth } from '@contexts/Auth'
 import { useEvents } from '@nationskollen/sdk'
 import { SearchIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
 
-import Table from '@common/Table'
 import Input from '@common/Input'
-import Button from '@common/Button'
 import CardTitle from '@common/CardTitle'
+import Table, { ActionsRendererProps } from '@common/Table'
 import AdminSection from '@components/admin/AdminSection'
+
+export interface TableItem {
+    name: string
+    occurs_at: string
+    ends_at: string
+}
+
+
+const ActionItems = ({ row }: ActionsRendererProps<TableItem>) => {
+    return (
+        <p>{row.id}</p>
+    )
+}
 
 const UpcomingEvents = () => {
     const { oid } = useAuth()
@@ -48,7 +62,7 @@ const UpcomingEvents = () => {
                         accessor: 'ends_at',
                     },
                     {
-                        Header: 'Ändra',
+                        Header: '',
                         accessor: 'actions',
                         disableSortBy: true,
                     },
@@ -59,18 +73,11 @@ const UpcomingEvents = () => {
                         name,
                         occurs_at: getShorterDate(occurs_at),
                         ends_at: getShorterDate(ends_at),
-                        actions: (
-                            <div className="flex flex-row items-center justify-center space-x-xsm">
-                                <Button style="icon" size="small">
-                                    <PencilAltIcon />
-                                </Button>
-                                <Button style="icon" size="small">
-                                    <TrashIcon />
-                                </Button>
-                            </div>
-                        ),
+                        actions: ActionItems,
                     }))
                 }
+                hasActions={true}
+                useActionsDropdown={true}
                 loading={isValidating}
                 pagination={pagination}
                 showPagination={true}
