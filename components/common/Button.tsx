@@ -40,6 +40,7 @@ export type ButtonStyles =
     | 'primary-extra'
     | 'secondary'
     | 'light'
+    | 'lighter'
     | 'transparent'
     | 'error'
     | 'success'
@@ -52,9 +53,11 @@ export interface Props {
     size?: ButtonSizes
     radius?: ButtonRadius
     style?: ButtonStyles
+    leftAlignContent?: boolean
     loading?: boolean
     error?: boolean | FieldError
     className?: string
+    containerClassName?: string
     onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
     children?: React.ReactNode
     [key: string]: unknown
@@ -75,6 +78,10 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
         'bg-background-extra text-text-highlight border-1 border-border-dark',
         'dark:bg-background-highlight dark:border-background-highlight',
         'focus:ring-focus-default'
+    ),
+    'lighter': clsx(
+        'bg-transparent text-text-highlight focus:ring-focus-default',
+        'hover:bg-hover'
     ),
     'transparent': clsx('bg-transparent', 'focus:ring-focus-default'),
     'error': clsx(
@@ -126,10 +133,12 @@ const Button = React.forwardRef(
             type,
             href,
             style,
+            leftAlignContent,
             radius,
             loading,
             error,
             className,
+            containerClassName,
             onClick,
             children,
             ...props
@@ -162,9 +171,10 @@ const Button = React.forwardRef(
         const content = (
             <div
                 className={clsx(
-                    'overflow-hidden relative flex flex-row',
-                    'items-center justify-center',
-                    sizing
+                    'overflow-hidden relative flex flex-row items-center',
+                    leftAlignContent ? 'justify-start' : 'justify-center',
+                    sizing,
+                    containerClassName
                 )}
             >
                 {children}

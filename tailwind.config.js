@@ -28,6 +28,7 @@ module.exports = {
             'background-extra': 'var(--color-background-extra)',
             'background-highlight': 'var(--color-background-highlight)',
             'lighter': 'var(--color-lighter)',
+            'hover': 'var(--color-hover)',
             'card': 'var(--color-card)',
             'border': 'var(--color-border)',
             'border-dark': 'var(--color-border-dark)',
@@ -100,6 +101,7 @@ module.exports = {
                 'form-modal': '30rem',
                 'dialog': '30rem',
                 'user-popover': '22rem',
+                'menu-popover': '10rem',
                 'pagination-counter': '3rem',
             },
             minWidth: {

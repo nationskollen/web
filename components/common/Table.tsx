@@ -6,7 +6,7 @@ import { SortDescendingIcon, SortAscendingIcon, DotsVerticalIcon } from '@heroic
 
 import { PaginationMeta } from '@nationskollen/sdk'
 
-import Popover from '@common/Popover'
+import MenuDropdown from '@common/MenuDropdown'
 import LoadingIndicator from '@common/LoadingIndicator'
 import PaginationActions from '@common/PaginationActions'
 
@@ -82,14 +82,14 @@ const SortIndicator = ({ descending }: SortIndicatorProps) => {
 
 const ActionsMenu = ({ children }: ActionsPopoverProps) => {
     return (
-        <Popover
-            cardClassName="w-user-popover"
+        <MenuDropdown
+            cardClassName="w-actions-popover"
             size="icon"
             style="transparent"
             button={() => <DotsVerticalIcon />}
         >
             {children}
-        </Popover>
+        </MenuDropdown>
     )
 }
 
@@ -232,7 +232,7 @@ const Table = <T,>({
                                             'border-background-highlight',
                                             showIndex && index === 0 && 'w-sm',
                                             column.isNumber && 'text-right',
-                                            hasActions && index + 1 === columns.length && 'w-12',
+                                            hasActions && index + 1 === columns.length && 'w-12'
                                         )}
                                         {...column.getHeaderProps()}
                                         {...column.getSortByToggleProps()}
@@ -263,7 +263,7 @@ const Table = <T,>({
                                             className={clsx(
                                                 'h-table-row px-md',
                                                 'border-border text-md',
-                                                columns[cellIndex].isNumber && 'text-right',
+                                                columns[cellIndex].isNumber && 'text-right'
                                             )}
                                             {...cell.getCellProps()}
                                         >

@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react'
-import { Row } from 'react-table'
 
 import { getShorterDate } from '@utils'
 import { useAuth } from '@contexts/Auth'
@@ -7,9 +6,10 @@ import { useEvents } from '@nationskollen/sdk'
 import { SearchIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
 
 import Input from '@common/Input'
+import MenuItem from '@common/MenuItem'
 import CardTitle from '@common/CardTitle'
-import Table, { ActionsRendererProps } from '@common/Table'
 import AdminSection from '@components/admin/AdminSection'
+import Table, { ActionsRendererProps } from '@common/Table'
 
 export interface TableItem {
     name: string
@@ -17,10 +17,12 @@ export interface TableItem {
     ends_at: string
 }
 
-
 const ActionItems = ({ row }: ActionsRendererProps<TableItem>) => {
     return (
-        <p>{row.id}</p>
+        <>
+            <MenuItem icon={PencilAltIcon} label="Ändra" onClick={() => console.log('asd')} />
+            <MenuItem icon={TrashIcon} label="Ta bort" onClick={() => console.log('asdasd')} />
+        </>
     )
 }
 

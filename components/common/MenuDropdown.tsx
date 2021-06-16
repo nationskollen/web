@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { useState } from 'react'
 import { usePopper } from 'react-popper'
-import { Popover, Transition } from '@headlessui/react'
+import { Menu, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
 import Button, { Props as ButtonProps } from '@common/Button'
@@ -12,7 +12,7 @@ export interface Props extends ButtonProps {
     children?: React.ReactNode
 }
 
-const CustomPopover = ({ cardClassName, button, children, ...props }: Props) => {
+const MenuDropdown = ({ cardClassName, button, children, ...props }: Props) => {
     const [referenceElement, setReferenceElement] = useState<HTMLDivElement | null>()
     const [popperElement, setPopperElement] = useState<HTMLDivElement | null>()
     const { attributes } = usePopper(referenceElement, popperElement, {
@@ -20,18 +20,19 @@ const CustomPopover = ({ cardClassName, button, children, ...props }: Props) => 
     })
 
     return (
-        <Popover className="relative">
+        <Menu>
             {({ open }) => (
-                <>
-                    <Popover.Button ref={setReferenceElement} as={Button} {...props}>
+                <div className="relative">
+                    <Menu.Button ref={setReferenceElement} as={Button} {...props}>
                         {button(open)}
-                    </Popover.Button>
+                    </Menu.Button>
                     <div
+                        className="absolute right-0 z-20 top-10"
                         ref={setPopperElement}
-                        className="absolute right-0 z-20 top-12"
                         {...attributes.popper}
                     >
                         <Transition
+                            as={React.Fragment}
                             show={open}
                             enter="transition origin-top duration-in ease-out"
                             enterFrom="transform scale-90 opacity-0"
@@ -40,30 +41,24 @@ const CustomPopover = ({ cardClassName, button, children, ...props }: Props) => 
                             leaveFrom="transform scale-100 opacity-100"
                             leaveTo="transform scale-90 opacity-0"
                         >
-                            <Popover.Panel static={true} className="pt-md">
+                            <Menu.Items>
                                 <Card
-                                    containerClassName="relative"
+                                    noPadding={true}
                                     className={clsx(
-                                        'shadow-2xl dark:bg-background-highlight',
+                                        'w-menu-popover border-1 p-xsm',
+                                        'dark:bg-background-highlight border-border-dark',
                                         cardClassName
                                     )}
                                 >
-                                    <div
-                                        className={clsx(
-                                            'absolute w-4 h-4 transform rotate-45 right-md',
-                                            '-top-2 z-behind border-t-1 border-l-1 border-card bg-background',
-                                            'dark:bg-background-highlight dark:border-border-dark'
-                                        )}
-                                    />
-                                    <>{children}</>
+                                    {children}
                                 </Card>
-                            </Popover.Panel>
+                            </Menu.Items>
                         </Transition>
                     </div>
-                </>
+                </div>
             )}
-        </Popover>
+        </Menu>
     )
 }
 
-export default CustomPopover
+export default MenuDropdown
