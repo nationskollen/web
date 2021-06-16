@@ -18,7 +18,16 @@ export interface Props {
     children?: React.ReactNode
 }
 
-const Card = ({ id, label, active, noPadding, radiusSmall, className, containerClassName, children }: Props) => {
+const Card = ({
+    id,
+    label,
+    active,
+    noPadding,
+    radiusSmall,
+    className,
+    containerClassName,
+    children,
+}: Props) => {
     return (
         <article
             id={id}
@@ -26,7 +35,7 @@ const Card = ({ id, label, active, noPadding, radiusSmall, className, containerC
                 'relative card shadow-md border-card w-full flex flex-col',
                 'dark:border-border-dark border-1 bg-card text-text',
                 radiusSmall ? 'rounded-sm' : 'rounded',
-                className,
+                className
             )}
         >
             {active && (
