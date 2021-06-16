@@ -33,6 +33,7 @@ export interface Props<T> {
 }
 
 export interface OverlayProps {
+    transparent?: boolean
     children: React.ReactNode
 }
 
@@ -53,7 +54,7 @@ export interface FooterProps<T> {
     showPagination?: boolean
 }
 
-const Overlay = ({ children }: OverlayProps) => {
+const Overlay = ({ transparent, children }: OverlayProps) => {
     return (
         <div
             className={clsx(
@@ -63,9 +64,10 @@ const Overlay = ({ children }: OverlayProps) => {
         >
             <div
                 className={clsx(
-                    'flex-1 rounded-b-sm opacity-70',
+                    'flex-1 rounded-b-sm',
                     'bg-background dark:bg-background-extra mt-table-row',
-                    'flex justify-center items-center box-content'
+                    'flex justify-center items-center box-content',
+                    transparent && 'opacity-70',
                 )}
             >
                 {children}
@@ -213,7 +215,7 @@ const Table = <T,>({
                     enterFrom="opacity-0"
                     enterTo="opacity-100"
                 >
-                    <Overlay>
+                    <Overlay transparent={true}>
                         <LoadingIndicator size="small" />
                     </Overlay>
                 </Transition>
