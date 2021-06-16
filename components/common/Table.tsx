@@ -67,7 +67,7 @@ const Overlay = ({ transparent, children }: OverlayProps) => {
                     'flex-1 rounded-b-sm',
                     'bg-background dark:bg-background-extra mt-table-row',
                     'flex justify-center items-center box-content',
-                    transparent && 'opacity-70',
+                    transparent && 'opacity-70'
                 )}
             >
                 {children}
