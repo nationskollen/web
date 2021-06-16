@@ -27,6 +27,8 @@ export interface Props<T> {
     showPagination?: boolean
     pagination?: PaginationMeta
     setPage?: (page: number) => void
+    error?: boolean
+    errorMessage?: string
     filterString?: string
 }
 
@@ -127,6 +129,8 @@ const Table = <T,>({
     showPagination,
     pagination,
     setPage,
+    error,
+    errorMessage,
     filterString,
 }: Props<T>) => {
     const [cachedData, setCachedData] = useState<TableData<T>>([])
@@ -215,7 +219,9 @@ const Table = <T,>({
                 </Transition>
                 {rows.length === 0 && !loading && (
                     <Overlay>
-                        <p className="text-md">Inget innehåll</p>
+                        <p className="text-md">
+                            {error ? (errorMessage || 'Kunde inte ladda innehåll') : 'Inget innehåll'}
+                        </p>
                     </Overlay>
                 )}
                 <table {...getTableProps()} className="w-full border-collapse table-auto">

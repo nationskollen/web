@@ -85,6 +85,8 @@ const UpcomingEvents = () => {
                 showPagination={true}
                 filterString={filterString}
                 setPage={setPage}
+                error={!!error}
+                errorMessage={error?.message}
             />
         </AdminSection>
     )
