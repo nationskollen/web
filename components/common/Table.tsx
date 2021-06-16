@@ -203,7 +203,8 @@ const Table = <T,>({
                                         className={clsx(
                                             'text-left h-table-row px-md text-md relative',
                                             'border-background-highlight',
-                                            showIndex && index === 0 ? 'w-sm' : ''
+                                            showIndex && index === 0 && 'w-sm',
+                                            column.isNumber && 'text-right',
                                         )}
                                         {...column.getHeaderProps()}
                                         {...column.getSortByToggleProps()}
@@ -229,11 +230,12 @@ const Table = <T,>({
                                     )}
                                     {...row.getRowProps()}
                                 >
-                                    {row.cells.map((cell) => (
+                                    {row.cells.map((cell, cellIndex) => (
                                         <td
                                             className={clsx(
                                                 'h-table-row px-md',
-                                                'border-border text-md'
+                                                'border-border text-md',
+                                                columns[cellIndex].isNumber && 'text-right',
                                             )}
                                             {...cell.getCellProps()}
                                         >

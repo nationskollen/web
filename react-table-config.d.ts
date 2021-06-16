@@ -50,6 +50,13 @@ import {
     UseSortByState,
 } from 'react-table'
 
+// Extend the default options with a custom property that allows us to
+// easily right-align data that contains numbers. It is recommended to
+// do this to increase scannability.
+export interface UseCustomColumnOptions<D extends Record<string, unknown>> {
+    isNumber?: boolean
+}
+
 declare module 'react-table' {
     // take this file as-is, or comment out the sections that don't apply to your plugin configuration
 
@@ -94,7 +101,8 @@ declare module 'react-table' {
             UseGlobalFiltersColumnOptions<D>,
             UseGroupByColumnOptions<D>,
             UseResizeColumnsColumnOptions<D>,
-            UseSortByColumnOptions<D> {}
+            UseSortByColumnOptions<D>,
+            UseCustomColumnOptions<D> {}
 
     export interface ColumnInstance<D extends Record<string, unknown> = Record<string, unknown>>
         extends UseFiltersColumnProps<D>,
