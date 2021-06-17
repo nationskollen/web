@@ -1,6 +1,7 @@
+import clsx from 'clsx'
 import React from 'react'
 import { RadioGroup } from '@headlessui/react'
-import { extend } from '@utils'
+
 import Title from '@common/Title'
 import Checkmark from '@common/Checkmark'
 
@@ -42,12 +43,12 @@ const Radio = ({
                     className="mb-sm text-text-highlight"
                 />
             )}
-            <div className={extend('cursor-pointer', className)}>
+            <div className={clsx('cursor-pointer', className)}>
                 {items.map(({ value, ...field }, index) => (
                     <RadioGroup.Option
                         value={value}
                         key={`${value}-${index}`}
-                        className={extend(
+                        className={clsx(
                             'focus:ring-2 focus:ring-focus-primary rounded-sm',
                             itemClassName
                         )}

@@ -27,6 +27,8 @@ module.exports = {
             'background': 'var(--color-background)',
             'background-extra': 'var(--color-background-extra)',
             'background-highlight': 'var(--color-background-highlight)',
+            'lighter': 'var(--color-lighter)',
+            'hover': 'var(--color-hover)',
             'card': 'var(--color-card)',
             'border': 'var(--color-border)',
             'border-dark': 'var(--color-border-dark)',
@@ -60,7 +62,7 @@ module.exports = {
         screens: {
             tablet: '640px',
             laptop: '1024px',
-            desktop: '1280px',
+            desktop: '1300px',
         },
         extend: {
             spacing: {
@@ -73,16 +75,20 @@ module.exports = {
                 '1/5': '20vh',
                 'modal-offset': '15vh',
                 'dialog-offset': '30vh',
+                'table-row': 'var(--table-row-height)',
             },
             height: {
+                'table-row': 'var(--table-row-height)',
                 'admin-header': '16rem',
                 'admin-header-fixed': '3.5rem',
                 'admin-header-content': '10rem',
             },
             minHeight: {
-                dialog: '12rem',
-                textarea: '8rem',
-                notifications: '8rem',
+                'dialog': '12rem',
+                'textarea': '8rem',
+                'notifications': '8rem',
+                'table': 'calc(var(--table-row-height) * 2)',
+                'table-empty': 'calc(var(--table-row-height) * 3)',
             },
             maxHeight: {
                 dialog: '20rem',
@@ -90,11 +96,13 @@ module.exports = {
                 dropdown: '15rem',
             },
             width: {
-                'sidebar-navigation': '18rem',
+                'sidebar-navigation': '17rem',
                 'login-modal': '22rem',
                 'form-modal': '30rem',
                 'dialog': '30rem',
                 'user-popover': '22rem',
+                'menu-popover': '10rem',
+                'pagination-counter': '3rem',
             },
             minWidth: {
                 'modal': '25rem',
@@ -119,12 +127,13 @@ module.exports = {
     },
     variants: {
         extend: {
-            borderWidth: ['last', 'dark'],
-            borderColor: ['dark'],
+            borderWidth: ['last', 'dark', 'first'],
+            borderColor: ['dark', 'last'],
             padding: ['last'],
             margin: ['last'],
             filter: ['dark'],
             brightness: ['dark'],
+            backgroundColor: ['even'],
         },
     },
     plugins: [],

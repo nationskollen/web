@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { combine } from '@utils'
 
 export type LoadingIndicatorSizes = 'small' | 'medium' | 'fill' | 'large'
 
@@ -19,7 +19,7 @@ const LoadingIndicator = ({ size }: Props) => {
 
     return (
         <svg
-            className={combine('animate-spin', sizing)}
+            className={clsx('animate-spin', sizing)}
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

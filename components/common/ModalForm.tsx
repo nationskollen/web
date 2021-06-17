@@ -13,6 +13,8 @@
  * export interface FormValues { .. }
  *
  * const MyForm = ({ open, setOpen }: ModalOpenProps) => {
+ *     const form = useForm<FormValues>(DEFAULT_FORM_PROPS)
+ *
  *     const submit = (data: FormValues) => {
  *         console.log(data)
  *     }
@@ -26,8 +28,8 @@
  *         <ModalForm
  *             href="#create"
  *             onSubmit={submit}
- *             open={open}
- *             setOpen={setOpen}
+ *             form={form}
+ *             extraProps={{ .. }}
  *             steps={[
  *                 (props) => <InitialDetails {...props} />,
  *                 (props) => <TimeAndLocation {...props} />,
@@ -40,8 +42,8 @@
  *
  * @module Common
  */
-import ModalSteps, { StepProps, Props as ModalStepsProps } from '@common/ModalSteps'
 import { Path, SubmitHandler, UseFormReturn } from 'react-hook-form'
+import ModalSteps, { StepProps, Props as ModalStepsProps } from '@common/ModalSteps'
 
 export type StepPropsTransformator<T, K> = (props: StepProps) => FormStepProps<T, K>
 

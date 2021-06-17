@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import React from 'react'
 import Link from 'next/link'
-import { combine } from '@utils'
 import { useRouter } from 'next/router'
 
 export interface Props {
@@ -15,7 +15,7 @@ const NavLink = ({ title, href }: Props) => {
         <li className="h-full cursor-pointer py-xsm">
             <Link href={href} passHref={true}>
                 <a
-                    className={combine(
+                    className={clsx(
                         'font-bold rounded p-sm hover:bg-primary-extra hover:text-white',
                         'focus:outline-none focus:ring focus:ring-focus-primary focus:text-white',
                         router.pathname === href

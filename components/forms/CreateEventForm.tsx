@@ -12,6 +12,7 @@ import {
 
 import { useAuth } from '@contexts/Auth'
 import Notifications from '@notifications'
+import { DEFAULT_FORM_PROPS } from '@constants'
 import { useAsyncCallback } from 'react-async-hook'
 import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
 import { useApi, useUpload, useLocations, useCategories } from '@nationskollen/sdk'
@@ -44,12 +45,12 @@ export interface ExtraProps {
     creatorLoading: boolean
 }
 
-// TODO: Some SDK is commented here because the current version has some type-errors
+// TODO: Some SDK code is commented here because the current version has some type-errors
 // I think it is okay to leave this here for now, since the code can be used later
 const CreateEventForm = (props: ModalOpenProps) => {
     // const api = useApi()
     // const { oid } = useAuth()
-    const form = useForm<FormValues>()
+    const form = useForm<FormValues>(DEFAULT_FORM_PROPS)
     const [isLoading, setIsLoading] = useState(false)
 
     // const uploader = useUpload(api.events.upload)

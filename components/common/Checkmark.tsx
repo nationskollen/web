@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { combine } from '@utils'
 import { CheckIcon } from '@heroicons/react/solid'
 
 export interface Props {
@@ -9,7 +9,7 @@ export interface Props {
 const Checkmark = ({ checked }: Props) => {
     return (
         <div
-            className={combine(
+            className={clsx(
                 'w-5 h-5 p-0 rounded-sm border-2',
                 checked ? 'border-text-highlight' : 'border-border-dark'
             )}

@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { extend } from '@utils'
 import { toast } from 'react-hot-toast'
 import { Transition } from '@headlessui/react'
 import { XIcon } from '@heroicons/react/outline'
@@ -27,7 +27,7 @@ const BaseNotification = ({ id, visible, className, children }: Props) => {
             leaveTo="transform scale-90 opacity-0"
         >
             <div
-                className={extend(
+                className={clsx(
                     'rounded shadow-2xl p-3 flex flex-row items-center w-full',
                     className || 'bg-background dark:bg-background-extra text-text-highlight'
                 )}

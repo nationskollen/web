@@ -20,10 +20,15 @@
  *
  * @module Common
  */
+import clsx from 'clsx'
 import React from 'react'
+import useConstant from 'use-constant'
 import { DeepMap, FieldError } from 'react-hook-form'
 import { ExclamationIcon } from '@heroicons/react/outline'
-import { extend, combine, combineNoCache, getFieldErrorMessage } from '@utils'
+import AwesomeDebouncePromise from 'awesome-debounce-promise'
+
+import { getFieldErrorMessage } from '@utils'
+import { DEFAULT_DEBOUNCE_DELAY } from '@constants'
 
 import InputError from '@common/InputError'
 import LoadingIndicator from '@common/LoadingIndicator'
@@ -49,6 +54,8 @@ export interface Props extends NativeInputProps {
     containerClassName?: string
     hideErrorIcon?: boolean
     innerComponent?: React.ElementType
+    debounce?: boolean
+    debounceDelay?: number
     children?: React.ReactNode
 }
 
@@ -60,31 +67,35 @@ export const INPUT_SIZES: Record<InputSizes, string> = {
 }
 
 export const INPUT_STYLES: Record<InputStyles, string> = {
-    'transparent': combineNoCache(
+    'transparent': clsx(
         'bg-transparent text-text-extra border-1 border-border-dark',
         'dark:bg-background-highlight dark:border-background-highlight'
     ),
-    'no-border': combineNoCache(
+    'no-border': clsx(
         'bg-transparent text',
         'focus-within:border-text focus-within:text-text-highlight'
     ),
 }
 
 export const INPUT_FOCUS_STYLES: Record<InputFocusStyles, string> = {
-    'transparent': combineNoCache(
+    'transparent': clsx(
         'focus-within:ring focus-within:ring-focus-input',
         'focus-within:text-text-highlight focus-within:border-transparent'
     ),
-    'no-border': combineNoCache(
+    'no-border': clsx(
         'focus-within:ring focus-within:ring-focus-input',
         'focus-within:border-text focus-within:text-text-highlight'
     ),
-    'error': combineNoCache(
+    'error': clsx(
         'border-error',
         'focus-within:ring focus-within:ring-focus-error',
         'focus-within:border-error focus-within:text-error-text focus:within:ring-error'
     ),
 }
+
+const NativeInput = React.forwardRef((props: NativeInputProps, ref: React.Ref<any>) => {
+    return <input ref={ref} {...props} />
+})
 
 const Input = React.forwardRef(
     (
@@ -102,45 +113,52 @@ const Input = React.forwardRef(
             inputClassName,
             containerClassName,
             innerComponent: InnerComponent,
+            debounce,
+            debounceDelay,
+            onChange,
             children,
             ...props
         }: Props,
         ref: FormRef
     ) => {
-        const sizing = size ? INPUT_SIZES[size] : INPUT_SIZES['default']
-        const styling = style ? INPUT_STYLES[style] : INPUT_STYLES['transparent']
-        const focusStyle = error
-            ? INPUT_FOCUS_STYLES['error']
-            : INPUT_FOCUS_STYLES[style || 'transparent']
-        const baseStyle = 'relative rounded-sm flex flex-col justify-center'
-        const containerStyle = combine(
-            'flex flex-row items-center rounded-sm px-3',
-            sizing,
-            styling,
-            focusStyle
-        )
-        const inputStyle =
-            'flex-1 h-full w-full focus:outline-none bg-transparent text-text-highlight'
-        const InputComponent = React.forwardRef((props: NativeInputProps, ref: FormRef) =>
-            React.createElement(as || 'input', { ref, ...props })
-        )
-
+        const sizing = INPUT_SIZES[size || 'default']
+        const styling = INPUT_STYLES[style || 'transparent']
+        const focusStyle = INPUT_FOCUS_STYLES[error ? 'error' : style || 'transparent']
         const title = getFieldErrorMessage(error)
+        const onChangeCallback = debounce
+            ? useConstant(() =>
+                  AwesomeDebouncePromise(onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY)
+              )
+            : onChange
+
+        // It is important that we define `NativeInput` as a separate component.
+        // If not, React will not be able to efficiently render it. Some bugs will
+        // also occur. For example, filtering in tables will not work at all becuause
+        // of the state constantly being reset.
+        const InputComponent = as || NativeInput
 
         return (
-            <div className={extend(baseStyle, className)}>
+            <div className={clsx('relative rounded-sm flex flex-col justify-center', className)}>
                 {label && (
                     <label
-                        className={combine(
+                        htmlFor={id}
+                        className={clsx(
                             'text-sm mb-xsm',
                             error ? 'text-error-text font-bold' : 'text-text'
                         )}
-                        htmlFor={id}
                     >
                         {label}
                     </label>
                 )}
-                <div className={extend(containerStyle, containerClassName)}>
+                <div
+                    className={clsx(
+                        'flex flex-row items-center rounded-sm px-3',
+                        sizing,
+                        styling,
+                        focusStyle,
+                        containerClassName
+                    )}
+                >
                     {(children || loading) && (
                         <div className="pr-sm h-2/5 focus:outline-none">
                             {loading ? <LoadingIndicator /> : children}
@@ -151,14 +169,24 @@ const Input = React.forwardRef(
                         id={id}
                         ref={ref}
                         type={type}
-                        className={extend(inputStyle, inputClassName)}
+                        className={clsx(
+                            'flex-1 h-full w-full focus:outline-none',
+                            'bg-transparent text-text-highlight',
+                            inputClassName
+                        )}
                         title={title}
                         aria-invalid={!!error}
+                        onChange={onChangeCallback}
                         {...props}
                     />
                     {error && !hideErrorIcon && (
                         <div className="w-auto h-full p-3 pr-0">
-                            <div className="h-full rounded space-x-xsm bg-error-highlight p-xsm text-error-highlight-text">
+                            <div
+                                className={clsx(
+                                    'h-full rounded space-x-xsm bg-error-highlight',
+                                    'p-xsm text-error-highlight-text'
+                                )}
+                            >
                                 <ExclamationIcon />
                             </div>
                         </div>

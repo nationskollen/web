@@ -1,5 +1,5 @@
+import clsx from 'clsx'
 import React from 'react'
-import { combine } from '@utils'
 
 export type IconCircleSizes = 'small' | 'default' | 'large'
 export type IconCircleStyles = 'error' | 'success' | 'primary' | 'secondary' | 'highlight'
@@ -25,11 +25,11 @@ const ICON_CIRCLE_STYLES: Record<IconCircleStyles, string> = {
 }
 
 const IconCircle = ({ size, style, icon: Icon }: Props) => {
-    const sizing = size ? ICON_CIRCLE_SIZES[size] : ICON_CIRCLE_SIZES['default']
-    const colors = style ? ICON_CIRCLE_STYLES[style] : ICON_CIRCLE_STYLES['primary']
+    const sizing = ICON_CIRCLE_SIZES[size || 'default']
+    const colors = ICON_CIRCLE_STYLES[style || 'primary']
 
     return (
-        <div className={combine('rounded-full', sizing, colors)}>
+        <div className={clsx('rounded-full', sizing, colors)}>
             <Icon />
         </div>
     )

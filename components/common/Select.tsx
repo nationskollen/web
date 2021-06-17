@@ -45,10 +45,11 @@
  *
  * @module Common
  */
+import clsx from 'clsx'
 import React, { useState, useMemo, useEffect } from 'react'
+import { getFieldErrorMessage } from '@utils'
 import { SelectorIcon } from '@heroicons/react/solid'
 import { Listbox, Transition } from '@headlessui/react'
-import { combine, extend, getFieldErrorMessage } from '@utils'
 import { DeepMap, FieldError, UseFormClearErrors, UseFormSetValue } from 'react-hook-form'
 
 import Card from '@common/Card'
@@ -151,7 +152,7 @@ const Select = React.forwardRef(
                 <Listbox value={selected} onChange={updateSelected}>
                     {label && (
                         <Listbox.Label
-                            className={combine(
+                            className={clsx(
                                 'text-sm mb-xsm',
                                 error ? 'text-error-text font-bold' : 'text-text'
                             )}
@@ -176,7 +177,7 @@ const Select = React.forwardRef(
                                     <>
                                         {ButtonIcon && (
                                             <ButtonIcon
-                                                className={extend(
+                                                className={clsx(
                                                     error
                                                         ? open
                                                             ? 'text-error-text'
@@ -207,7 +208,7 @@ const Select = React.forwardRef(
                         <Listbox.Options ref={ref} className="absolute w-full -mt-1" {...props}>
                             <Card
                                 noPadding={true}
-                                className={combine(
+                                className={clsx(
                                     'z-10 overflow-y-auto rounded-t-none rounded-b-sm py-xsm',
                                     'shadow-2xl max-h-dropdown border-1 border-border-dark',
                                     'dark:bg-background-highlight dark:border-0 dark:border-t-1'

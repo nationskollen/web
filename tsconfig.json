@@ -22,6 +22,7 @@
             "@forms/*": ["components/forms/*"],
             "@notifications": ["components/notifications/index"],
             "@dialogs/*": ["components/dialogs/*"],
+            "@pages/*": ["components/pages/*"],
             "@contexts/*": ["contexts/*"],
             "@styles/*": ["styles/*"],
             "@utils": ["utils/index"],

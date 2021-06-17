@@ -3,8 +3,8 @@
  *
  * @module Common
  */
+import clsx from 'clsx'
 import React from 'react'
-import { extend, combine } from '@utils'
 import { HashtagIcon } from '@heroicons/react/solid'
 
 export interface Props {
@@ -13,33 +13,54 @@ export interface Props {
     containerClassName?: string
     label?: string
     noPadding?: boolean
+    radiusSmall?: boolean
     active?: boolean
     children?: React.ReactNode
 }
 
-const Card = ({ id, label, active, noPadding, className, containerClassName, children }: Props) => {
-    const base = combine(
-        'relative card shadow-md rounded border-card w-full flex flex-col',
-        'dark:border-border-dark border-1 bg-card text-text'
-    )
-    const containerBase = `flex flex-col flex-1 ${noPadding ? '' : 'p-6'}`
-    const containerClasses = containerClassName
-        ? `${containerBase} ${containerClassName}`
-        : containerBase
-
+const Card = ({
+    id,
+    label,
+    active,
+    noPadding,
+    radiusSmall,
+    className,
+    containerClassName,
+    children,
+}: Props) => {
     return (
-        <article className={extend(base, className)} id={id}>
+        <article
+            id={id}
+            className={clsx(
+                'relative card shadow-md border-card w-full flex flex-col',
+                'dark:border-border-dark border-1 bg-card text-text',
+                radiusSmall ? 'rounded-sm' : 'rounded',
+                className
+            )}
+        >
             {active && (
-                <div className="absolute rounded-full shadow-lg -top-sm -left-sm p-sm bg-primary-extra">
+                <div
+                    className={clsx(
+                        'absolute rounded-full shadow-lg -top-sm',
+                        '-left-sm p-sm bg-primary-extra'
+                    )}
+                >
                     <HashtagIcon className="w-4 h-4 text-white" />
                 </div>
             )}
             {label && (
-                <div className="text-primary-text dark:text-text-highlight border-b-1 border-border p-md px-lg">
+                <div
+                    className={clsx(
+                        'text-primary-text dark:text-text-highlight',
+                        'border-b-1 border-border py-3 px-lg'
+                    )}
+                >
                     <h3 className="font-bold">{label}</h3>
                 </div>
             )}
-            <div className={containerClasses}>{children}</div>
+            <div className={clsx('flex flex-col flex-1', !noPadding && 'p-6', containerClassName)}>
+                {children}
+            </div>
         </article>
     )
 }
