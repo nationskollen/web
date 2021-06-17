@@ -62,7 +62,7 @@ module.exports = {
         screens: {
             tablet: '640px',
             laptop: '1024px',
-            desktop: '1368px',
+            desktop: '1300px',
         },
         extend: {
             spacing: {
