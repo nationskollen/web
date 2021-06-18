@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import React from 'react'
+import { useTranslation } from 'next-i18next'
 
 import CardTitle from '@common/CardTitle'
 import IconCircle, { IconCircleStyles } from '@common/IconCircle'
@@ -45,12 +46,14 @@ const Header = ({
     descriptionClassName,
     children,
 }: HeaderProps) => {
+    const { t } = useTranslation('admin-common')
+
     let parsedDescription = description
 
     // If no description is provided, check if we have defined steps.
     // This will automatically generate a step counter if needded.
     if (!description && currentStep !== undefined && totalSteps !== undefined) {
-        parsedDescription = `Steg ${currentStep + 1} / ${totalSteps}`
+        parsedDescription = t('modal.current_step', { current: currentStep + 1, total: totalSteps })
     }
 
     return (

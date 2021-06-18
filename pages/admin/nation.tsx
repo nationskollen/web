@@ -1,3 +1,4 @@
+import { LOCALES } from '@constants'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
@@ -17,7 +18,9 @@ Nation.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
-            ...(await serverSideTranslations(context.locale!, ['common'])),
+            ...(await serverSideTranslations(context.locale!, [
+                ...LOCALES.ADMIN.DEFAULT_NAMESPACES,
+            ])),
         },
     }
 }

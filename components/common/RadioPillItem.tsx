@@ -17,7 +17,7 @@ const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props)
                 checked ? 'bg-primary-highlight text-primary' : 'bg-background-extra text-text'
             )}
         >
-            <IconComponent className="w-5 h-5" />
+            {IconComponent && <IconComponent className="w-5 h-5" />}
             <p className="text-sm font-bold">{label}</p>
             {children}
         </div>

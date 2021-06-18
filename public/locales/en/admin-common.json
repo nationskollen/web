@@ -1,0 +1,21 @@
+{
+    "header": {
+        "home": "Home",
+        "news": "News",
+        "events": "Events",
+        "menus": "Menus",
+        "locations": "Locations",
+        "activity": "Activity",
+        "nation": "Nation",
+        "users": "Users"
+    },
+    "toc": {
+        "title": "Contents"
+    },
+    "modal": {
+        "current_step": "Step {{current}} / {{total}}"
+    },
+    "file_upload": {
+        "select_image": "Click to select image"
+    }
+}

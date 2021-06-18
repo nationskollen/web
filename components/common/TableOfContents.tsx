@@ -17,6 +17,8 @@
  * @module Common
  */
 import React, { useMemo } from 'react'
+import { useTranslation } from 'next-i18next'
+
 import Card from '@common/Card'
 import TableOfContentsLink from '@common/TableOfContentsLink'
 
@@ -30,6 +32,8 @@ export interface Props {
 }
 
 const TableOfContents = ({ sections }: Props) => {
+    const { t } = useTranslation('admin-common')
+
     if (sections.length === 0) {
         return null
     }
@@ -41,7 +45,7 @@ const TableOfContents = ({ sections }: Props) => {
     }, [sections])
 
     return (
-        <Card label="Innehåll" noPadding={true}>
+        <Card label={t('toc.title')} noPadding={true}>
             <ul className="p-sm">{content}</ul>
         </Card>
     )

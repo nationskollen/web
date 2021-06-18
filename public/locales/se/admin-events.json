@@ -1,0 +1,40 @@
+{
+    "upcoming": {
+        "title": "Kommande evenemang",
+        "description": "Översikt av nationens kommande evenemang",
+        "columns": {
+            "name": "Namn",
+            "start": "Start",
+            "end": "Slut"
+        }
+    },
+    "old": {
+        "title": "Gamla evenemang",
+        "description": "Översikt av nationens gamla evenemang"
+    },
+    "create": {
+        "title": "Skapa ny event",
+        "field": {
+            "title": "Titel",
+            "category": "Kategori",
+            "short_description": "Kort beskrivning",
+            "description": "Beskrivning",
+            "occurs_at": "Starttid",
+            "ends_at": "Sluttid",
+            "location": "Plats",
+            "cover_image": "Omslagsbild"
+        },
+        "initial_details": {
+            "title": "Skapa ny event"
+        },
+        "description": {
+            "title": "Beskrivning"
+        },
+        "time_and_location": {
+            "title": "Tid och plats"
+        },
+        "cover_image": {
+            "title": "Lägg till en bild"
+        }
+    }
+}

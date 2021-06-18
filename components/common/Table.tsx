@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { useTranslation } from 'next-i18next'
 import { Transition } from '@headlessui/react'
 import { useEffect, useState, useMemo } from 'react'
 import { Row, Column, useSortBy, useGlobalFilter, usePagination, useTable } from 'react-table'
@@ -105,6 +106,7 @@ const Footer = <T,>({
     setPage,
     showPagination,
 }: FooterProps<T>) => {
+    const { t } = useTranslation('common')
     const rowStart = pagination ? pagination.per_page * (page - 1) : 0
     const rowEnd = rowStart + (totalRows || 0)
     const rowTotal = pagination?.total || data?.length || 0
@@ -112,7 +114,10 @@ const Footer = <T,>({
     return (
         <div className="flex flex-row items-center justify-between mt-sm">
             <p className="flex flex-row w-full text-sm text-text ml-xsm">
-                {`Visar ${rowEnd === 0 ? 0 : `${rowStart + 1}-${rowEnd}`} av ${rowTotal}`}
+                {t('pagination.rows', {
+                    current: rowEnd === 0 ? 0 : `${rowStart + 1}-${rowEnd}`,
+                    total: rowTotal,
+                })}
             </p>
             {showPagination && setPage && (
                 <PaginationActions page={page} pagination={pagination} setPage={setPage} />
@@ -135,6 +140,7 @@ const Table = <T,>({
     errorMessage,
     filterString,
 }: Props<T>) => {
+    const { t } = useTranslation('common')
     const [cachedData, setCachedData] = useState<TableData<T>>([])
     const [cachedMeta, setCachedMeta] = useState<PaginationMeta | undefined>(undefined)
 
@@ -195,14 +201,8 @@ const Table = <T,>({
         usePagination
     )
 
-    const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        rows,
-        prepareRow,
-        state,
-    } = tableInstance
+    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state } =
+        tableInstance
 
     return (
         <>
@@ -228,7 +228,7 @@ const Table = <T,>({
                 {rows.length === 0 && !loading && (
                     <Overlay>
                         <p className="text-md">
-                            {error ? errorMessage || 'Kunde inte ladda innehåll' : 'Inget innehåll'}
+                            {error ? errorMessage || t('table.error') : t('table.empty')}
                         </p>
                     </Overlay>
                 )}

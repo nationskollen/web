@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Router from 'next/router'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'next-i18next'
 import { DEFAULT_FORM_PROPS, AUTH } from '@constants'
 import { HttpErrorCodes, useLogin } from '@nationskollen/sdk'
 import { LockClosedIcon, LoginIcon, MailIcon } from '@heroicons/react/outline'
@@ -15,6 +16,7 @@ export interface FormValues {
 }
 
 const LoginForm = () => {
+    const { t } = useTranslation('common')
     const { result, error, loading, execute } = useLogin()
     const {
         register,
@@ -37,23 +39,24 @@ const LoginForm = () => {
             case HttpErrorCodes.BadRequest:
                 return (
                     <ErrorDialog
-                        title="Inloggningen misslyckades"
-                        description="Fel användarnamn eller lösenord"
+                        title={t('error.invalid_credentials.title')}
+                        description={t('error.invalid_credentials.description')}
                     />
                 )
             case HttpErrorCodes.ValidationError:
                 return (
                     <ErrorDialog
-                        title="Dina uppgifter har fel format!"
-                        description="
-                            Det verkar som om webbutvecklings-gorillorna har gjort ett misstag.
-                            Dina uppgifter överensstämmer tydligen inte med det efterfrågade formatet.
-                            Är du säker på att du skrivit in rätt uppgifter?
-                        "
+                        title={t('error.invalid_format_credentials.title')}
+                        description={t('error.invalid_format_credentials.description')}
                     />
                 )
             default:
-                return <ErrorDialog title="Något blev fel!" description="Försök igen senare" />
+                return (
+                    <ErrorDialog
+                        title={t('error.unknown.title')}
+                        description={t('error.unknown.description')}
+                    />
+                )
         }
     }
 
@@ -83,25 +86,25 @@ const LoginForm = () => {
                 <div className="space-y-md">
                     <Input
                         type="email"
-                        label="Email"
-                        placeholder="din@email.se"
+                        label={t('auth.field.email.title')}
+                        placeholder={t('auth.field.email.placeholder')}
                         error={errors.email}
-                        {...register('email', { required: 'Detta fält är obligatoriskt' })}
+                        {...register('email', { required: t('validation.required') as string })}
                     >
                         <MailIcon />
                     </Input>
                     <Input
                         type="password"
-                        label="Lösenord"
-                        placeholder="Lösenord"
+                        label={t('auth.field.password.title')}
+                        placeholder={t('auth.field.password.placeholder')}
                         error={errors.password}
-                        {...register('password', { required: 'Detta fält är obligatoriskt' })}
+                        {...register('password', { required: t('validation.required') as string })}
                     >
                         <LockClosedIcon />
                     </Input>
                 </div>
                 <Button style="primary" className="w-full mt-6" type="submit" loading={loading}>
-                    <span>Logga in</span>
+                    <span>{t('auth.login')}</span>
                     <LoginIcon />
                 </Button>
             </form>

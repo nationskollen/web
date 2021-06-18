@@ -1,4 +1,5 @@
 import { useState, useRef } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import { getShorterDate } from '@utils'
 import { useAuth } from '@contexts/Auth'
@@ -28,6 +29,7 @@ const ActionItems = ({ row }: ActionsRendererProps<TableItem>) => {
 
 const UpcomingEvents = () => {
     const { oid } = useAuth()
+    const { t } = useTranslation(['admin-events', 'common'])
     const [page, setPage] = useState(1)
     const after = useRef(new Date()).current
     const [filterString, setFilterString] = useState('')
@@ -35,14 +37,11 @@ const UpcomingEvents = () => {
 
     return (
         <AdminSection id="upcoming">
-            <CardTitle
-                title="Kommande evenemang"
-                description="Översikt av nationens kommande evenemang"
-            >
+            <CardTitle title={t('upcoming.title')} description={t('upcoming.description')}>
                 <Input
                     id="upcoming_filter"
                     type="text"
-                    placeholder="Filtrera"
+                    placeholder={t('common:filtering.placeholder')}
                     onChange={(e) => setFilterString(e.target.value)}
                     debounce={true}
                 >
@@ -52,15 +51,15 @@ const UpcomingEvents = () => {
             <Table
                 columns={[
                     {
-                        Header: 'Event',
+                        Header: t('upcoming.columns.name') as string,
                         accessor: 'name',
                     },
                     {
-                        Header: 'Start',
+                        Header: t('upcoming.columns.start') as string,
                         accessor: 'occurs_at',
                     },
                     {
-                        Header: 'Slut',
+                        Header: t('upcoming.columns.end') as string,
                         accessor: 'ends_at',
                     },
                     {
@@ -86,7 +85,6 @@ const UpcomingEvents = () => {
                 filterString={filterString}
                 setPage={setPage}
                 error={!!error}
-                errorMessage={error?.message}
             />
         </AdminSection>
     )

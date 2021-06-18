@@ -1,20 +1,21 @@
 import NavLink from '@common/NavLink'
+import { useTranslation } from 'next-i18next'
 
-export interface Props {}
+const HeaderNavigation = () => {
+    const { t } = useTranslation('admin-common')
 
-const HeaderNavigation = ({}: Props) => {
     return (
         <div className="sticky top-0 z-10 bg-primary">
             <nav className="container py-3 mx-auto px-md" role="navigation">
                 <ul className="flex flex-row space-x-sm">
-                    <NavLink title="Hem" href="/admin/dashboard" />
-                    <NavLink title="Nyheter" href="/admin/news" />
-                    <NavLink title="Evenemang" href="/admin/events" />
-                    <NavLink title="Menyer" href="/admin/menus" />
-                    <NavLink title="Platser" href="/admin/locations" />
-                    <NavLink title="Aktivitet" href="/admin/activity" />
-                    <NavLink title="Nation" href="/admin/nation" />
-                    <NavLink title="Användare" href="/admin/users" />
+                    <NavLink title={t('header.home')} href="/admin/dashboard" />
+                    <NavLink title={t('header.news')} href="/admin/news" />
+                    <NavLink title={t('header.events')} href="/admin/events" />
+                    <NavLink title={t('header.menus')} href="/admin/menus" />
+                    <NavLink title={t('header.locations')} href="/admin/locations" />
+                    <NavLink title={t('header.activity')} href="/admin/activity" />
+                    <NavLink title={t('header.nation')} href="/admin/nation" />
+                    <NavLink title={t('header.users')} href="/admin/users" />
                 </ul>
             </nav>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'next-i18next'
 
 import {
     ClockIcon,
@@ -124,6 +125,7 @@ const InitialDetails = ({
     formState: { errors },
 }: FormStepProps<FormValues, ExtraProps>) => {
     const { data, isValidating } = useCategories()
+    const { t } = useTranslation(['admin-events', 'common'])
 
     const options = data
         ? data.map((category) => ({
@@ -136,37 +138,41 @@ const InitialDetails = ({
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={CalendarIcon}
-                title="Skapa ny event"
+                title={t('create.initial_details.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <Input
                     type="text"
-                    label="Titel"
+                    label={t('create.field.title')}
                     error={errors.title}
-                    {...register('title', { required: 'Detta fält är obligatoriskt' })}
+                    {...register('title', { required: t('common:validation.required') as string })}
                 />
                 <Select
-                    label="Kategori"
+                    label={t('create.field.category')}
                     buttonIcon={CollectionIcon}
                     options={options}
                     setValue={setValue}
                     loading={isValidating}
                     error={errors.category}
                     clearErrors={clearErrors}
-                    {...register('category', { required: 'Detta fält är obligatoriskt' })}
+                    {...register('category', {
+                        required: t('common:validation.required') as string,
+                    })}
                 />
                 <Textarea
                     type="text"
-                    label="Kort beskrivning"
+                    label={t('create.field.short_description')}
                     error={errors.shortDescription}
-                    {...register('shortDescription', { required: 'Detta fält är obligatoriskt' })}
+                    {...register('shortDescription', {
+                        required: t('common:validation.required') as string,
+                    })}
                 />
             </ModalContent.Main>
             <ModalContent.Actions className="space-between">
                 <Button style="light" size="medium" radius="large" onClick={close}>
-                    <span>Avbryt</span>
+                    <span>{t('common:action.cancel')}</span>
                 </Button>
                 <Button
                     style="primary"
@@ -174,7 +180,7 @@ const InitialDetails = ({
                     radius="large"
                     onClick={() => next({ fields: ['title', 'shortDescription', 'category'] })}
                 >
-                    <span>Beskrivning</span>
+                    <span>{t('create.description.title')}</span>
                     <ArrowRightIcon />
                 </Button>
             </ModalContent.Actions>
@@ -191,25 +197,27 @@ const LongDescription = ({
     register,
     formState: { errors },
 }: FormStepProps<FormValues, ExtraProps>) => {
+    const { t } = useTranslation(['admin-events', 'common'])
+
     return (
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={PencilIcon}
-                title="Beskrivning"
+                title={t('create.description.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <Textarea
                     type="text"
-                    label="Beskrivning"
+                    label={t('create.field.description')}
                     error={errors.description}
                     {...register('description')}
                 />
             </ModalContent.Main>
             <ModalContent.Actions className="space-between">
                 <Button style="light" size="medium" radius="large" onClick={previous}>
-                    <span>Tillbaka</span>
+                    <span>{t('common:action.back')}</span>
                 </Button>
                 <Button
                     style="primary"
@@ -217,7 +225,7 @@ const LongDescription = ({
                     radius="large"
                     onClick={() => next({ fields: ['description'] })}
                 >
-                    <span>Välj tid och plats</span>
+                    <span>{t('create.time_and_location.title')}</span>
                     <ArrowRightIcon />
                 </Button>
             </ModalContent.Actions>
@@ -238,6 +246,7 @@ const TimeAndLocation = ({
 }: FormStepProps<FormValues, ExtraProps>) => {
     const { oid } = useAuth()
     const { data, isValidating } = useLocations(oid!)
+    const { t } = useTranslation(['admin-events', 'common'])
 
     const locations = data
         ? data.map((location) => ({
@@ -250,7 +259,7 @@ const TimeAndLocation = ({
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={ClockIcon}
-                title="Tid och plats"
+                title={t('create.time_and_location.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
@@ -258,19 +267,23 @@ const TimeAndLocation = ({
                 <InputGroup>
                     <Input
                         type="date"
-                        label="Starttid"
+                        label={t('create.field.occurs_at')}
                         error={errors.occursAt}
-                        {...register('occursAt', { required: true })}
+                        {...register('occursAt', {
+                            required: t('common:validation.required') as string,
+                        })}
                     />
                     <Input
                         type="date"
-                        label="Sluttid"
+                        label={t('create.field.ends_at')}
                         error={errors.endsAt}
-                        {...register('endsAt', { required: true })}
+                        {...register('endsAt', {
+                            required: t('common:validation.required') as string,
+                        })}
                     />
                 </InputGroup>
                 <Select
-                    label="Plats"
+                    label={t('create.field.location')}
                     buttonIcon={LocationMarkerIcon}
                     options={locations}
                     setValue={setValue}
@@ -282,7 +295,7 @@ const TimeAndLocation = ({
             </ModalContent.Main>
             <ModalContent.Actions>
                 <Button style="light" size="medium" radius="large" onClick={previous}>
-                    <span>Tillbaka</span>
+                    <span>{t('common:action.back')}</span>
                 </Button>
                 <Button
                     style="primary"
@@ -290,7 +303,7 @@ const TimeAndLocation = ({
                     radius="large"
                     onClick={() => next({ fields: ['occursAt', 'endsAt', 'location'] })}
                 >
-                    <span>Välj bild</span>
+                    <span>{t('create.cover_image.title')}</span>
                     <ArrowRightIcon />
                 </Button>
             </ModalContent.Actions>
@@ -308,17 +321,19 @@ const ImageSelect = ({
     formState: { errors },
     extra,
 }: FormStepProps<FormValues, ExtraProps>) => {
+    const { t } = useTranslation(['admin-events', 'common'])
+
     return (
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={PhotographIcon}
-                title="Lägg till en bild"
+                title={t('create.cover_image.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <FileUploadInput
-                    label="Omslagsbild"
+                    label={t('create.field.cover_image')}
                     loading={extra?.uploaderLoading}
                     setValue={setValue}
                     error={errors.image}
@@ -327,7 +342,7 @@ const ImageSelect = ({
             </ModalContent.Main>
             <ModalContent.Actions>
                 <Button style="light" size="medium" radius="large" onClick={previous}>
-                    <span>Tillbaka</span>
+                    <span>{t('common:action.back')}</span>
                 </Button>
                 <Button
                     type="submit"
@@ -336,7 +351,7 @@ const ImageSelect = ({
                     radius="large"
                     loading={extra?.creatorLoading}
                 >
-                    <span>Skapa</span>
+                    <span>{t('common:action.create')}</span>
                     <PlusIcon />
                 </Button>
             </ModalContent.Actions>
