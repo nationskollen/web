@@ -61,9 +61,9 @@ const UserPopover = () => {
                     itemClassName="flex-1"
                     noCheckmark={true}
                     items={[
-                        { value: Theme.Light, label: 'Ljust', icon: SunIcon },
-                        { value: Theme.Dark, label: 'Mörkt', icon: MoonIcon },
-                        { value: Theme.Auto, label: 'Auto', icon: EyeIcon },
+                        { value: Theme.Light, label: t('theme.light'), icon: SunIcon },
+                        { value: Theme.Dark, label: t('theme.dark'), icon: MoonIcon },
+                        { value: Theme.Auto, label: t('theme.auto'), icon: EyeIcon },
                     ]}
                 />
             </PopoverSection>

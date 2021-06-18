@@ -2,5 +2,10 @@
     "auth": {
         "login": "Login",
         "logout": "Logout"
+    },
+    "theme": {
+        "dark": "Dark",
+        "light": "Light",
+        "auto": "Auto"
     }
 }

@@ -2,5 +2,10 @@
     "auth": {
         "login": "Logga in",
         "logout": "Logga ut"
+    },
+    "theme": {
+        "dark": "Mörkt",
+        "light": "Ljust",
+        "auto": "Auto"
     }
 }
