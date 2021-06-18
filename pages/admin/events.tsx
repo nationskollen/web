@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+import { GetStaticProps } from 'next'
 import { PlusIcon } from '@heroicons/react/solid'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Button from '@common/Button'
 import MainLayout from '@layouts/admin/Main'
@@ -41,5 +43,13 @@ const Events = () => {
 }
 
 Events.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    return {
+        props: {
+            ...(await serverSideTranslations(context.locale!, ['common'])),
+        },
+    }
+}
 
 export default Events

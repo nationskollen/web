@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react'
 import { useAuth } from '@contexts/Auth'
+import { useTranslation } from 'next-i18next'
 import { Theme, useTheme } from '@contexts/Theme'
 import {
     EyeIcon,
@@ -19,6 +20,7 @@ import PopoverSection from '@common/PopoverSection'
 
 const UserPopover = () => {
     const { logout } = useAuth()
+    const { t } = useTranslation('common')
     const { theme, setTheme } = useTheme()
 
     const changeTheme = useCallback((value: string) => {
@@ -72,7 +74,7 @@ const UserPopover = () => {
                 className="w-full"
                 size="medium"
             >
-                <span>Logga ut</span>
+                <span>{t('auth.logout')}</span>
                 <LogoutIcon />
             </Button>
         </Popover>

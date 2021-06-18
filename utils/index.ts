@@ -1,5 +1,6 @@
-import { useMemo } from 'react'
+import { GetStaticProps } from 'next'
 import { DeepMap, FieldError } from 'react-hook-form'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 /**
  * Returns true if the code is executing on the client

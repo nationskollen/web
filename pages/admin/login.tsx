@@ -1,8 +1,11 @@
+
 import Link from 'next/link'
 import Router from 'next/router'
 import { useEffect } from 'react'
+import { GetStaticProps } from 'next'
 import { AUTH, VERSION, CONTACT_EMAIL } from '@constants'
 import { MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Logo from '@svg/Logo'
 import Card from '@common/Card'
@@ -53,5 +56,13 @@ const Login = () => {
 Login.getTemplate = (page: React.ReactElement) => (
     <LoginLayout.Template>{page}</LoginLayout.Template>
 )
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    return {
+        props: {
+            ...(await serverSideTranslations(context.locale!, ['common'])),
+        },
+    }
+}
 
 export default Login

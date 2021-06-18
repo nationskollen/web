@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app'
 import { Toaster } from 'react-hot-toast'
 import { Provider } from '@nationskollen/sdk'
 import { ThemeProvider } from '@contexts/Theme'
+import { appWithTranslation } from 'next-i18next'
 import { NOTIFICATION_DURATION } from '@constants'
 
 const App = ({ Component, pageProps }: AppProps) => {
@@ -33,4 +34,4 @@ const App = ({ Component, pageProps }: AppProps) => {
     )
 }
 
-export default App
+export default appWithTranslation(App)

@@ -1,0 +1,6 @@
+{
+    "auth": {
+        "login": "Login",
+        "logout": "Logout"
+    }
+}
