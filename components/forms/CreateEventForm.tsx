@@ -138,19 +138,19 @@ const InitialDetails = ({
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={CalendarIcon}
-                title={t('create.initial_details.title')}
+                title={t('admin-events:create.initial_details.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <Input
                     type="text"
-                    label={t('create.field.title')}
+                    label={t('admin-events:create.field.title')}
                     error={errors.title}
-                    {...register('title', { required: t('common:validation.required') as string })}
+                    {...register('title', { required: t('common:validation.required') })}
                 />
                 <Select
-                    label={t('create.field.category')}
+                    label={t('admin-events:create.field.category')}
                     buttonIcon={CollectionIcon}
                     options={options}
                     setValue={setValue}
@@ -158,15 +158,15 @@ const InitialDetails = ({
                     error={errors.category}
                     clearErrors={clearErrors}
                     {...register('category', {
-                        required: t('common:validation.required') as string,
+                        required: t('common:validation.required'),
                     })}
                 />
                 <Textarea
                     type="text"
-                    label={t('create.field.short_description')}
+                    label={t('admin-events:create.field.short_description')}
                     error={errors.shortDescription}
                     {...register('shortDescription', {
-                        required: t('common:validation.required') as string,
+                        required: t('common:validation.required'),
                     })}
                 />
             </ModalContent.Main>
@@ -180,7 +180,7 @@ const InitialDetails = ({
                     radius="large"
                     onClick={() => next({ fields: ['title', 'shortDescription', 'category'] })}
                 >
-                    <span>{t('create.description.title')}</span>
+                    <span>{t('admin-events:create.description.title')}</span>
                     <ArrowRightIcon />
                 </Button>
             </ModalContent.Actions>
@@ -203,14 +203,14 @@ const LongDescription = ({
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={PencilIcon}
-                title={t('create.description.title')}
+                title={t('admin-events:create.description.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <Textarea
                     type="text"
-                    label={t('create.field.description')}
+                    label={t('admin-events:create.field.description')}
                     error={errors.description}
                     {...register('description')}
                 />
@@ -225,7 +225,7 @@ const LongDescription = ({
                     radius="large"
                     onClick={() => next({ fields: ['description'] })}
                 >
-                    <span>{t('create.time_and_location.title')}</span>
+                    <span>{t('admin-events:create.time_and_location.title')}</span>
                     <ArrowRightIcon />
                 </Button>
             </ModalContent.Actions>
@@ -259,7 +259,7 @@ const TimeAndLocation = ({
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={ClockIcon}
-                title={t('create.time_and_location.title')}
+                title={t('admin-events:create.time_and_location.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
@@ -267,23 +267,23 @@ const TimeAndLocation = ({
                 <InputGroup>
                     <Input
                         type="date"
-                        label={t('create.field.occurs_at')}
+                        label={t('admin-events:create.field.occurs_at')}
                         error={errors.occursAt}
                         {...register('occursAt', {
-                            required: t('common:validation.required') as string,
+                            required: t('common:validation.required'),
                         })}
                     />
                     <Input
                         type="date"
-                        label={t('create.field.ends_at')}
+                        label={t('admin-events:create.field.ends_at')}
                         error={errors.endsAt}
                         {...register('endsAt', {
-                            required: t('common:validation.required') as string,
+                            required: t('common:validation.required'),
                         })}
                     />
                 </InputGroup>
                 <Select
-                    label={t('create.field.location')}
+                    label={t('admin-events:create.field.location')}
                     buttonIcon={LocationMarkerIcon}
                     options={locations}
                     setValue={setValue}
@@ -303,7 +303,7 @@ const TimeAndLocation = ({
                     radius="large"
                     onClick={() => next({ fields: ['occursAt', 'endsAt', 'location'] })}
                 >
-                    <span>{t('create.cover_image.title')}</span>
+                    <span>{t('admin-events:create.cover_image.title')}</span>
                     <ArrowRightIcon />
                 </Button>
             </ModalContent.Actions>
@@ -327,13 +327,13 @@ const ImageSelect = ({
         <ModalContent.Wrapper key={index}>
             <ModalContent.Header
                 icon={PhotographIcon}
-                title={t('create.cover_image.title')}
+                title={t('admin-events:create.cover_image.title')}
                 currentStep={currentStep}
                 totalSteps={totalSteps}
             />
             <ModalContent.Main>
                 <FileUploadInput
-                    label={t('create.field.cover_image')}
+                    label={t('admin-events:create.field.cover_image')}
                     loading={extra?.uploaderLoading}
                     setValue={setValue}
                     error={errors.image}

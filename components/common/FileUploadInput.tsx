@@ -96,7 +96,9 @@ const FileUploadInput = React.forwardRef(
                             >
                                 <div className="flex flex-col items-center justify-center space-y-sm">
                                     <CloudUploadIcon className="w-16 h-16" />
-                                    <p className="font-bold">{t('file_upload.select_image')}</p>
+                                    <p className="font-bold">
+                                        {t('admin-common:file_upload.select_image')}
+                                    </p>
                                 </div>
                             </div>
                         )}

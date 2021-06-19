@@ -1,6 +1,6 @@
 import '@styles/globals.css'
 import { isClient } from '@utils'
-import { PageComponent } from '@types'
+import { PageComponent } from '@typings'
 import type { AppProps } from 'next/app'
 import { Toaster } from 'react-hot-toast'
 import { Provider } from '@nationskollen/sdk'

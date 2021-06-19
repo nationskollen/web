@@ -37,7 +37,10 @@ const UpcomingEvents = () => {
 
     return (
         <AdminSection id="upcoming">
-            <CardTitle title={t('upcoming.title')} description={t('upcoming.description')}>
+            <CardTitle
+                title={t('admin-events:upcoming.title')}
+                description={t('admin-events:upcoming.description')}
+            >
                 <Input
                     id="upcoming_filter"
                     type="text"
@@ -51,15 +54,15 @@ const UpcomingEvents = () => {
             <Table
                 columns={[
                     {
-                        Header: t('upcoming.columns.name') as string,
+                        Header: t('admin-events:upcoming.column.name'),
                         accessor: 'name',
                     },
                     {
-                        Header: t('upcoming.columns.start') as string,
+                        Header: t('admin-events:upcoming.column.start'),
                         accessor: 'occurs_at',
                     },
                     {
-                        Header: t('upcoming.columns.end') as string,
+                        Header: t('admin-events:upcoming.column.end'),
                         accessor: 'ends_at',
                     },
                     {

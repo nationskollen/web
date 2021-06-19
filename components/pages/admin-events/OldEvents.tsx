@@ -10,7 +10,10 @@ const OldEvents = () => {
 
     return (
         <AdminSection id="old">
-            <CardTitle title={t('old.title')} description={t('old.description')}>
+            <CardTitle
+                title={t('admin-events:old.title') as string}
+                description={t('admin-events:old.description') as string}
+            >
                 <Input id="old_filter" type="text" placeholder={t('common:filtering.placeholder')}>
                     <SearchIcon />
                 </Input>

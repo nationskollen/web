@@ -2,7 +2,7 @@
     "upcoming": {
         "title": "Upcoming events",
         "description": "Overview of the nations upcoming events",
-        "columns": {
+        "column": {
             "name": "Name",
             "start": "Start",
             "end": "End"
