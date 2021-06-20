@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 
+import ModalContent from '@common/ModalContent'
+import { IconCircleStyles } from '@common/IconCircle'
 import Modal, { Props as ModalProps } from '@common/Modal'
-import ModalContent, { HeaderIconStyles } from '@common/ModalContent'
 import Button, { ButtonStyles, Props as ButtonProps } from '@common/Button'
 
 export type ActionCallback = () => void
@@ -31,7 +32,7 @@ export interface Props extends ActionCallbacks, Omit<ModalProps, 'open' | 'setOp
     confirmLabel?: string
     cancelLabel?: string
     icon?: React.ElementType
-    iconStyle?: HeaderIconStyles
+    iconStyle?: IconCircleStyles
     open?: boolean
     setOpen?: (open: boolean) => void
     children?: React.ReactNode

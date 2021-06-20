@@ -127,7 +127,7 @@ const Input = React.forwardRef(
         const title = getFieldErrorMessage(error)
         const onChangeCallback = debounce
             ? useConstant(() =>
-                  AwesomeDebouncePromise(onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY)
+                  AwesomeDebouncePromise(() => onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY)
               )
             : onChange
 

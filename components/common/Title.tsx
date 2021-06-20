@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 
-export type TitleSizes = 'small' | 'default' | 'large'
+export type TitleSizes = 'tiny' | 'small' | 'default' | 'large'
 
 export interface Props extends React.BaseHTMLAttributes<HTMLHeadingElement> {
     text?: string
@@ -10,6 +10,7 @@ export interface Props extends React.BaseHTMLAttributes<HTMLHeadingElement> {
 }
 
 const TITLE_SIZES: Record<TitleSizes, string> = {
+    tiny: 'text-default font-bold',
     small: 'text-lg font-bold',
     default: 'text-xl font-bold',
     large: 'text-3xl font-black',

@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import Router from 'next/router'
 import { useEffect } from 'react'
-import { AUTH, VERSION, CONTACT_EMAIL } from '@constants'
+import { GetStaticProps } from 'next'
+import { useTranslation } from 'next-i18next'
+import { LOCALES, AUTH, VERSION, CONTACT_EMAIL } from '@constants'
 import { MailIcon, ArrowLeftIcon } from '@heroicons/react/outline'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Logo from '@svg/Logo'
 import Card from '@common/Card'
@@ -11,6 +14,8 @@ import LoginForm from '@forms/LoginForm'
 import LoginLayout from '@layouts/admin/Login'
 
 const Login = () => {
+    const { t } = useTranslation('common')
+
     useEffect(() => {
         const token = localStorage.getItem(AUTH.USER_STORAGE_KEY)
 
@@ -21,11 +26,11 @@ const Login = () => {
 
     return (
         <div className="text-text-highlight">
-            <div className="fixed flex justify-center top-12 left-12">
+            <div className="fixed flex justify-center top-lg left-lg">
                 <Link href="/" passHref={true}>
                     <Button style="transparent">
                         <ArrowLeftIcon />
-                        <span>Tillbaka till startsidan</span>
+                        <span>{t('action.back_to_homepage')}</span>
                     </Button>
                 </Link>
             </div>
@@ -53,5 +58,15 @@ const Login = () => {
 Login.getTemplate = (page: React.ReactElement) => (
     <LoginLayout.Template>{page}</LoginLayout.Template>
 )
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    return {
+        props: {
+            ...(await serverSideTranslations(context.locale!, [
+                ...LOCALES.ADMIN.DEFAULT_NAMESPACES,
+            ])),
+        },
+    }
+}
 
 export default Login

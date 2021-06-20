@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import React, { useState } from 'react'
+import { useTranslation } from 'next-i18next'
 import { UseFormSetValue } from 'react-hook-form'
 import { TrashIcon, CloudUploadIcon } from '@heroicons/react/outline'
 
@@ -14,6 +15,7 @@ export interface Props extends InputProps {
 const FileUploadInput = React.forwardRef(
     ({ name, onChange, loading, setValue, ...props }: Props, ref: React.Ref<any>) => {
         const [image, setImage] = useState<Blob | null>(null)
+        const { t } = useTranslation(['admin-common', 'common'])
 
         const removeUploadedImage = () => {
             if (!image) {
@@ -72,7 +74,7 @@ const FileUploadInput = React.forwardRef(
                                             className="text-white bg-overlay hover:bg-black transition-colors duration-100"
                                             onClick={removeUploadedImage}
                                         >
-                                            <span>Ta bort</span>
+                                            <span>{t('common:action.delete')}</span>
                                             <TrashIcon />
                                         </Button>
                                     </div>
@@ -94,7 +96,9 @@ const FileUploadInput = React.forwardRef(
                             >
                                 <div className="flex flex-col items-center justify-center space-y-sm">
                                     <CloudUploadIcon className="w-16 h-16" />
-                                    <p className="font-bold">Klicka för att välja bild</p>
+                                    <p className="font-bold">
+                                        {t('admin-common:file_upload.select_image')}
+                                    </p>
                                 </div>
                             </div>
                         )}

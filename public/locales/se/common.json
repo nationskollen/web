@@ -1,0 +1,66 @@
+{
+    "auth": {
+        "login": "Logga in",
+        "logout": "Logga ut",
+        "role": {
+            "admin": "Administratör",
+            "staff": "Personal"
+        },
+        "field": {
+            "email": {
+                "title": "Email",
+                "placeholder": "din@email.se"
+            },
+            "password": {
+                "title": "Lösenord",
+                "placeholder": "Lösenord"
+            }
+        }
+    },
+    "theme": {
+        "title": "Tema",
+        "dark": "Mörkt",
+        "light": "Ljust",
+        "auto": "Auto"
+    },
+    "locale": {
+        "title": "Språk",
+        "swedish": "Svenska",
+        "english": "Engelska"
+    },
+    "filtering": {
+        "placeholder": "Filtrera {{resource}}"
+    },
+    "pagination": {
+        "rows": "Visar {{current}} av {{total}}",
+        "page": "Sida {{current}} / {{total}}"
+    },
+    "table": {
+        "empty": "Inget innehåll",
+        "error": "Kunde inte ladda innehåll"
+    },
+    "validation": {
+        "required": "Detta fält är obligatoriskt"
+    },
+    "error": {
+        "unknown": {
+            "title": "Något blev fel!",
+            "description": "Försök igen senare"
+        },
+        "invalid_credentials": {
+            "title": "Inloggningen misslyckades",
+            "description": "Ditt användarnamn och/eller lösenord är fel"
+        },
+        "invalid_format_credentials": {
+            "title": "Dina uppgifter har fel format!",
+            "description": "Det verkar som om webbutvecklings-gorillorna har gjort ett misstag. Dina uppgifter överensstämmer tydligen inte med det efterfrågade formatet. Är du säker på att du skrivit in rätt uppgifter?"
+        }
+    },
+    "action": {
+        "cancel": "Avbryt",
+        "back": "Tillbaka",
+        "create": "Skapa",
+        "delete": "Ta bort",
+        "back_to_homepage": "Tillbaka till startsidan"
+    }
+}

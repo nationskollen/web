@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import { PaginationMeta } from '@nationskollen/sdk'
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline'
 
@@ -10,6 +11,8 @@ export interface Props {
 }
 
 const PaginationActions = ({ page, pagination, setPage }: Props) => {
+    const { t } = useTranslation('common')
+
     const handlePrevious = () => {
         if (!page || page === 1) {
             return
@@ -29,7 +32,10 @@ const PaginationActions = ({ page, pagination, setPage }: Props) => {
     return (
         <div className="flex flex-row items-center justify-end w-full">
             <p className="text-sm font-bold text-center px-md">
-                Sida {page || 1} / {pagination?.last_page || 1}
+                {t('pagination.page', {
+                    current: page || 1,
+                    total: pagination?.last_page || 1,
+                })}
             </p>
             <div className="space-x-sm">
                 <Button

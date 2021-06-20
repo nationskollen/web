@@ -1,0 +1,21 @@
+{
+    "header": {
+        "home": "Hem",
+        "news": "Nyheter",
+        "events": "Evenemang",
+        "menus": "Menyer",
+        "locations": "Platser",
+        "activity": "Aktivitet",
+        "nation": "Nation",
+        "users": "Användare"
+    },
+    "toc": {
+        "title": "Innehåll"
+    },
+    "modal": {
+        "current_step": "Steg {{current}} / {{total}}"
+    },
+    "file_upload": {
+        "select_image": "Klicka för att välja bild"
+    }
+}

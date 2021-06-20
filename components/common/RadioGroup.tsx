@@ -5,6 +5,8 @@ import { RadioGroup } from '@headlessui/react'
 import Title from '@common/Title'
 import Checkmark from '@common/Checkmark'
 
+export type Directions = 'row' | 'column'
+
 export interface RadioItem {
     value: string
     [key: string]: unknown
@@ -15,6 +17,7 @@ export interface Props {
     title?: string
     value: string
     items: Array<RadioItem>
+    direction?: Directions
     onChange: (value: string) => void
     className?: string
     itemClassName?: string
@@ -29,6 +32,7 @@ const Radio = ({
     title,
     value,
     items,
+    direction,
     onChange,
     noCheckmark,
     ...props
@@ -36,14 +40,19 @@ const Radio = ({
     return (
         <RadioGroup value={value} onChange={onChange}>
             {title && (
-                <RadioGroup.Label
-                    as={Title}
-                    size="small"
-                    text={title}
-                    className="mb-sm text-text-highlight"
-                />
+                <RadioGroup.Label as="label" className="text-sm text-text tracking-wide font-bold">
+                    {title}
+                </RadioGroup.Label>
             )}
-            <div className={clsx('cursor-pointer', className)}>
+            <div
+                className={clsx(
+                    'cursor-pointer mt-xsm',
+                    direction === 'row'
+                        ? 'flex flex-row items-center justify-between space-x-sm'
+                        : 'flex flex-col items-start justify-start space-y-sm',
+                    className
+                )}
+            >
                 {items.map(({ value, ...field }, index) => (
                     <RadioGroup.Option
                         value={value}

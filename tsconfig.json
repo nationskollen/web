@@ -13,6 +13,7 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "preserve",
+        "typeRoots": ["./typings"],
         "baseUrl": ".",
         "paths": {
             "@components/*": ["components/*"],
@@ -25,9 +26,11 @@
             "@pages/*": ["components/pages/*"],
             "@contexts/*": ["contexts/*"],
             "@styles/*": ["styles/*"],
+            "@i18n/*": ["i18n/*"],
             "@utils": ["utils/index"],
             "@constants": ["constants"],
-            "@types": ["types"]
+            "@typings": ["typings/index"],
+            "@typings/*": ["typings/*"]
         }
     },
     "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

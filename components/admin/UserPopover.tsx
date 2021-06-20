@@ -1,5 +1,7 @@
-import React, { useCallback } from 'react'
+import React from 'react'
+import Router from 'next/router'
 import { useAuth } from '@contexts/Auth'
+import { useTranslation } from 'next-i18next'
 import { Theme, useTheme } from '@contexts/Theme'
 import {
     EyeIcon,
@@ -17,13 +19,21 @@ import RadioGroup from '@common/RadioGroup'
 import RadioPillItem from '@common/RadioPillItem'
 import PopoverSection from '@common/PopoverSection'
 
+import USAFlag from '@svg/flags/USAFlag'
+import SwedenFlag from '@svg/flags/SwedenFlag'
+
 const UserPopover = () => {
     const { logout } = useAuth()
+    const { t } = useTranslation('common')
     const { theme, setTheme } = useTheme()
 
-    const changeTheme = useCallback((value: string) => {
+    const changeTheme = (value: string) => {
         setTheme(value as Theme)
-    }, [])
+    }
+
+    const changeLanguage = (locale: string) => {
+        Router.push(Router.pathname, undefined, { locale })
+    }
 
     return (
         <Popover
@@ -46,22 +56,34 @@ const UserPopover = () => {
                     <p className="font-bold leading-none text-text-highlight">
                         fredrik@engstrand.nu
                     </p>
-                    <p className="text-sm font-bold text-primary-text">Admin</p>
+                    <p className="text-sm font-bold text-primary-text">{t('auth.role.admin')}</p>
                 </div>
             </PopoverSection>
-            <PopoverSection>
+            <PopoverSection className="space-y-md">
                 <RadioGroup
                     as={RadioPillItem}
                     onChange={changeTheme}
-                    title="Tema"
+                    title={t('theme.title')}
                     value={theme}
-                    className="flex flex-row items-center justify-between space-x-sm"
+                    direction="row"
                     itemClassName="flex-1"
                     noCheckmark={true}
                     items={[
-                        { value: Theme.Light, label: 'Ljust', icon: SunIcon },
-                        { value: Theme.Dark, label: 'Mörkt', icon: MoonIcon },
-                        { value: Theme.Auto, label: 'Auto', icon: EyeIcon },
+                        { value: Theme.Light, label: t('theme.light'), icon: SunIcon },
+                        { value: Theme.Dark, label: t('theme.dark'), icon: MoonIcon },
+                        { value: Theme.Auto, label: t('theme.auto'), icon: EyeIcon },
+                    ]}
+                />
+                <RadioGroup
+                    as={RadioPillItem}
+                    onChange={changeLanguage}
+                    title={t('locale.title')}
+                    value={Router.locale || 'se'}
+                    direction="row"
+                    itemClassName="flex-1"
+                    items={[
+                        { value: 'se', label: t('locale.swedish'), icon: SwedenFlag },
+                        { value: 'en', label: t('locale.english'), icon: USAFlag },
                     ]}
                 />
             </PopoverSection>
@@ -72,7 +94,7 @@ const UserPopover = () => {
                 className="w-full"
                 size="medium"
             >
-                <span>Logga ut</span>
+                <span>{t('auth.logout')}</span>
                 <LogoutIcon />
             </Button>
         </Popover>

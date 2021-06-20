@@ -1,0 +1,40 @@
+{
+    "upcoming": {
+        "title": "Upcoming events",
+        "description": "Overview of the nations upcoming events",
+        "column": {
+            "name": "Name",
+            "start": "Start",
+            "end": "End"
+        }
+    },
+    "old": {
+        "title": "Previous events",
+        "description": "Overview of the nations previous events"
+    },
+    "create": {
+        "title": "Create new event",
+        "field": {
+            "title": "Title",
+            "category": "Category",
+            "short_description": "Short description",
+            "description": "Description",
+            "occurs_at": "Start time",
+            "ends_at": "End time",
+            "location": "Location",
+            "cover_image": "Cover image"
+        },
+        "initial_details": {
+            "title": "Create new event"
+        },
+        "description": {
+            "title": "Description"
+        },
+        "time_and_location": {
+            "title": "Time and location"
+        },
+        "cover_image": {
+            "title": "Add an image"
+        }
+    }
+}
