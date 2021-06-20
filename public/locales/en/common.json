@@ -56,6 +56,9 @@
             "description": "It seems like the web-development gorillas has made a mistake. Your credentials does not match the expected format. Are you sure that the credentials you have entered are valid?"
         }
     },
+    "selection": {
+        "none": "None"
+    },
     "action": {
         "cancel": "Cancel",
         "back": "Back",

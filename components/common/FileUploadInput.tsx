@@ -1,40 +1,131 @@
+/**
+ * Renders a file upload component. Uses the `Input` component
+ * internally, and therefore accepts all of the same props.
+ *
+ * Note that if you want to use this component in a form,
+ * you **must** wrap your form in the `FormProvider` component
+ * from react-hook-form.
+ *
+ * @module Common
+ */
 import clsx from 'clsx'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import { UseFormSetValue } from 'react-hook-form'
+import { useFormContext } from 'react-hook-form'
 import { TrashIcon, CloudUploadIcon } from '@heroicons/react/outline'
 
 import Button from '@common/Button'
 import LoadingIndicator from '@common/LoadingIndicator'
 import Input, { Props as InputProps } from '@common/Input'
 
-export interface Props extends InputProps {
-    setValue?: UseFormSetValue<any>
+export interface UploadPreviewProps {
+    files: FileList | null
+    onRemove: () => void
+    loading?: boolean
+}
+
+const UploadPreviewEmpty = () => {
+    const { t } = useTranslation('admin-common')
+
+    return (
+        <div
+            className={clsx(
+                'absolute inset-0 h-full rounded-sm pointer-events-none',
+                'bg-background-extra flex flex-col justify-center items-center'
+            )}
+        >
+            <div className="flex flex-col items-center justify-center space-y-sm">
+                <CloudUploadIcon className="w-16 h-16" />
+                <p className="font-bold">{t('file_upload.select_image')}</p>
+            </div>
+        </div>
+    )
+}
+
+const UploadPreview = ({ files, loading, onRemove }: UploadPreviewProps) => {
+    const { t } = useTranslation('common')
+
+    if (!files || files.length === 0) {
+        return <UploadPreviewEmpty />
+    }
+
+    return (
+        <>
+            {loading ? (
+                <div
+                    className={clsx(
+                        'absolute inset-0 w-full h-full rounded-sm',
+                        'bg-overlay z-10 flex justify-center items-center'
+                    )}
+                >
+                    <LoadingIndicator size="medium" />
+                </div>
+            ) : (
+                <div
+                    className={clsx(
+                        'flex flex-row absolute top-sm right-sm space-x-sm z-10',
+                        'transition-opacity opacity-0 group-hover:opacity-100 duration-200'
+                    )}
+                >
+                    <Button
+                        size="small"
+                        radius="large"
+                        style="transparent"
+                        className="text-white bg-overlay hover:bg-black transition-colors duration-100"
+                        onClick={onRemove}
+                    >
+                        <span>{t('action.delete')}</span>
+                        <TrashIcon />
+                    </Button>
+                </div>
+            )}
+            <img
+                src={URL.createObjectURL(files[0])}
+                className={clsx(
+                    'absolute inset-0 object-cover w-full h-full',
+                    'rounded-sm pointer-events-none bg-background-extra'
+                )}
+            />
+        </>
+    )
 }
 
 const FileUploadInput = React.forwardRef(
-    ({ name, onChange, loading, setValue, ...props }: Props, ref: React.Ref<any>) => {
-        const [image, setImage] = useState<Blob | null>(null)
-        const { t } = useTranslation(['admin-common', 'common'])
+    ({ name, onChange, loading, ...props }: InputProps, ref: React.Ref<any>) => {
+        const form = useFormContext()
+        const [files, setFiles] = useState<FileList | null>(null)
 
-        const removeUploadedImage = () => {
-            if (!image) {
+        const handleRemove = () => {
+            if (!files || files.length === 0) {
                 return
             }
 
-            name && setValue && setValue(name, undefined)
-            setImage(null)
+            name && form && form.setValue(name, undefined)
+            setFiles(null)
         }
 
         const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
             const files = e.target.files
 
             if (files && files.length > 0) {
-                setImage(files[0])
+                setFiles(files)
             }
 
             onChange && onChange(e)
         }
+
+        // Check if there is saved form state for this field
+        useEffect(() => {
+            if (!form || !name) {
+                return
+            }
+
+            const savedFileList = form.getValues(name)
+
+            if (savedFileList && savedFileList.length > 0) {
+                setFiles(savedFileList)
+            }
+        }, [])
 
         return (
             <Input
@@ -45,64 +136,10 @@ const FileUploadInput = React.forwardRef(
                 onChange={handleUpload}
                 hideErrorIcon={true}
                 containerClassName="relative h-64 group"
-                accept="image/png, image/jpeg, image/jpg, image/svg"
+                accept="file/png, file/jpeg, file/jpg, file/svg"
                 inputClassName="z-behind"
                 innerComponent={() => (
-                    <>
-                        {image ? (
-                            <>
-                                {loading ? (
-                                    <div
-                                        className={clsx(
-                                            'absolute inset-0 w-full h-full rounded-sm',
-                                            'bg-overlay z-10 flex justify-center items-center'
-                                        )}
-                                    >
-                                        <LoadingIndicator size="medium" />
-                                    </div>
-                                ) : (
-                                    <div
-                                        className={clsx(
-                                            'flex flex-row absolute top-sm right-sm space-x-sm z-10',
-                                            'transition-opacity opacity-0 group-hover:opacity-100 duration-200'
-                                        )}
-                                    >
-                                        <Button
-                                            size="small"
-                                            radius="large"
-                                            style="transparent"
-                                            className="text-white bg-overlay hover:bg-black transition-colors duration-100"
-                                            onClick={removeUploadedImage}
-                                        >
-                                            <span>{t('common:action.delete')}</span>
-                                            <TrashIcon />
-                                        </Button>
-                                    </div>
-                                )}
-                                <img
-                                    src={URL.createObjectURL(image)}
-                                    className={clsx(
-                                        'absolute inset-0 object-cover w-full h-full',
-                                        'rounded-sm pointer-events-none bg-background-extra'
-                                    )}
-                                />
-                            </>
-                        ) : (
-                            <div
-                                className={clsx(
-                                    'absolute inset-0 h-full rounded-sm pointer-events-none',
-                                    'bg-background-extra flex flex-col justify-center items-center'
-                                )}
-                            >
-                                <div className="flex flex-col items-center justify-center space-y-sm">
-                                    <CloudUploadIcon className="w-16 h-16" />
-                                    <p className="font-bold">
-                                        {t('admin-common:file_upload.select_image')}
-                                    </p>
-                                </div>
-                            </div>
-                        )}
-                    </>
+                    <UploadPreview files={files} loading={loading} onRemove={handleRemove} />
                 )}
                 {...props}
             />

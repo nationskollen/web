@@ -15,11 +15,18 @@ export const AUTH = {
 
 /**
  * Defines the default form settings.
- *
- * Must specify `any` here to make `useForm` happy
  */
 export const DEFAULT_FORM_PROPS: any = {
     mode: 'onBlur',
+    reValidateMode: 'onBlur',
+    shouldFocusError: true,
+}
+
+/**
+ * Defines the default modal form settings.
+ */
+export const DEFAULT_MODAL_FORM_PROPS: any = {
+    mode: 'onSubmit',
     reValidateMode: 'onBlur',
     shouldFocusError: true,
 }

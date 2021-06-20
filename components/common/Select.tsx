@@ -1,17 +1,6 @@
 /**
  * Renders a generic select component.
  *
- * Note that if you want to use this component in a form,
- * you MUST pass in the `setValue` callback from the
- * `useForm` hook. This is required because this select component
- * does not use the native select element, but rather a custom solution.
- *
- * You can get the `setValue` function like this:
- * ```typescript
- * // import { useForm } from 'react-hook-form'
- * const { setValue, ... } = useForm<FormValues>()
- * ```
- *
  * This component also has support for async data.
  * All you have to do is to set options to undefined or []
  * and populate it whenever the async data is received.
@@ -38,19 +27,23 @@
  *         { id: 'breakfast', value: 'Breakfast' },
  *         { id: 'lunch', value: 'Lunch' },
  *     ]}
- *     setValue={setValue}
  *     {...register('category')}
  * />
  * ```
+ *
+ * Note that if you want to use this component in a form,
+ * you **must** wrap your form in the `FormProvider` component
+ * from react-hook-form.
  *
  * @module Common
  */
 import clsx from 'clsx'
 import React, { useState, useMemo, useEffect } from 'react'
-import { getFieldErrorMessage } from '@utils'
+import { useFormContext } from 'react-hook-form'
 import { SelectorIcon } from '@heroicons/react/solid'
 import { Listbox, Transition } from '@headlessui/react'
-import { DeepMap, FieldError, UseFormClearErrors, UseFormSetValue } from 'react-hook-form'
+
+import { getFieldErrorMessage } from '@utils'
 
 import Card from '@common/Card'
 import Button from '@common/Button'
@@ -68,12 +61,11 @@ export interface OptionItem {
 
 export interface Props extends Omit<NativeSelectProps, 'onSelect'> {
     label: string
-    loading?: boolean
-    error?: boolean | DeepMap<OptionItem | undefined, FieldError>
-    setValue?: UseFormSetValue<any>
-    clearErrors?: UseFormClearErrors<any>
-    onSelect?: (option: OptionItem) => void
+    initialSelection?: number
+    initialOptions?: Array<OptionItem>
     options: Array<OptionItem>
+    loading?: boolean
+    onSelect?: (option: OptionItem) => void
     buttonIcon?: React.ElementType
     buttonIconClassName?: string
 }
@@ -85,67 +77,75 @@ const Select = React.forwardRef(
             label,
             options,
             loading,
-            error,
+            initialSelection,
+            initialOptions,
             buttonIcon: ButtonIcon,
             buttonIconClassName,
             name,
-            setValue,
-            clearErrors,
             onSelect,
             ...props
         }: Props,
         ref: React.Ref<any>
     ) => {
-        const [selected, setSelected] = useState(options ? 0 : undefined)
+        const form = useFormContext()
+        const [selected, setSelected] = useState(initialSelection)
+        const concatinatedOptions = useMemo(() => {
+            if (!initialOptions) {
+                return options
+            }
+
+            return initialOptions.concat(options)
+        }, [options, initialOptions])
 
         // Make sure to set the initial value in the form
         // even if the user does not modify the selected value.
         useEffect(() => {
-            if (selected !== undefined) {
+            if (form && name) {
+                const savedValue = form.getValues(name)
+
+                if (savedValue) {
+                    // The form state will contain the actual option item, not the index.
+                    // Therefore, we must calculate the index based on the selected option item.
+                    const index = concatinatedOptions.findIndex(
+                        (option) => option.id === savedValue.id
+                    )
+
+                    if (index !== -1) {
+                        setSelected(index)
+                    }
+                }
+            } else if (selected !== undefined) {
                 runCallbacks(selected)
             }
         }, [])
 
-        // Update the selected value when the options or loading state are changed.
-        // This is required to allow async data to be passed in as options.
-        useEffect(() => {
-            // Do not update selected if we already have a selected one
-            if (selected !== undefined) {
-                runCallbacks(selected)
-                return
-            }
-
-            if (!loading && options && options.length > 0) {
-                updateSelected(0)
-            }
-        }, [loading, options])
-
         // Runs all the registered callbacks when changing selected value
         const runCallbacks = (index: number) => {
-            onSelect && onSelect(options[index])
-            name && setValue && setValue(name, options[index])
+            onSelect && onSelect(concatinatedOptions[index])
+
+            if (name && form) {
+                form.setValue(name, concatinatedOptions[index])
+            }
         }
 
         const updateSelected = (index: number) => {
             setSelected(index)
             runCallbacks(index)
-            clearErrors && clearErrors(name)
+            form && form.clearErrors(name)
         }
 
         const renderedOptions = useMemo(() => {
-            if (!options) {
-                return []
-            }
-
-            return options.map((option, index) => (
+            return concatinatedOptions.map((option, index) => (
                 <SelectOption key={option.id} option={option} index={index} />
             ))
-        }, [options, selected])
+        }, [concatinatedOptions, selected])
 
+        const error = form && name && form.formState.errors[name]
         const selectedValue =
-            options && options.length > 0 && selected !== undefined && options[selected].value
-
-        const title = getFieldErrorMessage(error)
+            concatinatedOptions &&
+            concatinatedOptions.length > 0 &&
+            selected !== undefined &&
+            concatinatedOptions[selected].value
 
         return (
             <div className="relative">
@@ -198,7 +198,7 @@ const Select = React.forwardRef(
                             </>
                         )}
                     </Listbox.Button>
-                    <InputError title={title} />
+                    <InputError title={getFieldErrorMessage(error)} />
                     <Transition
                         as={React.Fragment}
                         leave="transition-opacity ease-in duration-out"

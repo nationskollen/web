@@ -1,4 +1,6 @@
 import React from 'react'
+
+import Container from '@common/Container'
 import Header from '@components/admin/Header'
 import ProtectedRoute from '@components/auth/ProtectedRoute'
 import Navigation from '@components/admin/Navigation'
@@ -14,9 +16,12 @@ export const Template = ({ children }: Props) => {
                 <div className="absolute w-screen h-screen z-behind bg-primary h-admin-header" />
                 <Header />
                 <Navigation />
-                <main className="container relative flex flex-row items-start flex-1 h-full mx-auto mt-8 px-md mb-xlg">
+                <Container
+                    as="main"
+                    className="relative flex flex-row items-start flex-1 h-full mt-8 mb-xlg"
+                >
                     {children}
-                </main>
+                </Container>
             </div>
         </ProtectedRoute>
     )

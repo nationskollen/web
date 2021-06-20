@@ -15,6 +15,10 @@
  * </Input>
  * ```
  *
+ * Note that if you want to use this component in a form,
+ * you **must** wrap your form in the `FormProvider` component
+ * from react-hook-form.
+ *
  * Any child component passed into this component will be rendered to the left
  * of the input field. The main purpose of this is to allow custom (optional) icons.
  *
@@ -23,9 +27,9 @@
 import clsx from 'clsx'
 import React from 'react'
 import useConstant from 'use-constant'
-import { DeepMap, FieldError } from 'react-hook-form'
 import { ExclamationIcon } from '@heroicons/react/outline'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
+import { useFormContext, DeepMap, FieldError } from 'react-hook-form'
 
 import { getFieldErrorMessage } from '@utils'
 import { DEFAULT_DEBOUNCE_DELAY } from '@constants'
@@ -49,9 +53,9 @@ export interface Props extends NativeInputProps {
     label?: string
     style?: InputStyles
     loading?: boolean
-    error?: FieldError | boolean | DeepMap<Blob | undefined, FieldError>
     inputClassName?: string
     containerClassName?: string
+    error?: boolean | string
     hideErrorIcon?: boolean
     innerComponent?: React.ElementType
     debounce?: boolean
@@ -103,6 +107,7 @@ const Input = React.forwardRef(
             id,
             as,
             size,
+            name,
             type,
             style,
             label,
@@ -121,10 +126,14 @@ const Input = React.forwardRef(
         }: Props,
         ref: FormRef
     ) => {
+        const form = useFormContext()
+        const inputError = error || (form && name && form.formState.errors[name])
+
         const sizing = INPUT_SIZES[size || 'default']
         const styling = INPUT_STYLES[style || 'transparent']
-        const focusStyle = INPUT_FOCUS_STYLES[error ? 'error' : style || 'transparent']
-        const title = getFieldErrorMessage(error)
+        const focusStyle = INPUT_FOCUS_STYLES[inputError ? 'error' : style || 'transparent']
+        const title = getFieldErrorMessage(inputError)
+
         const onChangeCallback = debounce
             ? useConstant(() =>
                   AwesomeDebouncePromise(() => onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY)
@@ -144,7 +153,7 @@ const Input = React.forwardRef(
                         htmlFor={id}
                         className={clsx(
                             'text-sm mb-xsm',
-                            error ? 'text-error-text font-bold' : 'text-text'
+                            inputError ? 'text-error-text font-bold' : 'text-text'
                         )}
                     >
                         {label}
@@ -168,6 +177,7 @@ const Input = React.forwardRef(
                     <InputComponent
                         id={id}
                         ref={ref}
+                        name={name}
                         type={type}
                         className={clsx(
                             'flex-1 h-full w-full focus:outline-none',
@@ -175,11 +185,11 @@ const Input = React.forwardRef(
                             inputClassName
                         )}
                         title={title}
-                        aria-invalid={!!error}
+                        aria-invalid={!!inputError}
                         onChange={onChangeCallback}
                         {...props}
                     />
-                    {error && !hideErrorIcon && (
+                    {inputError && !hideErrorIcon && (
                         <div className="w-auto h-full p-3 pr-0">
                             <div
                                 className={clsx(

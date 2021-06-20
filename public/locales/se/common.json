@@ -56,6 +56,9 @@
             "description": "Det verkar som om webbutvecklings-gorillorna har gjort ett misstag. Dina uppgifter överensstämmer tydligen inte med det efterfrågade formatet. Är du säker på att du skrivit in rätt uppgifter?"
         }
     },
+    "selection": {
+        "none": "Ingen"
+    },
     "action": {
         "cancel": "Avbryt",
         "back": "Tillbaka",

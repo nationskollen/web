@@ -13,7 +13,7 @@ import {
 
 import { useAuth } from '@contexts/Auth'
 import Notifications from '@notifications'
-import { DEFAULT_FORM_PROPS } from '@constants'
+import { DEFAULT_MODAL_FORM_PROPS } from '@constants'
 import { useAsyncCallback } from 'react-async-hook'
 import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
 import { useApi, useUpload, useLocations, useCategories } from '@nationskollen/sdk'
@@ -38,7 +38,7 @@ export interface FormValues {
     studentsOnly: boolean
     category?: OptionItem
     location?: OptionItem
-    image?: Blob
+    image?: FileList
 }
 
 export interface ExtraProps {
@@ -51,7 +51,7 @@ export interface ExtraProps {
 const CreateEventForm = (props: ModalOpenProps) => {
     // const api = useApi()
     // const { oid } = useAuth()
-    const form = useForm<FormValues>(DEFAULT_FORM_PROPS)
+    const form = useForm<FormValues>(DEFAULT_MODAL_FORM_PROPS)
     const [isLoading, setIsLoading] = useState(false)
 
     // const uploader = useUpload(api.events.upload)
@@ -59,6 +59,7 @@ const CreateEventForm = (props: ModalOpenProps) => {
 
     const submit = (data: FormValues) => {
         console.log(data)
+        console.log(data.image && data.image[0])
         setIsLoading(true)
 
         // Simulate a request
@@ -120,9 +121,6 @@ const InitialDetails = ({
     next,
     close,
     register,
-    setValue,
-    clearErrors,
-    formState: { errors },
 }: FormStepProps<FormValues, ExtraProps>) => {
     const { data, isValidating } = useCategories()
     const { t } = useTranslation(['admin-events', 'common'])
@@ -146,17 +144,15 @@ const InitialDetails = ({
                 <Input
                     type="text"
                     label={t('admin-events:create.field.title')}
-                    error={errors.title}
                     {...register('title', { required: t('common:validation.required') })}
                 />
                 <Select
                     label={t('admin-events:create.field.category')}
                     buttonIcon={CollectionIcon}
+                    initialSelection={0}
+                    initialOptions={[{ id: -1, value: t('common:selection.none') }]}
                     options={options}
-                    setValue={setValue}
                     loading={isValidating}
-                    error={errors.category}
-                    clearErrors={clearErrors}
                     {...register('category', {
                         required: t('common:validation.required'),
                     })}
@@ -164,7 +160,6 @@ const InitialDetails = ({
                 <Textarea
                     type="text"
                     label={t('admin-events:create.field.short_description')}
-                    error={errors.shortDescription}
                     {...register('shortDescription', {
                         required: t('common:validation.required'),
                     })}
@@ -195,7 +190,6 @@ const LongDescription = ({
     next,
     previous,
     register,
-    formState: { errors },
 }: FormStepProps<FormValues, ExtraProps>) => {
     const { t } = useTranslation(['admin-events', 'common'])
 
@@ -211,7 +205,6 @@ const LongDescription = ({
                 <Textarea
                     type="text"
                     label={t('admin-events:create.field.description')}
-                    error={errors.description}
                     {...register('description')}
                 />
             </ModalContent.Main>
@@ -240,9 +233,6 @@ const TimeAndLocation = ({
     previous,
     next,
     register,
-    setValue,
-    clearErrors,
-    formState: { errors },
 }: FormStepProps<FormValues, ExtraProps>) => {
     const { oid } = useAuth()
     const { data, isValidating } = useLocations(oid!)
@@ -268,28 +258,27 @@ const TimeAndLocation = ({
                     <Input
                         type="date"
                         label={t('admin-events:create.field.occurs_at')}
-                        error={errors.occursAt}
                         {...register('occursAt', {
                             required: t('common:validation.required'),
                         })}
                     />
+                    <Input type="time" label={t('admin-events:create.field.ends_at')} />
+                </InputGroup>
+                <InputGroup>
                     <Input
                         type="date"
                         label={t('admin-events:create.field.ends_at')}
-                        error={errors.endsAt}
                         {...register('endsAt', {
                             required: t('common:validation.required'),
                         })}
                     />
+                    <Input type="time" label={t('admin-events:create.field.ends_at')} />
                 </InputGroup>
                 <Select
                     label={t('admin-events:create.field.location')}
                     buttonIcon={LocationMarkerIcon}
                     options={locations}
-                    setValue={setValue}
                     loading={isValidating}
-                    error={errors.location}
-                    clearErrors={clearErrors}
                     {...register('location')}
                 />
             </ModalContent.Main>
@@ -317,8 +306,6 @@ const ImageSelect = ({
     totalSteps,
     previous,
     register,
-    setValue,
-    formState: { errors },
     extra,
 }: FormStepProps<FormValues, ExtraProps>) => {
     const { t } = useTranslation(['admin-events', 'common'])
@@ -335,8 +322,6 @@ const ImageSelect = ({
                 <FileUploadInput
                     label={t('admin-events:create.field.cover_image')}
                     loading={extra?.uploaderLoading}
-                    setValue={setValue}
-                    error={errors.image}
                     {...register('image')}
                 />
             </ModalContent.Main>
