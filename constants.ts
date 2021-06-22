@@ -17,12 +17,7 @@ export const AUTH = {
  * Defines the default file formats that will be accepted
  * by the {@link FileUploadInput} component.
  */
-export const DEFAULT_ACCEPT_FORMATS = [
-    'image/png',
-    'image/jpeg',
-    'image/jpg',
-    'image/gif',
-]
+export const DEFAULT_ACCEPT_FORMATS = ['image/png', 'image/jpeg', 'image/jpg', 'image/gif']
 
 /**
  * Defines the default form settings.

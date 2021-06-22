@@ -18,10 +18,7 @@ export interface FormValues {
 const LoginForm = () => {
     const { t } = useTranslation('common')
     const { result, error, loading, execute } = useLogin()
-    const {
-        register,
-        handleSubmit,
-    } = useForm<FormValues>(DEFAULT_FORM_PROPS)
+    const { register, handleSubmit } = useForm<FormValues>(DEFAULT_FORM_PROPS)
 
     const submit = async (data: FormValues) => {
         execute(data.email, data.password)
