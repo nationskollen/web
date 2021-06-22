@@ -2,6 +2,8 @@ import React from 'react'
 import { useTranslation } from 'next-i18next'
 import { PlusIcon } from '@heroicons/react/solid'
 
+import { TemplateGetter } from '@typings'
+
 import Button from '@common/Button'
 import HeaderTitle from '@common/HeaderTitle'
 import SubNavLink from '@common/SubNavLink'
@@ -12,7 +14,7 @@ export interface Props {
     children?: React.ReactNode
 }
 
-const EventPage = ({ children }: Props) => {
+const Template = ({ children }: Props) => {
     const { t } = useTranslation('admin-events')
 
     return (
@@ -39,4 +41,13 @@ const EventPage = ({ children }: Props) => {
     )
 }
 
-export default EventPage
+const getTemplate: TemplateGetter = (page: React.ReactNode) => (
+    MainLayout.getTemplate(
+        <Template>{page}</Template>
+    )
+)
+
+export default {
+    Template,
+    getTemplate,
+}

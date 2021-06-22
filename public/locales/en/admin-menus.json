@@ -1,0 +1,10 @@
+{
+    "page": {
+        "title": "Menus",
+        "description": "Manage the nations menus for food and drinks"
+    },
+    "navigation": {},
+    "create": {
+        "title": "Create new menu"
+    }
+}

@@ -3,21 +3,18 @@ import { LOCALES } from '@constants'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import MainLayout from '@layouts/admin/Main'
-import EventPage from '@layouts/admin/Events'
+import EventsLayout from '@layouts/admin/Events'
 import EventTable from '@pages/admin/events/EventTable'
 
 const UpcomingEventsPage = () => {
     const after = useRef(new Date()).current
 
     return (
-        <EventPage>
-            <EventTable id="upcoming" after={after} />
-        </EventPage>
+        <EventTable id="upcoming" after={after} />
     )
 }
 
-UpcomingEventsPage.getTemplate = MainLayout.getTemplate
+UpcomingEventsPage.getTemplate = EventsLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
