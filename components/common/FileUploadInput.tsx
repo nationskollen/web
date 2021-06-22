@@ -14,6 +14,8 @@ import { useTranslation } from 'next-i18next'
 import { useFormContext } from 'react-hook-form'
 import { TrashIcon, CloudUploadIcon } from '@heroicons/react/outline'
 
+import { DEFAULT_ACCEPT_FORMATS } from '@constants'
+
 import Button from '@common/Button'
 import LoadingIndicator from '@common/LoadingIndicator'
 import Input, { Props as InputProps } from '@common/Input'
@@ -22,6 +24,10 @@ export interface UploadPreviewProps {
     files: FileList | null
     onRemove: () => void
     loading?: boolean
+}
+
+export interface Props extends Omit<InputProps, 'accept'> {
+    accept?: Array<string>
 }
 
 const UploadPreviewEmpty = () => {
@@ -91,9 +97,10 @@ const UploadPreview = ({ files, loading, onRemove }: UploadPreviewProps) => {
 }
 
 const FileUploadInput = React.forwardRef(
-    ({ name, onChange, loading, ...props }: InputProps, ref: React.Ref<any>) => {
+    ({ name, accept, onChange, loading, ...props }: Props, ref: React.Ref<any>) => {
         const form = useFormContext()
         const [files, setFiles] = useState<FileList | null>(null)
+        const acceptedFiles = (accept || DEFAULT_ACCEPT_FORMATS).join(',')
 
         const handleRemove = () => {
             if (!files || files.length === 0) {
@@ -136,7 +143,7 @@ const FileUploadInput = React.forwardRef(
                 onChange={handleUpload}
                 hideErrorIcon={true}
                 containerClassName="relative h-64 group"
-                accept="file/png, file/jpeg, file/jpg, file/svg"
+                accept={acceptedFiles}
                 inputClassName="z-behind"
                 innerComponent={() => (
                     <UploadPreview files={files} loading={loading} onRemove={handleRemove} />
