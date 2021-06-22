@@ -5,10 +5,8 @@ import { PlusIcon } from '@heroicons/react/outline'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Button from '@common/Button'
-import SubNavLink from '@common/SubNavLink'
-import MainLayout from '@layouts/admin/Main'
 import HeaderTitle from '@common/HeaderTitle'
-import Subnavigation from '@common/Subnavigation'
+import MainLayout from '@layouts/admin/MainLayout'
 
 const Users = () => {
     const { t } = useTranslation('admin-users')

@@ -1,12 +1,10 @@
 import { LOCALES } from '@constants'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
-import { PlusIcon } from '@heroicons/react/outline'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import Button from '@common/Button'
-import MainLayout from '@layouts/admin/Main'
 import HeaderTitle from '@common/HeaderTitle'
+import MainLayout from '@layouts/admin/MainLayout'
 
 const Activity = () => {
     const { t } = useTranslation('admin-activity')

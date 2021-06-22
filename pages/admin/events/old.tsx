@@ -4,7 +4,7 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { LOCALES } from '@constants'
 
-import EventsLayout from '@layouts/admin/Events'
+import EventsLayout from '@layouts/admin/EventsLayout'
 import EventTable from '@pages/admin/events/EventTable'
 
 const OldEventsPage = () => {

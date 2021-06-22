@@ -11,7 +11,7 @@ import Logo from '@svg/Logo'
 import Card from '@common/Card'
 import Button from '@common/Button'
 import LoginForm from '@forms/LoginForm'
-import LoginLayout from '@layouts/admin/Login'
+import LoginLayout from '@layouts/admin/LoginLayout'
 
 const Login = () => {
     const { t } = useTranslation('common')

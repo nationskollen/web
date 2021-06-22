@@ -5,8 +5,8 @@ import { PlusIcon } from '@heroicons/react/outline'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Button from '@common/Button'
-import MainLayout from '@layouts/admin/Main'
 import HeaderTitle from '@common/HeaderTitle'
+import MainLayout from '@layouts/admin/MainLayout'
 
 const Locations = () => {
     const { t } = useTranslation('admin-locations')

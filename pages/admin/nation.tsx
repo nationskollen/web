@@ -7,9 +7,9 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useAuth } from '@contexts/Auth'
 
 import SubNavLink from '@common/SubNavLink'
-import MainLayout from '@layouts/admin/Main'
 import HeaderTitle from '@common/HeaderTitle'
 import Subnavigation from '@common/Subnavigation'
+import MainLayout from '@layouts/admin/MainLayout'
 
 const Nation = () => {
     const { oid } = useAuth()

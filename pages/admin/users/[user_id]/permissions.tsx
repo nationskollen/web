@@ -1,9 +1,8 @@
-import { useTranslation } from 'next-i18next'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { LOCALES } from '@constants'
-import UserLayout from '@layouts/admin/User'
+import UserLayout from '@layouts/admin/UserLayout'
 
 const UserPermissionsPage = () => {
     return (
