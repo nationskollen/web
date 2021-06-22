@@ -8,12 +8,15 @@
  * directly into each step that you provide. This means that errors, etc, can
  * be accessed directly.
  *
+ * It will also automatically insert the form element, as well as a `FormProvider`.
+ * This allows all components rendered by this componen to use the `useFormContext` hook.
+ *
  * Example usage:
  * ```typescript
  * export interface FormValues { .. }
  *
  * const MyForm = ({ open, setOpen }: ModalOpenProps) => {
- *     const form = useForm<FormValues>(DEFAULT_FORM_PROPS)
+ *     const form = useForm<FormValues>(DEFAULT_MODAL_FORM_PROPS)
  *
  *     const submit = (data: FormValues) => {
  *         console.log(data)
@@ -57,7 +60,7 @@ export interface FormStepProps<T, K> extends Omit<StepProps, 'next'>, UseFormRet
     extra?: K
 }
 
-export interface Props<T, K> extends Omit<ModalStepsProps, 'steps'> {
+export interface Props<T, K> extends Omit<ModalStepsProps<T>, 'steps'> {
     form: UseFormReturn<T>
     onSubmit: SubmitHandler<T>
     extraProps?: K
@@ -91,6 +94,7 @@ const ModalForm = <T, K>({ form, extraProps, onSubmit, steps, ...props }: Props<
             cardClassName="w-form-modal"
             cardTitleClassName="p-md"
             onSubmit={form.handleSubmit(onSubmit)}
+            form={form}
             steps={steps.map((step) => (props: StepProps) => step(stepProps(props)))}
             {...props}
         />

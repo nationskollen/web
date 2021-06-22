@@ -18,11 +18,7 @@ export interface FormValues {
 const LoginForm = () => {
     const { t } = useTranslation('common')
     const { result, error, loading, execute } = useLogin()
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-    } = useForm<FormValues>(DEFAULT_FORM_PROPS)
+    const { register, handleSubmit } = useForm<FormValues>(DEFAULT_FORM_PROPS)
 
     const submit = async (data: FormValues) => {
         execute(data.email, data.password)
@@ -88,8 +84,7 @@ const LoginForm = () => {
                         type="email"
                         label={t('auth.field.email.title')}
                         placeholder={t('auth.field.email.placeholder')}
-                        error={errors.email}
-                        {...register('email', { required: t('validation.required') as string })}
+                        {...register('email', { required: t('validation.required') })}
                     >
                         <MailIcon />
                     </Input>
@@ -97,8 +92,7 @@ const LoginForm = () => {
                         type="password"
                         label={t('auth.field.password.title')}
                         placeholder={t('auth.field.password.placeholder')}
-                        error={errors.password}
-                        {...register('password', { required: t('validation.required') as string })}
+                        {...register('password', { required: t('validation.required') })}
                     >
                         <LockClosedIcon />
                     </Input>

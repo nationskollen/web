@@ -19,7 +19,7 @@ export const ICON_SIZES: Record<IconSize, number> = {
 
 const NationIcon = ({ size, src, href, className }: Props) => {
     const sizing = size ? ICON_SIZES[size] : ICON_SIZES['default']
-    const base = 'flex bg-background dark:bg-background-highlight p-xsm rounded'
+    const base = 'flex p-xsm rounded'
     const classes = clsx(base, className)
     const content = (
         <>{src && <Image src={src} width={sizing} height={sizing} objectFit="contain" />}</>

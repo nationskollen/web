@@ -11,12 +11,12 @@ const Checkmark = ({ checked }: Props) => {
         <div
             className={clsx(
                 'w-5 h-5 p-0 rounded-sm border-2',
-                checked ? 'border-primary-text' : 'border-border-dark'
+                checked ? 'border-primary' : 'border-border-dark'
             )}
         >
             <CheckIcon
                 className={
-                    checked ? 'text-primary-text' : 'group-hover:text-text-extra text-transparent'
+                    checked ? 'text-primary' : 'group-hover:text-text-extra text-transparent'
                 }
             />
         </div>

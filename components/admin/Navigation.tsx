@@ -1,12 +1,14 @@
-import NavLink from '@common/NavLink'
 import { useTranslation } from 'next-i18next'
+
+import NavLink from '@common/NavLink'
+import Container from '@common/Container'
 
 const HeaderNavigation = () => {
     const { t } = useTranslation('admin-common')
 
     return (
-        <div className="sticky top-0 z-10 bg-primary">
-            <nav className="container py-3 mx-auto px-md" role="navigation">
+        <div className="sticky top-0 z-40 bg-primary">
+            <Container as="nav" className="py-3" role="navigation">
                 <ul className="flex flex-row space-x-sm">
                     <NavLink title={t('header.home')} href="/admin/dashboard" />
                     <NavLink title={t('header.news')} href="/admin/news" />
@@ -17,7 +19,7 @@ const HeaderNavigation = () => {
                     <NavLink title={t('header.nation')} href="/admin/nation" />
                     <NavLink title={t('header.users')} href="/admin/users" />
                 </ul>
-            </nav>
+            </Container>
         </div>
     )
 }

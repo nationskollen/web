@@ -110,6 +110,7 @@ module.exports = {
             },
             maxWidth: {
                 notifications: '25rem',
+                content: '1300px',
             },
             fontSize: {
                 xsm: '0.8rem',
