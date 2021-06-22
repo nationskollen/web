@@ -5,7 +5,7 @@ import { useAuth } from '@contexts/Auth'
 import { useNation } from '@nationskollen/sdk'
 
 import Button from '@common/Button'
-import NationIcon from '@common/NationIcon'
+import Image from '@common/Image'
 import GlobalSidebar from '@common/GlobalSidebar'
 import AdminSettingsModal from '@components/admin/AdminSettingsModal'
 
@@ -26,7 +26,12 @@ const AdminSidebar = () => {
     return (
         <GlobalSidebar>
             <AdminSettingsModal open={settingsOpen} setOpen={setSettingsOpen} />
-            <NationIcon src={data?.icon_img_src} href="/admin/dashboard" />
+            <Image
+                src={data?.icon_img_src}
+                size="fill"
+                className="h-12"
+                backgroundClassName="bg-transparent"
+            />
             <div className="space-y-sm">
                 <Button style="primary" onClick={() => setSettingsOpen(!settingsOpen)}>
                     <CogIcon />

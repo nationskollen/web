@@ -2,7 +2,7 @@ import React from 'react'
 import { useTranslation } from 'next-i18next'
 import { UserIcon } from '@heroicons/react/outline'
 
-import Avatar from '@common/Avatar'
+import Image from '@common/Image'
 import SubNavLink from '@common/SubNavLink'
 import MainLayout from '@layouts/admin/Main'
 import HeaderTitle from '@common/HeaderTitle'
@@ -19,7 +19,7 @@ const SingleUserPage = ({ children }: Props) => {
         <MainLayout.Wrapper>
             <MainLayout.Header>
                 <div className="flex flex-row space-x-lg">
-                    <Avatar src={null} size="large" fallbackIcon={UserIcon} />
+                    <Image src={null} size="large" fallbackIcon={UserIcon} />
                     <HeaderTitle title="Fredrik Engstrand" description={t('me.description')} />
                 </div>
             </MainLayout.Header>

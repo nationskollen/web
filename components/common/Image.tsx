@@ -2,9 +2,9 @@ import clsx from 'clsx'
 import React from 'react'
 import Image from 'next/image'
 
-export type AvatarSizes = 'small' | 'default' | 'large'
+export type ImageSizes = 'small' | 'default' | 'large' | 'fill'
 
-export interface AvatarSizingInformation {
+export interface ImageSizingData {
     container: string
     fallback: string
     spacing: string
@@ -12,14 +12,21 @@ export interface AvatarSizingInformation {
 
 export interface Props {
     src?: string | null
-    size?: AvatarSizes
+    size?: ImageSizes
+    href?: string
+    backgroundClassName?: string
     className?: string
     padding?: boolean
     fallbackIcon?: React.ElementType
     children?: React.ReactNode
 }
 
-const AVATAR_SIZES: Record<AvatarSizes, AvatarSizingInformation> = {
+const IMAGE_SIZES: Record<ImageSizes, ImageSizingData> = {
+    fill: {
+        container: 'w-full',
+        fallback: '',
+        spacing: '',
+    },
     small: {
         container: 'w-12 h-12',
         fallback: 'p-sm',
@@ -37,13 +44,22 @@ const AVATAR_SIZES: Record<AvatarSizes, AvatarSizingInformation> = {
     },
 }
 
-const Avatar = ({ src, size, padding, className, fallbackIcon: FallbackIcon, children }: Props) => {
-    const sizing = AVATAR_SIZES[size || 'default']
+const CustomImage = ({
+    src,
+    size,
+    padding,
+    backgroundClassName,
+    className,
+    fallbackIcon: FallbackIcon,
+    children,
+}: Props) => {
+    const sizing = IMAGE_SIZES[size || 'default']
 
     return (
         <div
             className={clsx(
-                'rounded bg-background-highlight dark:bg-background-extra',
+                'rounded',
+                backgroundClassName || 'bg-background-highlight dark:bg-background-extra',
                 sizing.container,
                 padding && sizing.spacing,
                 className
@@ -63,4 +79,4 @@ const Avatar = ({ src, size, padding, className, fallbackIcon: FallbackIcon, chi
     )
 }
 
-export default Avatar
+export default CustomImage
