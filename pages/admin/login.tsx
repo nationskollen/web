@@ -35,7 +35,7 @@ const Login = () => {
                 </Link>
             </div>
             <Card containerClassName="space-y-lg">
-                <Logo containerClassNames="self-center text-primary filter dark:brightness-200" />
+                <Logo className="self-center text-primary filter dark:brightness-200" />
                 <LoginForm />
             </Card>
             <section className="absolute bottom-0 flex flex-col items-center w-full text-text">

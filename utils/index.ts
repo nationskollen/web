@@ -18,14 +18,20 @@ export function isClient() {
  * ```
  */
 export function getUrlHash(url: string) {
-    const anchor = url.split('#')[1]
+    const splitURL = url.split('#')
+    const anchor = splitURL[1]
 
     if (!anchor) {
-        return null
+        return {
+            path: url,
+            hash: null
+        }
     }
 
-    // Prepend '#'
-    return `#${anchor}`
+    return {
+        path: splitURL[0],
+        hash: `#${anchor}`,
+    }
 }
 
 /**

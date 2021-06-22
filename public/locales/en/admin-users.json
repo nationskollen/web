@@ -1,0 +1,16 @@
+{
+    "page": {
+        "title": "Users",
+        "description": "Manage users and permissions"
+    },
+    "me": {
+        "description": "My profile"
+    },
+    "navigation": {
+        "information": "Information",
+        "permissions": "Permissions"
+    },
+    "create": {
+        "title": "Create new user"
+    }
+}

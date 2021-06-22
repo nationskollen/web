@@ -1,0 +1,10 @@
+{
+    "page": {
+        "description": "Hantera nationens information"
+    },
+    "navigation": {
+        "general": "Allmänt",
+        "contact": "Kontakt",
+        "individuals": "Personer"
+    }
+}

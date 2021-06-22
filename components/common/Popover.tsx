@@ -4,9 +4,8 @@ import { usePopper } from 'react-popper'
 import { Popover, Transition } from '@headlessui/react'
 
 import Card from '@common/Card'
-import Button, { Props as ButtonProps } from '@common/Button'
 
-export interface Props extends ButtonProps {
+export interface Props {
     button: (open: boolean) => React.ReactElement
     cardClassName?: string
     children?: React.ReactNode
@@ -23,12 +22,12 @@ const CustomPopover = ({ cardClassName, button, children, ...props }: Props) => 
         <Popover className="relative">
             {({ open }) => (
                 <>
-                    <Popover.Button ref={setReferenceElement} as={Button} {...props}>
+                    <Popover.Button as="div" ref={setReferenceElement} {...props}>
                         {button(open)}
                     </Popover.Button>
                     <div
                         ref={setPopperElement}
-                        className="absolute right-0 z-20 top-12"
+                        className="absolute right-0 z-20 top-9"
                         {...attributes.popper}
                     >
                         <Transition
@@ -44,15 +43,15 @@ const CustomPopover = ({ cardClassName, button, children, ...props }: Props) => 
                                 <Card
                                     containerClassName="relative"
                                     className={clsx(
-                                        'shadow-2xl dark:bg-background-highlight',
+                                        'shadow-xl dark:bg-background-extra',
                                         cardClassName
                                     )}
                                 >
                                     <div
                                         className={clsx(
-                                            'absolute w-4 h-4 transform rotate-45 right-md',
-                                            '-top-2 z-behind border-t-1 border-l-1 border-card bg-background',
-                                            'dark:bg-background-highlight dark:border-border-dark'
+                                            'absolute w-2 h-2 transform rotate-45 right-4',
+                                            '-top-1 z-behind border-t-1 border-l-1 border-card bg-background',
+                                            'dark:bg-background-extra dark:border-border-dark'
                                         )}
                                     />
                                     <>{children}</>

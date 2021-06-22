@@ -1,4 +1,7 @@
 {
+    "profile": {
+        "show": "Show my profile"
+    },
     "header": {
         "home": "Home",
         "news": "News",

@@ -1,15 +1,28 @@
-import { LOCALES } from '@constants'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import Card from '@common/Card'
+import { LOCALES } from '@constants'
+
+import HeaderTitle from '@common/HeaderTitle'
+import SubNavLink from '@common/SubNavLink'
 import MainLayout from '@layouts/admin/Main'
+import Subnavigation from '@common/Subnavigation'
 
 const Dashboard = () => {
     return (
-        <Card>
-            <p>Dashboard</p>
-        </Card>
+        <MainLayout.Wrapper>
+            <MainLayout.Header>
+                <HeaderTitle title="Dashboard" />
+            </MainLayout.Header>
+            <Subnavigation>
+                <SubNavLink title="Sida 1" href="/admin/dashboard" />
+                <SubNavLink title="Sida 2" href="/admin/dashboard/1" />
+                <SubNavLink title="Sida 3" href="/admin/dashboard/2" />
+            </Subnavigation>
+            <MainLayout.Content>
+                <p>asda</p>
+            </MainLayout.Content>
+        </MainLayout.Wrapper>
     )
 }
 

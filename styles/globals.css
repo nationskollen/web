@@ -21,7 +21,7 @@ html {
     --color-secondary-highlight: #303148;
     --color-secondary-highlight-text: #aaafff;
     --color-background: white;
-    --color-background-extra: #f1f1f1;
+    --color-background-extra: #f7f7f7;
     --color-background-highlight: #e2e2e2;
     --color-card: var(--color-background);
     --color-border: #f1f1f1;
@@ -44,6 +44,8 @@ html.dark {
     --color-focus-default: #393648;
     --color-focus-input: #55516a;
     --color-focus-secondary: #7e80a4;
+    --color-primary: #8e003a;
+    --color-primary-extra: #a40645;
     --color-primary-text: #ffa0c6;
     --color-secondary: #363853;
     --color-secondary-extra: #404366;

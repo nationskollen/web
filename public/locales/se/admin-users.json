@@ -1,0 +1,16 @@
+{
+    "page": {
+        "title": "Användare",
+        "description": "Hantera användare och rättigheter"
+    },
+    "me": {
+        "description": "Min profil"
+    },
+    "navigation": {
+        "information": "Information",
+        "permissions": "Rättigheter"
+    },
+    "create": {
+        "title": "Skapa ny användare"
+    }
+}

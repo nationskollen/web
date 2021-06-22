@@ -1,4 +1,8 @@
 {
+    "page": {
+        "title": "Events",
+        "description": "Overview of the nations events"
+    },
     "upcoming": {
         "title": "Upcoming events",
         "description": "Overview of the nations upcoming events",

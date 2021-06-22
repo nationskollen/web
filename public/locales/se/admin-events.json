@@ -1,4 +1,8 @@
 {
+    "page": {
+        "title": "Evenemang",
+        "description": "Översikt av nationens evenemang"
+    },
     "upcoming": {
         "title": "Kommande evenemang",
         "description": "Översikt av nationens kommande evenemang",

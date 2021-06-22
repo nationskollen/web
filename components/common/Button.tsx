@@ -64,11 +64,7 @@ export interface Props {
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    'primary': clsx(
-        'bg-primary text-white',
-        'dark:filter dark:brightness-125',
-        'focus:ring-focus-primary hover:bg-primary-extra'
-    ),
+    'primary': clsx('bg-primary text-white', 'focus:ring-focus-primary hover:bg-primary-extra'),
     'primary-extra': clsx('bg-primary-extra text-white', 'focus:ring-focus-primary'),
     'secondary': clsx(
         'bg-secondary text-white',
