@@ -13,9 +13,7 @@ const Activity = () => {
     )
 }
 
-Activity.getTemplate = (page: React.ReactElement) => (
-    <MainLayout.Template>{page}</MainLayout.Template>
-)
+Activity.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

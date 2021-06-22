@@ -13,7 +13,7 @@ const Menus = () => {
     )
 }
 
-Menus.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+Menus.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

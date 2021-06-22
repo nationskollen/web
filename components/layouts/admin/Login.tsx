@@ -23,6 +23,11 @@ const Template = ({ children }: Props) => {
     )
 }
 
+const getTemplate = (page: React.ReactNode) => (
+    <Template>{page}</Template>
+)
+
 export default {
     Template,
+    getTemplate,
 }

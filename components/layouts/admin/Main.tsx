@@ -10,7 +10,7 @@ export interface Props {
     children: React.ReactNode
 }
 
-export const Template = ({ children }: Props) => {
+const Template = ({ children }: Props) => {
     return (
         <ProtectedRoute>
             <AdminSidebar />
@@ -27,11 +27,11 @@ export const Template = ({ children }: Props) => {
     )
 }
 
-export const Wrapper = ({ children }: Props) => {
+const Wrapper = ({ children }: Props) => {
     return <>{children}</>
 }
 
-export const Header = ({ children }: Props) => {
+const Header = ({ children }: Props) => {
     return (
         <Container as="header" className="relative h-header py-sm flex flex-col justify-center">
             {children}
@@ -39,7 +39,7 @@ export const Header = ({ children }: Props) => {
     )
 }
 
-export const Content = ({ children }: Props) => {
+const Content = ({ children }: Props) => {
     return (
         <div className="bg-background dark:bg-background-extra flex-1">
             <Container as="main" className="flex flex-col flex-1 py-sm py-xlg">
@@ -49,7 +49,7 @@ export const Content = ({ children }: Props) => {
     )
 }
 
-export const Sidebar = ({ children }: Props) => {
+const Sidebar = ({ children }: Props) => {
     return (
         <aside className="sticky z-30 top-admin-header mr-lg w-sidebar-navigation space-y-md">
             {children}
@@ -57,10 +57,15 @@ export const Sidebar = ({ children }: Props) => {
     )
 }
 
+const getTemplate = (page: React.ReactNode) => (
+    <Template>{page}</Template>
+)
+
 export default {
     Template,
     Wrapper,
     Header,
     Content,
     Sidebar,
+    getTemplate,
 }

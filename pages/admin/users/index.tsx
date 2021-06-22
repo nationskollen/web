@@ -35,7 +35,7 @@ const Users = () => {
     )
 }
 
-Users.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+Users.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

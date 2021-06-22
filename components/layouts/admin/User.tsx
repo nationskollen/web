@@ -2,6 +2,8 @@ import React from 'react'
 import { useTranslation } from 'next-i18next'
 import { UserIcon } from '@heroicons/react/outline'
 
+import { TemplateGetter } from '@typings'
+
 import Image from '@common/Image'
 import SubNavLink from '@common/SubNavLink'
 import MainLayout from '@layouts/admin/Main'
@@ -12,7 +14,7 @@ export interface Props {
     children: React.ReactNode
 }
 
-const SingleUserPage = ({ children }: Props) => {
+const Template = ({ children }: Props) => {
     const { t } = useTranslation('admin-users')
 
     return (
@@ -34,4 +36,13 @@ const SingleUserPage = ({ children }: Props) => {
     )
 }
 
-export default SingleUserPage
+const getTemplate: TemplateGetter = (page) => (
+    MainLayout.getTemplate(
+        <Template>{page}</Template>
+    )
+)
+
+export default {
+    Template,
+    getTemplate,
+}

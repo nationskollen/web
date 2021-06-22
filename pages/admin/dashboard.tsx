@@ -14,10 +14,10 @@ const Dashboard = () => {
             <MainLayout.Header>
                 <HeaderTitle title="Dashboard" />
             </MainLayout.Header>
-            <Subnavigation>
-                <SubNavLink title="Sida 1" href="/admin/dashboard" />
-                <SubNavLink title="Sida 2" href="/admin/dashboard/1" />
-                <SubNavLink title="Sida 3" href="/admin/dashboard/2" />
+            <Subnavigation basePath="/admin/dashboard">
+                <SubNavLink title="Sida 1" href="/" />
+                <SubNavLink title="Sida 2" href="/page2" />
+                <SubNavLink title="Sida 3" href="/page3" />
             </Subnavigation>
             <MainLayout.Content>
                 <p>asda</p>
@@ -26,9 +26,7 @@ const Dashboard = () => {
     )
 }
 
-Dashboard.getTemplate = (page: React.ReactElement) => (
-    <MainLayout.Template>{page}</MainLayout.Template>
-)
+Dashboard.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

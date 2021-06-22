@@ -13,9 +13,7 @@ const Locations = () => {
     )
 }
 
-Locations.getTemplate = (page: React.ReactElement) => (
-    <MainLayout.Template>{page}</MainLayout.Template>
-)
+Locations.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

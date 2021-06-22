@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CogIcon, LogoutIcon } from '@heroicons/react/outline'
+import { LibraryIcon, CogIcon, LogoutIcon } from '@heroicons/react/outline'
 
 import { useAuth } from '@contexts/Auth'
 import { useNation } from '@nationskollen/sdk'
@@ -30,7 +30,9 @@ const AdminSidebar = () => {
                 src={data?.icon_img_src}
                 size="fill"
                 className="h-12"
+                fallbackClassName="p-sm"
                 backgroundClassName="bg-transparent"
+                fallbackIcon={LibraryIcon}
             />
             <div className="space-y-sm">
                 <Button style="primary" onClick={() => setSettingsOpen(!settingsOpen)}>

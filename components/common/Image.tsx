@@ -14,8 +14,9 @@ export interface Props {
     src?: string | null
     size?: ImageSizes
     href?: string
-    backgroundClassName?: string
     className?: string
+    fallbackClassName?: string
+    backgroundClassName?: string
     padding?: boolean
     fallbackIcon?: React.ElementType
     children?: React.ReactNode
@@ -48,8 +49,9 @@ const CustomImage = ({
     src,
     size,
     padding,
-    backgroundClassName,
     className,
+    fallbackClassName,
+    backgroundClassName,
     fallbackIcon: FallbackIcon,
     children,
 }: Props) => {
@@ -70,7 +72,7 @@ const CustomImage = ({
                     <Image src={src} layout="fill" objectFit="contain" />
                 </div>
             ) : (
-                <div className={clsx('opacity-50', sizing.fallback)}>
+                <div className={clsx('opacity-50', sizing.fallback, fallbackClassName)}>
                     {FallbackIcon && <FallbackIcon />}
                 </div>
             )}

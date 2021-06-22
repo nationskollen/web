@@ -1,21 +1,17 @@
-import { LOCALES } from '@constants'
-import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import MainLayout from '@layouts/admin/Main'
-import SingleUserPage from '@pages/admin/users/SingleUserPage'
+import { LOCALES } from '@constants'
+import UserLayout from '@layouts/admin/User'
 
 const UserPermissionsPage = () => {
     return (
-        <SingleUserPage>
-            <p>Permissions</p>
-        </SingleUserPage>
+        <p>Permissions</p>
     )
 }
 
-UserPermissionsPage.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+UserPermissionsPage.getTemplate = UserLayout.getTemplate
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {

@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import MainLayout from '@layouts/admin/Main'
-import EventPage from '@pages/admin/events/EventPage'
+import EventPage from '@layouts/admin/Events'
 import EventTable from '@pages/admin/events/EventTable'
 
 const UpcomingEventsPage = () => {
@@ -17,6 +17,8 @@ const UpcomingEventsPage = () => {
     )
 }
 
+UpcomingEventsPage.getTemplate = MainLayout.getTemplate
+
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
@@ -27,9 +29,5 @@ export const getStaticProps: GetStaticProps = async (context) => {
         },
     }
 }
-
-UpcomingEventsPage.getTemplate = (page: React.ReactElement) => (
-    <MainLayout.Template>{page}</MainLayout.Template>
-)
 
 export default UpcomingEventsPage

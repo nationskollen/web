@@ -1,23 +1,20 @@
-import { LOCALES } from '@constants'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import MainLayout from '@layouts/admin/Main'
-import SingleUserPage from '@pages/admin/users/SingleUserPage'
+import { LOCALES } from '@constants'
+import UserLayout from '@layouts/admin/User'
 
 const UserPage = () => {
     const { query } = useRouter()
 
     return (
-        <SingleUserPage>
-            <p>User id: {query.user_id}</p>
-        </SingleUserPage>
+        <p>User id: {query.user_id}</p>
     )
 }
 
-UserPage.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+UserPage.getTemplate = UserLayout.getTemplate
 
 export const getStaticPaths: GetStaticPaths = async () => {
     return {

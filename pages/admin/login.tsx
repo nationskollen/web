@@ -55,9 +55,7 @@ const Login = () => {
     )
 }
 
-Login.getTemplate = (page: React.ReactElement) => (
-    <LoginLayout.Template>{page}</LoginLayout.Template>
-)
+Login.getTemplate = LoginLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

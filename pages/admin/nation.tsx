@@ -2,7 +2,6 @@ import { LOCALES } from '@constants'
 import { GetStaticProps } from 'next'
 import { useTranslation } from 'next-i18next'
 import { useNation } from '@nationskollen/sdk'
-import { LibraryIcon } from '@heroicons/react/outline'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import { useAuth } from '@contexts/Auth'
@@ -36,7 +35,7 @@ const Nation = () => {
     )
 }
 
-Nation.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+Nation.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

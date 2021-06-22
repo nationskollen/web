@@ -13,7 +13,7 @@ const News = () => {
     )
 }
 
-News.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+News.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
