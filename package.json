@@ -8,7 +8,9 @@
     "start": "next start",
     "format": "npx prettier --write .",
     "docs": "npx typedoc --categorizeByGroup true components/** pages/**",
-    "docs:watch": "npx typedoc --categorizeByGroup true components/** pages/** --watch"
+    "docs:watch": "npx typedoc --categorizeByGroup true components/** pages/** --watch",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "@headlessui/react": "^1.2.0",
@@ -30,9 +32,18 @@
     "use-constant": "^1.1.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@storybook/addon-actions": "^6.3.0",
+    "@storybook/addon-controls": "^6.3.0",
+    "@storybook/addon-docs": "^6.3.0",
+    "@storybook/addon-essentials": "^6.3.0",
+    "@storybook/addon-links": "^6.3.0",
+    "@storybook/addon-viewport": "^6.3.0",
+    "@storybook/react": "^6.3.0",
     "@types/react": "17.0.9",
     "@types/react-table": "^7.7.1",
     "autoprefixer": "^10.2.6",
+    "babel-loader": "^8.2.2",
     "postcss": "^8.3.0",
     "prettier": "^2.3.0",
     "tailwindcss": "^2.1.4",
