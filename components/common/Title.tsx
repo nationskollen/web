@@ -23,8 +23,8 @@ const Title = ({ text, size, className, ...props }: Props) => {
         return null
     }
 
-    const sizing = size ? TITLE_SIZES[size] : TITLE_SIZES['default']
-    const classes = clsx(sizing, className)
+    const sizing = TITLE_SIZES[size || 'default']
+    const classes = clsx('text-text-highlight', sizing, className)
 
     if (!size || size === 'default') {
         return (

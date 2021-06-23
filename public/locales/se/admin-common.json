@@ -1,4 +1,7 @@
 {
+    "profile": {
+        "show": "Visa min profil"
+    },
     "header": {
         "home": "Hem",
         "news": "Nyheter",

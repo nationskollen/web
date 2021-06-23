@@ -1,21 +1,32 @@
-import { LOCALES } from '@constants'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import Card from '@common/Card'
-import MainLayout from '@layouts/admin/Main'
+import { LOCALES } from '@constants'
+
+import SubNavLink from '@common/SubNavLink'
+import HeaderTitle from '@common/HeaderTitle'
+import Subnavigation from '@common/Subnavigation'
+import MainLayout from '@layouts/admin/MainLayout'
 
 const Dashboard = () => {
     return (
-        <Card>
-            <p>Dashboard</p>
-        </Card>
+        <MainLayout.Wrapper>
+            <MainLayout.Header>
+                <HeaderTitle title="Dashboard" />
+            </MainLayout.Header>
+            <Subnavigation basePath="/admin/dashboard">
+                <SubNavLink title="Sida 1" href="/" />
+                <SubNavLink title="Sida 2" href="/page2" />
+                <SubNavLink title="Sida 3" href="/page3" />
+            </Subnavigation>
+            <MainLayout.Content>
+                <p>asda</p>
+            </MainLayout.Content>
+        </MainLayout.Wrapper>
     )
 }
 
-Dashboard.getTemplate = (page: React.ReactElement) => (
-    <MainLayout.Template>{page}</MainLayout.Template>
-)
+Dashboard.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

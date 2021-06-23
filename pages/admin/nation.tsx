@@ -1,25 +1,48 @@
 import { LOCALES } from '@constants'
 import { GetStaticProps } from 'next'
+import { useTranslation } from 'next-i18next'
+import { useNation } from '@nationskollen/sdk'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import Card from '@common/Card'
-import MainLayout from '@layouts/admin/Main'
+import { useAuth } from '@contexts/Auth'
+
+import SubNavLink from '@common/SubNavLink'
+import HeaderTitle from '@common/HeaderTitle'
+import Subnavigation from '@common/Subnavigation'
+import MainLayout from '@layouts/admin/MainLayout'
 
 const Nation = () => {
+    const { oid } = useAuth()
+    const { data } = useNation(oid)
+    const { t } = useTranslation('admin-nation')
+
     return (
-        <Card>
-            <p>Nation</p>
-        </Card>
+        <MainLayout.Wrapper>
+            <MainLayout.Header>
+                <div className="flex flex-row space-x-lg">
+                    <HeaderTitle title={data?.name} description={t('page.description')} />
+                </div>
+            </MainLayout.Header>
+            <Subnavigation basePath="/admin/nation">
+                <SubNavLink title={t('navigation.general')} href="/" />
+                <SubNavLink title={t('navigation.contact')} href="/contact" />
+                <SubNavLink title={t('navigation.individuals')} href="/individuals" />
+            </Subnavigation>
+            <MainLayout.Content>
+                <p>asd</p>
+            </MainLayout.Content>
+        </MainLayout.Wrapper>
     )
 }
 
-Nation.getTemplate = (page: React.ReactElement) => <MainLayout.Template>{page}</MainLayout.Template>
+Nation.getTemplate = MainLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
         props: {
             ...(await serverSideTranslations(context.locale!, [
                 ...LOCALES.ADMIN.DEFAULT_NAMESPACES,
+                'admin-nation',
             ])),
         },
     }

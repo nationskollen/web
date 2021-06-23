@@ -1,0 +1,10 @@
+{
+    "page": {
+        "title": "Platser",
+        "description": "Hantera nationens platser"
+    },
+    "navigation": {},
+    "create": {
+        "title": "Skapa ny plats"
+    }
+}

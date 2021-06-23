@@ -20,7 +20,7 @@ const SidebarNavigationLink = ({ section }: Props) => {
         'text-primary bg-primary-highlight dark:bg-background-highlight dark:text-text-highlight'
 
     return (
-        <Link href={active ? router.pathname : section.href}>
+        <Link href={active ? router.asPath : section.href}>
             <li className="mb-sm last:mb-0">
                 <a
                     href={section.href}

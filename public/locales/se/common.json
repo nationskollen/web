@@ -65,5 +65,8 @@
         "create": "Skapa",
         "delete": "Ta bort",
         "back_to_homepage": "Tillbaka till startsidan"
+    },
+    "settings": {
+        "title": "Inställningar"
     }
 }

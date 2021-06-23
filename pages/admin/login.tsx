@@ -11,7 +11,7 @@ import Logo from '@svg/Logo'
 import Card from '@common/Card'
 import Button from '@common/Button'
 import LoginForm from '@forms/LoginForm'
-import LoginLayout from '@layouts/admin/Login'
+import LoginLayout from '@layouts/admin/LoginLayout'
 
 const Login = () => {
     const { t } = useTranslation('common')
@@ -35,7 +35,7 @@ const Login = () => {
                 </Link>
             </div>
             <Card containerClassName="space-y-lg">
-                <Logo containerClassNames="self-center text-primary filter dark:brightness-200" />
+                <Logo className="self-center text-primary filter dark:brightness-200" />
                 <LoginForm />
             </Card>
             <section className="absolute bottom-0 flex flex-col items-center w-full text-text">
@@ -55,9 +55,7 @@ const Login = () => {
     )
 }
 
-Login.getTemplate = (page: React.ReactElement) => (
-    <LoginLayout.Template>{page}</LoginLayout.Template>
-)
+Login.getTemplate = LoginLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {

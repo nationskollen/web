@@ -1,0 +1,10 @@
+{
+    "page": {
+        "title": "Menyer",
+        "description": "Hantera nations menyer för mat och dryck"
+    },
+    "navigation": {},
+    "create": {
+        "title": "Skapa ny meny"
+    }
+}

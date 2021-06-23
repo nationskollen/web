@@ -214,7 +214,7 @@ const Table = <T,>({
         <>
             <div
                 className={clsx(
-                    'relative w-full overflow-hidden border-b-0',
+                    'relative w-full border-b-0',
                     'rounded-sm mt-md border-1 border-background-highlight',
                     rows.length === 0 || loading ? 'min-h-table-empty' : 'min-h-table'
                 )}

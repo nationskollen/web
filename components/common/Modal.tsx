@@ -48,7 +48,7 @@ const Modal = ({
     }
 
     useEffect(() => {
-        if (href && getUrlHash(router.asPath) === href) {
+        if (href && getUrlHash(router.asPath).hash === href) {
             setOpen(true)
         }
     }, [href])
@@ -58,12 +58,12 @@ const Modal = ({
             return
         }
 
-        const currentHash = getUrlHash(router.asPath)
+        const { path, hash } = getUrlHash(router.asPath)
 
-        if (open === true && currentHash !== href) {
+        if (open === true && hash !== href) {
             router.replace(href)
-        } else if (open === false && currentHash === href) {
-            router.replace(router.pathname)
+        } else if (open === false && hash === href) {
+            router.replace(path)
         }
     }, [open, href])
 

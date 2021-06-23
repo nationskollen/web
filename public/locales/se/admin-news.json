@@ -1,0 +1,10 @@
+{
+    "page": {
+        "title": "Nyheter",
+        "description": "Hantera och publicera nyheter och meddelanden"
+    },
+    "navigation": {},
+    "create": {
+        "title": "Skapa nytt inlägg"
+    }
+}

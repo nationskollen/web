@@ -65,5 +65,8 @@
         "create": "Create",
         "delete": "Delete",
         "back_to_homepage": "Back to homepage"
+    },
+    "settings": {
+        "title": "Settings"
     }
 }

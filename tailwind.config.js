@@ -1,6 +1,6 @@
 module.exports = {
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-    darkMode: 'class', // false or 'media' or 'class'
+    darkMode: 'class',
     theme: {
         colors: {
             'white': 'white',
@@ -55,6 +55,7 @@ module.exports = {
             1: '1px',
             DEFAULT: '1px',
             2: '2px',
+            4: '4px',
         },
         fontFamily: {
             sans: ['Nunito Sans', 'sans-serif'],
@@ -75,15 +76,14 @@ module.exports = {
                 '1/5': '20vh',
                 'modal-offset': '15vh',
                 'dialog-offset': '30vh',
+                'sidebar-offset': '4rem',
                 'table-row': 'var(--table-row-height)',
             },
             height: {
                 'table-row': 'var(--table-row-height)',
-                'admin-header': '16rem',
-                'admin-header-fixed': '3.5rem',
-                'admin-header-content': '10rem',
             },
             minHeight: {
+                'header': '8rem',
                 'dialog': '12rem',
                 'textarea': '8rem',
                 'notifications': '8rem',
@@ -100,9 +100,10 @@ module.exports = {
                 'login-modal': '22rem',
                 'form-modal': '30rem',
                 'dialog': '30rem',
-                'user-popover': '22rem',
+                'user-popover': '20rem',
                 'menu-popover': '10rem',
                 'pagination-counter': '3rem',
+                'sidebar': '4rem',
             },
             minWidth: {
                 'modal': '25rem',
@@ -110,15 +111,11 @@ module.exports = {
             },
             maxWidth: {
                 notifications: '25rem',
-                content: '1300px',
+                content: '1200px',
             },
             fontSize: {
                 xsm: '0.8rem',
                 md: '0.95rem',
-            },
-            inset: {
-                'admin-header': '4.5rem',
-                '-admin-header': '-4.5rem',
             },
             transitionDuration: {
                 in: '75ms',

@@ -1,0 +1,10 @@
+{
+    "page": {
+        "title": "Locations",
+        "description": "Manage the nations locations"
+    },
+    "navigation": {},
+    "create": {
+        "title": "Create new location"
+    }
+}

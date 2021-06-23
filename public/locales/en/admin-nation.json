@@ -1,0 +1,10 @@
+{
+    "page": {
+        "description": "Manage the student nations information"
+    },
+    "navigation": {
+        "general": "General",
+        "contact": "Contact",
+        "individuals": "Individuals"
+    }
+}

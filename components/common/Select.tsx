@@ -52,16 +52,18 @@ import SelectOption from '@common/SelectOption'
 import LoadingIndicator from '@common/LoadingIndicator'
 
 export type NativeSelectProps = Omit<React.SelectHTMLAttributes<HTMLUListElement>, 'size' | 'style'>
+export type OptionItemIdType = number | string
 
 export interface OptionItem {
-    id: number
+    id: OptionItemIdType
     value: string
     disabled?: boolean
+    icon?: React.ElementType
 }
 
 export interface Props extends Omit<NativeSelectProps, 'onSelect'> {
     label: string
-    initialSelection?: number
+    initialSelection?: OptionItemIdType
     initialOptions?: Array<OptionItem>
     options: Array<OptionItem>
     loading?: boolean
@@ -79,7 +81,7 @@ const Select = React.forwardRef(
             loading,
             initialSelection,
             initialOptions,
-            buttonIcon: ButtonIcon,
+            buttonIcon,
             buttonIconClassName,
             name,
             onSelect,
@@ -88,7 +90,6 @@ const Select = React.forwardRef(
         ref: React.Ref<any>
     ) => {
         const form = useFormContext()
-        const [selected, setSelected] = useState(initialSelection)
         const concatinatedOptions = useMemo(() => {
             if (!initialOptions) {
                 return options
@@ -96,6 +97,12 @@ const Select = React.forwardRef(
 
             return initialOptions.concat(options)
         }, [options, initialOptions])
+
+        const [selected, setSelected] = useState(
+            initialSelection
+                ? concatinatedOptions.findIndex((item) => item.id === initialSelection)
+                : undefined
+        )
 
         // Make sure to set the initial value in the form
         // even if the user does not modify the selected value.
@@ -146,6 +153,15 @@ const Select = React.forwardRef(
             concatinatedOptions.length > 0 &&
             selected !== undefined &&
             concatinatedOptions[selected].value
+
+        let ButtonIcon: React.ElementType | undefined = undefined
+        const selectedIcon = selected !== undefined && concatinatedOptions[selected].icon
+
+        if (selectedIcon) {
+            ButtonIcon = selectedIcon
+        } else if (buttonIcon) {
+            ButtonIcon = buttonIcon
+        }
 
         return (
             <div className="relative">

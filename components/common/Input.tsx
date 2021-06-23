@@ -27,9 +27,9 @@
 import clsx from 'clsx'
 import React from 'react'
 import useConstant from 'use-constant'
+import { useFormContext } from 'react-hook-form'
 import { ExclamationIcon } from '@heroicons/react/outline'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
-import { useFormContext, DeepMap, FieldError } from 'react-hook-form'
 
 import { getFieldErrorMessage } from '@utils'
 import { DEFAULT_DEBOUNCE_DELAY } from '@constants'
@@ -134,11 +134,12 @@ const Input = React.forwardRef(
         const focusStyle = INPUT_FOCUS_STYLES[inputError ? 'error' : style || 'transparent']
         const title = getFieldErrorMessage(inputError)
 
-        const onChangeCallback = debounce
-            ? useConstant(() =>
-                  AwesomeDebouncePromise(() => onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY)
-              )
-            : onChange
+        const onChangeCallback =
+            onChange && debounce
+                ? useConstant(() =>
+                      AwesomeDebouncePromise(onChange, debounceDelay || DEFAULT_DEBOUNCE_DELAY)
+                  )
+                : onChange
 
         // It is important that we define `NativeInput` as a separate component.
         // If not, React will not be able to efficiently render it. Some bugs will

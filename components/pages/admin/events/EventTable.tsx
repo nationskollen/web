@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
 import { getShorterDate } from '@utils'
@@ -8,9 +8,14 @@ import { SearchIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
 
 import Input from '@common/Input'
 import MenuItem from '@common/MenuItem'
-import CardTitle from '@common/CardTitle'
-import AdminSection from '@components/admin/AdminSection'
 import Table, { ActionsRendererProps } from '@common/Table'
+
+export interface Props {
+    id: string
+    after?: Date
+    before?: Date
+    amount?: number
+}
 
 export interface TableItem {
     name: string
@@ -27,30 +32,32 @@ const ActionItems = ({ row }: ActionsRendererProps<TableItem>) => {
     )
 }
 
-const UpcomingEvents = () => {
+const EventTable = ({ id, before, after, amount = 15 }: Props) => {
     const { oid } = useAuth()
-    const { t } = useTranslation(['admin-events', 'common'])
     const [page, setPage] = useState(1)
-    const after = useRef(new Date()).current
     const [filterString, setFilterString] = useState('')
-    const { data, error, isValidating, pagination } = useEvents(oid, { page, after })
+    const { t } = useTranslation(['admin-events', 'common'])
+    const { data, error, isValidating, pagination } = useEvents(oid, {
+        page,
+        amount,
+        before,
+        after,
+    })
 
     return (
-        <AdminSection id="upcoming">
-            <CardTitle
-                title={t('admin-events:upcoming.title')}
-                description={t('admin-events:upcoming.description')}
-            >
+        <>
+            <div className="flex flex-row w-full">
                 <Input
-                    id="upcoming_filter"
+                    id={`${id}_filter`}
                     type="text"
                     placeholder={t('common:filtering.placeholder')}
                     onChange={(e) => setFilterString(e.target.value)}
                     debounce={true}
+                    className="flex-1"
                 >
                     <SearchIcon />
                 </Input>
-            </CardTitle>
+            </div>
             <Table
                 columns={[
                     {
@@ -89,8 +96,8 @@ const UpcomingEvents = () => {
                 setPage={setPage}
                 error={!!error}
             />
-        </AdminSection>
+        </>
     )
 }
 
-export default UpcomingEvents
+export default EventTable

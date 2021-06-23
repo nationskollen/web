@@ -46,7 +46,12 @@ export type ButtonStyles =
     | 'success'
     | 'input'
 
-export interface Props {
+export type NativeButtonProps = Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
+    'size' | 'style' | 'onClick'
+>
+
+export interface Props extends NativeButtonProps {
     href?: string
     type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
     focus?: ButtonFocusStyles
@@ -60,15 +65,10 @@ export interface Props {
     containerClassName?: string
     onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
     children?: React.ReactNode
-    [key: string]: unknown
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    'primary': clsx(
-        'bg-primary text-white',
-        'dark:filter dark:brightness-125',
-        'focus:ring-focus-primary hover:bg-primary-extra'
-    ),
+    'primary': clsx('bg-primary text-white', 'focus:ring-focus-primary hover:bg-primary-extra'),
     'primary-extra': clsx('bg-primary-extra text-white', 'focus:ring-focus-primary'),
     'secondary': clsx(
         'bg-secondary text-white',
