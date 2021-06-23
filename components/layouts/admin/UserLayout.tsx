@@ -5,6 +5,7 @@ import { UserIcon } from '@heroicons/react/outline'
 import { TemplateGetter } from '@typings'
 
 import Image from '@common/Image'
+import BackArrow from '@common/BackArrow'
 import SubNavLink from '@common/SubNavLink'
 import HeaderTitle from '@common/HeaderTitle'
 import Subnavigation from '@common/Subnavigation'
@@ -20,10 +21,14 @@ const Template = ({ children }: Props) => {
     return (
         <MainLayout.Wrapper>
             <MainLayout.Header>
-                <div className="flex flex-row space-x-lg">
-                    <Image src={null} size="large" fallbackIcon={UserIcon} />
-                    <HeaderTitle title="Fredrik Engstrand" description={t('me.description')} />
-                </div>
+                <HeaderTitle
+                    title="Fredrik Engstrand"
+                    description={t('me.description')}
+                    backHref="/admin/users"
+                    leftComponent={
+                        <Image src={null} size="huge" fallbackIcon={UserIcon} />
+                    }
+                />
             </MainLayout.Header>
             <Subnavigation basePath="/admin/users" queryKey="user_id">
                 <SubNavLink title={t('navigation.information')} href="/" />

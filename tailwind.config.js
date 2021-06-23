@@ -1,6 +1,6 @@
 module.exports = {
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-    darkMode: 'class', // false or 'media' or 'class'
+    darkMode: 'class',
     theme: {
         colors: {
             'white': 'white',
@@ -44,26 +44,26 @@ module.exports = {
             'success-highlight': 'var(--color-success-highlight)',
         },
         borderRadius: {
-            none: '0',
-            sm: '5px',
-            DEFAULT: '10px',
-            lg: '15px',
-            full: '50%',
+            'none': '0',
+            'sm': '5px',
+            'DEFAULT': '10px',
+            'lg': '15px',
+            'full': '50%',
         },
         borderWidth: {
-            0: '0px',
-            1: '1px',
-            DEFAULT: '1px',
-            2: '2px',
-            4: '4px',
+            '0': '0px',
+            '1': '1px',
+            'DEFAULT': '1px',
+            '2': '2px',
+            '4': '4px',
         },
         fontFamily: {
-            sans: ['Nunito Sans', 'sans-serif'],
+            'sans': ['Nunito Sans', 'sans-serif'],
         },
         screens: {
-            tablet: '640px',
-            laptop: '1024px',
-            desktop: '1300px',
+            'tablet': '640px',
+            'laptop': '1024px',
+            'desktop': '1300px',
         },
         extend: {
             spacing: {
@@ -81,9 +81,9 @@ module.exports = {
             },
             height: {
                 'table-row': 'var(--table-row-height)',
-                'header': '8rem',
             },
             minHeight: {
+                'header': '8rem',
                 'dialog': '12rem',
                 'textarea': '8rem',
                 'notifications': '8rem',
@@ -91,9 +91,9 @@ module.exports = {
                 'table-empty': 'calc(var(--table-row-height) * 3)',
             },
             maxHeight: {
-                dialog: '20rem',
-                textarea: '30rem',
-                dropdown: '15rem',
+                'dialog': '20rem',
+                'textarea': '30rem',
+                'dropdown': '15rem',
             },
             width: {
                 'sidebar-navigation': '17rem',
@@ -110,20 +110,16 @@ module.exports = {
                 'login-background': '1100px',
             },
             maxWidth: {
-                notifications: '25rem',
-                content: '1200px',
+                'notifications': '25rem',
+                'content': '1200px',
             },
             fontSize: {
-                xsm: '0.8rem',
-                md: '0.95rem',
-            },
-            inset: {
-                'admin-header': '4.5rem',
-                '-admin-header': '-4.5rem',
+                'xsm': '0.8rem',
+                'md': '0.95rem',
             },
             transitionDuration: {
-                in: '75ms',
-                out: '50ms',
+                'in': '75ms',
+                'out': '50ms',
             },
         },
     },

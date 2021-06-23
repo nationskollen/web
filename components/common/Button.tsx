@@ -46,7 +46,12 @@ export type ButtonStyles =
     | 'success'
     | 'input'
 
-export interface Props {
+export type NativeButtonProps = Omit<
+    React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
+    'size' | 'style' | 'onClick'
+>
+
+export interface Props extends NativeButtonProps {
     href?: string
     type?: React.ButtonHTMLAttributes<HTMLButtonElement>['type']
     focus?: ButtonFocusStyles
@@ -60,7 +65,6 @@ export interface Props {
     containerClassName?: string
     onClick?: (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void
     children?: React.ReactNode
-    [key: string]: unknown
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {

@@ -5,10 +5,10 @@ import { PlusIcon } from '@heroicons/react/solid'
 import { TemplateGetter } from '@typings'
 
 import Button from '@common/Button'
-import HeaderTitle from '@common/HeaderTitle'
 import SubNavLink from '@common/SubNavLink'
-import MainLayout from '@layouts/admin/Main'
+import HeaderTitle from '@common/HeaderTitle'
 import Subnavigation from '@common/Subnavigation'
+import MainLayout from '@layouts/admin/MainLayout'
 
 export interface Props {
     children?: React.ReactNode

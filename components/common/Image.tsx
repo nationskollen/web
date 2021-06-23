@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React from 'react'
 import Image from 'next/image'
 
-export type ImageSizes = 'small' | 'default' | 'large' | 'fill'
+export type ImageSizes = 'small' | 'default' | 'large' | 'huge' | 'fill'
 
 export interface ImageSizingData {
     container: string
@@ -42,6 +42,11 @@ const IMAGE_SIZES: Record<ImageSizes, ImageSizingData> = {
         container: 'w-20 h-20',
         fallback: 'p-md',
         spacing: 'p-sm',
+    },
+    huge: {
+        container: 'w-32 h-32',
+        fallback: 'p-lg',
+        spacing: 'p-md',
     },
 }
 

@@ -33,7 +33,13 @@ const Wrapper = ({ children }: Props) => {
 
 const Header = ({ children }: Props) => {
     return (
-        <Container as="header" className="relative h-header py-sm flex flex-col justify-center">
+        <Container
+            as="header"
+            className={clsx(
+                'relative min-h-header h-auto py-md',
+                'flex flex-col justify-center items-start space-y-sm',
+            )}
+        >
             {children}
         </Container>
     )
