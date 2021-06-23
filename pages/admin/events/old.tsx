@@ -10,9 +10,7 @@ import EventTable from '@pages/admin/events/EventTable'
 const OldEventsPage = () => {
     const before = useRef(new Date()).current
 
-    return (
-        <EventTable id="old" before={before} />
-    )
+    return <EventTable id="old" before={before} />
 }
 
 OldEventsPage.getTemplate = EventsLayout.getTemplate

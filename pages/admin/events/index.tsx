@@ -9,9 +9,7 @@ import EventTable from '@pages/admin/events/EventTable'
 const UpcomingEventsPage = () => {
     const after = useRef(new Date()).current
 
-    return (
-        <EventTable id="upcoming" after={after} />
-    )
+    return <EventTable id="upcoming" after={after} />
 }
 
 UpcomingEventsPage.getTemplate = EventsLayout.getTemplate

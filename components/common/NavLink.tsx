@@ -21,9 +21,7 @@ const NavLink = ({ title, href }: Props) => {
                         'hover:text-text-highlight focus:outline-none focus:ring',
                         'focus:ring-focus-default focus:text-text-highlight',
                         'focus:bg-background-highlight',
-                        active
-                            ? 'text-primary-text'
-                            : 'text-text'
+                        active ? 'text-primary-text' : 'text-text'
                     )}
                 >
                     {title}

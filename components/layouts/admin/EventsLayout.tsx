@@ -41,11 +41,8 @@ const Template = ({ children }: Props) => {
     )
 }
 
-const getTemplate: TemplateGetter = (page: React.ReactNode) => (
-    MainLayout.getTemplate(
-        <Template>{page}</Template>
-    )
-)
+const getTemplate: TemplateGetter = (page: React.ReactNode) =>
+    MainLayout.getTemplate(<Template>{page}</Template>)
 
 export default {
     Template,

@@ -25,27 +25,19 @@ const Template = ({ children }: Props) => {
                     title="Fredrik Engstrand"
                     description={t('me.description')}
                     backHref="/admin/users"
-                    leftComponent={
-                        <Image src={null} size="huge" fallbackIcon={UserIcon} />
-                    }
+                    leftComponent={<Image src={null} size="huge" fallbackIcon={UserIcon} />}
                 />
             </MainLayout.Header>
             <Subnavigation basePath="/admin/users" queryKey="user_id">
                 <SubNavLink title={t('navigation.information')} href="/" />
                 <SubNavLink title={t('navigation.permissions')} href="/permissions" />
             </Subnavigation>
-            <MainLayout.Content>
-                {children}
-            </MainLayout.Content>
+            <MainLayout.Content>{children}</MainLayout.Content>
         </MainLayout.Wrapper>
     )
 }
 
-const getTemplate: TemplateGetter = (page) => (
-    MainLayout.getTemplate(
-        <Template>{page}</Template>
-    )
-)
+const getTemplate: TemplateGetter = (page) => MainLayout.getTemplate(<Template>{page}</Template>)
 
 export default {
     Template,

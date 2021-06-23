@@ -5,9 +5,7 @@ import { LOCALES } from '@constants'
 import UserLayout from '@layouts/admin/UserLayout'
 
 const UserPermissionsPage = () => {
-    return (
-        <p>Permissions</p>
-    )
+    return <p>Permissions</p>
 }
 
 UserPermissionsPage.getTemplate = UserLayout.getTemplate

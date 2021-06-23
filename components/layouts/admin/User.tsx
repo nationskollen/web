@@ -29,18 +29,12 @@ const Template = ({ children }: Props) => {
                 <SubNavLink title={t('navigation.information')} href="/" />
                 <SubNavLink title={t('navigation.permissions')} href="/permissions" />
             </Subnavigation>
-            <MainLayout.Content>
-                {children}
-            </MainLayout.Content>
+            <MainLayout.Content>{children}</MainLayout.Content>
         </MainLayout.Wrapper>
     )
 }
 
-const getTemplate: TemplateGetter = (page) => (
-    MainLayout.getTemplate(
-        <Template>{page}</Template>
-    )
-)
+const getTemplate: TemplateGetter = (page) => MainLayout.getTemplate(<Template>{page}</Template>)
 
 export default {
     Template,

@@ -8,9 +8,7 @@ import UserLayout from '@layouts/admin/UserLayout'
 const UserPage = () => {
     const { query } = useRouter()
 
-    return (
-        <p>User id: {query.user_id}</p>
-    )
+    return <p>User id: {query.user_id}</p>
 }
 
 UserPage.getTemplate = UserLayout.getTemplate

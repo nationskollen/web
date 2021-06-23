@@ -14,13 +14,21 @@ export interface Props {
     children?: React.ReactNode
 }
 
-const HeaderTitle = ({ title, description, backHref, className, descriptionClassName, leftComponent, children }: Props) => {
+const HeaderTitle = ({
+    title,
+    description,
+    backHref,
+    className,
+    descriptionClassName,
+    leftComponent,
+    children,
+}: Props) => {
     return (
         <section
             className={clsx(
                 'w-full flex flex-row items-center justify-between',
                 backHref && 'pb-sm',
-                className,
+                className
             )}
         >
             <div className="flex flex-row justify-center space-x-lg">
@@ -28,7 +36,7 @@ const HeaderTitle = ({ title, description, backHref, className, descriptionClass
                 <div
                     className={clsx(
                         'flex flex-col items-start',
-                        backHref ? 'justify-start' : 'justify-center',
+                        backHref ? 'justify-start' : 'justify-center'
                     )}
                 >
                     {backHref && <BackArrow href={backHref} className="mb-sm" />}

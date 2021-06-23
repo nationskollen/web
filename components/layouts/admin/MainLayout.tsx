@@ -37,7 +37,7 @@ const Header = ({ children }: Props) => {
             as="header"
             className={clsx(
                 'relative min-h-header h-auto py-md',
-                'flex flex-col justify-center items-start space-y-sm',
+                'flex flex-col justify-center items-start space-y-sm'
             )}
         >
             {children}
@@ -63,9 +63,7 @@ const Sidebar = ({ children }: Props) => {
     )
 }
 
-const getTemplate = (page: React.ReactNode) => (
-    <Template>{page}</Template>
-)
+const getTemplate = (page: React.ReactNode) => <Template>{page}</Template>
 
 export default {
     Template,

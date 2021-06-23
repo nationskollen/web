@@ -24,7 +24,7 @@ export function getUrlHash(url: string) {
     if (!anchor) {
         return {
             path: url,
-            hash: null
+            hash: null,
         }
     }
 
