@@ -6,8 +6,14 @@ import Navigation from '@components/admin/Navigation'
 import AdminSidebar from '@components/admin/AdminSidebar'
 import ProtectedRoute from '@components/auth/ProtectedRoute'
 
+export type ContentDirection = 'row' | 'column'
+
 export interface Props {
     children: React.ReactNode
+}
+
+export interface ContentProps extends Props {
+    direction?: ContentDirection
 }
 
 const Template = ({ children }: Props) => {
@@ -45,21 +51,16 @@ const Header = ({ children }: Props) => {
     )
 }
 
-const Content = ({ children }: Props) => {
+const Content = ({ direction, children }: ContentProps) => {
     return (
         <div className="bg-background dark:bg-background-extra flex-1">
-            <Container as="main" className="flex flex-col flex-1 py-sm py-xlg">
+            <Container as="main" className={clsx(
+                'flex flex-1 py-sm py-xlg',
+                direction === 'row' ? 'flex-row' : 'flex-col',
+            )}>
                 {children}
             </Container>
         </div>
-    )
-}
-
-const Sidebar = ({ children }: Props) => {
-    return (
-        <aside className="sticky z-30 top-admin-header mr-lg w-sidebar-navigation space-y-md">
-            {children}
-        </aside>
     )
 }
 
@@ -70,6 +71,5 @@ export default {
     Wrapper,
     Header,
     Content,
-    Sidebar,
     getTemplate,
 }

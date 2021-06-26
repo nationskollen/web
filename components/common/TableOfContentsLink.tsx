@@ -13,7 +13,7 @@ export interface Props {
 
 const SidebarNavigationLink = ({ section }: Props) => {
     const router = useRouter()
-    const active = getUrlHash(router.asPath) === section.href
+    const active = getUrlHash(router.asPath).hash === section.href
 
     const inactiveStyle = 'text-text'
     const activeStyle =
@@ -25,7 +25,7 @@ const SidebarNavigationLink = ({ section }: Props) => {
                 <a
                     href={section.href}
                     className={clsx(
-                        'flex flex-row items-center w-full pl-md pr-xsm text-md h-10 rounded-sm',
+                        'flex flex-row items-center w-full text-md h-10 rounded-sm',
                         'focus:outline-none focus:ring focus:ring-focus-default',
                         active ? activeStyle : inactiveStyle
                     )}

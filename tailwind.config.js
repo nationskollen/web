@@ -96,7 +96,7 @@ module.exports = {
                 dropdown: '15rem',
             },
             width: {
-                'sidebar-navigation': '17rem',
+                'sidebar-navigation': '14rem',
                 'login-modal': '22rem',
                 'form-modal': '30rem',
                 'dialog': '30rem',
@@ -112,6 +112,7 @@ module.exports = {
             maxWidth: {
                 notifications: '25rem',
                 content: '1200px',
+                form: '35rem',
             },
             fontSize: {
                 xsm: '0.8rem',

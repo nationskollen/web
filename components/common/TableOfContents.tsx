@@ -45,9 +45,12 @@ const TableOfContents = ({ sections }: Props) => {
     }, [sections])
 
     return (
-        <Card label={t('toc.title')} noPadding={true}>
-            <ul className="p-sm">{content}</ul>
-        </Card>
+        <div>
+            <div className="text-primary-text dark:text-text-highlight pt-md pb-xsm">
+                <h3 className="font-black text-xsm uppercase">{t('toc.title')}</h3>
+            </div>
+            <ul className="py-sm">{content}</ul>
+        </div>
     )
 }
 

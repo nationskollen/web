@@ -2,17 +2,17 @@ import clsx from 'clsx'
 import React from 'react'
 
 export interface Props {
-    id: string
+    id?: string
     offsetClass?: string
     children?: React.ReactNode
 }
 
 const Anchor = ({ id, offsetClass, children }: Props) => {
     return (
-        <div>
-            <div className={clsx('relative invisible block', offsetClass)} id={id} />
+        <>
+            {id && <div className={clsx('relative invisible block', offsetClass || '-top-md')} id={id} />}
             {children}
-        </div>
+        </>
     )
 }
 

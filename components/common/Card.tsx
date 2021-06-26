@@ -11,7 +11,6 @@ export interface Props {
     id?: string
     className?: string
     containerClassName?: string
-    label?: string
     noPadding?: boolean
     radiusSmall?: boolean
     active?: boolean
@@ -20,7 +19,6 @@ export interface Props {
 
 const Card = ({
     id,
-    label,
     active,
     noPadding,
     radiusSmall,
@@ -46,16 +44,6 @@ const Card = ({
                     )}
                 >
                     <HashtagIcon className="w-4 h-4 text-white" />
-                </div>
-            )}
-            {label && (
-                <div
-                    className={clsx(
-                        'text-primary-text dark:text-text-highlight',
-                        'border-b-1 border-border py-3 px-lg'
-                    )}
-                >
-                    <h3 className="font-bold">{label}</h3>
                 </div>
             )}
             <div className={clsx('flex flex-col flex-1', !noPadding && 'p-6', containerClassName)}>

@@ -13,7 +13,7 @@ const BackArrow = ({ href, className }: Props) => {
             <a
                 className={clsx(
                     'h-8 py-2 rounded px-xsm text-text text-md space-x-xsm',
-                    'flex flex-row items-center',
+                    'flex flex-row items-center font-bold',
                     'hover:text-text-highlight focus:text-text-highlight',
                     className
                 )}

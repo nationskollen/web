@@ -13,12 +13,16 @@
         "users": "Users"
     },
     "toc": {
-        "title": "Contents"
+        "title": "On this page"
     },
     "modal": {
         "current_step": "Step {{current}} / {{total}}"
     },
     "file_upload": {
         "select_image": "Click to select image"
+    },
+    "action": {
+        "save": "Save",
+        "remove": "Remove"
     }
 }

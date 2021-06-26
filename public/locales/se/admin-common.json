@@ -13,12 +13,16 @@
         "users": "Användare"
     },
     "toc": {
-        "title": "Innehåll"
+        "title": "På denna sida"
     },
     "modal": {
         "current_step": "Steg {{current}} / {{total}}"
     },
     "file_upload": {
         "select_image": "Klicka för att välja bild"
+    },
+    "action": {
+        "save": "Spara",
+        "remove": "Ta bort"
     }
 }
