@@ -25,9 +25,10 @@
             "description": "Description",
             "occurs_at": "Start date",
             "ends_at": "End date",
-            "occurs_at_hour": "start time",
+            "occurs_at_hour": "Start time",
             "ends_at_hour": "End time",
             "location": "Location",
+            "address": "Address",
             "cover_image": "Cover image"
         },
         "initial_details": {
@@ -36,8 +37,14 @@
         "description": {
             "title": "Description"
         },
-        "time_and_location": {
-            "title": "Time and location"
+        "time": {
+            "title": "Time"
+        },
+        "location": {
+            "title": "Location",
+            "type": "Type of location",
+            "default": "Nation's locations",
+            "custom": "Address"
         },
         "cover_image": {
             "title": "Add an image"

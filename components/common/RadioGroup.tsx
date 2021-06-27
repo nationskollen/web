@@ -1,8 +1,8 @@
 import clsx from 'clsx'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { RadioGroup } from '@headlessui/react'
+import { useFormContext } from 'react-hook-form'
 
-import Title from '@common/Title'
 import Checkmark from '@common/Checkmark'
 
 export type Directions = 'row' | 'column'
@@ -14,18 +14,19 @@ export interface RadioItem {
 
 export interface Props {
     as: React.ElementType
+    name: string
     title?: string
     value: string
     items: Array<RadioItem>
     direction?: Directions
-    onChange: (value: string) => void
+    onSelect?: (value: string) => void
     className?: string
     itemClassName?: string
     noCheckmark?: boolean
-    [key: string]: unknown
 }
 
-const Radio = ({
+const CustomRadioGroup = React.forwardRef(({
+    name,
     className,
     itemClassName,
     as: Component,
@@ -33,18 +34,36 @@ const Radio = ({
     value,
     items,
     direction,
-    onChange,
+    onSelect,
     noCheckmark,
     ...props
-}: Props) => {
+}: Props, ref: React.Ref<any>) => {
+    const form = useFormContext()
+
+    // Make sure to save the initial value to the form state
+    useEffect(() => {
+        if (form && name && value !== undefined) {
+            form.setValue(name, value)
+        }
+    }, [])
+
+    const handleChange = (value: string) => {
+        if (form && name) {
+            form.setValue(name, value)
+        }
+
+        onSelect && onSelect(value)
+    }
+
     return (
-        <RadioGroup value={value} onChange={onChange}>
+        <RadioGroup value={value} onChange={handleChange}>
             {title && (
                 <RadioGroup.Label as="label" className="text-sm text-text tracking-wide font-bold">
                     {title}
                 </RadioGroup.Label>
             )}
             <div
+                ref={ref}
                 className={clsx(
                     'cursor-pointer mt-xsm',
                     direction === 'row'
@@ -78,6 +97,6 @@ const Radio = ({
             </div>
         </RadioGroup>
     )
-}
+})
 
-export default Radio
+export default CustomRadioGroup

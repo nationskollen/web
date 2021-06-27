@@ -1,17 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useAsyncCallback } from 'react-async-hook'
 import { useForm, useFormContext } from 'react-hook-form'
-import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
 import { useApi, useUpload, useLocations, useCategories } from '@nationskollen/sdk'
 
 import {
+    CollectionIcon,
     ClockIcon,
     PhotographIcon,
     CalendarIcon,
     PlusIcon,
     PencilIcon,
-} from '@heroicons/react/solid'
+    LocationMarkerIcon,
+} from '@heroicons/react/outline'
 
 import { useAuth } from '@contexts/Auth'
 import Notifications from '@notifications'
@@ -23,10 +24,16 @@ import Input from '@common/Input'
 import Button from '@common/Button'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
+import RadioGroup from '@common/RadioGroup'
+import RadioPillItem from '@common/RadioPillItem'
 import Select, { OptionItem } from '@common/Select'
 import FileUploadInput from '@common/FileUploadInput'
 
 import ErrorDialog from '@dialogs/ErrorDialog'
+
+export type LocationSelectionTypes =
+    | 'default'
+    | 'custom'
 
 export interface FormValues {
     title: string
@@ -38,8 +45,10 @@ export interface FormValues {
     endsAtHour: string
     membersOnly: boolean
     studentsOnly: boolean
+    locationType: LocationSelectionTypes
     category?: OptionItem
     location?: OptionItem
+    address?: string
     image?: FileList
 }
 
@@ -47,7 +56,10 @@ const CreateEventForm = () => {
     const api = useApi()
     const { oid } = useAuth()
     const { t } = useTranslation(['common', 'admin-events'])
-    const form = useForm<FormValues>(DEFAULT_MODAL_FORM_PROPS)
+    const form = useForm<FormValues>({
+        ...DEFAULT_MODAL_FORM_PROPS,
+        defaultValues: { locationType: 'default' },
+    })
 
     const uploader = useUpload(api.events.upload)
     const creator = useAsyncCallback(api.events.create)
@@ -126,9 +138,15 @@ const CreateEventForm = () => {
                     },
                     {
                         href: '#time',
-                        title: t('admin-events:create.time_and_location.title'),
-                        component: TimeAndLocation,
+                        title: t('admin-events:create.time.title'),
+                        component: Time,
                         icon: ClockIcon,
+                    },
+                    {
+                        href: '#location',
+                        title: t('admin-events:create.location.title'),
+                        component: Location,
+                        icon: LocationMarkerIcon,
                     },
                     {
                         href: '#cover',
@@ -209,18 +227,9 @@ const LongDescription = () => {
     )
 }
 
-const TimeAndLocation = () => {
-    const { oid } = useAuth()
+const Time = () => {
     const { register } = useFormContext()
-    const { data, isValidating } = useLocations(oid!)
     const { t } = useTranslation(['admin-events', 'common'])
-
-    const locations = data
-        ? data.map((location) => ({
-              id: location.id,
-              value: location.name,
-          }))
-        : []
 
     return (
         <>
@@ -256,13 +265,55 @@ const TimeAndLocation = () => {
                     })}
                 />
             </InputGroup>
-            <Select
-                label={t('admin-events:create.field.location')}
-                buttonIcon={LocationMarkerIcon}
-                options={locations}
-                loading={isValidating}
-                {...register('location')}
+        </>
+    )
+}
+
+const Location = () => {
+    const { oid } = useAuth()
+    const { register, setValue } = useFormContext()
+    const [locationType, setLocationType] = useState<LocationSelectionTypes>('default')
+    const { data, isValidating } = useLocations(oid!)
+    const { t } = useTranslation(['admin-events', 'common'])
+
+    const locations = data
+        ? data.map((location) => ({
+              id: location.id,
+              value: location.name,
+          }))
+        : []
+
+    return (
+        <>
+            <RadioGroup
+                as={RadioPillItem}
+                title={t('admin-events:create.location.type')}
+                value={locationType}
+                onSelect={setLocationType}
+                direction="row"
+                itemClassName="flex-1"
+                noCheckmark={true}
+                items={[
+                    { value: 'default', label: t('admin-events:create.location.default') },
+                    { value: 'custom', label: t('admin-events:create.location.custom') },
+                ]}
+                {...register('locationType')}
             />
+            {locationType === 'default' ? (
+                <Select
+                    label={t('admin-events:create.field.location')}
+                    buttonIcon={LocationMarkerIcon}
+                    options={locations}
+                    loading={isValidating}
+                    {...register('location')}
+                />
+            ) : (
+                <Input
+                    type="text"
+                    label={t('admin-events:create.field.address')}
+                    {...register('address')}
+                />
+            )}
         </>
     )
 }

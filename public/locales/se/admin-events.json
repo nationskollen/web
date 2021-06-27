@@ -28,6 +28,7 @@
             "occurs_at_hour": "Starttid",
             "ends_at_hour": "Sluttid",
             "location": "Plats",
+            "address": "Adress",
             "cover_image": "Omslagsbild"
         },
         "initial_details": {
@@ -36,8 +37,14 @@
         "description": {
             "title": "Beskrivning"
         },
-        "time_and_location": {
-            "title": "Tid och plats"
+        "time": {
+            "title": "Tid"
+        },
+        "location": {
+            "title": "Plats",
+            "type": "Typ av plats",
+            "default": "Nationens platser",
+            "custom": "Adress"
         },
         "cover_image": {
             "title": "Lägg till en bild"
