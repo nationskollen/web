@@ -25,10 +25,12 @@ import InputGroup from '@common/InputGroup'
 import Select, { OptionItem } from '@common/Select'
 import FileUploadInput from '@common/FileUploadInput'
 
+import ErrorDialog from '@dialogs/ErrorDialog'
+
 export interface FormValues {
     title: string
     shortDescription: string
-    description?: string
+    description: string
     occursAt: Date
     endsAt: Date
     membersOnly: boolean
@@ -38,92 +40,112 @@ export interface FormValues {
     image?: FileList
 }
 
-// TODO: Some SDK code is commented here because the current version has some type-errors
-// I think it is okay to leave this here for now, since the code can be used later
 const CreateEventForm = () => {
-    // const api = useApi()
-    // const { oid } = useAuth()
+    const api = useApi()
+    const { oid } = useAuth()
     const { t } = useTranslation(['common', 'admin-events'])
     const form = useForm<FormValues>(DEFAULT_MODAL_FORM_PROPS)
-    const [isLoading, setIsLoading] = useState(false)
 
-    // const uploader = useUpload(api.events.upload)
-    // const creator = useAsyncCallback(api.events.create)
+    const uploader = useUpload(api.events.upload)
+    const creator = useAsyncCallback(api.events.create)
 
-    const submit = (data: FormValues) => {
-        console.log(data)
-        console.log(data.image && data.image[0])
-        setIsLoading(true)
-
-        // Simulate a request
-        setTimeout(() => {
-            setIsLoading(false)
-            form.reset()
-            Notifications.success('Event created')
-        }, 500)
-
-        // setIsLoading(true)
-        // creator.execute(oid, {
-        //     name: data.title,
-        //     short_description: data.shortDescription,
-        //     category_id: data.category?.id || 0,
-        //     occurs_at: new Date(data.occursAt).toISOString(),
-        //     ends_at: new Date(data.endsAt).toISOString(),
-        //     only_members: data.membersOnly,
-        //     only_students: data.studentsOnly,
-        //     cover_img_src: '',
-        // })
+    const success = () => {
+        form.reset()
+        Notifications.success('Event created')
     }
 
-    // useEffect(() => {
-    //     if (creator.result) {
-    //         form.reset()
-    //         props.setOpen(false)
-    //         Notifications.success('Event created')
-    //     }
-    // }, [creator.result])
+    const submit = (data: FormValues) => {
+        creator.execute(oid, {
+            name: data.title,
+            short_description: data.shortDescription,
+            long_description: data.description,
+            category_id: data.category?.id as number,
+            occurs_at: new Date(data.occursAt).toISOString(),
+            ends_at: new Date(data.endsAt).toISOString(),
+            only_members: data.membersOnly,
+            only_students: data.studentsOnly,
+        })
+    }
+
+    useEffect(() => {
+        if (!creator.result) {
+            return
+        }
+
+        const images = form.getValues().image
+
+        if (!images || images.length === 0) {
+            success()
+            return
+        }
+
+        uploader.execute(creator.result.id, images[0])
+    }, [creator.result])
+
+    useEffect(() => {
+        if (!uploader.result) {
+            return
+        }
+
+        success()
+    }, [uploader.result])
 
     return (
-        <Form
-            submit={submit}
-            sections={[
-                {
-                    href: '#general',
-                    title: t('admin-events:create.initial_details.title'),
-                    component: InitialDetails,
-                    icon: CalendarIcon,
-                },
-                {
-                    href: '#description',
-                    title: t('admin-events:create.description.title'),
-                    component: LongDescription,
-                    icon: PencilIcon,
-                },
-                {
-                    href: '#time',
-                    title: t('admin-events:create.time_and_location.title'),
-                    component: TimeAndLocation,
-                    icon: ClockIcon,
-                },
-                {
-                    href: '#cover',
-                    title: t('admin-events:create.cover_image.title'),
-                    component: ImageSelect,
-                    icon: PhotographIcon,
-                },
-            ]}
-        >
-            <Button
-                type="submit"
-                style="primary"
-                size="medium"
-                radius="large"
-                loading={isLoading}
+        <>
+            {creator.error && (
+                <ErrorDialog
+                    title="Kunde inte skapa event"
+                    description="N[got blev fel]"
+                />
+            )}
+            {uploader.error && (
+                <ErrorDialog
+                    title="Kunde inte ladda upp omslagsbild"
+                    description="N[got blev fel]"
+                />
+            )}
+            <Form
+                submit={submit}
+                sections={[
+                    {
+                        href: '#general',
+                        title: t('admin-events:create.initial_details.title'),
+                        component: InitialDetails,
+                        icon: CalendarIcon,
+                    },
+                    {
+                        href: '#description',
+                        title: t('admin-events:create.description.title'),
+                        component: LongDescription,
+                        icon: PencilIcon,
+                    },
+                    {
+                        href: '#time',
+                        title: t('admin-events:create.time_and_location.title'),
+                        component: TimeAndLocation,
+                        icon: ClockIcon,
+                    },
+                    {
+                        href: '#cover',
+                        title: t('admin-events:create.cover_image.title'),
+                        component: ImageSelect,
+                        icon: PhotographIcon,
+                    },
+                ]}
             >
-                <span>{t('common:action.create')}</span>
-                <PlusIcon />
-            </Button>
-        </Form>
+                <Button
+                    type="submit"
+                    style="primary"
+                    size="medium"
+                    radius="large"
+                    loading={creator.loading}
+                    className="self-end"
+                >
+                    <span>{t('common:action.create')}</span>
+                    <PlusIcon />
+                </Button>
+            </Form>
+        </>
     )
 }
 
@@ -177,7 +199,7 @@ const LongDescription = () => {
             <Textarea
                 type="text"
                 label={t('admin-events:create.field.description')}
-                {...register('description')}
+                {...register('description', { required: t('common:validation.required') })}
             />
         </>
     )
