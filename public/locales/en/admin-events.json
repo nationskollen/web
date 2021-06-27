@@ -23,8 +23,10 @@
             "category": "Category",
             "short_description": "Short description",
             "description": "Description",
-            "occurs_at": "Start time",
-            "ends_at": "End time",
+            "occurs_at": "Start date",
+            "ends_at": "End date",
+            "occurs_at_hour": "start time",
+            "ends_at_hour": "End time",
             "location": "Location",
             "cover_image": "Cover image"
         },

@@ -23,8 +23,10 @@
             "category": "Kategori",
             "short_description": "Kort beskrivning",
             "description": "Beskrivning",
-            "occurs_at": "Starttid",
-            "ends_at": "Sluttid",
+            "occurs_at": "Startdatum",
+            "ends_at": "Slutdatum",
+            "occurs_at_hour": "Starttid",
+            "ends_at_hour": "Sluttid",
             "location": "Plats",
             "cover_image": "Omslagsbild"
         },

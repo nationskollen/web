@@ -12,6 +12,10 @@ export interface Props {
     children: React.ReactNode
 }
 
+export interface HeaderProps extends Props {
+    sticky?: boolean
+}
+
 export interface ContentProps extends Props {
     direction?: ContentDirection
 }
@@ -37,17 +41,24 @@ const Wrapper = ({ children }: Props) => {
     return <>{children}</>
 }
 
-const Header = ({ children }: Props) => {
+const Header = ({ sticky, children }: HeaderProps) => {
     return (
-        <Container
-            as="header"
+        <div
             className={clsx(
-                'relative min-h-header h-auto py-md',
-                'flex flex-col justify-center items-start space-y-sm'
+                'bg-background-extra dark:bg-background z-30',
+                sticky && 'sticky top-0',
             )}
         >
-            {children}
-        </Container>
+            <Container
+                as="header"
+                className={clsx(
+                    'relative min-h-header h-auto py-md',
+                    'flex flex-col justify-center items-start space-y-sm',
+                )}
+            >
+                {children}
+            </Container>
+        </div>
     )
 }
 

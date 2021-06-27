@@ -99,7 +99,7 @@ const Select = React.forwardRef(
         }, [options, initialOptions])
 
         const [selected, setSelected] = useState(
-            initialSelection
+            initialSelection !== undefined
                 ? concatinatedOptions.findIndex((item) => item.id === initialSelection)
                 : undefined
         )
@@ -108,6 +108,13 @@ const Select = React.forwardRef(
         // even if the user does not modify the selected value.
         useEffect(() => {
             if (form && name) {
+                // If we have specified `initialSelection`, we want to make
+                // sure to set this initial value in the form as well.
+                if (selected !== undefined) {
+                    runCallbacks(selected)
+                    return
+                }
+
                 const savedValue = form.getValues(name)
 
                 if (savedValue) {

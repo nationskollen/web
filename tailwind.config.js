@@ -85,15 +85,20 @@ module.exports = {
             minHeight: {
                 'header': '8rem',
                 'dialog': '12rem',
+                'textarea-small': '5rem',
                 'textarea': '8rem',
+                'textarea-large': '16rem',
                 'notifications': '8rem',
                 'table': 'calc(var(--table-row-height) * 2)',
                 'table-empty': 'calc(var(--table-row-height) * 3)',
             },
             maxHeight: {
-                dialog: '20rem',
-                textarea: '30rem',
-                dropdown: '15rem',
+                'dialog': '20rem',
+                'textarea': '30rem',
+                'textarea-small': '10rem',
+                'textarea': '30rem',
+                'textarea-large': '60rem',
+                'dropdown': '15rem',
             },
             width: {
                 'sidebar-navigation': '14rem',

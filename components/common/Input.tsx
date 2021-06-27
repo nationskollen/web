@@ -148,7 +148,7 @@ const Input = React.forwardRef(
         const InputComponent = as || NativeInput
 
         return (
-            <div className={clsx('relative rounded-sm flex flex-col justify-center', className)}>
+            <div className={clsx('relative rounded-sm flex flex-col justify-start', className)}>
                 {label && (
                     <label
                         htmlFor={id}

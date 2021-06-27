@@ -12,7 +12,7 @@ const Navigation = () => {
     return (
         <div
             className={clsx(
-                'bg-background-extra dark:bg-background w-full',
+                'bg-background-extra dark:bg-background w-full z-40',
                 'border-b-1 border-background-highlight dark:border-background-extra'
             )}
         >

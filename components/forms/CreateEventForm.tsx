@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useTranslation } from 'next-i18next'
+import { useAsyncCallback } from 'react-async-hook'
 import { useForm, useFormContext } from 'react-hook-form'
+import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
+import { useApi, useUpload, useLocations, useCategories } from '@nationskollen/sdk'
 
 import {
     ClockIcon,
@@ -12,10 +15,8 @@ import {
 
 import { useAuth } from '@contexts/Auth'
 import Notifications from '@notifications'
+import { combineToDateString } from '@utils'
 import { DEFAULT_MODAL_FORM_PROPS } from '@constants'
-import { useAsyncCallback } from 'react-async-hook'
-import { LocationMarkerIcon, CollectionIcon } from '@heroicons/react/outline'
-import { useApi, useUpload, useLocations, useCategories } from '@nationskollen/sdk'
 
 import Form from '@common/Form'
 import Input from '@common/Input'
@@ -31,8 +32,10 @@ export interface FormValues {
     title: string
     shortDescription: string
     description: string
-    occursAt: Date
-    endsAt: Date
+    occursAt: string
+    occursAtHour: string
+    endsAt: string
+    endsAtHour: string
     membersOnly: boolean
     studentsOnly: boolean
     category?: OptionItem
@@ -55,13 +58,15 @@ const CreateEventForm = () => {
     }
 
     const submit = (data: FormValues) => {
+        console.log(data)
+
         creator.execute(oid, {
             name: data.title,
             short_description: data.shortDescription,
             long_description: data.description,
             category_id: data.category?.id as number,
-            occurs_at: new Date(data.occursAt).toISOString(),
-            ends_at: new Date(data.endsAt).toISOString(),
+            occurs_at: combineToDateString(data.occursAt, data.occursAtHour),
+            ends_at: combineToDateString(data.endsAt, data.endsAtHour),
             only_members: data.membersOnly,
             only_students: data.studentsOnly,
         })
@@ -136,7 +141,6 @@ const CreateEventForm = () => {
                 <Button
                     type="submit"
                     style="primary"
-                    size="medium"
                     radius="large"
                     loading={creator.loading}
                     className="self-end"
@@ -172,7 +176,7 @@ const InitialDetails = () => {
                 label={t('admin-events:create.field.category')}
                 buttonIcon={CollectionIcon}
                 initialSelection={0}
-                initialOptions={[{ id: -1, value: t('common:selection.none') }]}
+                initialOptions={[{ id: 0, value: t('common:selection.none') }]}
                 options={options}
                 loading={isValidating}
                 {...register('category', {
@@ -180,7 +184,7 @@ const InitialDetails = () => {
                 })}
             />
             <Textarea
-                type="text"
+                initialSize="small"
                 label={t('admin-events:create.field.short_description')}
                 {...register('shortDescription', {
                     required: t('common:validation.required'),
@@ -197,7 +201,7 @@ const LongDescription = () => {
     return (
         <>
             <Textarea
-                type="text"
+                initialSize="large"
                 label={t('admin-events:create.field.description')}
                 {...register('description', { required: t('common:validation.required') })}
             />
@@ -228,7 +232,13 @@ const TimeAndLocation = () => {
                         required: t('common:validation.required'),
                     })}
                 />
-                <Input type="time" label={t('admin-events:create.field.ends_at')} />
+                <Input
+                    type="time"
+                    label={t('admin-events:create.field.occurs_at_hour')}
+                    {...register('occursAtHour', {
+                        required: t('common:validation.required'),
+                    })}
+                />
             </InputGroup>
             <InputGroup>
                 <Input
@@ -238,7 +248,13 @@ const TimeAndLocation = () => {
                         required: t('common:validation.required'),
                     })}
                 />
-                <Input type="time" label={t('admin-events:create.field.ends_at')} />
+                <Input
+                    type="time"
+                    label={t('admin-events:create.field.ends_at_hour')}
+                    {...register('endsAtHour', {
+                        required: t('common:validation.required'),
+                    })}
+                />
             </InputGroup>
             <Select
                 label={t('admin-events:create.field.location')}
