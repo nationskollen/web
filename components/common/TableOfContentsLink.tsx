@@ -19,7 +19,7 @@ const TableOfContentsLink = ({ section }: Props) => {
                         'rounded-sm px-sm text-text-extra',
                         'transition-colors duration-in',
                         'focus:outline-none focus:text-text-highlight',
-                        'hover:text-text-highlight',
+                        'hover:text-text-highlight'
                     )}
                 >
                     {section.title}

@@ -35,7 +35,7 @@ const Form = <T,>({ submit, sections, sidebarContent, children }: Props<T>) => {
                 <FormSection key={href} id={href.substr(1)} {...options}>
                     <Component />
                 </FormSection>
-            ))
+            )),
         }
     }, [sections])
 
@@ -48,9 +48,7 @@ const Form = <T,>({ submit, sections, sidebarContent, children }: Props<T>) => {
             <div className="flex-1 w-full max-w-form">
                 <FormProvider {...form}>
                     <form onSubmit={form.handleSubmit(submit)} className="flex flex-col">
-                        <div className="flex flex-col">
-                            {renderedChildren}
-                        </div>
+                        <div className="flex flex-col">{renderedChildren}</div>
                         {children}
                     </form>
                 </FormProvider>

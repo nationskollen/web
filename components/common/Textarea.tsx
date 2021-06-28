@@ -10,10 +10,7 @@ import clsx from 'clsx'
 import React from 'react'
 import Input, { Props as InputProps } from '@common/Input'
 
-export type InitialSizes =
-    | 'small'
-    | 'default'
-    | 'large'
+export type InitialSizes = 'small' | 'default' | 'large'
 
 export interface Props extends InputProps {
     initialSize?: InitialSizes

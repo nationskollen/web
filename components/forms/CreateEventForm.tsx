@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useAsyncCallback } from 'react-async-hook'
 import { useForm, useFormContext } from 'react-hook-form'
-import { useApi, useUpload, useLocations, useCategories, Location as LocationType } from '@nationskollen/sdk'
+import {
+    useApi,
+    useUpload,
+    useLocations,
+    useCategories,
+    Location as LocationType,
+} from '@nationskollen/sdk'
 
 import {
     CollectionIcon,
@@ -35,9 +41,7 @@ import FileUploadInput from '@common/FileUploadInput'
 
 import ErrorDialog from '@dialogs/ErrorDialog'
 
-export type LocationSelectionTypes =
-    | 'default'
-    | 'custom'
+export type LocationSelectionTypes = 'default' | 'custom'
 
 export interface FormValues {
     title: string
@@ -124,14 +128,14 @@ const CreateEventForm = () => {
             )}
             <Form
                 submit={submit}
-                sidebarContent={(
+                sidebarContent={
                     <div className="mt-lg">
                         <ExternalLink
                             href="/admin/locations/create"
                             label={t('admin-events:create.create_location')}
                         />
                     </div>
-                )}
+                }
                 sections={[
                     {
                         href: '#general',
@@ -356,7 +360,12 @@ const Location = () => {
             {location && (
                 <Card noPadding={false} className="h-64 overflow-hidden">
                     <div className="w-full h-full absolute inset-0 z-behind">
-                        {location.cover_img_src && <img src={location.cover_img_src} className="rounded-sm w-full h-full object-cover" />}
+                        {location.cover_img_src && (
+                            <img
+                                src={location.cover_img_src}
+                                className="rounded-sm w-full h-full object-cover"
+                            />
+                        )}
                     </div>
                     <div className="absolute bottom-0 left-0 p-md bg-card-overlay h-full w-full flex flex-col justify-end rounded-sm">
                         <p className="text-white font-bold">{location.name}</p>

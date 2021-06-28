@@ -60,10 +60,7 @@ const EventTable = ({ id, before, after, amount = 15 }: Props) => {
                     <SearchIcon />
                 </Input>
                 <Link href="/admin/events/create" passHref={true}>
-                    <Button
-                        style="primary"
-                        className="px-sm"
-                    >
+                    <Button style="primary" className="px-sm">
                         <span>{t('admin-events:create.title')}</span>
                         <PlusIcon />
                     </Button>

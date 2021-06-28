@@ -206,8 +206,8 @@ const Select = React.forwardRef(
                                                             ? 'text-error-text'
                                                             : 'text-error-highlight-text'
                                                         : open
-                                                            ? 'text-text-highlight'
-                                                            : 'text-text-extra',
+                                                        ? 'text-text-highlight'
+                                                        : 'text-text-extra',
                                                     buttonIconClassName
                                                 )}
                                             />

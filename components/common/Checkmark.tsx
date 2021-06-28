@@ -18,7 +18,9 @@ const Checkmark = ({ checked }: Props) => {
         >
             <CheckIcon
                 className={
-                    checked ? 'text-white dark:text-background' : 'group-hover:text-text-extra text-transparent'
+                    checked
+                        ? 'text-white dark:text-background'
+                        : 'group-hover:text-text-extra text-transparent'
                 }
             />
         </div>

@@ -46,14 +46,14 @@ const Header = ({ sticky, children }: HeaderProps) => {
         <div
             className={clsx(
                 'bg-background-extra dark:bg-background z-30',
-                sticky && 'sticky top-0',
+                sticky && 'sticky top-0'
             )}
         >
             <Container
                 as="header"
                 className={clsx(
                     'relative min-h-header h-auto py-md',
-                    'flex flex-col justify-center items-start space-y-sm',
+                    'flex flex-col justify-center items-start space-y-sm'
                 )}
             >
                 {children}
@@ -65,10 +65,13 @@ const Header = ({ sticky, children }: HeaderProps) => {
 const Content = ({ direction, children }: ContentProps) => {
     return (
         <div className="bg-background dark:bg-background-extra flex-1">
-            <Container as="main" className={clsx(
-                'flex flex-1 py-sm py-xlg',
-                direction === 'row' ? 'flex-row' : 'flex-col',
-            )}>
+            <Container
+                as="main"
+                className={clsx(
+                    'flex flex-1 py-sm py-xlg',
+                    direction === 'row' ? 'flex-row' : 'flex-col'
+                )}
+            >
                 {children}
             </Container>
         </div>

@@ -10,7 +10,12 @@ export interface Props {
 const Anchor = ({ id, offsetClass, children }: Props) => {
     return (
         <>
-            {id && <div className={clsx('relative invisible block', offsetClass || '-top-md')} id={id} />}
+            {id && (
+                <div
+                    className={clsx('relative invisible block', offsetClass || '-top-md')}
+                    id={id}
+                />
+            )}
             {children}
         </>
     )
