@@ -1,3 +1,10 @@
+import { withNextRouter } from 'storybook-addon-next-router';
+
+export const decorators = [
+  withNextRouter
+];
+
+
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
