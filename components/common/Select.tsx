@@ -176,7 +176,7 @@ const Select = React.forwardRef(
                     {label && (
                         <Listbox.Label
                             className={clsx(
-                                'text-sm mb-xsm',
+                                'text-sm mb-sm',
                                 error ? 'text-error-text font-bold' : 'text-text'
                             )}
                             htmlFor={id}

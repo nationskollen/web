@@ -68,6 +68,7 @@ module.exports = {
         extend: {
             spacing: {
                 '0': '0',
+                'xxsm': '2px',
                 'xsm': '0.25rem',
                 'sm': '0.5rem',
                 'md': '1rem',
@@ -137,7 +138,8 @@ module.exports = {
             margin: ['last'],
             filter: ['dark'],
             brightness: ['dark'],
-            backgroundColor: ['even'],
+            backgroundColor: ['even', 'checked'],
+            textColor: ['checked'],
         },
     },
     plugins: [],

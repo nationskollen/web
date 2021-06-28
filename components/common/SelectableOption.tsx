@@ -3,21 +3,26 @@ import React from 'react'
 
 export interface Props {
     label: string
-    icon: React.ElementType
-    checked?: boolean
+    checked: boolean
+    icon?: React.ElementType
+    className?: string
+    onClick?: () => void
     children?: React.ReactNode
 }
 
-const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props) => {
+const SelectableOption = React.forwardRef(({ checked, label, icon: IconComponent, className, onClick, children }: Props, ref: React.Ref<any>) => {
     return (
         <div
+            onClick={onClick}
+            ref={ref}
             className={clsx(
-                'flex flex-row justify-center items-center group space-x-sm',
+                'flex flex-row justify-between px-md items-center group space-x-sm',
                 'rounded-sm py-3 box-border focus:outline-none border-1 border-transparent',
                 'transition-colors duration-in',
+                className,
                 checked
                     ? 'bg-primary-highlight text-primary'
-                    : 'bg-background-extra text-text dark:border-border-dark hover:bg-border'
+                    : 'bg-background-extra text-text border-border-dark hover:bg-border'
             )}
         >
             {IconComponent && <IconComponent className="w-5 h-5" />}
@@ -25,6 +30,6 @@ const RadioPillItem = ({ checked, label, icon: IconComponent, children }: Props)
             {children}
         </div>
     )
-}
+})
 
-export default RadioPillItem
+export default SelectableOption

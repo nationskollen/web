@@ -22,6 +22,8 @@
             "title": "Titel",
             "category": "Kategori",
             "short_description": "Kort beskrivning",
+            "members_only": "Endast medlemmar?",
+            "students_only": "Endast studenter?",
             "description": "Beskrivning",
             "occurs_at": "Startdatum",
             "ends_at": "Slutdatum",

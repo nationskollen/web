@@ -22,10 +22,10 @@ import { DEFAULT_MODAL_FORM_PROPS } from '@constants'
 import Form from '@common/Form'
 import Input from '@common/Input'
 import Button from '@common/Button'
+import Checkbox from '@common/Checkbox'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
 import RadioGroup from '@common/RadioGroup'
-import RadioPillItem from '@common/RadioPillItem'
 import Select, { OptionItem } from '@common/Select'
 import FileUploadInput from '@common/FileUploadInput'
 
@@ -58,7 +58,11 @@ const CreateEventForm = () => {
     const { t } = useTranslation(['common', 'admin-events'])
     const form = useForm<FormValues>({
         ...DEFAULT_MODAL_FORM_PROPS,
-        defaultValues: { locationType: 'default' },
+        defaultValues: {
+            locationType: 'default',
+            membersOnly: false,
+            studentsOnly: false,
+        },
     })
 
     const uploader = useUpload(api.events.upload)
@@ -208,6 +212,18 @@ const InitialDetails = () => {
                     required: t('common:validation.required'),
                 })}
             />
+            <InputGroup className="mt-md">
+                <Checkbox
+                    label={t('admin-events:create.field.members_only')}
+                    checked={false}
+                    {...register('membersOnly')}
+                />
+                <Checkbox
+                    label={t('admin-events:create.field.students_only')}
+                    checked={false}
+                    {...register('studentsOnly')}
+                />
+            </InputGroup>
         </>
     )
 }
@@ -271,7 +287,7 @@ const Time = () => {
 
 const Location = () => {
     const { oid } = useAuth()
-    const { register, setValue } = useFormContext()
+    const { register } = useFormContext()
     const [locationType, setLocationType] = useState<LocationSelectionTypes>('default')
     const { data, isValidating } = useLocations(oid!)
     const { t } = useTranslation(['admin-events', 'common'])
@@ -286,13 +302,11 @@ const Location = () => {
     return (
         <>
             <RadioGroup
-                as={RadioPillItem}
                 title={t('admin-events:create.location.type')}
                 value={locationType}
-                onSelect={setLocationType}
+                onSelect={(value: string) => setLocationType(value as LocationSelectionTypes)}
                 direction="row"
                 itemClassName="flex-1"
-                noCheckmark={true}
                 items={[
                     { value: 'default', label: t('admin-events:create.location.default') },
                     { value: 'custom', label: t('admin-events:create.location.custom') },

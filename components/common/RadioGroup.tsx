@@ -3,17 +3,16 @@ import React, { useEffect } from 'react'
 import { RadioGroup } from '@headlessui/react'
 import { useFormContext } from 'react-hook-form'
 
-import Checkmark from '@common/Checkmark'
+import RadioCircle from '@common/RadioCircle'
+import SelectableOption, { Props as SelectableOptionProps } from '@common/SelectableOption'
 
 export type Directions = 'row' | 'column'
 
-export interface RadioItem {
+export interface RadioItem extends Omit<SelectableOptionProps, 'checked'> {
     value: string
-    [key: string]: unknown
 }
 
 export interface Props {
-    as: React.ElementType
     name: string
     title?: string
     value: string
@@ -22,20 +21,17 @@ export interface Props {
     onSelect?: (value: string) => void
     className?: string
     itemClassName?: string
-    noCheckmark?: boolean
 }
 
 const CustomRadioGroup = React.forwardRef(({
     name,
     className,
     itemClassName,
-    as: Component,
     title,
     value,
     items,
     direction,
     onSelect,
-    noCheckmark,
     ...props
 }: Props, ref: React.Ref<any>) => {
     const form = useFormContext()
@@ -82,15 +78,14 @@ const CustomRadioGroup = React.forwardRef(({
                         )}
                     >
                         {({ checked }) => (
-                            <Component
+                            <SelectableOption
                                 key={value}
-                                value={value}
+                                checked={checked}
                                 {...props}
                                 {...field}
-                                checked={checked}
                             >
-                                {!noCheckmark && <Checkmark checked={checked} />}
-                            </Component>
+                                <RadioCircle checked={checked} />
+                            </SelectableOption>
                         )}
                     </RadioGroup.Option>
                 ))}

@@ -22,6 +22,8 @@
             "title": "Title",
             "category": "Category",
             "short_description": "Short description",
+            "members_only": "Only members?",
+            "students_only": "Only students?",
             "description": "Description",
             "occurs_at": "Start date",
             "ends_at": "End date",
@@ -44,7 +46,7 @@
             "title": "Location",
             "type": "Type of location",
             "default": "Nation's locations",
-            "custom": "Address"
+            "custom": "Custom address"
         },
         "cover_image": {
             "title": "Add an image"
