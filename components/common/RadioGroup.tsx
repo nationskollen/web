@@ -4,11 +4,11 @@ import { RadioGroup } from '@headlessui/react'
 import { useFormContext } from 'react-hook-form'
 
 import RadioCircle from '@common/RadioCircle'
-import SelectableOption, { Props as SelectableOptionProps } from '@common/SelectableOption'
+import RadioOption, { Props as RadioOptionProps } from '@common/RadioOption'
 
 export type Directions = 'row' | 'column'
 
-export interface RadioItem extends Omit<SelectableOptionProps, 'checked'> {
+export interface RadioItem extends Omit<RadioOptionProps, 'checked'> {
     value: string
 }
 
@@ -73,19 +73,19 @@ const CustomRadioGroup = React.forwardRef(({
                         value={value}
                         key={`${value}-${index}`}
                         className={clsx(
-                            'focus:ring-2 focus:ring-focus-primary rounded-sm',
+                            'focus:ring-2 focus:ring-focus-primary rounded-sm shadow',
                             itemClassName
                         )}
                     >
                         {({ checked }) => (
-                            <SelectableOption
+                            <RadioOption
                                 key={value}
                                 checked={checked}
                                 {...props}
                                 {...field}
                             >
                                 <RadioCircle checked={checked} />
-                            </SelectableOption>
+                            </RadioOption>
                         )}
                     </RadioGroup.Option>
                 ))}

@@ -38,12 +38,11 @@ const Checkbox = React.forwardRef(({ name, label, initialValue, icon: IconCompon
     return (
         <label
             className={clsx(
-                'h-12 w-full rounded-sm border-1',
+                'group h-12 w-full rounded-sm border-1 shadow',
                 'flex flex-row items-center px-md space-x-sm py-sm cursor-pointer',
-                'focus-within:outline-none focus-within:ring-2',
-                checked
-                    ? 'bg-primary-highlight text-primary border-transparent focus-within:ring-focus-primary'
-                    : 'bg-background-extra border-border-dark dark:bg-background-highlight text-text focus-within:ring-focus-input'
+                'focus-within:outline-none focus-within:ring-2 focus-within:ring-focus-input',
+                'bg-background border-border-dark dark:border-transparent dark:bg-background-highlight',
+                checked ? 'text-primary-text dark:text-text-highlight dark:bg-border-dark' : 'text-text'
             )}
         >
             {IconComponent && <IconComponent className="w-5 h-5" />}
@@ -54,10 +53,7 @@ const Checkbox = React.forwardRef(({ name, label, initialValue, icon: IconCompon
                 type="checkbox"
                 checked={checked}
                 onChange={handleChange}
-                className={clsx(
-                    'w-0 h-0 border-2 border-border-dark appearance-none rounded-sm pointer-events-none opacity-0',
-                    'checked:bg-primary checked:border-primary',
-                )}
+                className="w-0 h-0 appearance-none pointer-events-none opacity-0"
                 {...props}
             />
             <Checkmark checked={checked} />

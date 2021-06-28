@@ -188,7 +188,7 @@ const Select = React.forwardRef(
                         id={id}
                         as={Button}
                         style="input"
-                        className="w-full group"
+                        className="w-full group shadow"
                         error={error}
                         aria-invalid={!!error}
                     >

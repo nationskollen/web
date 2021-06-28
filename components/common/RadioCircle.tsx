@@ -10,13 +10,13 @@ const RadioCircle = ({ checked }: Props) => {
         <div
             className={clsx(
                 'w-4 h-4 p-xxsm rounded-full border-2 flex items-center justify-center',
-                checked ? 'border-primary' : 'border-border-dark'
+                checked ? 'border-primary dark:border-primary-text' : 'border-border-dark'
             )}
         >
             <div
                 className={clsx(
                     'rounded-full w-full h-full',
-                    checked ? 'bg-primary' : 'group-hover:bg-border-dark',
+                    checked ? 'bg-primary dark:bg-primary-text' : 'group-hover:bg-border-dark',
                 )}
             />
         </div>

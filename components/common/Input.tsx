@@ -164,7 +164,7 @@ const Input = React.forwardRef(
                 )}
                 <div
                     className={clsx(
-                        'flex flex-row items-center rounded-sm',
+                        'flex flex-row items-center rounded-sm shadow',
                         noPadding ? 'px-0' : 'px-3',
                         sizing,
                         styling,
