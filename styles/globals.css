@@ -5,6 +5,7 @@ html {
     --color-hover: rgba(0, 0, 0, 0.08);
     --color-lighter: rgba(0, 0, 0, 0.04);
     --color-overlay: rgba(0, 0, 0, 0.65);
+    --color-card-overlay: linear-gradient(to bottom, transparent, var(--color-secondary));
     --color-focus-primary: #db5189;
     --color-focus-default: #ccc;
     --color-focus-input: rgba(59, 130, 246, 0.5);

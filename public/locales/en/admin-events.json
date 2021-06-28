@@ -53,5 +53,15 @@
         "cover_image": {
             "title": "Add an image"
         }
+    },
+    "error": {
+        "create_event": {
+            "title": "Could not create event",
+            "description": "Something went wrong!"
+        },
+        "upload_cover_image": {
+            "title": "Could not upload cover image",
+            "description": "Something went wrong!"
+        }
     }
 }

@@ -53,5 +53,15 @@
         "cover_image": {
             "title": "Lägg till en bild"
         }
+    },
+    "error": {
+        "create_event": {
+            "title": "Kunde inte skapa event",
+            "description": "Något blev fel!"
+        },
+        "upload_cover_image": {
+            "title": "Kunde inte ladda upp bild",
+            "description": "Något blev fel!"
+        }
     }
 }

@@ -43,6 +43,9 @@ module.exports = {
             'success-highlight-text': 'var(--color-success-highlight-text)',
             'success-highlight': 'var(--color-success-highlight)',
         },
+        backgroundImage: {
+            'card-overlay': 'var(--color-card-overlay)',
+        },
         borderRadius: {
             none: '0',
             sm: '5px',

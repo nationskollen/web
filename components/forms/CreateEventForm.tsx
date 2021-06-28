@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 import { useAsyncCallback } from 'react-async-hook'
 import { useForm, useFormContext } from 'react-hook-form'
-import { useApi, useUpload, useLocations, useCategories } from '@nationskollen/sdk'
+import { useApi, useUpload, useLocations, useCategories, Location as LocationType } from '@nationskollen/sdk'
 
 import {
     CollectionIcon,
@@ -21,6 +21,7 @@ import Notifications from '@notifications'
 import { combineToDateString } from '@utils'
 import { DEFAULT_MODAL_FORM_PROPS } from '@constants'
 
+import Card from '@common/Card'
 import Form from '@common/Form'
 import Input from '@common/Input'
 import Button from '@common/Button'
@@ -111,14 +112,14 @@ const CreateEventForm = () => {
         <>
             {creator.error && (
                 <ErrorDialog
-                    title="Kunde inte skapa event"
-                    description="N[got blev fel]"
+                    title={t('admin-events:error.create_event.description')}
+                    description={t('admin-events:error.create_event.description')}
                 />
             )}
             {uploader.error && (
                 <ErrorDialog
-                    title="Kunde inte ladda upp omslagsbild"
-                    description="N[got blev fel]"
+                    title={t('admin-events:error.upload_cover_image.title')}
+                    description={t('admin-events:error.upload_cover_image.description')}
                 />
             )}
             <Form
@@ -293,10 +294,26 @@ const Time = () => {
 
 const Location = () => {
     const { oid } = useAuth()
-    const { register } = useFormContext()
+    const { register, watch } = useFormContext()
+    const watchLocation = watch('location')
+    const [location, setLocation] = useState<LocationType>()
     const [locationType, setLocationType] = useState<LocationSelectionTypes>('default')
     const { data, isValidating } = useLocations(oid!)
     const { t } = useTranslation(['admin-events', 'common'])
+
+    useEffect(() => {
+        if (data && watchLocation) {
+            const location = data.find((location) => location.id === watchLocation.id)
+
+            if (location) {
+                setLocation(location)
+                return
+            }
+        }
+
+        setLocation(undefined)
+        return
+    }, [watchLocation])
 
     const locations = data
         ? data.map((location) => ({
@@ -322,6 +339,8 @@ const Location = () => {
             {locationType === 'default' ? (
                 <Select
                     label={t('admin-events:create.field.location')}
+                    initialSelection={0}
+                    initialOptions={[{ id: 0, value: t('common:selection.none') }]}
                     buttonIcon={LocationMarkerIcon}
                     options={locations}
                     loading={isValidating}
@@ -333,6 +352,17 @@ const Location = () => {
                     label={t('admin-events:create.field.address')}
                     {...register('address')}
                 />
+            )}
+            {location && (
+                <Card noPadding={false} className="h-64 overflow-hidden">
+                    <div className="w-full h-full absolute inset-0 z-behind">
+                        {location.cover_img_src && <img src={location.cover_img_src} className="rounded-sm w-full h-full object-cover" />}
+                    </div>
+                    <div className="absolute bottom-0 left-0 p-md bg-card-overlay h-full w-full flex flex-col justify-end rounded-sm">
+                        <p className="text-white font-bold">{location.name}</p>
+                        <p className="text-white">{location.address}</p>
+                    </div>
+                </Card>
             )}
         </>
     )
