@@ -54,7 +54,7 @@ const CustomRadioGroup = React.forwardRef(({
     return (
         <RadioGroup value={value} onChange={handleChange}>
             {title && (
-                <RadioGroup.Label as="label" className="text-sm text-text tracking-wide font-bold">
+                <RadioGroup.Label as="label" className="text-sm text-text">
                     {title}
                 </RadioGroup.Label>
             )}

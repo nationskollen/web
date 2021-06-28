@@ -34,7 +34,8 @@
             "cover_image": "Cover image"
         },
         "initial_details": {
-            "title": "General information"
+            "title": "General information",
+            "requirements": "Requirements"
         },
         "description": {
             "title": "Description"

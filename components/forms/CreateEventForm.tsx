@@ -11,6 +11,8 @@ import {
     CalendarIcon,
     PlusIcon,
     PencilIcon,
+    CreditCardIcon,
+    AcademicCapIcon,
     LocationMarkerIcon,
 } from '@heroicons/react/outline'
 
@@ -56,14 +58,7 @@ const CreateEventForm = () => {
     const api = useApi()
     const { oid } = useAuth()
     const { t } = useTranslation(['common', 'admin-events'])
-    const form = useForm<FormValues>({
-        ...DEFAULT_MODAL_FORM_PROPS,
-        defaultValues: {
-            locationType: 'default',
-            membersOnly: false,
-            studentsOnly: false,
-        },
-    })
+    const form = useForm<FormValues>(DEFAULT_MODAL_FORM_PROPS)
 
     const uploader = useUpload(api.events.upload)
     const creator = useAsyncCallback(api.events.create)
@@ -212,15 +207,17 @@ const InitialDetails = () => {
                     required: t('common:validation.required'),
                 })}
             />
-            <InputGroup className="mt-md">
+            <InputGroup label={t('admin-events:create.initial_details.requirements')}>
                 <Checkbox
+                    icon={CreditCardIcon}
+                    initialValue={false}
                     label={t('admin-events:create.field.members_only')}
-                    checked={false}
                     {...register('membersOnly')}
                 />
                 <Checkbox
+                    icon={AcademicCapIcon}
+                    initialValue={false}
                     label={t('admin-events:create.field.students_only')}
-                    checked={false}
                     {...register('studentsOnly')}
                 />
             </InputGroup>

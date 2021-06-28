@@ -16,7 +16,7 @@ const SelectableOption = React.forwardRef(({ checked, label, icon: IconComponent
             onClick={onClick}
             ref={ref}
             className={clsx(
-                'flex flex-row justify-between px-md items-center group space-x-sm',
+                'h-12 flex flex-row justify-between px-md items-center group space-x-sm',
                 'rounded-sm py-3 box-border focus:outline-none border-1 border-transparent',
                 'transition-colors duration-in',
                 className,
