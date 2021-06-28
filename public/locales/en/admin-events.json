@@ -18,6 +18,7 @@
     },
     "create": {
         "title": "Create new event",
+        "create_location": "Create new location",
         "field": {
             "title": "Title",
             "category": "Category",

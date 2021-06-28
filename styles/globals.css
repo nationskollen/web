@@ -7,7 +7,7 @@ html {
     --color-overlay: rgba(0, 0, 0, 0.65);
     --color-focus-primary: #db5189;
     --color-focus-default: #ccc;
-    --color-focus-input: #555;
+    --color-focus-input: rgba(59, 130, 246, 0.5);
     --color-focus-secondary: #6f718e;
     --color-focus-error: #ff4962;
     --color-focus-success: #37c861;
@@ -43,7 +43,7 @@ html.dark {
     --color-hover: rgba(255, 255, 255, 0.08);
     --color-lighter: rgba(255, 255, 255, 0.02);
     --color-focus-default: #393648;
-    --color-focus-input: #55516a;
+    --color-focus-input: rgba(59, 130, 246, 0.5);
     --color-focus-secondary: #7e80a4;
     --color-primary: #8e003a;
     --color-primary-extra: #a40645;

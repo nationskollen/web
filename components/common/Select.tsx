@@ -111,7 +111,7 @@ const Select = React.forwardRef(
                 // If we have specified `initialSelection`, we want to make
                 // sure to set this initial value in the form as well.
                 if (selected !== undefined) {
-                    runCallbacks(selected)
+                    runCallbacks(selected, true)
                     return
                 }
 
@@ -129,13 +129,13 @@ const Select = React.forwardRef(
                     }
                 }
             } else if (selected !== undefined) {
-                runCallbacks(selected)
+                runCallbacks(selected, true)
             }
         }, [])
 
         // Runs all the registered callbacks when changing selected value
-        const runCallbacks = (index: number) => {
-            onSelect && onSelect(concatinatedOptions[index])
+        const runCallbacks = (index: number, skipOnSelect?: boolean) => {
+            !skipOnSelect && onSelect && onSelect(concatinatedOptions[index])
 
             if (name && form) {
                 form.setValue(name, concatinatedOptions[index])
@@ -176,7 +176,7 @@ const Select = React.forwardRef(
                     {label && (
                         <Listbox.Label
                             className={clsx(
-                                'text-sm mb-sm',
+                                'text-sm',
                                 error ? 'text-error-text font-bold' : 'text-text'
                             )}
                             htmlFor={id}
@@ -188,7 +188,7 @@ const Select = React.forwardRef(
                         id={id}
                         as={Button}
                         style="input"
-                        className="w-full group shadow"
+                        className="w-full group shadow mt-xsm"
                         error={error}
                         aria-invalid={!!error}
                     >
@@ -206,8 +206,8 @@ const Select = React.forwardRef(
                                                             ? 'text-error-text'
                                                             : 'text-error-highlight-text'
                                                         : open
-                                                        ? 'text-focus-input'
-                                                        : 'text-text-extra',
+                                                            ? 'text-text-highlight'
+                                                            : 'text-text-extra',
                                                     buttonIconClassName
                                                 )}
                                             />

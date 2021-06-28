@@ -18,6 +18,7 @@
     },
     "create": {
         "title": "Skapa ny event",
+        "create_location": "Skapa ny plats",
         "field": {
             "title": "Titel",
             "category": "Kategori",

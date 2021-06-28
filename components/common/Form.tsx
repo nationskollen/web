@@ -14,11 +14,11 @@ export interface FormSection extends Section {
 export interface Props<T> {
     submit: SubmitHandler<T>
     sections?: Array<FormSection>
-    sidebarContent?: React.ElementType
+    sidebarContent?: React.ReactNode
     children?: React.ReactNode
 }
 
-const Form = <T,>({ submit, sections, sidebarContent: SidebarContent, children }: Props<T>) => {
+const Form = <T,>({ submit, sections, sidebarContent, children }: Props<T>) => {
     const form = useForm(DEFAULT_FORM_PROPS)
 
     const { toc, renderedChildren } = useMemo(() => {
@@ -43,7 +43,7 @@ const Form = <T,>({ submit, sections, sidebarContent: SidebarContent, children }
         <>
             <Sidebar>
                 <TableOfContents sections={toc} />
-                {SidebarContent && <SidebarContent />}
+                {sidebarContent && sidebarContent}
             </Sidebar>
             <div className="flex-1 w-full max-w-form">
                 <FormProvider {...form}>

@@ -28,6 +28,7 @@ import Checkbox from '@common/Checkbox'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
 import RadioGroup from '@common/RadioGroup'
+import ExternalLink from '@common/ExternalLink'
 import Select, { OptionItem } from '@common/Select'
 import FileUploadInput from '@common/FileUploadInput'
 
@@ -122,6 +123,14 @@ const CreateEventForm = () => {
             )}
             <Form
                 submit={submit}
+                sidebarContent={(
+                    <div className="mt-lg">
+                        <ExternalLink
+                            href="/admin/locations/create"
+                            label={t('admin-events:create.create_location')}
+                        />
+                    </div>
+                )}
                 sections={[
                     {
                         href: '#general',
