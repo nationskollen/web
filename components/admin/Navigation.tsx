@@ -12,6 +12,7 @@ const Navigation = () => {
     return (
         <div
             className={clsx(
+                'sticky top-0 h-admin-header',
                 'bg-background-extra dark:bg-background w-full z-40',
                 'border-b-1 border-background-highlight dark:border-background-extra'
             )}

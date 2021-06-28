@@ -78,9 +78,11 @@ module.exports = {
                 'modal-offset': '15vh',
                 'dialog-offset': '30vh',
                 'sidebar-offset': '4rem',
+                'admin-header-offset': 'calc(var(--admin-header-height) + 2.5rem)',
                 'table-row': 'var(--table-row-height)',
             },
             height: {
+                'admin-header': 'var(--admin-header-height)',
                 'table-row': 'var(--table-row-height)',
             },
             minHeight: {
