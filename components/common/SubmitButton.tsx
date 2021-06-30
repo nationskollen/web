@@ -18,12 +18,7 @@ const ICONS: Record<ButtonTypes, React.ReactNode> = {
 
 const SubmitButton = ({ type, label, ...props }: Props) => {
     return (
-        <Button
-            type="submit"
-            style="primary"
-            className="self-start"
-            {...props}
-        >
+        <Button type="submit" style="primary" className="self-start" {...props}>
             <span>{label}</span>
             {ICONS[type || 'create']}
         </Button>

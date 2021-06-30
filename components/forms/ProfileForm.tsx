@@ -141,7 +141,9 @@ const ProfileForm = () => {
                         />
                     </FormSubSection>
                     <Column className="text-sm text-text-extra">
-                        <pre className="whitespace-pre-line">{t('admin-users:profile.delete_description')}</pre>
+                        <pre className="whitespace-pre-line">
+                            {t('admin-users:profile.delete_description')}
+                        </pre>
                         <Button
                             style="error-border"
                             size="small"
