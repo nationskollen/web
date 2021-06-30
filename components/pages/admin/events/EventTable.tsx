@@ -1,11 +1,13 @@
 import { useState } from 'react'
+import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { getShorterDate } from '@utils'
 import { useAuth } from '@contexts/Auth'
 import { useEvents } from '@nationskollen/sdk'
-import { SearchIcon, PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
+import { SearchIcon, PencilAltIcon, TrashIcon, PlusIcon } from '@heroicons/react/outline'
 
+import Button from '@common/Button'
 import Input from '@common/Input'
 import MenuItem from '@common/MenuItem'
 import Table, { ActionsRendererProps } from '@common/Table'
@@ -46,7 +48,7 @@ const EventTable = ({ id, before, after, amount = 15 }: Props) => {
 
     return (
         <>
-            <div className="flex flex-row w-full">
+            <div className="flex flex-row w-full space-x-md">
                 <Input
                     id={`${id}_filter`}
                     type="text"
@@ -57,6 +59,12 @@ const EventTable = ({ id, before, after, amount = 15 }: Props) => {
                 >
                     <SearchIcon />
                 </Input>
+                <Link href="/admin/events/create" passHref={true}>
+                    <Button style="primary" className="px-sm">
+                        <span>{t('admin-events:create.title')}</span>
+                        <PlusIcon />
+                    </Button>
+                </Link>
             </div>
             <Table
                 columns={[

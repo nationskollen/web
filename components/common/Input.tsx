@@ -60,6 +60,7 @@ export interface Props extends NativeInputProps {
     innerComponent?: React.ElementType
     debounce?: boolean
     debounceDelay?: number
+    noPadding?: boolean
     children?: React.ReactNode
 }
 
@@ -122,6 +123,7 @@ const Input = React.forwardRef(
             debounceDelay,
             onChange,
             children,
+            noPadding,
             ...props
         }: Props,
         ref: FormRef
@@ -148,7 +150,7 @@ const Input = React.forwardRef(
         const InputComponent = as || NativeInput
 
         return (
-            <div className={clsx('relative rounded-sm flex flex-col justify-center', className)}>
+            <div className={clsx('relative rounded-sm flex flex-col justify-start', className)}>
                 {label && (
                     <label
                         htmlFor={id}
@@ -162,7 +164,8 @@ const Input = React.forwardRef(
                 )}
                 <div
                     className={clsx(
-                        'flex flex-row items-center rounded-sm px-3',
+                        'flex flex-row items-center rounded-sm shadow',
+                        noPadding ? 'px-0' : 'px-3',
                         sizing,
                         styling,
                         focusStyle,

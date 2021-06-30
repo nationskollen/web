@@ -1,12 +1,14 @@
 html {
+    --admin-header-height: 3.5rem;
     --table-row-height: 3rem;
 
     --color-hover: rgba(0, 0, 0, 0.08);
     --color-lighter: rgba(0, 0, 0, 0.04);
     --color-overlay: rgba(0, 0, 0, 0.65);
+    --color-card-overlay: linear-gradient(to bottom, transparent, var(--color-secondary));
     --color-focus-primary: #db5189;
     --color-focus-default: #ccc;
-    --color-focus-input: #555;
+    --color-focus-input: rgba(59, 130, 246, 0.5);
     --color-focus-secondary: #6f718e;
     --color-focus-error: #ff4962;
     --color-focus-success: #37c861;
@@ -27,7 +29,7 @@ html {
     --color-border: #f1f1f1;
     --color-border-dark: #ccc;
     --color-text: #222;
-    --color-text-extra: #a1a1aa;
+    --color-text-extra: #6a6a6a;
     --color-text-highlight: #000;
     --color-error: #b3152b;
     --color-error-text: #b3152b;
@@ -42,7 +44,7 @@ html.dark {
     --color-hover: rgba(255, 255, 255, 0.08);
     --color-lighter: rgba(255, 255, 255, 0.02);
     --color-focus-default: #393648;
-    --color-focus-input: #55516a;
+    --color-focus-input: rgba(59, 130, 246, 0.5);
     --color-focus-secondary: #7e80a4;
     --color-primary: #8e003a;
     --color-primary-extra: #a40645;

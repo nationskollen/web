@@ -68,3 +68,11 @@ export function getShorterDate(date: string) {
     const arr = date.split('T')
     return `${arr[0]} - ${arr[1].substr(0, 5)}`
 }
+
+/**
+ * Combines the date and hour string from form fields into an ISO formatted date string.
+ * The result of this function can be directly passed into the SDK.
+ */
+export function combineToDateString(date: string, hour: string) {
+    return new Date(`${date}T${hour}:00`).toISOString()
+}

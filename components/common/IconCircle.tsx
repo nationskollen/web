@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React from 'react'
 
 export type IconCircleSizes = 'small' | 'default' | 'large'
-export type IconCircleStyles = 'error' | 'success' | 'primary' | 'secondary' | 'highlight'
+export type IconCircleStyles = 'error' | 'success' | 'primary' | 'secondary' | 'highlight' | 'light'
 
 export interface Props {
     icon: React.ElementType
@@ -22,11 +22,12 @@ const ICON_CIRCLE_STYLES: Record<IconCircleStyles, string> = {
     primary: 'bg-primary-highlight text-primary dark:bg-primary-dark dark:text-primary-highlight',
     secondary: 'bg-secondary-highlight-text text-secondary-extra',
     highlight: 'bg-background-highlight text-text-extra',
+    light: 'bg-background-extra text-primary dark:bg-background dark:text-primary-text',
 }
 
 const IconCircle = ({ size, style, icon: Icon }: Props) => {
     const sizing = ICON_CIRCLE_SIZES[size || 'default']
-    const colors = ICON_CIRCLE_STYLES[style || 'primary']
+    const colors = ICON_CIRCLE_STYLES[style || 'light']
 
     return (
         <div className={clsx('rounded-full', sizing, colors)}>

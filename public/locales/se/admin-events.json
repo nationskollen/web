@@ -18,27 +18,50 @@
     },
     "create": {
         "title": "Skapa ny event",
+        "create_location": "Skapa ny plats",
         "field": {
             "title": "Titel",
             "category": "Kategori",
             "short_description": "Kort beskrivning",
+            "members_only": "Endast medlemmar?",
+            "students_only": "Endast studenter?",
             "description": "Beskrivning",
-            "occurs_at": "Starttid",
-            "ends_at": "Sluttid",
+            "occurs_at": "Startdatum",
+            "ends_at": "Slutdatum",
+            "occurs_at_hour": "Starttid",
+            "ends_at_hour": "Sluttid",
             "location": "Plats",
+            "address": "Adress",
             "cover_image": "Omslagsbild"
         },
         "initial_details": {
-            "title": "Skapa ny event"
+            "title": "Generell information",
+            "requirements": "Krav"
         },
         "description": {
             "title": "Beskrivning"
         },
-        "time_and_location": {
-            "title": "Tid och plats"
+        "time": {
+            "title": "Tid"
+        },
+        "location": {
+            "title": "Plats",
+            "type": "Typ av plats",
+            "default": "Nationens platser",
+            "custom": "Adress"
         },
         "cover_image": {
             "title": "Lägg till en bild"
+        }
+    },
+    "error": {
+        "create_event": {
+            "title": "Kunde inte skapa event",
+            "description": "Något blev fel!"
+        },
+        "upload_cover_image": {
+            "title": "Kunde inte ladda upp bild",
+            "description": "Något blev fel!"
         }
     }
 }

@@ -37,7 +37,7 @@ const UploadPreviewEmpty = () => {
         <div
             className={clsx(
                 'absolute inset-0 h-full rounded-sm pointer-events-none',
-                'bg-background-extra flex flex-col justify-center items-center'
+                'bg-background dark:bg-background-highlight flex flex-col justify-center items-center'
             )}
         >
             <div className="flex flex-col items-center justify-center space-y-sm">
@@ -89,7 +89,7 @@ const UploadPreview = ({ files, loading, onRemove }: UploadPreviewProps) => {
                 src={URL.createObjectURL(files[0])}
                 className={clsx(
                     'absolute inset-0 object-cover w-full h-full',
-                    'rounded-sm pointer-events-none bg-background-extra'
+                    'rounded-sm pointer-events-none bg-background dark:bg-background-highlight'
                 )}
             />
         </>

@@ -43,6 +43,9 @@ module.exports = {
             'success-highlight-text': 'var(--color-success-highlight-text)',
             'success-highlight': 'var(--color-success-highlight)',
         },
+        backgroundImage: {
+            'card-overlay': 'var(--color-card-overlay)',
+        },
         borderRadius: {
             none: '0',
             sm: '5px',
@@ -68,6 +71,7 @@ module.exports = {
         extend: {
             spacing: {
                 '0': '0',
+                'xxsm': '2px',
                 'xsm': '0.25rem',
                 'sm': '0.5rem',
                 'md': '1rem',
@@ -77,26 +81,33 @@ module.exports = {
                 'modal-offset': '15vh',
                 'dialog-offset': '30vh',
                 'sidebar-offset': '4rem',
+                'admin-header-offset': 'calc(var(--admin-header-height) + 2.5rem)',
                 'table-row': 'var(--table-row-height)',
             },
             height: {
+                'admin-header': 'var(--admin-header-height)',
                 'table-row': 'var(--table-row-height)',
             },
             minHeight: {
                 'header': '8rem',
                 'dialog': '12rem',
+                'textarea-small': '5rem',
                 'textarea': '8rem',
+                'textarea-large': '16rem',
                 'notifications': '8rem',
                 'table': 'calc(var(--table-row-height) * 2)',
                 'table-empty': 'calc(var(--table-row-height) * 3)',
             },
             maxHeight: {
-                dialog: '20rem',
-                textarea: '30rem',
-                dropdown: '15rem',
+                'dialog': '20rem',
+                'textarea': '30rem',
+                'textarea-small': '10rem',
+                'textarea': '30rem',
+                'textarea-large': '60rem',
+                'dropdown': '15rem',
             },
             width: {
-                'sidebar-navigation': '17rem',
+                'sidebar-navigation': '14rem',
                 'login-modal': '22rem',
                 'form-modal': '30rem',
                 'dialog': '30rem',
@@ -112,6 +123,7 @@ module.exports = {
             maxWidth: {
                 notifications: '25rem',
                 content: '1200px',
+                form: '35rem',
             },
             fontSize: {
                 xsm: '0.8rem',
@@ -131,7 +143,8 @@ module.exports = {
             margin: ['last'],
             filter: ['dark'],
             brightness: ['dark'],
-            backgroundColor: ['even'],
+            backgroundColor: ['even', 'checked'],
+            textColor: ['checked'],
         },
     },
     plugins: [],
