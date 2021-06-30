@@ -28,14 +28,14 @@ const BaseNotification = ({ id, visible, className, children }: Props) => {
         >
             <div
                 className={clsx(
-                    'rounded shadow-2xl p-3 flex flex-row items-center w-full',
-                    className || 'bg-background dark:bg-background-extra text-text-highlight'
+                    'rounded shadow-lg p-3 flex flex-row items-center w-full',
+                    className || 'bg-background dark:bg-background-highlight text-text-highlight'
                 )}
             >
                 <div className="flex flex-row items-center flex-1 mr-3 font-bold space-x-3">
                     {children}
                 </div>
-                <Button size="small" style="icon" onClick={() => toast.dismiss(id)}>
+                <Button size="icon-small" style="transparent" onClick={() => toast.dismiss(id)}>
                     <XIcon />
                 </Button>
             </div>

@@ -48,6 +48,7 @@ export type ButtonStyles =
     | 'lighter'
     | 'transparent'
     | 'error'
+    | 'error-border'
     | 'success'
     | 'input'
     | 'border'
@@ -93,6 +94,10 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'error': clsx(
         'bg-error text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-error'
+    ),
+    'error-border': clsx(
+        'bg-transparent text-error-text border-2 border-border',
+        'hover:border-border-dark hover:bg-background-extra hover:dark:bg-background-highlight'
     ),
     'success': clsx(
         'bg-success text-white',

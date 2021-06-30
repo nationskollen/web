@@ -22,7 +22,7 @@ const Template = ({ children }: Props) => {
             <MainLayout.Header>
                 <div className="flex flex-row space-x-lg">
                     <Image src={null} size="large" fallbackIcon={UserIcon} />
-                    <HeaderTitle title="Fredrik Engstrand" description={t('me.description')} />
+                    <HeaderTitle title="Fredrik Engstrand" />
                 </div>
             </MainLayout.Header>
             <Subnavigation basePath="/admin/users" queryKey="user_id">

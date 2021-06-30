@@ -34,7 +34,7 @@ const Checkbox = React.forwardRef(
             }
         }, [])
 
-        const handleChange = (_) => {
+        const handleChange = () => {
             setChecked(!checked)
             form && name && form.setValue(name, !checked)
         }

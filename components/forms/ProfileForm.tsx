@@ -132,10 +132,8 @@ const ProfileForm = () => {
                         />
                     </FormSubSection>
                     <Column className="text-sm text-text-extra">
-                        <p>
-                            <pre className="whitespace-pre-line">{t('admin-users:profile.delete_description')}</pre>
-                        </p>
-                        <Button style="error" size="small" className="" onClick={() => setShowDeleteDialog(true)}>
+                        <pre className="whitespace-pre-line">{t('admin-users:profile.delete_description')}</pre>
+                        <Button style="error-border" size="small" onClick={() => setShowDeleteDialog(true)}>
                             <span>{t('admin-users:profile.delete_user')}</span>
                         </Button>
                     </Column>

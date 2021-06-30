@@ -39,21 +39,17 @@ export interface Props extends ActionCallbacks, Omit<ModalProps, 'open' | 'setOp
     children?: React.ReactNode
 }
 
-export const getActions = (confirmStyle: ButtonStyles) => ({
-    onConfirm,
-    onCancel,
-    confirmLabel,
-    cancelLabel,
-    hasCancelCallback,
-}: ActionsRendererProps) => {
-    const confirmAction = { label: confirmLabel, style: confirmStyle, onClick: onConfirm }
-    const cancelAction = { label: cancelLabel, style: 'light', onClick: onCancel }
+export const getActions = (confirmStyle: ButtonStyles): ActionsRenderer => {
+    return ({ onConfirm, onCancel, confirmLabel, cancelLabel, hasCancelCallback }) => {
+        const confirmAction: ActionProps = { label: confirmLabel, style: confirmStyle, onClick: onConfirm }
+        const cancelAction: ActionProps = { label: cancelLabel, style: 'light', onClick: onCancel }
 
-    if (!hasCancelCallback && !onConfirm) {
-        return [confirmAction]
+        if (!hasCancelCallback && !onConfirm) {
+            return [confirmAction]
+        }
+
+       return [cancelAction, confirmAction]
     }
-
-   return [cancelAction, confirmAction]
 }
 
 const BaseDialog = ({

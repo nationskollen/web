@@ -9,9 +9,9 @@ export interface Props {
 const ExternalLink = ({ href, label }: Props) => {
     return (
         <Link href={href}>
-            <a className="flex flex-row h-10 py-sm w-full items-center space-x-sm font-bold hover:text-primary-text">
-                <ExternalLinkIcon className="h-6 w-6" />
+            <a className="flex flex-row items-center w-full h-10 font-bold py-sm space-x-sm hover:text-primary-text">
                 <span>{label}</span>
+                <ExternalLinkIcon className="w-6 h-6" />
             </a>
         </Link>
     )
