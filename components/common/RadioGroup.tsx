@@ -23,73 +23,80 @@ export interface Props<T> {
     itemClassName?: string
 }
 
-const CustomRadioGroup = React.forwardRef(<T,>(
-    {
-        name,
-        className,
-        itemClassName,
-        title,
-        value,
-        items,
-        direction,
-        onSelect,
-        ...props
-    }: Props<T>,
-    ref: React.Ref<any>,
-) => {
-    const form = useFormContext()
+const CustomRadioGroup = React.forwardRef(
+    <T,>(
+        {
+            name,
+            className,
+            itemClassName,
+            title,
+            value,
+            items,
+            direction,
+            onSelect,
+            ...props
+        }: Props<T>,
+        ref: React.Ref<any>
+    ) => {
+        const form = useFormContext()
 
-    // Make sure to save the initial value to the form state
-    useEffect(() => {
-        if (form && name && value !== undefined) {
-            form.setValue(name, value)
+        // Make sure to save the initial value to the form state
+        useEffect(() => {
+            if (form && name && value !== undefined) {
+                form.setValue(name, value)
+            }
+        }, [])
+
+        const handleChange = (value: T) => {
+            if (form && name) {
+                form.setValue(name, value)
+            }
+
+            onSelect && onSelect(value)
         }
-    }, [])
 
-    const handleChange = (value: T) => {
-        if (form && name) {
-            form.setValue(name, value)
-        }
-
-        onSelect && onSelect(value)
-    }
-
-    return (
-        <RadioGroup value={value} onChange={handleChange}>
-            {title && (
-                <RadioGroup.Label as="label" className="text-sm text-text">
-                    {title}
-                </RadioGroup.Label>
-            )}
-            <div
-                ref={ref}
-                className={clsx(
-                    'cursor-pointer mt-xsm',
-                    direction === 'row'
-                        ? 'flex flex-row items-center justify-between space-x-sm'
-                        : 'flex flex-col items-start justify-start space-y-sm',
-                    className
+        return (
+            <RadioGroup value={value} onChange={handleChange}>
+                {title && (
+                    <RadioGroup.Label as="label" className="text-sm text-text">
+                        {title}
+                    </RadioGroup.Label>
                 )}
-            >
-                {items.map(({ value, ...field }, index) => (
-                    <RadioGroup.Option
-                        value={value}
-                        key={`${value}-${index}`}
-                        className={clsx(
-                            'focus:ring-2 focus:ring-focus-primary rounded-sm shadow',
-                            itemClassName
-                        )}
-                    >
-                        {({ checked }) => (
-                            <RadioOption key={`${value}`} checked={checked} {...props} {...field}>
-                                <RadioCircle checked={checked} />
-                            </RadioOption>
-                        )}
-                    </RadioGroup.Option>
-                ))}
-            </div>
-        </RadioGroup>
-    )
-})
+                <div
+                    ref={ref}
+                    className={clsx(
+                        'cursor-pointer mt-xsm',
+                        direction === 'row'
+                            ? 'flex flex-row items-center justify-between space-x-sm'
+                            : 'flex flex-col items-start justify-start space-y-sm',
+                        className
+                    )}
+                >
+                    {items.map(({ value, ...field }, index) => (
+                        <RadioGroup.Option
+                            value={value}
+                            key={`${value}-${index}`}
+                            className={clsx(
+                                'focus:ring-2 focus:ring-focus-primary rounded-sm shadow',
+                                itemClassName
+                            )}
+                        >
+                            {({ checked }) => (
+                                <RadioOption
+                                    key={`${value}`}
+                                    checked={checked}
+                                    {...props}
+                                    {...field}
+                                >
+                                    <RadioCircle checked={checked} />
+                                </RadioOption>
+                            )}
+                        </RadioGroup.Option>
+                    ))}
+                </div>
+            </RadioGroup>
+        )
+    }
+)
 
 export default CustomRadioGroup

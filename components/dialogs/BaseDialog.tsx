@@ -53,7 +53,7 @@ export const getActions = (confirmStyle: ButtonStyles) => ({
         return [confirmAction]
     }
 
-   return [cancelAction, confirmAction]
+    return [cancelAction, confirmAction]
 }
 
 const BaseDialog = ({

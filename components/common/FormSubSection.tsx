@@ -20,21 +20,17 @@ const FormSubSection = ({ id, title, icon, danger, children }: Props) => {
             <section
                 className={clsx(
                     'mb-md pb-lg border-b-1 border-border',
-                    'last-of-type:border-b-0 last-of-type:mb-sm',
+                    'last-of-type:border-b-0 last-of-type:mb-sm'
                 )}
             >
                 <div
                     className={clsx(
                         'flex flex-row items-center space-x-sm mb-md',
-                        !icon && !title && 'hidden',
+                        !icon && !title && 'hidden'
                     )}
                 >
                     {icon && (
-                        <IconCircle
-                            icon={icon}
-                            size="small"
-                            style={danger ? 'error' : undefined}
-                        />
+                        <IconCircle icon={icon} size="small" style={danger ? 'error' : undefined} />
                     )}
                     {title && (
                         <Title
@@ -44,9 +40,7 @@ const FormSubSection = ({ id, title, icon, danger, children }: Props) => {
                         />
                     )}
                 </div>
-                <Column>
-                    {children}
-                </Column>
+                <Column>{children}</Column>
             </section>
         </Anchor>
     )

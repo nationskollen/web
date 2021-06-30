@@ -8,9 +8,7 @@ import UsersLayout from '@layouts/admin/UsersLayout'
 const DisabledUsers = () => {
     const { t } = useTranslation('admin-users')
 
-    return (
-        <p>Disabled users</p>
-    )
+    return <p>Disabled users</p>
 }
 
 DisabledUsers.getTemplate = UsersLayout.getTemplate

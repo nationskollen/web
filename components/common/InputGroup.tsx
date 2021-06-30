@@ -31,7 +31,7 @@ const InputGroup = ({ label, columns, className, children }: Props) => {
                 className={clsx(
                     `grid gap-md`,
                     getColumns(columns || React.Children.count(children)),
-                    className,
+                    className
                 )}
             >
                 {children}

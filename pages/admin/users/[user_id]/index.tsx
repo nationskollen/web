@@ -6,9 +6,7 @@ import ProfileForm from '@forms/ProfileForm'
 import UserLayout from '@layouts/admin/UserLayout'
 
 const UserPage = () => {
-    return (
-        <ProfileForm />
-    )
+    return <ProfileForm />
 }
 
 UserPage.getTemplate = UserLayout.getTemplate

@@ -50,14 +50,8 @@ const Form = <T,>({ submit, sections, sidebarContent, children }: Props<T>) => {
             </Sidebar>
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(submit)} className="w-full max-w-form">
-                    {renderedChildren.length > 0 && (
-                        <div>
-                            {renderedChildren}
-                        </div>
-                    )}
-                    <Column noVerticalSpacing={true}>
-                        {children}
-                    </Column>
+                    {renderedChildren.length > 0 && <div>{renderedChildren}</div>}
+                    <Column noVerticalSpacing={true}>{children}</Column>
                 </form>
             </FormProvider>
         </Row>
