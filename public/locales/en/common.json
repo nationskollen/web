@@ -13,7 +13,11 @@
             },
             "password": {
                 "title": "Password",
-                "placeholder": "Password"
+                "placeholder": "&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
+            },
+            "repeat_password": {
+                "title": "Repeat password",
+                "placeholder": "&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;&bull;"
             }
         }
     },

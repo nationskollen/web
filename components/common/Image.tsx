@@ -44,8 +44,8 @@ const IMAGE_SIZES: Record<ImageSizes, ImageSizingData> = {
         spacing: 'p-sm',
     },
     huge: {
-        container: 'w-32 h-32',
-        fallback: 'p-lg',
+        container: 'w-56 h-56',
+        fallback: 'p-xlg',
         spacing: 'p-md',
     },
 }
@@ -66,7 +66,7 @@ const CustomImage = ({
         <div
             className={clsx(
                 'rounded',
-                backgroundClassName || 'bg-background-highlight dark:bg-background-extra',
+                backgroundClassName || 'bg-background-extra dark:bg-background-highlight',
                 sizing.container,
                 padding && sizing.spacing,
                 className

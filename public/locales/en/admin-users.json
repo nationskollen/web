@@ -4,7 +4,15 @@
         "description": "Manage users and permissions"
     },
     "me": {
-        "description": "My profile"
+        "title": "My information"
+    },
+    "profile": {
+        "title": "Information",
+        "field": {
+            "name": {
+                "title": "Full name"
+            }
+        }
     },
     "navigation": {
         "information": "Information",
@@ -12,5 +20,11 @@
     },
     "create": {
         "title": "Create new user"
+    },
+    "active": {
+        "title": "Active users"
+    },
+    "disabled": {
+        "title": "Inactive users"
     }
 }

@@ -14,7 +14,7 @@ export interface Props {
 const FormSection = ({ id, title, icon, children }: Props) => {
     return (
         <Anchor id={id}>
-            <section className="space-y-lg mb-lg pb-lg border-b-1 border-border last:border-b-0 last:mb-sm">
+            <section className="space-y-lg mb-lg pb-lg border-b-1 border-border last:border-b-0 last:mb-md last:pb-0">
                 <div className="flex flex-row items-center space-x-md">
                     {icon && <IconCircle icon={icon} />}
                     <Title text={title} />

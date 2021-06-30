@@ -15,7 +15,7 @@ const CreateEventPage = () => {
             <MainLayout.Header>
                 <HeaderTitle title={t('admin-events:create.title')} backHref="/admin/events" />
             </MainLayout.Header>
-            <MainLayout.Content direction="row">
+            <MainLayout.Content>
                 <CreateEventForm />
             </MainLayout.Content>
         </MainLayout.Wrapper>

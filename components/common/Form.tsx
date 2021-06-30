@@ -2,6 +2,8 @@ import React, { useMemo } from 'react'
 import { DEFAULT_FORM_PROPS } from '@constants'
 import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
 
+import Row from '@common/Row'
+import Column from '@common/Column'
 import Sidebar from '@common/Sidebar'
 import FormSection from '@common/FormSection'
 import TableOfContents, { Section } from '@common/TableOfContents'
@@ -40,20 +42,24 @@ const Form = <T,>({ submit, sections, sidebarContent, children }: Props<T>) => {
     }, [sections])
 
     return (
-        <>
+        <Row>
             <Sidebar>
                 <TableOfContents sections={toc} />
                 {sidebarContent && sidebarContent}
             </Sidebar>
-            <div className="flex-1 w-full max-w-form">
-                <FormProvider {...form}>
-                    <form onSubmit={form.handleSubmit(submit)} className="flex flex-col">
-                        <div className="flex flex-col">{renderedChildren}</div>
+            <FormProvider {...form}>
+                <form onSubmit={form.handleSubmit(submit)} className="max-w-form w-full">
+                    <Column>
+                        {renderedChildren.length > 0 && (
+                            <div>
+                                {renderedChildren}
+                            </div>
+                        )}
                         {children}
-                    </form>
-                </FormProvider>
-            </div>
-        </>
+                    </Column>
+                </form>
+            </FormProvider>
+        </Row>
     )
 }
 

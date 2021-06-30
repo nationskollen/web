@@ -239,7 +239,7 @@ const Table = <T,>({
                     </Overlay>
                 )}
                 <table {...getTableProps()} className="w-full border-collapse table-auto">
-                    <thead className="text-text-highlight bg-background dark:bg-background-extra">
+                    <thead className="text-text-highlight bg-background-extra">
                         {headerGroups.map((headerGroup) => (
                             <tr
                                 className="border-b-1 border-background-highlight"

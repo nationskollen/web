@@ -5,15 +5,15 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import UsersLayout from '@layouts/admin/UsersLayout'
 
-const Users = () => {
+const DisabledUsers = () => {
     const { t } = useTranslation('admin-users')
 
     return (
-        <p>asda</p>
+        <p>Disabled users</p>
     )
 }
 
-Users.getTemplate = UsersLayout.getTemplate
+DisabledUsers.getTemplate = UsersLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
@@ -26,4 +26,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
 }
 
-export default Users
+export default DisabledUsers

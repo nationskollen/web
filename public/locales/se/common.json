@@ -13,7 +13,11 @@
             },
             "password": {
                 "title": "Lösenord",
-                "placeholder": "Lösenord"
+                "placeholder": "••••••••••••"
+            },
+            "repeat_password": {
+                "title": "Upprepa lösenord",
+                "placeholder": "••••••••••••"
             }
         }
     },

@@ -4,7 +4,15 @@
         "description": "Hantera användare och rättigheter"
     },
     "me": {
-        "description": "Min profil"
+        "title": "Min information"
+    },
+    "profile": {
+        "title": "Information",
+        "field": {
+            "name": {
+                "title": "Namn"
+            }
+        }
     },
     "navigation": {
         "information": "Information",
@@ -12,5 +20,11 @@
     },
     "create": {
         "title": "Skapa ny användare"
+    },
+    "active": {
+        "title": "Aktiva användare"
+    },
+    "disabled": {
+        "title": "Inaktiverade användare"
     }
 }
