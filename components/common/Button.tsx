@@ -127,7 +127,7 @@ const BUTTON_RADIUS: Record<ButtonRadius, string> = {
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
     small: 'h-10 text-sm p-3 space-x-xsm',
     medium: 'h-10 p-3 px-4 text-md space-x-xsm',
-    default: 'h-12 p-3 px-md space-x-xsm',
+    default: 'h-12 p-3 px-md space-x-sm',
     large: 'h-14 text-lg p-4 space-x-2',
     icon: 'h-12 w-12 p-3',
     'icon-small': 'h-9 w-9 p-2',
