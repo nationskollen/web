@@ -201,8 +201,14 @@ const Table = <T,>({
         usePagination
     )
 
-    const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow, state } =
-        tableInstance
+    const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        rows,
+        prepareRow,
+        state,
+    } = tableInstance
 
     return (
         <>
