@@ -5,7 +5,7 @@ html {
     --color-hover: rgba(0, 0, 0, 0.08);
     --color-lighter: rgba(0, 0, 0, 0.04);
     --color-overlay: rgba(0, 0, 0, 0.65);
-    --color-card-overlay: linear-gradient(to bottom, transparent, var(--color-secondary));
+    --color-card-overlay: linear-gradient(to bottom, #3737524d, var(--color-secondary));
     --color-focus-primary: #db5189;
     --color-focus-default: #ccc;
     --color-focus-input: rgba(59, 130, 246, 0.5);
@@ -41,6 +41,7 @@ html {
 }
 
 html.dark {
+    --color-card-overlay: linear-gradient(to bottom, #3737528c, var(--color-secondary));
     --color-hover: rgba(255, 255, 255, 0.08);
     --color-lighter: rgba(255, 255, 255, 0.02);
     --color-focus-default: #393648;
@@ -80,3 +81,7 @@ svg {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+pre {
+    font-family: 'Nunito Sans', sans-serif;
+}

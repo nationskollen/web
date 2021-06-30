@@ -22,8 +22,8 @@ const AdminSettingsModal = ({ open, setOpen }: Props) => {
     }
 
     const changeLanguage = (item: OptionItem) => {
-        const { url } = getUrlHash(Router.asPath)
-        Router.push(url, undefined, { locale: item.id as string })
+        const { path } = getUrlHash(Router.asPath)
+        Router.push(path, undefined, { locale: item.id as string })
 
         // For some reason, the page does not reload despite
         // changing the locale via `Router.push`.

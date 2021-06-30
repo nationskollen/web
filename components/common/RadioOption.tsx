@@ -17,12 +17,11 @@ const RadioOption = React.forwardRef(
                 className={clsx(
                     'h-12 flex flex-row justify-between px-md items-center group space-x-sm',
                     'rounded-sm py-3 box-border border-1 border-border-dark dark:border-transparent',
-                    'focus:outline-none',
-                    'transition-colors duration-in bg-background dark:bg-background-highlight',
+                    'focus:outline-none transition-colors duration-in',
                     className,
                     checked
                         ? 'text-primary dark:text-text-highlight dark:bg-border-dark'
-                        : 'text-text'
+                        : 'text-text bg-background dark:bg-background-highlight'
                 )}
             >
                 {IconComponent && <IconComponent className="w-5 h-5" />}

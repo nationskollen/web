@@ -21,12 +21,10 @@ export interface Props<T> {
     onSelect?: (value: T) => void
     className?: string
     itemClassName?: string
-    ref?: React.Ref<any>
 }
 
-const CustomRadioGroup = <T,>(
+const CustomRadioGroup = React.forwardRef(<T,>(
     {
-        ref,
         name,
         className,
         itemClassName,
@@ -36,7 +34,8 @@ const CustomRadioGroup = <T,>(
         direction,
         onSelect,
         ...props
-    }: Props<T>
+    }: Props<T>,
+    ref: React.Ref<any>,
 ) => {
     const form = useFormContext()
 
@@ -91,6 +90,6 @@ const CustomRadioGroup = <T,>(
             </div>
         </RadioGroup>
     )
-}
+})
 
 export default CustomRadioGroup

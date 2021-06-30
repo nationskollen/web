@@ -15,9 +15,11 @@
         "inactive": "Inaktiv",
         "deactivate": "Avaktivera",
         "change_avatar": "Ändra profilbild",
+        "delete_description": "Genom att radera en användare tas all information bort från databasen. Användaren kommer inte kunna logga in eller komma åt/ändra information om nationen.\n\nDenna åtgärd kan inte ångras. Om kontot möjligtvis kommer behövas i framtiden så är det istället rekommenderat att avaktivera kontot här ovanför.\n\nAvaktivering av konto ger samma resultat som att ta bort kontot, men ger dig också möjligheten att i framtiden återaktivera kontot, utan att behöva skapa kontot igen.",
         "field": {
             "name": "Namn",
-            "active": "Användarstatus"
+            "active": "Användarstatus",
+            "description": "Personlig beskrivning"
         },
         "dialog": {
             "deactivate": {

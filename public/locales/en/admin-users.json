@@ -15,9 +15,11 @@
         "inactive": "Inactive",
         "deactivate": "Deactivate",
         "change_avatar": "Change avatar",
+        "delete_description": "When deleting a user, all information will be removed from the database. The user will no longer be able to login or acess/update information about the student nation.\n\nThis action is irreversible. If the account might be needed in the future, it is recommended to instead deactivate the account.\n\nDeactivation of the user will have the same result as deleting the user, but it allows you to reactivate it in the future",
         "field": {
             "name": "Full name",
-            "active": "User status"
+            "active": "User status",
+            "description": "Personal description"
         },
         "dialog": {
             "deactivate": {

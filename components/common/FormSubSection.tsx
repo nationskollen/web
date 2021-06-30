@@ -19,13 +19,30 @@ const FormSubSection = ({ id, title, icon, danger, children }: Props) => {
         <Anchor id={id}>
             <section
                 className={clsx(
-                    'mb-md pb-lg',
-                    'border-b-1 border-border last:border-b-0',
+                    'mb-md pb-lg border-b-1 border-border',
+                    'last-of-type:border-b-0 last-of-type:mb-sm',
                 )}
             >
-                <div className={clsx('flex flex-row items-center space-x-sm mb-md', !icon && !title && 'hidden')}>
-                    {icon && <IconCircle icon={icon} size="small" style={danger ? 'error' : undefined} />}
-                    {title && <Title text={title} size="small" className={clsx(danger && 'text-error-text')}/>}
+                <div
+                    className={clsx(
+                        'flex flex-row items-center space-x-sm mb-md',
+                        !icon && !title && 'hidden',
+                    )}
+                >
+                    {icon && (
+                        <IconCircle
+                            icon={icon}
+                            size="small"
+                            style={danger ? 'error' : undefined}
+                        />
+                    )}
+                    {title && (
+                        <Title
+                            text={title}
+                            size="small"
+                            className={clsx(danger && 'text-error-text')}
+                        />
+                    )}
                 </div>
                 <Column>
                     {children}

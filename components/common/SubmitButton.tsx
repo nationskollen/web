@@ -23,7 +23,7 @@ const SubmitButton = ({ type, label, ...props }: Props) => {
         <Button
             type="submit"
             style="primary"
-            className="self-start"
+            className="self-end"
             {...props}
         >
             <span>{label}</span>

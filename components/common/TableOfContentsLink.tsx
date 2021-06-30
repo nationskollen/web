@@ -11,11 +11,11 @@ export interface Props {
 const TableOfContentsLink = ({ section }: Props) => {
     return (
         <Link href={section.href}>
-            <li className="mb-xsm last:mb-0 -ml-sm">
+            <li className="-ml-sm">
                 <a
                     href={section.href}
                     className={clsx(
-                        'flex flex-row items-center w-full text-md h-10',
+                        'flex flex-row items-center w-full text-md h-9',
                         'rounded-sm px-sm text-text-extra',
                         'transition-colors duration-in',
                         'focus:outline-none focus:text-text-highlight',
