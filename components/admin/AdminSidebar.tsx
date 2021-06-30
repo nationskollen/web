@@ -35,10 +35,10 @@ const AdminSidebar = () => {
                 fallbackIcon={LibraryIcon}
             />
             <div className="space-y-sm">
-                <Button style="primary" onClick={() => setSettingsOpen(!settingsOpen)}>
+                <Button style="primary" size="icon" onClick={() => setSettingsOpen(!settingsOpen)}>
                     <CogIcon />
                 </Button>
-                <Button style="primary" onClick={logout}>
+                <Button style="primary" size="icon" onClick={logout}>
                     <LogoutIcon />
                 </Button>
             </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { TemplateGetter } from '@typings'
 import { useTranslation } from 'next-i18next'
-import { BadgeCheckIcon } from '@heroicons/react/outline'
+import { BadgeCheckIcon } from '@heroicons/react/solid'
 
 import Tag from '@common/Tag'
 import SubNavLink from '@common/SubNavLink'
@@ -21,7 +21,7 @@ const Template = ({ children }: Props) => {
             <MainLayout.Header>
                 <HeaderTitle
                     title="Fredrik Engstrand"
-                    tags={(<Tag label={t('common:auth.role.admin')} icon={BadgeCheckIcon} />)}
+                    tags={(<Tag label={t('common:auth.role.admin')} style="success" icon={BadgeCheckIcon} />)}
                     backHref="/admin/users"
                 />
             </MainLayout.Header>

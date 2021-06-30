@@ -4,13 +4,29 @@
         "description": "Hantera användare och rättigheter"
     },
     "me": {
-        "title": "Min information"
+        "title": "Min profil"
     },
     "profile": {
-        "title": "Information",
+        "title": "Profil",
+        "details": "Detaljer",
+        "delete_user": "Radera användare",
+        "change_password": "Byt lösenord",
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "deactivate": "Avaktivera",
+        "change_avatar": "Ändra profilbild",
         "field": {
-            "name": {
-                "title": "Namn"
+            "name": "Namn",
+            "active": "Användarstatus"
+        },
+        "dialog": {
+            "deactivate": {
+                "title": "Vill du verkligen avaktivera kontot?",
+                "description": "Detta innebär att den valda användare inte längre kommer att kunna logga in eller komma åt/ändra information inom nationen. Du kan när som helst återaktivera kontot"
+            },
+            "delete": {
+                "title": "Vill du verkligen radera kontot?",
+                "description": "Det valda kontot kommer tas bort permanent. Du kan inte ångra detta val!"
             }
         }
     },

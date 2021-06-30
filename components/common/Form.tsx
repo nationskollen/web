@@ -5,17 +5,18 @@ import { useForm, FormProvider, SubmitHandler } from 'react-hook-form'
 import Row from '@common/Row'
 import Column from '@common/Column'
 import Sidebar from '@common/Sidebar'
-import FormSection from '@common/FormSection'
+import FormTitle from '@common/FormTitle'
+import FormSubSection from '@common/FormSubSection'
 import TableOfContents, { Section } from '@common/TableOfContents'
 
-export interface FormSection extends Section {
+export interface FormSubSection extends Section {
     component: React.ElementType
     icon?: React.ElementType
 }
 
 export interface Props<T> {
     submit: SubmitHandler<T>
-    sections?: Array<FormSection>
+    sections?: Array<FormSubSection>
     sidebarContent?: React.ReactNode
     children?: React.ReactNode
 }
@@ -34,9 +35,9 @@ const Form = <T,>({ submit, sections, sidebarContent, children }: Props<T>) => {
         return {
             toc: sections.map(({ href, title }) => ({ href, title })),
             renderedChildren: sections.map(({ href, component: Component, ...options }) => (
-                <FormSection key={href} id={href.substr(1)} {...options}>
+                <FormSubSection key={href} id={href.substr(1)} {...options}>
                     <Component />
-                </FormSection>
+                </FormSubSection>
             )),
         }
     }, [sections])
@@ -48,13 +49,13 @@ const Form = <T,>({ submit, sections, sidebarContent, children }: Props<T>) => {
                 {sidebarContent && sidebarContent}
             </Sidebar>
             <FormProvider {...form}>
-                <form onSubmit={form.handleSubmit(submit)} className="max-w-form w-full">
-                    <Column>
-                        {renderedChildren.length > 0 && (
-                            <div>
-                                {renderedChildren}
-                            </div>
-                        )}
+                <form onSubmit={form.handleSubmit(submit)} className="w-full max-w-form">
+                    {renderedChildren.length > 0 && (
+                        <div>
+                            {renderedChildren}
+                        </div>
+                    )}
+                    <Column noVerticalSpacing={true}>
                         {children}
                     </Column>
                 </form>

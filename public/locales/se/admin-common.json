@@ -24,5 +24,8 @@
     "action": {
         "save": "Spara",
         "remove": "Ta bort"
+    },
+    "form": {
+        "danger_zone": "Farozon"
     }
 }

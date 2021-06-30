@@ -13,10 +13,7 @@ export interface Props {
 const CreateButton = ({ label, href, style }: Props) => {
     return (
         <Link href={href} passHref={true}>
-            <Button
-                style={style || 'primary'}
-                className="px-sm"
-            >
+            <Button style={style || 'primary'}>
                 {label && <span>{label}</span>}
                 <PlusIcon />
             </Button>

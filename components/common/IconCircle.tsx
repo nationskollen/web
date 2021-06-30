@@ -11,7 +11,7 @@ export interface Props {
 }
 
 const ICON_CIRCLE_SIZES: Record<IconCircleSizes, string> = {
-    small: 'h-8 w-8 p-xsm',
+    small: 'h-9 w-9 p-sm',
     default: 'h-10 w-10 p-sm',
     large: 'h-14 w-14 p-md',
 }

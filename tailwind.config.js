@@ -77,6 +77,7 @@ module.exports = {
                 'md': '1rem',
                 'lg': '1.5rem',
                 'xlg': '2.5rem',
+                'xxlg': '6rem',
                 '1/5': '20vh',
                 'modal-offset': '15vh',
                 'dialog-offset': '30vh',

@@ -15,7 +15,6 @@ import {
     ClockIcon,
     PhotographIcon,
     CalendarIcon,
-    PlusIcon,
     PencilIcon,
     CreditCardIcon,
     AcademicCapIcon,
@@ -30,12 +29,12 @@ import { DEFAULT_MODAL_FORM_PROPS } from '@constants'
 import Card from '@common/Card'
 import Form from '@common/Form'
 import Input from '@common/Input'
-import Button from '@common/Button'
 import Checkbox from '@common/Checkbox'
 import Textarea from '@common/Textarea'
 import InputGroup from '@common/InputGroup'
 import RadioGroup from '@common/RadioGroup'
 import ExternalLink from '@common/ExternalLink'
+import SubmitButton from '@common/SubmitButton'
 import Select, { OptionItem } from '@common/Select'
 import FileUploadInput from '@common/FileUploadInput'
 
@@ -169,16 +168,7 @@ const CreateEventForm = () => {
                     },
                 ]}
             >
-                <Button
-                    type="submit"
-                    style="primary"
-                    radius="large"
-                    loading={creator.loading}
-                    className="self-end"
-                >
-                    <span>{t('common:action.create')}</span>
-                    <PlusIcon />
-                </Button>
+                <SubmitButton loading={creator.loading} label={t('common:action.create')} />
             </Form>
         </>
     )
@@ -359,16 +349,16 @@ const Location = () => {
             )}
             {location && (
                 <Card noPadding={false} className="h-64 overflow-hidden">
-                    <div className="w-full h-full absolute inset-0 z-behind">
+                    <div className="absolute inset-0 w-full h-full z-behind">
                         {location.cover_img_src && (
                             <img
                                 src={location.cover_img_src}
-                                className="rounded-sm w-full h-full object-cover"
+                                className="object-cover w-full h-full rounded-sm"
                             />
                         )}
                     </div>
-                    <div className="absolute bottom-0 left-0 p-md bg-card-overlay h-full w-full flex flex-col justify-end rounded-sm">
-                        <p className="text-white font-bold">{location.name}</p>
+                    <div className="absolute bottom-0 left-0 flex flex-col justify-end w-full h-full rounded-sm p-md bg-card-overlay">
+                        <p className="font-bold text-white">{location.name}</p>
                         <p className="text-white">{location.address}</p>
                     </div>
                 </Card>

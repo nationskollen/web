@@ -1,11 +1,11 @@
 import Router from 'next/router'
+import { getUrlHash } from '@utils'
 import { useTranslation } from 'next-i18next'
+import { useTheme, Theme } from '@contexts/Theme'
 import { EyeIcon, SunIcon, MoonIcon } from '@heroicons/react/outline'
 
-import { useTheme, Theme } from '@contexts/Theme'
-
-import Select, { OptionItem } from '@common/Select'
 import CardTitle from '@common/CardTitle'
+import Select, { OptionItem } from '@common/Select'
 import Modal, { OpenProps as ModalOpenProps } from '@common/Modal'
 
 import USAFlag from '@svg/flags/USAFlag'
@@ -22,7 +22,8 @@ const AdminSettingsModal = ({ open, setOpen }: Props) => {
     }
 
     const changeLanguage = (item: OptionItem) => {
-        Router.push(Router.asPath, undefined, { locale: item.id as string })
+        const { url } = getUrlHash(Router.asPath)
+        Router.push(url, undefined, { locale: item.id as string })
 
         // For some reason, the page does not reload despite
         // changing the locale via `Router.push`.

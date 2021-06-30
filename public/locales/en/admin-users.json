@@ -4,13 +4,29 @@
         "description": "Manage users and permissions"
     },
     "me": {
-        "title": "My information"
+        "title": "My profile"
     },
     "profile": {
-        "title": "Information",
+        "title": "Profile",
+        "details": "Details",
+        "delete_user": "Delete user",
+        "change_password": "Change password",
+        "active": "Active",
+        "inactive": "Inactive",
+        "deactivate": "Deactivate",
+        "change_avatar": "Change avatar",
         "field": {
-            "name": {
-                "title": "Full name"
+            "name": "Full name",
+            "active": "User status"
+        },
+        "dialog": {
+            "deactivate": {
+                "title": "Do you really want to deactivate this account?",
+                "description": "This means that the chosen user will no longer be able to login or access/change information within the student nation. You can reactivate the account at any time"
+            },
+            "delete": {
+                "title": "Do you really want to delete this account?",
+                "description": "The chosen account will be permanently deleted. You can not undo this action!"
             }
         }
     },
