@@ -32,7 +32,7 @@ import { INPUT_FOCUS_STYLES } from '@common/Input'
 import LoadingIndicator from '@common/LoadingIndicator'
 
 export type ButtonRadius = 'default' | 'large'
-export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon'
+export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon' | 'icon-small'
 export type ButtonFocusStyles =
     | 'primary'
     | 'default'
@@ -130,6 +130,7 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
     default: 'h-12 p-3 px-md space-x-xsm',
     large: 'h-14 text-lg p-4 space-x-2',
     icon: 'h-12 w-12 p-3',
+    'icon-small': 'h-9 w-9 p-2',
 }
 
 // We use forwarRef here so that our buttons can be used as children

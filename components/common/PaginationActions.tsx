@@ -40,8 +40,7 @@ const PaginationActions = ({ page, pagination, setPage }: Props) => {
             <div className="space-x-sm">
                 <Button
                     style="light"
-                    size="icon"
-                    radius="large"
+                    size="icon-small"
                     onClick={handlePrevious}
                     disabled={!page || page === 1}
                 >
@@ -49,8 +48,7 @@ const PaginationActions = ({ page, pagination, setPage }: Props) => {
                 </Button>
                 <Button
                     style="light"
-                    size="icon"
-                    radius="large"
+                    size="icon-small"
                     onClick={handleNext}
                     disabled={!page || page === pagination?.last_page}
                 >
