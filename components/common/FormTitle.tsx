@@ -15,7 +15,7 @@ const FormTitle = ({ text, danger }: Props) => {
             size="medium"
             className={clsx(
                 'mb-lg border-b-1 border-border-dark pb-md',
-                danger && 'text-error-text',
+                danger && 'text-error-text'
             )}
         />
     )

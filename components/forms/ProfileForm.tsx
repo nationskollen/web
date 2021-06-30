@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'next-i18next'
 import { DEFAULT_FORM_PROPS } from '@constants'
-import { UploadIcon, UserIcon, InformationCircleIcon, LockOpenIcon, } from '@heroicons/react/outline'
+import { UploadIcon, UserIcon, InformationCircleIcon, LockOpenIcon } from '@heroicons/react/outline'
 
 import Form from '@common/Form'
 import Image from '@common/Image'
@@ -69,7 +69,7 @@ const ProfileForm = () => {
             />
             <Form
                 submit={submit}
-                sidebarContent={(
+                sidebarContent={
                     <>
                         <Image src={null} size="huge" fallbackIcon={UserIcon} />
                         <Column className="mt-md">
@@ -79,9 +79,15 @@ const ProfileForm = () => {
                             </Button>
                         </Column>
                     </>
-                )}
+                }
             >
-                <FormSection title={query.user_id === 'me' ? t('admin-users:me.title') : t('admin-users:profile.title')}>
+                <FormSection
+                    title={
+                        query.user_id === 'me'
+                            ? t('admin-users:me.title')
+                            : t('admin-users:profile.title')
+                    }
+                >
                     <FormSubSection
                         icon={InformationCircleIcon}
                         title={t('admin-users:profile.details')}
@@ -100,7 +106,10 @@ const ProfileForm = () => {
                         </InputGroup>
                         <Textarea label={t('admin-users:profile.field.description')} />
                     </FormSubSection>
-                    <FormSubSection icon={LockOpenIcon} title={t('admin-users:profile.change_password')}>
+                    <FormSubSection
+                        icon={LockOpenIcon}
+                        title={t('admin-users:profile.change_password')}
+                    >
                         <InputGroup>
                             <Input
                                 type="password"
@@ -133,7 +142,11 @@ const ProfileForm = () => {
                     </FormSubSection>
                     <Column className="text-sm text-text-extra">
                         <pre className="whitespace-pre-line">{t('admin-users:profile.delete_description')}</pre>
-                        <Button style="error-border" size="small" onClick={() => setShowDeleteDialog(true)}>
+                        <Button
+                            style="error-border"
+                            size="small"
+                            onClick={() => setShowDeleteDialog(true)}
+                        >
                             <span>{t('admin-users:profile.delete_user')}</span>
                         </Button>
                     </Column>

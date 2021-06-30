@@ -10,11 +10,8 @@ export interface Props {
 const Column = ({ noVerticalSpacing, className, children }: Props) => {
     return (
         <div
-            className={clsx(
-                'flex flex-col w-full',
-                !noVerticalSpacing && 'space-y-md',
-                className,
-            )}>
+            className={clsx('flex flex-col w-full', !noVerticalSpacing && 'space-y-md', className)}
+        >
             {children}
         </div>
     )

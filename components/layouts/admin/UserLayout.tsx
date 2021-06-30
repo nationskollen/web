@@ -21,7 +21,13 @@ const Template = ({ children }: Props) => {
             <MainLayout.Header>
                 <HeaderTitle
                     title="Fredrik Engstrand"
-                    tags={(<Tag label={t('common:auth.role.admin')} style="success" icon={BadgeCheckIcon} />)}
+                    tags={
+                        <Tag
+                            label={t('common:auth.role.admin')}
+                            style="success"
+                            icon={BadgeCheckIcon}
+                        />
+                    }
                     backHref="/admin/users"
                 />
             </MainLayout.Header>

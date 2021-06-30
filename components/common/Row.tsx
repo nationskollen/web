@@ -7,15 +7,7 @@ export interface Props {
 }
 
 const Row = ({ className, children }: Props) => {
-    return (
-        <div
-            className={clsx(
-                'flex flex-row w-full space-x-md',
-                className
-            )}>
-            {children}
-        </div>
-    )
+    return <div className={clsx('flex flex-row w-full space-x-md', className)}>{children}</div>
 }
 
 export default Row
