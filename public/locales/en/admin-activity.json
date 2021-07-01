@@ -1,7 +1,8 @@
 {
     "page": {
         "title": "Activity",
-        "description": "Manage activity and status of locations"
+        "description": "Manage activity and status of locations",
+        "selected_location": "Selected location"
     },
     "navigation": {}
 }

@@ -1,7 +1,8 @@
 {
     "page": {
         "title": "Aktivitet",
-        "description": "Uppdatera aktivitet och status på platser"
+        "description": "Uppdatera aktivitet och status på platser",
+        "selected_location": "Vald plats"
     },
     "navigation": {}
 }

@@ -9,7 +9,7 @@ export interface Props {
 const ExternalLink = ({ href, label }: Props) => {
     return (
         <Link href={href}>
-            <a className="flex flex-row items-center w-full h-10 font-bold py-sm space-x-sm hover:text-primary-text">
+            <a className="flex flex-row items-center h-10 font-bold py-sm space-x-sm hover:text-primary-text">
                 <span>{label}</span>
                 <ExternalLinkIcon className="w-6 h-6" />
             </a>

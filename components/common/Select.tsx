@@ -85,6 +85,7 @@ const Select = React.forwardRef(
             buttonIconClassName,
             name,
             onSelect,
+            className,
             ...props
         }: Props,
         ref: React.Ref<any>
@@ -98,9 +99,13 @@ const Select = React.forwardRef(
             return initialOptions.concat(options)
         }, [options, initialOptions])
 
+        const getIndexOfOption = (id: OptionItemIdType) => {
+            return concatinatedOptions.findIndex((item) => item.id === id)
+        }
+
         const [selected, setSelected] = useState(
             initialSelection !== undefined
-                ? concatinatedOptions.findIndex((item) => item.id === initialSelection)
+                ? getIndexOfOption(initialSelection)
                 : undefined
         )
 
@@ -132,6 +137,15 @@ const Select = React.forwardRef(
                 runCallbacks(selected, true)
             }
         }, [])
+
+        // Update the selcetion whenever the initialSelection changes
+        // This is useful when making async requests where you do not know
+        // the id of the item that should be preselected
+        useEffect(() => {
+            if (initialSelection !== undefined) {
+
+            }
+        }, [initialSelection])
 
         // Runs all the registered callbacks when changing selected value
         const runCallbacks = (index: number, skipOnSelect?: boolean) => {
@@ -171,7 +185,7 @@ const Select = React.forwardRef(
         }
 
         return (
-            <div className="relative">
+            <div className={clsx('relative flex flex-col min-w-select', className)}>
                 <Listbox value={selected} onChange={updateSelected}>
                     {label && (
                         <Listbox.Label
@@ -188,7 +202,7 @@ const Select = React.forwardRef(
                         id={id}
                         as={Button}
                         style="input"
-                        className="w-full shadow group mt-xsm"
+                        className="w-full shadow bg-background group mt-xsm"
                         error={error}
                         aria-invalid={!!error}
                     >
@@ -228,13 +242,20 @@ const Select = React.forwardRef(
                         leaveFrom="opacity-100"
                         leaveTo="opacity-0"
                     >
-                        <Listbox.Options ref={ref} className="absolute w-full -mt-1" {...props}>
+                        <Listbox.Options
+                            ref={ref}
+                            className={clsx(
+                                'absolute w-full top-[4.4rem] dark:top-[4.3rem] rounded-b-sm',
+                                'border-1 border-border-dark dark:border-background-highlight',
+                            )}
+                            {...props}
+                        >
                             <Card
                                 noPadding={true}
                                 className={clsx(
-                                    'z-10 overflow-y-auto rounded-t-none rounded-b-sm py-xsm',
+                                    'z-40 overflow-y-auto rounded-t-none rounded-b-sm py-xsm',
                                     'shadow-2xl max-h-dropdown border-1 border-border-dark',
-                                    'dark:bg-background-highlight dark:border-0 dark:border-t-1'
+                                    'dark:bg-background-highlight dark:border-0 dark:border-t-1',
                                 )}
                             >
                                 {renderedOptions}

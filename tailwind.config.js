@@ -121,6 +121,7 @@ module.exports = {
             minWidth: {
                 'modal': '25rem',
                 'login-background': '1100px',
+                'select': '12rem',
             },
             maxWidth: {
                 notifications: '25rem',

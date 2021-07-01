@@ -1,11 +1,13 @@
 import clsx from 'clsx'
 import React from 'react'
 
+export type TitleStyles = 'default' | 'uppercase'
 export type TitleSizes = 'tiny' | 'small' | 'default' | 'medium' | 'large'
 
-export interface Props extends React.BaseHTMLAttributes<HTMLHeadingElement> {
+export interface Props extends Omit<React.BaseHTMLAttributes<HTMLHeadingElement>, 'style'> {
     text?: string
     size?: TitleSizes
+    style?: TitleStyles
     className?: string
 }
 
@@ -17,15 +19,21 @@ const TITLE_SIZES: Record<TitleSizes, string> = {
     large: 'text-3xl font-black',
 }
 
+const TITLE_STYLES: Record<TitleStyles, string> = {
+    default: '',
+    uppercase: '!font-black uppercase text-xsm'
+}
+
 // Accept other base props for accessibility
-const Title = ({ text, size, className, ...props }: Props) => {
+const Title = ({ text, size, style, className, ...props }: Props) => {
     // Skip rendering if we have no text
     if (!text) {
         return null
     }
 
     const sizing = TITLE_SIZES[size || 'default']
-    const classes = clsx('text-text-highlight', sizing, className)
+    const styling = TITLE_STYLES[style || 'default']
+    const classes = clsx('text-text-highlight', sizing, styling, className)
 
     if (!size || size === 'default') {
         return (
@@ -41,6 +49,12 @@ const Title = ({ text, size, className, ...props }: Props) => {
                 {text}
             </h3>
         )
+    }
+
+    if (size === 'tiny') {
+        <h4 className={classes} {...props}>
+            {text}
+        </h4>
     }
 
     // Large

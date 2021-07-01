@@ -61,7 +61,7 @@ const Header = ({ sticky, children }: HeaderProps) => {
 const Content = ({ children }: Props) => {
     return (
         <div className="flex-1 bg-background dark:bg-background-extra">
-            <Container as="main" className="flex flex-1 py-sm py-xlg pb-xxlg">
+            <Container as="main" className="flex flex-1 pt-lg pb-xxlg">
                 {children}
             </Container>
         </div>
