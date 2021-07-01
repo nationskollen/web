@@ -133,7 +133,7 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
     'icon-small': 'h-9 w-9 p-2',
 }
 
-// We use forwarRef here so that our buttons can be used as children
+// We use forwardRef here so that our buttons can be used as children
 // to Link components. The only requirement to make it work is to
 // set passHref={true} on the Link.
 const Button = React.forwardRef(
