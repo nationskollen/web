@@ -53,6 +53,7 @@ export interface Props extends NativeInputProps {
     label?: string
     style?: InputStyles
     loading?: boolean
+    defaultValue?: string
     inputClassName?: string
     containerClassName?: string
     error?: boolean | string
@@ -114,6 +115,7 @@ const Input = React.forwardRef(
             label,
             loading,
             error,
+            defaultValue,
             hideErrorIcon,
             className,
             inputClassName,
@@ -191,6 +193,7 @@ const Input = React.forwardRef(
                         title={title}
                         aria-invalid={!!inputError}
                         onChange={onChangeCallback}
+                        defaultValue={defaultValue}
                         {...props}
                     />
                     {inputError && !hideErrorIcon && (

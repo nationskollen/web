@@ -1,22 +1,17 @@
 import { LOCALES } from '@constants'
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticProps } from 'next'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import ProfileForm from '@forms/ProfileForm'
-import UserLayout from '@layouts/admin/UserLayout'
+import UsersLayout from '@layouts/admin/UsersLayout'
 
-const UserPage = () => {
-    return <ProfileForm />
+const DisabledUsers = () => {
+    const { t } = useTranslation('admin-users')
+
+    return <p>Disabled users</p>
 }
 
-UserPage.getTemplate = UserLayout.getTemplate
-
-export const getStaticPaths: GetStaticPaths = async () => {
-    return {
-        paths: [],
-        fallback: true,
-    }
-}
+DisabledUsers.getTemplate = UsersLayout.getTemplate
 
 export const getStaticProps: GetStaticProps = async (context) => {
     return {
@@ -29,4 +24,4 @@ export const getStaticProps: GetStaticProps = async (context) => {
     }
 }
 
-export default UserPage
+export default DisabledUsers

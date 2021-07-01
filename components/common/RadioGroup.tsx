@@ -8,23 +8,23 @@ import RadioOption, { Props as RadioOptionProps } from '@common/RadioOption'
 
 export type Directions = 'row' | 'column'
 
-export interface RadioItem extends Omit<RadioOptionProps, 'checked'> {
-    value: string
+export interface RadioItem<T> extends Omit<RadioOptionProps, 'checked'> {
+    value: T
 }
 
-export interface Props {
+export interface Props<T> {
     name: string
     title?: string
-    value: string
-    items: Array<RadioItem>
+    value: T
+    items: Array<RadioItem<T>>
     direction?: Directions
-    onSelect?: (value: string) => void
+    onSelect?: (value: T) => void
     className?: string
     itemClassName?: string
 }
 
 const CustomRadioGroup = React.forwardRef(
-    (
+    <T,>(
         {
             name,
             className,
@@ -35,7 +35,7 @@ const CustomRadioGroup = React.forwardRef(
             direction,
             onSelect,
             ...props
-        }: Props,
+        }: Props<T>,
         ref: React.Ref<any>
     ) => {
         const form = useFormContext()
@@ -47,7 +47,7 @@ const CustomRadioGroup = React.forwardRef(
             }
         }, [])
 
-        const handleChange = (value: string) => {
+        const handleChange = (value: T) => {
             if (form && name) {
                 form.setValue(name, value)
             }
@@ -82,7 +82,12 @@ const CustomRadioGroup = React.forwardRef(
                             )}
                         >
                             {({ checked }) => (
-                                <RadioOption key={value} checked={checked} {...props} {...field}>
+                                <RadioOption
+                                    key={`${value}`}
+                                    checked={checked}
+                                    {...props}
+                                    {...field}
+                                >
                                     <RadioCircle checked={checked} />
                                 </RadioOption>
                             )}

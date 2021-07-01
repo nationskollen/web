@@ -8,13 +8,29 @@ export interface Props {
     children?: React.ReactNode
 }
 
+// This is needed because tailwind can not
+// generate CSS-classes if you do someting like `grid-cols-${count}`
+const getColumns = (count: number) => {
+    switch (count) {
+        case 0:
+            return 'grid-cols-0'
+        case 1:
+            return 'grid-cols-1'
+        case 2:
+            return 'grid-cols-2'
+        case 3:
+            return 'grid-cols-3'
+    }
+}
+
 const InputGroup = ({ label, columns, className, children }: Props) => {
     return (
         <fieldset>
             {label && <legend className="text-sm text-text mb-xsm">{label}</legend>}
             <div
                 className={clsx(
-                    `grid grid-cols-${columns || React.Children.count(children)} gap-md`,
+                    `grid gap-md`,
+                    getColumns(columns || React.Children.count(children)),
                     className
                 )}
             >

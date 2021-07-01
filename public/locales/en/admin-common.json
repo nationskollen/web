@@ -24,5 +24,8 @@
     "action": {
         "save": "Save",
         "remove": "Remove"
+    },
+    "form": {
+        "danger_zone": "Danger zone"
     }
 }

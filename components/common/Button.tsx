@@ -32,7 +32,7 @@ import { INPUT_FOCUS_STYLES } from '@common/Input'
 import LoadingIndicator from '@common/LoadingIndicator'
 
 export type ButtonRadius = 'default' | 'large'
-export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon'
+export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon' | 'icon-small'
 export type ButtonFocusStyles = 'primary' | 'default' | 'subtle' | 'error' | 'input'
 
 export type ButtonStyles =
@@ -43,8 +43,10 @@ export type ButtonStyles =
     | 'lighter'
     | 'transparent'
     | 'error'
+    | 'error-border'
     | 'success'
     | 'input'
+    | 'border'
 
 export type NativeButtonProps = Omit<
     React.ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement>,
@@ -88,6 +90,10 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
         'bg-error text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-error'
     ),
+    'error-border': clsx(
+        'bg-transparent text-error-text border-2 border-border',
+        'hover:border-border-dark hover:bg-background-extra hover:dark:bg-background-highlight'
+    ),
     'success': clsx(
         'bg-success text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-success'
@@ -95,6 +101,10 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'input': clsx(
         'bg-transparent text-text-highlight border-1 border-border-dark',
         'dark:bg-background-highlight dark:border-0'
+    ),
+    'border': clsx(
+        'bg-transparent text-text border-2 border-border',
+        'hover:text-text-highlight hover:border-border-dark'
     ),
 }
 
@@ -115,14 +125,15 @@ const BUTTON_RADIUS: Record<ButtonRadius, string> = {
 }
 
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
-    small: 'h-10 text-sm p-3 space-x-xsm',
-    medium: 'h-10 p-3 px-4 text-md space-x-xsm',
-    default: 'h-12 p-3 space-x-sm',
-    large: 'h-14 text-lg p-4 space-x-2',
-    icon: 'h-9 w-9 p-sm',
+    'small': 'h-10 text-sm p-3 space-x-xsm',
+    'medium': 'h-10 p-3 px-4 text-md space-x-xsm',
+    'default': 'h-12 p-3 px-md space-x-sm',
+    'large': 'h-14 text-lg p-4 space-x-2',
+    'icon': 'h-12 w-12 p-3',
+    'icon-small': 'h-9 w-9 p-2',
 }
 
-// We use forwarRef here so that our buttons can be used as children
+// We use forwardRef here so that our buttons can be used as children
 // to Link components. The only requirement to make it work is to
 // set passHref={true} on the Link.
 const Button = React.forwardRef(

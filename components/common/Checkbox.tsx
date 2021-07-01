@@ -34,7 +34,7 @@ const Checkbox = React.forwardRef(
             }
         }, [])
 
-        const handleChange = (_) => {
+        const handleChange = () => {
             setChecked(!checked)
             form && name && form.setValue(name, !checked)
         }
@@ -45,21 +45,21 @@ const Checkbox = React.forwardRef(
                     'group h-12 w-full rounded-sm border-1 shadow',
                     'flex flex-row items-center px-md space-x-sm py-sm cursor-pointer',
                     'focus-within:outline-none focus-within:ring-2 focus-within:ring-focus-input',
-                    'bg-background border-border-dark dark:border-transparent dark:bg-background-highlight',
+                    'border-border-dark dark:border-transparent',
                     checked
                         ? 'text-primary-text dark:text-text-highlight dark:bg-border-dark'
-                        : 'text-text'
+                        : 'text-text bg-background dark:bg-background-highlight'
                 )}
             >
                 {IconComponent && <IconComponent className="w-5 h-5" />}
-                <span className="flex-1 font-bold text-sm">{label}</span>
+                <span className="flex-1 text-sm font-bold">{label}</span>
                 <input
                     ref={ref}
                     name={name}
                     type="checkbox"
                     checked={checked}
                     onChange={handleChange}
-                    className="w-0 h-0 appearance-none pointer-events-none opacity-0"
+                    className="w-0 h-0 opacity-0 appearance-none pointer-events-none"
                     {...props}
                 />
                 <Checkmark checked={checked} />

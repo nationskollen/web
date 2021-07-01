@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'next-i18next'
 
 import ModalContent from '@common/ModalContent'
 import { IconCircleStyles } from '@common/IconCircle'
@@ -38,20 +39,21 @@ export interface Props extends ActionCallbacks, Omit<ModalProps, 'open' | 'setOp
     children?: React.ReactNode
 }
 
-export const getActions = (confirmStyle: ButtonStyles): ActionsRenderer => ({
-    onConfirm,
-    onCancel,
-    confirmLabel,
-    cancelLabel,
-    hasCancelCallback,
-}) => {
-    const confirmAction = { label: confirmLabel, style: confirmStyle, onClick: onConfirm }
+export const getActions = (confirmStyle: ButtonStyles): ActionsRenderer => {
+    return ({ onConfirm, onCancel, confirmLabel, cancelLabel, hasCancelCallback }) => {
+        const confirmAction: ActionProps = {
+            label: confirmLabel,
+            style: confirmStyle,
+            onClick: onConfirm,
+        }
+        const cancelAction: ActionProps = { label: cancelLabel, style: 'light', onClick: onCancel }
 
-    if (!hasCancelCallback) {
-        return [confirmAction]
+        if (!hasCancelCallback && !onConfirm) {
+            return [confirmAction]
+        }
+
+        return [cancelAction, confirmAction]
     }
-
-    return [{ label: cancelLabel, style: 'light', onClick: onCancel }, confirmAction]
 }
 
 const BaseDialog = ({
@@ -69,6 +71,7 @@ const BaseDialog = ({
     actions,
     ...props
 }: Props) => {
+    const { t } = useTranslation('common')
     const [open, setOpen] = useState<boolean>(customOpen !== undefined ? customOpen : true)
 
     const updateState = (open: boolean) => {
@@ -88,14 +91,14 @@ const BaseDialog = ({
     const compiledActions = actions({
         onConfirm: handleConfirm,
         onCancel: handleCancel,
-        confirmLabel: confirmLabel || 'Okej',
-        cancelLabel: cancelLabel || 'Avbryt',
+        confirmLabel: confirmLabel || t('action.accept'),
+        cancelLabel: cancelLabel || t('action.cancel'),
         hasCancelCallback: !!onCancel,
     })
 
     return (
         <Modal
-            open={open}
+            open={customOpen || open}
             setOpen={customSetOpen || setOpen}
             noPadding={true}
             appear={true}

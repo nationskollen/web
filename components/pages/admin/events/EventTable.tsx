@@ -1,15 +1,16 @@
 import { useState } from 'react'
-import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 
 import { getShorterDate } from '@utils'
 import { useAuth } from '@contexts/Auth'
 import { useEvents } from '@nationskollen/sdk'
-import { SearchIcon, PencilAltIcon, TrashIcon, PlusIcon } from '@heroicons/react/outline'
+import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline'
 
-import Button from '@common/Button'
-import Input from '@common/Input'
+import Row from '@common/Row'
+import Column from '@common/Column'
 import MenuItem from '@common/MenuItem'
+import FilterInput from '@common/FilterInput'
+import CreateButton from '@common/CreateButton'
 import Table, { ActionsRendererProps } from '@common/Table'
 
 export interface Props {
@@ -37,8 +38,8 @@ const ActionItems = ({ row }: ActionsRendererProps<TableItem>) => {
 const EventTable = ({ id, before, after, amount = 15 }: Props) => {
     const { oid } = useAuth()
     const [page, setPage] = useState(1)
+    const { t } = useTranslation('admin-events')
     const [filterString, setFilterString] = useState('')
-    const { t } = useTranslation(['admin-events', 'common'])
     const { data, error, isValidating, pagination } = useEvents(oid, {
         page,
         amount,
@@ -47,37 +48,23 @@ const EventTable = ({ id, before, after, amount = 15 }: Props) => {
     })
 
     return (
-        <>
-            <div className="flex flex-row w-full space-x-md">
-                <Input
-                    id={`${id}_filter`}
-                    type="text"
-                    placeholder={t('common:filtering.placeholder')}
-                    onChange={(e) => setFilterString(e.target.value)}
-                    debounce={true}
-                    className="flex-1"
-                >
-                    <SearchIcon />
-                </Input>
-                <Link href="/admin/events/create" passHref={true}>
-                    <Button style="primary" className="px-sm">
-                        <span>{t('admin-events:create.title')}</span>
-                        <PlusIcon />
-                    </Button>
-                </Link>
-            </div>
+        <Column>
+            <Row>
+                <FilterInput id={id} onChange={setFilterString} />
+                <CreateButton href="/admin/events/create" label={t('create.title')} />
+            </Row>
             <Table
                 columns={[
                     {
-                        Header: t('admin-events:upcoming.column.name'),
+                        Header: t('upcoming.column.name'),
                         accessor: 'name',
                     },
                     {
-                        Header: t('admin-events:upcoming.column.start'),
+                        Header: t('upcoming.column.start'),
                         accessor: 'occurs_at',
                     },
                     {
-                        Header: t('admin-events:upcoming.column.end'),
+                        Header: t('upcoming.column.end'),
                         accessor: 'ends_at',
                     },
                     {
@@ -104,7 +91,7 @@ const EventTable = ({ id, before, after, amount = 15 }: Props) => {
                 setPage={setPage}
                 error={!!error}
             />
-        </>
+        </Column>
     )
 }
 

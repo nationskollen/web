@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 import { ArrowLeftIcon } from '@heroicons/react/outline'
 
 export interface Props {
@@ -8,6 +9,8 @@ export interface Props {
 }
 
 const BackArrow = ({ href, className }: Props) => {
+    const { t } = useTranslation('common')
+
     return (
         <Link href={href} passHref={true}>
             <a
@@ -19,7 +22,7 @@ const BackArrow = ({ href, className }: Props) => {
                 )}
             >
                 <ArrowLeftIcon />
-                <span>Tillbaka</span>
+                <span>{t('action.back')}</span>
             </a>
         </Link>
     )

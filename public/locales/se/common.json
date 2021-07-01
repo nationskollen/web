@@ -13,7 +13,11 @@
             },
             "password": {
                 "title": "Lösenord",
-                "placeholder": "Lösenord"
+                "placeholder": "••••••••••••"
+            },
+            "repeat_password": {
+                "title": "Upprepa lösenord",
+                "placeholder": "••••••••••••"
             }
         }
     },
@@ -63,7 +67,11 @@
         "cancel": "Avbryt",
         "back": "Tillbaka",
         "create": "Skapa",
+        "yes": "Ja",
+        "no": "Nej",
         "delete": "Ta bort",
+        "accept": "Okej",
+        "save": "Spara ändringar",
         "back_to_homepage": "Tillbaka till startsidan"
     },
     "settings": {

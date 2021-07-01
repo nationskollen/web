@@ -3,7 +3,7 @@
         "login": "Login",
         "logout": "Logout",
         "role": {
-            "admin": "Admin",
+            "admin": "Administrator",
             "staff": "Staff"
         },
         "field": {
@@ -13,7 +13,11 @@
             },
             "password": {
                 "title": "Password",
-                "placeholder": "Password"
+                "placeholder": "••••••••••••"
+            },
+            "repeat_password": {
+                "title": "Repeat password",
+                "placeholder": "••••••••••••"
             }
         }
     },
@@ -64,6 +68,10 @@
         "back": "Back",
         "create": "Create",
         "delete": "Delete",
+        "yes": "Yes",
+        "no": "No",
+        "accept": "Okay",
+        "save": "Save changes",
         "back_to_homepage": "Back to homepage"
     },
     "settings": {

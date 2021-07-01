@@ -4,7 +4,33 @@
         "description": "Hantera användare och rättigheter"
     },
     "me": {
-        "description": "Min profil"
+        "title": "Min profil"
+    },
+    "profile": {
+        "title": "Profil",
+        "details": "Detaljer",
+        "delete_user": "Radera användare",
+        "change_password": "Byt lösenord",
+        "active": "Aktiv",
+        "inactive": "Inaktiv",
+        "deactivate": "Avaktivera",
+        "change_avatar": "Ändra profilbild",
+        "delete_description": "Genom att radera en användare tas all information bort från databasen. Användaren kommer inte kunna logga in eller komma åt/ändra information om nationen.\n\nDenna åtgärd kan inte ångras. Om kontot möjligtvis kommer behövas i framtiden så är det istället rekommenderat att avaktivera kontot här ovanför.\n\nAvaktivering av konto ger samma resultat som att ta bort kontot, men ger dig också möjligheten att i framtiden återaktivera kontot, utan att behöva skapa kontot igen.",
+        "field": {
+            "name": "Namn",
+            "active": "Användarstatus",
+            "description": "Personlig beskrivning"
+        },
+        "dialog": {
+            "deactivate": {
+                "title": "Vill du verkligen avaktivera kontot?",
+                "description": "Detta innebär att den valda användare inte längre kommer att kunna logga in eller komma åt/ändra information inom nationen. Du kan när som helst återaktivera kontot"
+            },
+            "delete": {
+                "title": "Vill du verkligen radera kontot?",
+                "description": "Det valda kontot kommer tas bort permanent. Du kan inte ångra detta val!"
+            }
+        }
     },
     "navigation": {
         "information": "Information",
@@ -12,5 +38,11 @@
     },
     "create": {
         "title": "Skapa ny användare"
+    },
+    "active": {
+        "title": "Aktiva användare"
+    },
+    "disabled": {
+        "title": "Inaktiverade användare"
     }
 }
