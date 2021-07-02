@@ -76,5 +76,16 @@
     },
     "settings": {
         "title": "Settings"
+    },
+    "activity": {
+        "people": "{{ count }} people",
+        "level": {
+            "closed": "Closed",
+            "low": "Low activity",
+            "medium": "Medium activity",
+            "high": "High activity",
+            "very_high": "Very high activity",
+            "full": "Max capacity"
+        }
     }
 }

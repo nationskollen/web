@@ -46,6 +46,7 @@ export type ButtonStyles =
     | 'error'
     | 'error-border'
     | 'success'
+    | 'success-border'
     | 'input'
     | 'border'
 
@@ -100,6 +101,11 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'success': clsx(
         'bg-success text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-success'
+    ),
+    'success-border': clsx(
+        'bg-transparent text-success-highlight-text border-1 border-border-dark',
+        'hover:border-success-highlight hover:bg-success-highlight',
+        'focus:ring-focus-success',
     ),
     'input': clsx(
         'bg-transparent text-text-highlight border-1 border-border-dark',

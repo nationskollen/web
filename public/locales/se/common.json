@@ -76,5 +76,16 @@
     },
     "settings": {
         "title": "Inställningar"
+    },
+    "activity": {
+        "people": "{{ count }} personer",
+        "level": {
+            "closed": "Stängt",
+            "low": "Låg aktivitet",
+            "medium": "Medel aktivitet",
+            "high": "Hög aktivitet",
+            "very_high": "Väldigt hög aktivitet",
+            "full": "Max kapacitet"
+        }
     }
 }
