@@ -5,15 +5,17 @@ import { useAuth } from '@contexts/Auth'
 import { useTranslation } from 'next-i18next'
 import { useLocations, useActivityLevel, Location } from '@nationskollen/sdk'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { UserRemoveIcon, UserAddIcon, LocationMarkerIcon } from '@heroicons/react/outline'
+import { InformationCircleIcon, UserRemoveIcon, UserAddIcon, LocationMarkerIcon } from '@heroicons/react/outline'
 
 import Row from '@common/Row'
 import Input from '@common/Input'
 import Title from '@common/Title'
 import Column from '@common/Column'
 import Button from '@common/Button'
+import IconCircle from '@common/IconCircle'
 import InputGroup from '@common/InputGroup'
 import SubNavLink from '@common/SubNavLink'
+import ProgressBar from '@common/ProgressBar'
 import HeaderTitle from '@common/HeaderTitle'
 import SubmitButton from '@common/SubmitButton'
 import ExternalLink from '@common/ExternalLink'
@@ -117,14 +119,11 @@ const Activity = () => {
                                             <p>Just nu (ca):</p>
                                             <p>{location.estimated_people_count} personer</p>
                                         </Row>
-                                        <div className="w-full h-2 overflow-hidden rounded-sm mt-md bg-secondary-extra">
-                                            <div
-                                                className="h-full bg-success filter brightness-150"
-                                                style={{
-                                                    width: `${(location.estimated_people_count / location.max_capacity) * 100}%`
-                                                }}
-                                            />
-                                        </div>
+                                        <ProgressBar
+                                            current={location.estimated_people_count}
+                                            max={location.max_capacity}
+                                            multiColor={true}
+                                        />
                                     </LocationCard>
                                     <Column className="flex-1 h-full">
                                         <Title size="small" text="Uppdatera aktivitet" />
@@ -171,8 +170,25 @@ const Activity = () => {
                             </Column>
                         ) : (
                             <Column className="items-center justify-center w-full pt-xlg">
-                                <LocationMarkerIcon className="w-20 h-20 text-text-extra"/>
-                                <p>Du har inte valt någon plats</p>
+                                <IconCircle icon={LocationMarkerIcon} size="large" />
+                                <p className="font-bold">Nationen har inte lagt till någon plats</p>
+                                <Row className="w-auto rounded p-md border-1 border-border w-[40rem]">
+                                    <InformationCircleIcon className="w-6 h-6" />
+                                    <Column>
+                                        <Title size="tiny" text="Vad är en plats?" />
+                                        <p>
+                                            Platser tillåter nationen att hålla koll på antal besökare i realtid (valfritt),
+                                            samt låta användare av Nationskollen enkelt hitta till nationens olika platser
+                                            via karta. Det går också att lägga till öppettider, vilket gör att användarna
+                                            snabbt kan se om platsen är öppen eller inte.
+                                        </p>
+                                        <p>
+                                            Det är också via platser som mat- och dryckmenyer kan läggas till.
+                                            Evenemang som nationen skapar kan också länkas till skapade platser.
+                                        </p>
+                                        <ExternalLink label="Lägg till plats" href="/admin/locations/create" />
+                                    </Column>
+                                </Row>
                             </Column>
                         )}
                     </>
