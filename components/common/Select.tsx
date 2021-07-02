@@ -143,7 +143,11 @@ const Select = React.forwardRef(
         // the id of the item that should be preselected
         useEffect(() => {
             if (initialSelection !== undefined) {
+                const index = getIndexOfOption(initialSelection)
 
+                if (index !== -1) {
+                    setSelected(index)
+                }
             }
         }, [initialSelection])
 
