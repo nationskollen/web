@@ -17,9 +17,10 @@ const Login = () => {
     const { t } = useTranslation('common')
 
     useEffect(() => {
-        const token = localStorage.getItem(AUTH.USER_STORAGE_KEY)
+        const token = localStorage.getItem(AUTH.TOKEN_STORAGE_KEY)
 
         if (token) {
+            // The actual token will be validated by the `ProtectedRoute` component
             Router.push('/admin/dashboard')
         }
     }, [])

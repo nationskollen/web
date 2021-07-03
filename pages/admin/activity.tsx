@@ -34,8 +34,8 @@ import Select, { OptionItem } from '@common/Select'
 import LoadingIndicator from '@common/LoadingIndicator'
 
 const Activity = () => {
-    const { oid } = useAuth()
-    const { data, isValidating } = useLocations(oid)
+    const { user } = useAuth()
+    const { data, isValidating } = useLocations(user.oid)
     const [selectedLocation, setSelectedLocation] = useState<Location>()
     const { t } = useTranslation(['admin-activity', 'common'])
 

@@ -61,7 +61,7 @@ export interface FormValues {
 
 const CreateEventForm = () => {
     const api = useApi()
-    const { oid } = useAuth()
+    const { user } = useAuth()
     const { t } = useTranslation(['common', 'admin-events'])
     const form = useForm<FormValues>(DEFAULT_MODAL_FORM_PROPS)
 
@@ -76,7 +76,7 @@ const CreateEventForm = () => {
     const submit = (data: FormValues) => {
         console.log(data)
 
-        creator.execute(oid, {
+        creator.execute(user.oid, {
             name: data.title,
             short_description: data.shortDescription,
             long_description: data.description,
@@ -287,13 +287,13 @@ const Time = () => {
 }
 
 const Location = () => {
-    const { oid } = useAuth()
+    const { user } = useAuth()
     const { register, watch } = useFormContext()
     const watchLocation = watch('location')
+    const { t } = useTranslation(['admin-events', 'common'])
     const [location, setLocation] = useState<LocationType>()
     const [locationType, setLocationType] = useState<LocationSelectionTypes>('default')
-    const { data, isValidating } = useLocations(oid!)
-    const { t } = useTranslation(['admin-events', 'common'])
+    const { data, isValidating } = useLocations(user.oid)
 
     useEffect(() => {
         if (data && watchLocation) {

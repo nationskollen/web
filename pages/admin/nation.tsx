@@ -12,8 +12,8 @@ import Subnavigation from '@common/Subnavigation'
 import MainLayout from '@layouts/admin/MainLayout'
 
 const Nation = () => {
-    const { oid } = useAuth()
-    const { data } = useNation(oid)
+    const { user } = useAuth()
+    const { data } = useNation(user.oid)
     const { t } = useTranslation('admin-nation')
 
     return (

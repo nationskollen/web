@@ -1,8 +1,8 @@
 import React from 'react'
+import { AuthenticatedUser } from '@nationskollen/sdk'
 
 export interface AuthContextContract {
-    token: string
-    oid: number
+    user: AuthenticatedUser
     logout: () => void
 }
 

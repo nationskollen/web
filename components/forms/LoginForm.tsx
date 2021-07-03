@@ -62,11 +62,8 @@ const LoginForm = () => {
         }
 
         localStorage.setItem(
-            AUTH.USER_STORAGE_KEY,
-            JSON.stringify({
-                token: result.token,
-                oid: result.oid,
-            })
+            AUTH.TOKEN_STORAGE_KEY,
+            result.token,
         )
 
         // We use replace here since going back in the history will only redirect you
