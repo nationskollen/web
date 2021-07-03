@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Link from 'next/link'
+import { useAuth } from '@contexts/Auth'
 import { useTranslation } from 'next-i18next'
 import { UserIcon, ArrowRightIcon } from '@heroicons/react/outline'
 
@@ -8,14 +9,32 @@ import Popover from '@common/Popover'
 import PopoverSection from '@common/PopoverSection'
 
 const UserPopover = () => {
+    const { user } = useAuth()
     const { t } = useTranslation(['admin-common', 'common'])
+
+    const initials = useMemo(() => {
+        let acc = ''
+        const strings = user.full_name.split(' ')
+
+        for (const str of strings) {
+            if (str.length === 0) {
+                continue
+            }
+
+            acc += str[0].toUpperCase()
+        }
+
+        return acc
+    }, [user])
 
     return (
         <Popover
             cardClassName="w-user-popover"
             button={() => (
                 <Button style="secondary" size="medium" radius="large" className="w-10 h-10">
-                    <p className="font-bold text-white">FE</p>
+                    <p className="font-bold text-white">
+                        {initials}
+                    </p>
                 </Button>
             )}
         >
@@ -24,9 +43,11 @@ const UserPopover = () => {
                     <UserIcon className="w-5 h-5" />
                 </div>
                 <div>
-                    <p className="font-bold leading-none text-text-highlight">Fredrik Engstrand</p>
+                    <p className="font-bold leading-none text-text-highlight">
+                        {user.full_name}
+                    </p>
                     <p className="text-sm font-bold text-primary-text">
-                        {t('common:auth.role.admin')}
+                        {user.nation_admin ? t('common:auth.role.admin') : ('common:auth.role.staff')}
                     </p>
                 </div>
             </PopoverSection>

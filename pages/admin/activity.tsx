@@ -32,6 +32,7 @@ import Subnavigation from '@common/Subnavigation'
 import MainLayout from '@layouts/admin/MainLayout'
 import Select, { OptionItem } from '@common/Select'
 import LoadingIndicator from '@common/LoadingIndicator'
+import OpenCloseButton from '@pages/admin/activity/OpenCloseButton'
 
 const Activity = () => {
     const { user } = useAuth()
@@ -108,15 +109,7 @@ const Activity = () => {
                                             />
                                         </div>
                                         <ActivityLevel locationId={location.id} />
-                                        {location.is_open ? (
-                                            <Button style="error-border" size="medium">
-                                                <span>{t('admin-activity:activity.close')}</span>
-                                            </Button>
-                                        ) : (
-                                            <Button style="success-border" size="medium">
-                                                <span>{t('admin-activity:activity.open')}</span>
-                                            </Button>
-                                        )}
+                                        <OpenCloseButton locationId={location.id} isOpen={location.is_open} />
                                     </Row>
                                 </Row>
                                 {location.is_open ? (

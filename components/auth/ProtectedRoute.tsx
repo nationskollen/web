@@ -38,10 +38,10 @@ const ProtectedRoute = ({ redirectTo, children }: Props) => {
             // server, which will remove the flashing content.
             const token = localStorage.getItem(AUTH.TOKEN_STORAGE_KEY)
 
-            if (!token) {
-                logout()
-            } else {
+            if (token) {
                 authenticate(token)
+            } else {
+                logout()
             }
         }
     }, [])
@@ -52,7 +52,7 @@ const ProtectedRoute = ({ redirectTo, children }: Props) => {
                 children
             ) : (
                 <div className="flex items-center justify-center w-screen h-screen">
-                    <LoadingIndicator size="large" />
+                    <LoadingIndicator size="medium" />
                 </div>
             )}
         </AuthProvider>

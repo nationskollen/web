@@ -13,7 +13,7 @@
   "dependencies": {
     "@headlessui/react": "^1.2.0",
     "@heroicons/react": "^1.0.1",
-    "@nationskollen/sdk": "^3.0.5",
+    "@nationskollen/sdk": "^3.0.7",
     "@popperjs/core": "^2.9.2",
     "awesome-debounce-promise": "^2.1.0",
     "clsx": "^1.1.1",

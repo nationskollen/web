@@ -73,46 +73,46 @@ export interface Props extends NativeButtonProps {
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    'primary': clsx('bg-primary text-white', 'focus:ring-focus-primary hover:bg-primary-extra'),
-    'primary-extra': clsx('bg-primary-extra text-white', 'focus:ring-focus-primary'),
+    'primary': clsx('bg-primary text-white border-transparent', 'focus:ring-focus-primary hover:bg-primary-extra'),
+    'primary-extra': clsx('bg-primary-extra text-white border-transparent', 'focus:ring-focus-primary'),
     'secondary': clsx(
-        'bg-secondary text-white',
+        'bg-secondary text-white border-transparent',
         'hover:bg-secondary-extra focus:ring-focus-secondary'
     ),
     'light': clsx(
-        'bg-background-extra border-1 border-border-dark text-text-highlight',
+        'bg-background-extra border-border-dark text-text-highlight',
         'dark:bg-background-highlight dark:border-background-highlight',
         'focus:ring-focus-default hover:bg-border',
     ),
     'lighter': clsx(
-        'bg-transparent text-text-highlight focus:ring-focus-default',
-        'hover:bg-hover'
+        'bg-transparent border-transparent text-text-highlight',
+        'hover:bg-hover focus:ring-focus-default'
     ),
-    'transparent': clsx('bg-transparent', 'focus:ring-focus-default'),
+    'transparent': clsx('bg-transparent border-transparent', 'focus:ring-focus-default'),
     'error': clsx(
-        'bg-error text-white',
+        'bg-error border-transparent text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-error'
     ),
     'error-border': clsx(
-        'bg-transparent text-error-highlight-text border-1 border-border-dark',
+        'bg-transparent text-error-highlight-text border-border-dark',
         'hover:border-error-highlight hover:bg-error-highlight',
         'focus:ring-focus-error',
     ),
     'success': clsx(
-        'bg-success text-white',
+        'bg-success border-transparent text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-success'
     ),
     'success-border': clsx(
-        'bg-transparent text-success-highlight-text border-1 border-border-dark',
+        'bg-transparent text-success-highlight-text border-border-dark',
         'hover:border-success-highlight hover:bg-success-highlight',
         'focus:ring-focus-success',
     ),
     'input': clsx(
-        'bg-transparent text-text-highlight border-1 border-border-dark',
+        'bg-transparent text-text-highlight border-border-dark',
         'dark:bg-background-highlight dark:border-0'
     ),
     'border': clsx(
-        'bg-transparent text-text border-1 border-border-dark',
+        'bg-transparent text-text border-border-dark',
         'hover:text-text-highlight hover:border-border-dark'
     ),
 }
@@ -183,7 +183,7 @@ const Button = React.forwardRef(
         }
 
         const classes = clsx(
-            'focus:ring focus:outline-none font-bold',
+            'focus:ring focus:outline-none font-bold border-1',
             'transition-colors duration-out',
             colorStyle,
             focusStyle,
