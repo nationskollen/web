@@ -65,7 +65,7 @@ const ActivityDashboard = ({ location }: Props) => {
                             <p>{t('common:activity.people', { count: people})}</p>
                         </Row>
                         <ProgressBar
-                            current={location.estimated_people_count}
+                            current={people}
                             max={location.max_capacity}
                             multiColor={true}
                         />
