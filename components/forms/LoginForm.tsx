@@ -61,10 +61,7 @@ const LoginForm = () => {
             return
         }
 
-        localStorage.setItem(
-            AUTH.TOKEN_STORAGE_KEY,
-            result.token,
-        )
+        localStorage.setItem(AUTH.TOKEN_STORAGE_KEY, result.token)
 
         // We use replace here since going back in the history will only redirect you
         // to the same page as you are currently on. Replacing the history means that

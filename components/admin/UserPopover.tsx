@@ -32,9 +32,7 @@ const UserPopover = () => {
             cardClassName="w-user-popover"
             button={() => (
                 <Button style="secondary" size="medium" radius="large" className="w-10 h-10">
-                    <p className="font-bold text-white">
-                        {initials}
-                    </p>
+                    <p className="font-bold text-white">{initials}</p>
                 </Button>
             )}
         >
@@ -43,11 +41,9 @@ const UserPopover = () => {
                     <UserIcon className="w-5 h-5" />
                 </div>
                 <div>
-                    <p className="font-bold leading-none text-text-highlight">
-                        {user.full_name}
-                    </p>
+                    <p className="font-bold leading-none text-text-highlight">{user.full_name}</p>
                     <p className="text-sm font-bold text-primary-text">
-                        {user.nation_admin ? t('common:auth.role.admin') : ('common:auth.role.staff')}
+                        {user.nation_admin ? t('common:auth.role.admin') : 'common:auth.role.staff'}
                     </p>
                 </div>
             </PopoverSection>

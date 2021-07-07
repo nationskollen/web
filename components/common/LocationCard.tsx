@@ -13,24 +13,15 @@ const LocationCard = ({ src, className, children }: Props) => {
     return (
         <Card
             noPadding={false}
-            className={clsx(
-                'h-64 overflow-hidden',
-                src && 'dark:border-0',
-                className
-            )}
+            className={clsx('h-64 overflow-hidden', src && 'dark:border-0', className)}
         >
             <div className="absolute inset-0 w-full h-full z-behind">
-                {src && (
-                    <img
-                        src={src}
-                        className="object-cover w-full h-full rounded-sm"
-                    />
-                )}
+                {src && <img src={src} className="object-cover w-full h-full rounded-sm" />}
             </div>
             <div
                 className={clsx(
                     'absolute bottom-0 left-0 flex flex-col justify-end',
-                    'w-full h-full rounded-sm p-md bg-card-overlay text-white',
+                    'w-full h-full rounded-sm p-md bg-card-overlay text-white'
                 )}
             >
                 {children}

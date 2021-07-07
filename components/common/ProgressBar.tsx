@@ -27,10 +27,10 @@ const ProgressBar = ({ max, current, multiColor }: Props) => {
             <div
                 className={clsx(
                     'h-full filter brightness-150',
-                    multiColor ? getProgressBarColor(percentage) : 'bg-primary-extra',
+                    multiColor ? getProgressBarColor(percentage) : 'bg-primary-extra'
                 )}
                 style={{
-                    width: `${percentage}%`
+                    width: `${percentage}%`,
                 }}
             />
         </div>

@@ -73,8 +73,14 @@ export interface Props extends NativeButtonProps {
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    'primary': clsx('bg-primary text-white border-transparent', 'focus:ring-focus-primary hover:bg-primary-extra'),
-    'primary-extra': clsx('bg-primary-extra text-white border-transparent', 'focus:ring-focus-primary'),
+    'primary': clsx(
+        'bg-primary text-white border-transparent',
+        'focus:ring-focus-primary hover:bg-primary-extra'
+    ),
+    'primary-extra': clsx(
+        'bg-primary-extra text-white border-transparent',
+        'focus:ring-focus-primary'
+    ),
     'secondary': clsx(
         'bg-secondary text-white border-transparent',
         'hover:bg-secondary-extra focus:ring-focus-secondary'
@@ -82,7 +88,7 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'light': clsx(
         'bg-background-extra border-border-dark text-text-highlight',
         'dark:bg-background-highlight dark:border-background-highlight',
-        'focus:ring-focus-default hover:bg-border',
+        'focus:ring-focus-default hover:bg-border'
     ),
     'lighter': clsx(
         'bg-transparent border-transparent text-text-highlight',
@@ -96,7 +102,7 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'error-border': clsx(
         'bg-transparent text-error-highlight-text border-border-dark',
         'hover:border-error-highlight hover:bg-error-highlight',
-        'focus:ring-focus-error',
+        'focus:ring-focus-error'
     ),
     'success': clsx(
         'bg-success border-transparent text-white',
@@ -105,7 +111,7 @@ const BUTTON_STYLES: Record<ButtonStyles, string> = {
     'success-border': clsx(
         'bg-transparent text-success-highlight-text border-border-dark',
         'hover:border-success-highlight hover:bg-success-highlight',
-        'focus:ring-focus-success',
+        'focus:ring-focus-success'
     ),
     'input': clsx(
         'bg-transparent text-text-highlight border-border-dark',
@@ -131,7 +137,7 @@ const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
 const BUTTON_RADIUS: Record<ButtonRadius, string> = {
     default: 'rounded-sm',
     large: 'rounded',
-    round: 'rounded-full'
+    round: 'rounded-full',
 }
 
 const BUTTON_SIZES: Record<ButtonSizes, string> = {

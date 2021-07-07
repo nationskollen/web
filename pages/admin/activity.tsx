@@ -28,9 +28,12 @@ const Activity = () => {
     const [selectedLocation, setSelectedLocation] = useState<Location>()
     const { t } = useTranslation(['admin-activity', 'common'])
 
-    const locations = data ? data.map((location) => ({
-        id: location.id, value: location.name,
-    })) : []
+    const locations = data
+        ? data.map((location) => ({
+              id: location.id,
+              value: location.name,
+          }))
+        : []
 
     const handleLocationChange = (option: OptionItem) => {
         // If `None` is selected
@@ -61,8 +64,7 @@ const Activity = () => {
                 <HeaderTitle
                     title={t('admin-activity:page.title')}
                     description={t('admin-activity:page.description')}
-                >
-                </HeaderTitle>
+                ></HeaderTitle>
             </MainLayout.Header>
             <Subnavigation basePath="/admin/activity">
                 <SubNavLink title={t('admin-activity:navigation.activity')} href="/" />
@@ -109,14 +111,17 @@ const Activity = () => {
                         ) : (
                             <Column className="items-center justify-center w-full pt-xlg">
                                 <IconCircle icon={LocationMarkerIcon} size="large" />
-                                <p className="font-bold">{t('admin-activity:activity.empty.title')}</p>
+                                <p className="font-bold">
+                                    {t('admin-activity:activity.empty.title')}
+                                </p>
                                 <Row className="w-auto rounded p-md border-1 border-border w-[40rem]">
                                     <InformationCircleIcon className="w-6 h-6" />
                                     <Column>
-                                        <Title size="tiny" text={t('admin-activity:activity.empty.question')} />
-                                        <pre>
-                                            {t('admin-activity:activity.empty.answer')}
-                                        </pre>
+                                        <Title
+                                            size="tiny"
+                                            text={t('admin-activity:activity.empty.question')}
+                                        />
+                                        <pre>{t('admin-activity:activity.empty.answer')}</pre>
                                         <ExternalLink
                                             label={t('admin-activity:activity.empty.add_location')}
                                             href="/admin/locations/create"

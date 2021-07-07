@@ -104,9 +104,7 @@ const Select = React.forwardRef(
         }
 
         const [selected, setSelected] = useState(
-            initialSelection !== undefined
-                ? getIndexOfOption(initialSelection)
-                : undefined
+            initialSelection !== undefined ? getIndexOfOption(initialSelection) : undefined
         )
 
         // Make sure to set the initial value in the form
@@ -250,7 +248,7 @@ const Select = React.forwardRef(
                             ref={ref}
                             className={clsx(
                                 'absolute w-full top-[4.4rem] dark:top-[4.3rem] rounded-b-sm',
-                                'border-1 border-border-dark dark:border-background-highlight',
+                                'border-1 border-border-dark dark:border-background-highlight'
                             )}
                             {...props}
                         >
@@ -259,7 +257,7 @@ const Select = React.forwardRef(
                                 className={clsx(
                                     'z-40 overflow-y-auto rounded-t-none rounded-b-sm py-xsm',
                                     'shadow-2xl max-h-dropdown border-1 border-border-dark',
-                                    'dark:bg-background-highlight dark:border-0 dark:border-t-1',
+                                    'dark:bg-background-highlight dark:border-0 dark:border-t-1'
                                 )}
                             >
                                 {renderedOptions}

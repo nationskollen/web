@@ -54,15 +54,16 @@ const ActivityDashboard = ({ location }: Props) => {
                         <Title
                             size="tiny"
                             style="uppercase"
-                            text={t('admin-activity:activity.capacity')} className="text-white"
+                            text={t('admin-activity:activity.capacity')}
+                            className="text-white"
                         />
                         <Row className="justify-between">
                             <p>{t('admin-activity:activity.max')}</p>
-                            <p>{t('common:activity.people', { count: location.max_capacity})}</p>
+                            <p>{t('common:activity.people', { count: location.max_capacity })}</p>
                         </Row>
                         <Row className="justify-between">
                             <p>{t('admin-activity:activity.current')}</p>
-                            <p>{t('common:activity.people', { count: people})}</p>
+                            <p>{t('common:activity.people', { count: people })}</p>
                         </Row>
                         <ProgressBar
                             current={people}
@@ -74,8 +75,8 @@ const ActivityDashboard = ({ location }: Props) => {
                         <Title size="small" text={t('admin-activity:activity.update.title')} />
                         <Column className="h-full">
                             <InputGroup className="h-full">
-                                <ActivityChangeButton locationId={location.id} type="decrease"/>
-                                <ActivityChangeButton locationId={location.id} type="increase"/>
+                                <ActivityChangeButton locationId={location.id} type="decrease" />
+                                <ActivityChangeButton locationId={location.id} type="increase" />
                             </InputGroup>
                             <InputGroup label={t('admin-activity:activity.update.set_manually')}>
                                 <Row>
@@ -102,9 +103,7 @@ const ActivityDashboard = ({ location }: Props) => {
             ) : (
                 <Column className="items-center">
                     <IconCircle icon={ClockIcon} size="large" />
-                    <p className="font-bold">
-                        {t('admin-activity:activity.currently_closed')}
-                    </p>
+                    <p className="font-bold">{t('admin-activity:activity.currently_closed')}</p>
                 </Column>
             )}
         </>

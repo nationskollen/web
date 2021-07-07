@@ -6,9 +6,7 @@ import { UserRemoveIcon, UserAddIcon } from '@heroicons/react/outline'
 
 import Button from '@common/Button'
 
-export type ActivityChangeButtonTypes =
-    | 'increase'
-    | 'decrease'
+export type ActivityChangeButtonTypes = 'increase' | 'decrease'
 
 export interface Props {
     locationId: number
@@ -26,9 +24,10 @@ const ActivityChangeButton = ({ locationId, type }: Props) => {
     }
 
     const Icon = type === 'increase' ? UserAddIcon : UserRemoveIcon
-    const label = type === 'increase'
-        ? t('activity.update.increase_by_one')
-        : t('activity.update.decrease_by_one')
+    const label =
+        type === 'increase'
+            ? t('activity.update.increase_by_one')
+            : t('activity.update.decrease_by_one')
 
     return (
         <>

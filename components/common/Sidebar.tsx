@@ -10,11 +10,13 @@ export interface Props {
 
 const Sidebar = ({ widthClass, offsetClass, side, children }: Props) => {
     return (
-        <aside className={clsx(
-            'relative z-30 space-y-md',
-            side === 'right' ? 'ml-xlg' : 'mr-xlg',
-            widthClass || 'w-sidebar-navigation'
-        )}>
+        <aside
+            className={clsx(
+                'relative z-30 space-y-md',
+                side === 'right' ? 'ml-xlg' : 'mr-xlg',
+                widthClass || 'w-sidebar-navigation'
+            )}
+        >
             <div className={clsx('sticky', offsetClass || 'top-admin-header-offset')}>
                 {children}
             </div>

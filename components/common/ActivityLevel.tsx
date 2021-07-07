@@ -40,24 +40,17 @@ const ActivityLevel = ({ location }: Props) => {
 
     return (
         <div className="flex flex-row items-center px-md">
-            <span
-                className={clsx(
-                    'relative w-2 h-2 rounded-full mr-sm',
-                    color,
-                )}
-            >
+            <span className={clsx('relative w-2 h-2 rounded-full mr-sm', color)}>
                 {level !== ActivityLevels.Closed && (
                     <span
                         className={clsx(
                             'absolute inset-0 w-full h-full rounded-full animate-ping',
-                            color,
+                            color
                         )}
                     />
                 )}
             </span>
-            <p className="font-bold text-text-highlight">
-                {getActivityString(level, t)}
-            </p>
+            <p className="font-bold text-text-highlight">{getActivityString(level, t)}</p>
         </div>
     )
 }

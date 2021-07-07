@@ -21,7 +21,7 @@ const TITLE_SIZES: Record<TitleSizes, string> = {
 
 const TITLE_STYLES: Record<TitleStyles, string> = {
     default: '',
-    uppercase: '!font-black uppercase text-xsm'
+    uppercase: '!font-black uppercase text-xsm',
 }
 
 // Accept other base props for accessibility
@@ -52,7 +52,7 @@ const Title = ({ text, size, style, className, ...props }: Props) => {
     }
 
     if (size === 'tiny') {
-        <h4 className={classes} {...props}>
+        ;<h4 className={classes} {...props}>
             {text}
         </h4>
     }
