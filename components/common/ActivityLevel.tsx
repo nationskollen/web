@@ -1,10 +1,10 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useTranslation, TFunction } from 'next-i18next'
-import { useActivityLevel, ActivityLevels } from '@nationskollen/sdk'
+import { useActivity, Location, ActivityLevels } from '@nationskollen/sdk'
 
 export interface Props {
-    locationId: number
+    location: Location
 }
 
 const ACTIVITY_COLORS: Record<ActivityLevels, string> = {
@@ -33,9 +33,9 @@ const getActivityString = (level: ActivityLevels, t: TFunction) => {
     }
 }
 
-const ActivityLevel = ({ locationId }: Props) => {
+const ActivityLevel = ({ location }: Props) => {
     const { t } = useTranslation('common')
-    const level = useActivityLevel(locationId)
+    const { level } = useActivity(location.id, { level: location.activity_level })
     const color = ACTIVITY_COLORS[level]
 
     return (

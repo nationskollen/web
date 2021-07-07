@@ -1,17 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useTranslation } from 'next-i18next'
-import { useApi, Location } from '@nationskollen/sdk'
-
-import {
-    ClockIcon,
-    UserRemoveIcon,
-    UserAddIcon,
-} from '@heroicons/react/outline'
+import { useAsyncCallback } from 'react-async-hook'
+import { ClockIcon } from '@heroicons/react/outline'
+import { useApi, useActivity, Location } from '@nationskollen/sdk'
 
 import Row from '@common/Row'
-import Input from '@common/Input'
+import Input, { InputChangeEvent } from '@common/Input'
 import Title from '@common/Title'
-import Button from '@common/Button'
 import Column from '@common/Column'
 import IconCircle from '@common/IconCircle'
 import InputGroup from '@common/InputGroup'
@@ -24,13 +19,36 @@ export interface Props {
     location: Location
 }
 
+// TODO: Handle error
 const ActivityDashboard = ({ location }: Props) => {
     const api = useApi()
     const { t } = useTranslation(['admin-activity', 'common'])
+    const [exactValue, setExactValue] = useState<number>()
+    const { execute, loading } = useAsyncCallback(api.locations.setActivity)
+    const { people } = useActivity(location.id, { people: location.estimated_people_count })
+
+    const handleChange = (e: InputChangeEvent) => {
+        const value = parseInt(e.target.value)
+
+        if (isNaN(value)) {
+            return
+        }
+
+        setExactValue(value)
+    }
+
+    const handleSubmit = () => {
+        if (exactValue === undefined || exactValue < 0) {
+            // TODO: Show error?
+            return
+        }
+
+        execute(location.id, { exact_amount: exactValue })
+    }
 
     return (
         <>
-            {location && location.is_open ? (
+            {location.is_open ? (
                 <Row>
                     <LocationCard src={location.cover_img_src} className="w-[32rem] mr-md">
                         <Title
@@ -44,7 +62,7 @@ const ActivityDashboard = ({ location }: Props) => {
                         </Row>
                         <Row className="justify-between">
                             <p>{t('admin-activity:activity.current')}</p>
-                            <p>{t('common:activity.people', { count: location.estimated_people_count})}</p>
+                            <p>{t('common:activity.people', { count: people})}</p>
                         </Row>
                         <ProgressBar
                             current={location.estimated_people_count}
@@ -67,11 +85,14 @@ const ActivityDashboard = ({ location }: Props) => {
                                         max={location.max_capacity}
                                         placeholder={t('admin-activity:activity.field.manual')}
                                         className="flex-1"
+                                        onChange={handleChange}
                                     />
                                     <SubmitButton
                                         type="save"
                                         style="light"
                                         label={t('common:action.save')}
+                                        loading={loading}
+                                        onClick={handleSubmit}
                                     />
                                 </Row>
                             </InputGroup>

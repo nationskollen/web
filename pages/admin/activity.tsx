@@ -96,7 +96,7 @@ const Activity = () => {
                                                 href={`/admin/locations/${location.id}`}
                                             />
                                         </div>
-                                        <ActivityLevel locationId={location.id} />
+                                        <ActivityLevel location={location} />
                                         <OpenCloseButton
                                             location={location}
                                             locations={data}
