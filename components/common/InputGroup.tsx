@@ -25,13 +25,12 @@ const getColumns = (count: number) => {
 
 const InputGroup = ({ label, columns, className, children }: Props) => {
     return (
-        <fieldset>
+        <fieldset className={className}>
             {label && <legend className="text-sm text-text mb-xsm">{label}</legend>}
             <div
                 className={clsx(
-                    `grid gap-md`,
-                    getColumns(columns || React.Children.count(children)),
-                    className
+                    'grid gap-md h-full',
+                    getColumns(columns || React.Children.count(children))
                 )}
             >
                 {children}

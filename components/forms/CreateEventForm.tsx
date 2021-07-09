@@ -26,7 +26,6 @@ import Notifications from '@notifications'
 import { combineToDateString } from '@utils'
 import { DEFAULT_MODAL_FORM_PROPS } from '@constants'
 
-import Card from '@common/Card'
 import Form from '@common/Form'
 import Input from '@common/Input'
 import Checkbox from '@common/Checkbox'
@@ -35,6 +34,7 @@ import InputGroup from '@common/InputGroup'
 import RadioGroup from '@common/RadioGroup'
 import ExternalLink from '@common/ExternalLink'
 import SubmitButton from '@common/SubmitButton'
+import LocationCard from '@common/LocationCard'
 import Select, { OptionItem } from '@common/Select'
 import FileUploadInput from '@common/FileUploadInput'
 
@@ -61,7 +61,7 @@ export interface FormValues {
 
 const CreateEventForm = () => {
     const api = useApi()
-    const { oid } = useAuth()
+    const { user } = useAuth()
     const { t } = useTranslation(['common', 'admin-events'])
     const form = useForm<FormValues>(DEFAULT_MODAL_FORM_PROPS)
 
@@ -76,7 +76,7 @@ const CreateEventForm = () => {
     const submit = (data: FormValues) => {
         console.log(data)
 
-        creator.execute(oid, {
+        creator.execute(user.oid, {
             name: data.title,
             short_description: data.shortDescription,
             long_description: data.description,
@@ -287,13 +287,13 @@ const Time = () => {
 }
 
 const Location = () => {
-    const { oid } = useAuth()
+    const { user } = useAuth()
     const { register, watch } = useFormContext()
     const watchLocation = watch('location')
+    const { t } = useTranslation(['admin-events', 'common'])
     const [location, setLocation] = useState<LocationType>()
     const [locationType, setLocationType] = useState<LocationSelectionTypes>('default')
-    const { data, isValidating } = useLocations(oid!)
-    const { t } = useTranslation(['admin-events', 'common'])
+    const { data, isValidating } = useLocations(user.oid)
 
     useEffect(() => {
         if (data && watchLocation) {
@@ -348,20 +348,10 @@ const Location = () => {
                 />
             )}
             {location && (
-                <Card noPadding={false} className="h-64 overflow-hidden">
-                    <div className="absolute inset-0 w-full h-full z-behind">
-                        {location.cover_img_src && (
-                            <img
-                                src={location.cover_img_src}
-                                className="object-cover w-full h-full rounded-sm"
-                            />
-                        )}
-                    </div>
-                    <div className="absolute bottom-0 left-0 flex flex-col justify-end w-full h-full rounded-sm p-md bg-card-overlay">
-                        <p className="font-bold text-white">{location.name}</p>
-                        <p className="text-white">{location.address}</p>
-                    </div>
-                </Card>
+                <LocationCard src={location.cover_img_src}>
+                    <p className="font-bold">{location.name}</p>
+                    <p>{location.address}</p>
+                </LocationCard>
             )}
         </>
     )

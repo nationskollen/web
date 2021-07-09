@@ -31,8 +31,9 @@ import { getFieldErrorMessage } from '@utils'
 import { INPUT_FOCUS_STYLES } from '@common/Input'
 import LoadingIndicator from '@common/LoadingIndicator'
 
-export type ButtonRadius = 'default' | 'large'
-export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon' | 'icon-small'
+export type ButtonDirections = 'row' | 'column'
+export type ButtonRadius = 'default' | 'large' | 'round'
+export type ButtonSizes = 'small' | 'medium' | 'default' | 'large' | 'icon' | 'icon-small' | 'auto'
 export type ButtonFocusStyles = 'primary' | 'default' | 'subtle' | 'error' | 'input'
 
 export type ButtonStyles =
@@ -45,6 +46,7 @@ export type ButtonStyles =
     | 'error'
     | 'error-border'
     | 'success'
+    | 'success-border'
     | 'input'
     | 'border'
 
@@ -62,6 +64,7 @@ export interface Props extends NativeButtonProps {
     style?: ButtonStyles
     leftAlignContent?: boolean
     loading?: boolean
+    direction?: ButtonDirections
     error?: boolean | FieldError
     className?: string
     containerClassName?: string
@@ -70,40 +73,52 @@ export interface Props extends NativeButtonProps {
 }
 
 const BUTTON_STYLES: Record<ButtonStyles, string> = {
-    'primary': clsx('bg-primary text-white', 'focus:ring-focus-primary hover:bg-primary-extra'),
-    'primary-extra': clsx('bg-primary-extra text-white', 'focus:ring-focus-primary'),
+    'primary': clsx(
+        'bg-primary text-white border-transparent',
+        'focus:ring-focus-primary hover:bg-primary-extra'
+    ),
+    'primary-extra': clsx(
+        'bg-primary-extra text-white border-transparent',
+        'focus:ring-focus-primary'
+    ),
     'secondary': clsx(
-        'bg-secondary text-white',
+        'bg-secondary text-white border-transparent',
         'hover:bg-secondary-extra focus:ring-focus-secondary'
     ),
     'light': clsx(
-        'bg-background-extra text-text-highlight border-1 border-border-dark',
+        'bg-background-extra border-border-dark text-text-highlight',
         'dark:bg-background-highlight dark:border-background-highlight',
-        'focus:ring-focus-default'
+        'focus:ring-focus-default hover:bg-border'
     ),
     'lighter': clsx(
-        'bg-transparent text-text-highlight focus:ring-focus-default',
-        'hover:bg-hover'
+        'bg-transparent border-transparent text-text-highlight',
+        'hover:bg-hover focus:ring-focus-default'
     ),
-    'transparent': clsx('bg-transparent', 'focus:ring-focus-default'),
+    'transparent': clsx('bg-transparent border-transparent', 'focus:ring-focus-default'),
     'error': clsx(
-        'bg-error text-white',
+        'bg-error border-transparent text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-error'
     ),
     'error-border': clsx(
-        'bg-transparent text-error-text border-2 border-border',
-        'hover:border-border-dark hover:bg-background-extra hover:dark:bg-background-highlight'
+        'bg-transparent text-error-highlight-text border-border-dark',
+        'hover:border-error-highlight hover:bg-error-highlight',
+        'focus:ring-focus-error'
     ),
     'success': clsx(
-        'bg-success text-white',
+        'bg-success border-transparent text-white',
         'hover:filter hover:brightness-125 focus:ring-focus-success'
     ),
+    'success-border': clsx(
+        'bg-transparent text-success-highlight-text border-border-dark',
+        'hover:border-success-highlight hover:bg-success-highlight',
+        'focus:ring-focus-success'
+    ),
     'input': clsx(
-        'bg-transparent text-text-highlight border-1 border-border-dark',
+        'bg-transparent text-text-highlight border-border-dark',
         'dark:bg-background-highlight dark:border-0'
     ),
     'border': clsx(
-        'bg-transparent text-text border-2 border-border',
+        'bg-transparent text-text border-border-dark',
         'hover:text-text-highlight hover:border-border-dark'
     ),
 }
@@ -122,6 +137,7 @@ const BUTTON_FOCUS_STYLES: Record<ButtonFocusStyles, string> = {
 const BUTTON_RADIUS: Record<ButtonRadius, string> = {
     default: 'rounded-sm',
     large: 'rounded',
+    round: 'rounded-full',
 }
 
 const BUTTON_SIZES: Record<ButtonSizes, string> = {
@@ -130,7 +146,8 @@ const BUTTON_SIZES: Record<ButtonSizes, string> = {
     'default': 'h-12 p-3 px-md space-x-sm',
     'large': 'h-14 text-lg p-4 space-x-2',
     'icon': 'h-12 w-12 p-3',
-    'icon-small': 'h-9 w-9 p-2',
+    'icon-small': 'h-10 w-10 p-2',
+    'auto': 'h-auto px-md py-3 space-x-sm',
 }
 
 // We use forwardRef here so that our buttons can be used as children
@@ -144,6 +161,7 @@ const Button = React.forwardRef(
             type,
             href,
             style,
+            direction,
             leftAlignContent,
             radius,
             loading,
@@ -156,7 +174,7 @@ const Button = React.forwardRef(
         }: Props,
         ref: any
     ) => {
-        const sizing = BUTTON_SIZES[size || 'default']
+        const sizing = BUTTON_SIZES[direction === 'column' ? 'auto' : size || 'default']
         const radiusStyle = BUTTON_RADIUS[radius || 'default']
         const colorStyle = BUTTON_STYLES[style || 'primary']
         let focusStyle = ''
@@ -171,7 +189,8 @@ const Button = React.forwardRef(
         }
 
         const classes = clsx(
-            'focus:ring focus:outline-none font-bold',
+            'focus:ring focus:outline-none font-bold border-1',
+            'transition-colors duration-out',
             colorStyle,
             focusStyle,
             radiusStyle,
@@ -184,6 +203,7 @@ const Button = React.forwardRef(
                 className={clsx(
                     'overflow-hidden relative flex flex-row items-center',
                     leftAlignContent ? 'justify-start' : 'justify-center',
+                    direction === 'column' ? 'flex-col space-y-sm' : 'flex-row',
                     sizing,
                     containerClassName
                 )}

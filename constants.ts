@@ -9,7 +9,7 @@ export const DEFAULT_DEBOUNCE_DELAY = 150
 export const THEME_STORAGE_KEY = 'theme'
 
 export const AUTH = {
-    USER_STORAGE_KEY: 'user',
+    TOKEN_STORAGE_KEY: 'token',
     DEFAULT_REDIRECT_ROUTE: '/admin/login',
 }
 

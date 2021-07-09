@@ -42,9 +42,11 @@ export type InputSizes = 'small' | 'default' | 'large' | 'auto'
 export type InputStyles = 'transparent' | 'no-border'
 export type InputFocusStyles = InputStyles | 'error'
 
+export type InputChangeEvent = React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+
 export type NativeInputProps = Omit<
     React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>,
-    'size' | 'style'
+    'size' | 'style' | 'onChange'
 >
 
 export interface Props extends NativeInputProps {
@@ -62,6 +64,7 @@ export interface Props extends NativeInputProps {
     debounce?: boolean
     debounceDelay?: number
     noPadding?: boolean
+    onChange?: (e: InputChangeEvent) => void
     children?: React.ReactNode
 }
 
@@ -166,7 +169,7 @@ const Input = React.forwardRef(
                 )}
                 <div
                     className={clsx(
-                        'flex flex-row items-center rounded-sm shadow',
+                        'flex flex-row items-center rounded-sm shadow box-content',
                         noPadding ? 'px-0' : 'px-3',
                         sizing,
                         styling,

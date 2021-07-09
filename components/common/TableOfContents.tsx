@@ -19,7 +19,7 @@
 import React, { useMemo } from 'react'
 import { useTranslation } from 'next-i18next'
 
-import Card from '@common/Card'
+import Title from '@common/Title'
 import TableOfContentsLink from '@common/TableOfContentsLink'
 
 export interface Section {
@@ -47,7 +47,7 @@ const TableOfContents = ({ sections }: Props) => {
     return (
         <div>
             <div className="text-text-highlight pb-xsm">
-                <h3 className="font-black text-xsm uppercase">{t('toc.title')}</h3>
+                <Title size="tiny" style="uppercase" text={t('toc.title')} />
             </div>
             <ul className="py-sm">{content}</ul>
         </div>

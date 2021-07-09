@@ -10,18 +10,11 @@ import GlobalSidebar from '@common/GlobalSidebar'
 import AdminSettingsModal from '@components/admin/AdminSettingsModal'
 
 const AdminSidebar = () => {
-    const { token, oid, logout } = useAuth()
+    const { user, logout } = useAuth()
     const [settingsOpen, setSettingsOpen] = useState(false)
 
-    // Make sure to "logout" if we are not authenticated
-    // and prevent fetching data
-    if (!token || !oid) {
-        logout()
-        return null
-    }
-
     // TODO: Handle error
-    const { data } = useNation(oid)
+    const { data } = useNation(user.oid)
 
     return (
         <GlobalSidebar>

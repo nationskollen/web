@@ -1,7 +1,35 @@
 {
     "page": {
         "title": "Aktivitet",
-        "description": "Uppdatera aktivitet och status på platser"
+        "description": "Uppdatera aktivitet och status på platser",
+        "selected_location": "Vald plats"
     },
-    "navigation": {}
+    "navigation": {
+        "activity": "Aktivitetsräknare",
+        "statistics": "Statistik"
+    },
+    "activity": {
+        "update_location": "Hantera plats",
+        "open": "Öppna plats",
+        "close": "Stäng plats",
+        "capacity": "Kapacitet",
+        "max": "Max:",
+        "current": "Just nu (ca)",
+        "currently_closed": "Platsen har för tillfället stängt",
+        "update": {
+            "title": "Uppdatera aktivitet",
+            "set_manually": "Sätt antal manuellt",
+            "increase_by_one": "Öka med ett",
+            "decrease_by_one": "Minska med ett"
+        },
+        "field": {
+            "manual": "Exakt antal besökare"
+        },
+        "empty": {
+            "title": "Nationen har inte lagt till någon plats",
+            "add_location": "Lägg till plats",
+            "question": "Vad är en plats?",
+            "answer": "Platser tillåter nationen att hålla koll på antal besökare i realtid (valfritt), samt låta användare av Nationskollen enkelt hitta till nationens olika platser via karta. Det går också att lägga till öppettider, samt lägga mat- och dryckmenyer. Evenemang som nationen skapar kan också länkas till de skapade platserna."
+        }
+    }
 }

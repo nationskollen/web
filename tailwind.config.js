@@ -43,6 +43,12 @@ module.exports = {
             'success': 'var(--color-success)',
             'success-highlight-text': 'var(--color-success-highlight-text)',
             'success-highlight': 'var(--color-success-highlight)',
+            'activity-closed': 'var(--color-activity-closed)',
+            'activity-low': 'var(--color-activity-low)',
+            'activity-medium': 'var(--color-activity-medium)',
+            'activity-high': 'var(--color-activity-high)',
+            'activity-very-high': 'var(--color-activity-very-high)',
+            'activity-full': 'var(--color-activity-full)',
         },
         backgroundImage: {
             'card-overlay': 'var(--color-card-overlay)',
@@ -121,6 +127,7 @@ module.exports = {
             minWidth: {
                 'modal': '25rem',
                 'login-background': '1100px',
+                'select': '12rem',
             },
             maxWidth: {
                 notifications: '25rem',

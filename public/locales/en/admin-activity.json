@@ -1,7 +1,35 @@
 {
     "page": {
         "title": "Activity",
-        "description": "Manage activity and status of locations"
+        "description": "Manage activity and status of locations",
+        "selected_location": "Selected location"
     },
-    "navigation": {}
+    "navigation": {
+        "activity": "Activity counter",
+        "statistics": "Statistics"
+    },
+    "activity": {
+        "update_location": "Manage location",
+        "open": "Open location",
+        "close": "Close location",
+        "max": "Max:",
+        "capacity": "Capacity",
+        "current": "Current (approx.)",
+        "currently_closed": "Location is currently closed",
+        "update": {
+            "title": "Update activity",
+            "set_manually": "Set manually",
+            "increase_by_one": "Increase by one",
+            "decrease_by_one": "Decrease by one"
+        },
+        "field": {
+            "manual": "Exact number of visitors"
+        },
+        "empty": {
+            "title": "The student nation does not have any locations",
+            "add_location": "Add location",
+            "question": "What is a location?",
+            "answer": "Locations allow the nation to keep track of the number of visitors in real-time (optional). It also allows the users of Nationskollen to easily find the nations different locations using the map. You can also add opening hours, as well as food- and drink-menus. Events that are created can also be linked to a location."
+        }
+    }
 }

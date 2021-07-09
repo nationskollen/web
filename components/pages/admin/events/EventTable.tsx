@@ -36,11 +36,11 @@ const ActionItems = ({ row }: ActionsRendererProps<TableItem>) => {
 }
 
 const EventTable = ({ id, before, after, amount = 15 }: Props) => {
-    const { oid } = useAuth()
+    const { user } = useAuth()
     const [page, setPage] = useState(1)
     const { t } = useTranslation('admin-events')
     const [filterString, setFilterString] = useState('')
-    const { data, error, isValidating, pagination } = useEvents(oid, {
+    const { data, error, isValidating, pagination } = useEvents(user.oid, {
         page,
         amount,
         before,

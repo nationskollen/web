@@ -38,10 +38,17 @@ html {
     --color-success: #167933;
     --color-success-highlight: #b3ffcb;
     --color-success-highlight-text: #074d25;
+
+    --color-activity-closed: var(--color-border-dark);
+    --color-activity-low: #06e23d;
+    --color-activity-medium: #ede215;
+    --color-activity-high: #f7a000;
+    --color-activity-very-high: #f74a00;
+    --color-activity-full: #f71400;
 }
 
 html.dark {
-    --color-card-overlay: linear-gradient(to bottom, #3737528c, var(--color-secondary));
+    --color-card-overlay: linear-gradient(to bottom, #3737528c, #1e1f2f);
     --color-hover: rgba(255, 255, 255, 0.08);
     --color-lighter: rgba(255, 255, 255, 0.02);
     --color-focus-default: #393648;

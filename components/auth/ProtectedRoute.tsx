@@ -3,6 +3,9 @@ import Router from 'next/router'
 import { AUTH } from '@constants'
 import { isClient } from '@utils'
 import { AuthProvider } from '@contexts/Auth'
+import { useApi, AuthenticatedUser } from '@nationskollen/sdk'
+
+import LoadingIndicator from '@common/LoadingIndicator'
 
 export interface Props {
     redirectTo?: string
@@ -10,8 +13,22 @@ export interface Props {
 }
 
 const ProtectedRoute = ({ redirectTo, children }: Props) => {
-    const [oid, setOid] = useState<number | null>(null)
-    const [token, setToken] = useState<string | null>(null)
+    const api = useApi()
+    const [user, setUser] = useState<AuthenticatedUser>()
+
+    const logout = useCallback(() => {
+        localStorage.removeItem(AUTH.TOKEN_STORAGE_KEY)
+        Router.replace(redirectTo || '/admin/login')
+    }, [])
+
+    const authenticate = async (token: string) => {
+        try {
+            const user = await api.auth.setToken(token)
+            setUser(user)
+        } catch (_) {
+            logout()
+        }
+    }
 
     useEffect(() => {
         if (isClient()) {
@@ -19,30 +36,23 @@ const ProtectedRoute = ({ redirectTo, children }: Props) => {
             // In the future, it would be better to use server sessions.
             // Sessions also allow us to check if the user is logged in directly on the
             // server, which will remove the flashing content.
-            const user = localStorage.getItem(AUTH.USER_STORAGE_KEY)
+            const token = localStorage.getItem(AUTH.TOKEN_STORAGE_KEY)
 
-            if (!user) {
-                Router.push(redirectTo || AUTH.DEFAULT_REDIRECT_ROUTE)
+            if (token) {
+                authenticate(token)
             } else {
-                const parsed = JSON.parse(user)
-                setToken(parsed.token)
-                setOid(parseInt(parsed.oid))
+                logout()
             }
         }
     }, [])
 
-    const logout = useCallback(() => {
-        localStorage.removeItem(AUTH.USER_STORAGE_KEY)
-        Router.replace('/admin/login')
-    }, [])
-
     return (
-        <AuthProvider value={{ token: token as string, oid: oid as number, logout }}>
-            {token ? (
+        <AuthProvider value={{ user: user as AuthenticatedUser, logout }}>
+            {user ? (
                 children
             ) : (
                 <div className="flex items-center justify-center w-screen h-screen">
-                    <p className="text-white">Laddar...</p>
+                    <LoadingIndicator size="medium" />
                 </div>
             )}
         </AuthProvider>
