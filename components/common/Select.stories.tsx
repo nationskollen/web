@@ -13,5 +13,8 @@ const Template: Story<Props> = (args) => <Select {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    label: 'label'
+  label: 'label',
+  //onSelect: console.log('preset'),
+  initialSelection: 'first',
+  options: [ {id: 'first', value: 'first value'} ]
 };

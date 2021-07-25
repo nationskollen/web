@@ -1,4 +1,4 @@
-// FIXME: dosent show
+// FIXME: error, no one uses CustomPopover
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 

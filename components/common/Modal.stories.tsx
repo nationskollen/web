@@ -1,3 +1,4 @@
+// FIXME: error
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 
@@ -12,5 +13,8 @@ const Template: Story<Props> = (args) => <Modal {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    title: 'title'
+  //open: true,
+  //setOpen: (open)
+  //noPadding: true,
+  //appear: true
 };

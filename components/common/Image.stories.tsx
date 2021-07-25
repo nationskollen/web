@@ -1,4 +1,3 @@
-// FIXME: src dosent work
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { LibraryIcon, CogIcon, LogoutIcon } from '@heroicons/react/outline'

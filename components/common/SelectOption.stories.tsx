@@ -13,5 +13,7 @@ const Template: Story<Props> = (args) => <SelectOption {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-    index: 1
+  index: 1,
+  //key: 3 //option.id
+  //option: 34 //
 };
